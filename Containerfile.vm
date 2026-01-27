@@ -8,7 +8,6 @@ COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
 # Install VM guest tools
-# Call scripts with bash explicitly to avoid permission issues
 RUN rpm-ostree install \
         qemu-guest-agent \
         open-vm-tools \
