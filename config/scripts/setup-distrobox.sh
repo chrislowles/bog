@@ -7,7 +7,7 @@ rpm-ostree install distrobox
 
 # Remove toolbx if present (optional) - don't fail if it doesn't exist
 set +e
-rpm-ostree override remove toolbox
+rpm-ostree override remove toolbox 2>/dev/null
 set -e
 
 # Create distrobox configuration directory
