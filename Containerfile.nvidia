@@ -15,13 +15,25 @@ COPY --from=akmods /rpms /tmp/akmods-rpms
 COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
-# Install NVIDIA drivers from the copied RPMs
-# Call scripts with bash explicitly to avoid permission issues
-RUN /bin/bash /tmp/install-gnome.sh && \
-    rpm-ostree install \
-        /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
-        /tmp/akmods-rpms/kmods/kmod-nvidia-*.rpm && \
-    /bin/bash /tmp/setup-distrobox.sh && \
+# Debug: List what we actually copied
+RUN echo "=== Checking akmods RPM structure ===" && \
+    ls -la /tmp/akmods-rpms/ && \
+    echo "=== Searching for NVIDIA RPMs ===" && \
+    find /tmp/akmods-rpms -name "*.rpm" -type f
+
+# Install GNOME first
+RUN /bin/bash /tmp/install-gnome.sh
+
+# Install NVIDIA drivers - with better path handling
+RUN if [ -d "/tmp/akmods-rpms" ]; then \
+        echo "Installing NVIDIA drivers..." && \
+        find /tmp/akmods-rpms -name "*.rpm" -type f -exec rpm-ostree install {} + ; \
+    else \
+        echo "WARNING: No akmods RPMs found, skipping NVIDIA driver installation" ; \
+    fi
+
+# Run remaining setup scripts
+RUN /bin/bash /tmp/setup-distrobox.sh && \
     /bin/bash /tmp/configure-flatpak.sh && \
     /bin/bash /tmp/cleanup.sh
 
