@@ -13,7 +13,7 @@ COPY config/scripts/setup-distrobox.sh /tmp/setup-distrobox.sh
 COPY config/scripts/configure-flatpak.sh /tmp/configure-flatpak.sh
 COPY config/scripts/cleanup.sh /tmp/cleanup.sh
 
-# Call scripts with bash explicitly to avoid permission issues
+# Run installation scripts
 RUN /bin/bash /tmp/install-gnome.sh && \
     /bin/bash /tmp/setup-distrobox.sh && \
     /bin/bash /tmp/configure-flatpak.sh && \
