@@ -1,19 +1,20 @@
 ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
 ARG IMAGE_TAG=latest
+
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
 # Copy configuration and scripts
 COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
-# Install AMD drivers
+# AMD drivers (mesa) are already included in the base image
+# Just install GNOME and other components
 RUN chmod +x /tmp/*.sh && \
-    rpm-ostree install \
-        mesa-dri-drivers \
-        mesa-vulkan-drivers && \
     /tmp/install-gnome.sh && \
     /tmp/setup-distrobox.sh && \
     /tmp/configure-flatpak.sh && \
     /tmp/cleanup.sh
 
 LABEL variant="amd"
+LABEL org.opencontainers.image.title="Bog AMD"
+LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME and AMD drivers"
