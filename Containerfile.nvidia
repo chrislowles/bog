@@ -19,14 +19,13 @@ COPY config/scripts/*.sh /tmp/
 RUN /bin/bash /tmp/install-gnome.sh
 
 # Install only the NVIDIA addons (not the kernel module)
-# The kernel module (kmod) must match the running kernel, so it should be
-# layered at runtime using rpm-ostree, not baked into the image
+# The kernel module (kmod) must match the running kernel, so it should be layered at runtime using rpm-ostree, not baked into the image
 RUN if [ -f "/tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-"*".rpm" ]; then \
-        echo "Installing NVIDIA addons..." && \
-        rpm-ostree install /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm ; \
-    else \
-        echo "WARNING: No NVIDIA addons found" ; \
-    fi
+		echo "Installing NVIDIA addons..." && \
+		rpm-ostree install /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm ; \
+	else \
+		echo "WARNING: No NVIDIA addons found" ; \
+	fi
 
 # Run remaining setup scripts
 RUN /bin/bash /tmp/setup-distrobox.sh
