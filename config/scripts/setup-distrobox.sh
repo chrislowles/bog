@@ -1,13 +1,14 @@
 #!/usr/bin/bash
-set -euo pipefail
 
 echo "Setting up distrobox for containerized software management..."
 
 # Install distrobox
 rpm-ostree install distrobox
 
-# Remove toolbx if present (optional)
-rpm-ostree override remove toolbox || true
+# Remove toolbx if present (optional) - don't fail if it doesn't exist
+set +e
+rpm-ostree override remove toolbox
+set -e
 
 # Create distrobox configuration directory
 mkdir -p /etc/distrobox
