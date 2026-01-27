@@ -1,9 +1,10 @@
 # Containerfile - Builds your custom image
 
 ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
-ARG FEDORA_VERSION=40
+# ARG FEDORA_VERSION=40
 
-FROM ${BASE_IMAGE_URL}:${FEDORA_VERSION}
+FROM ${BASE_IMAGE_URL}
+# FROM ${BASE_IMAGE_URL}:${FEDORA_VERSION}
 
 # Copy configuration files
 COPY config /tmp/config
@@ -22,6 +23,6 @@ RUN chmod +x /tmp/*.sh && \
     /tmp/cleanup.sh
 
 # Metadata
-LABEL org.opencontainers.image.title="My Immutable OS"\
+LABEL org.opencontainers.image.title="Bog"\
 LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/chrislowles/bog/main/README.md"
