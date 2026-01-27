@@ -1,20 +1,27 @@
 ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
 ARG IMAGE_TAG=latest
+ARG FEDORA_MAJOR_VERSION=42
+
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
+
+# Copy NVIDIA driver RPMs from uBlue akmods
+# Use main-42 for Fedora 42 with main kernel
+COPY --from=ghcr.io/ublue-os/akmods-nvidia:main-${FEDORA_MAJOR_VERSION} /rpms /tmp/akmods-rpms
 
 # Copy configuration and scripts
 COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
-# Install NVIDIA drivers
+# Install NVIDIA drivers from the copied RPMs
 RUN chmod +x /tmp/*.sh && \
     rpm-ostree install \
-        akmod-nvidia \
-        xorg-x11-drv-nvidia \
-        xorg-x11-drv-nvidia-cuda && \
+        /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
+        /tmp/akmods-rpms/kmods/kmod-nvidia-*.rpm && \
     /tmp/install-gnome.sh && \
     /tmp/setup-distrobox.sh && \
     /tmp/configure-flatpak.sh && \
     /tmp/cleanup.sh
 
 LABEL variant="nvidia"
+LABEL org.opencontainers.image.title="Bog NVIDIA"
+LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME and NVIDIA drivers"
