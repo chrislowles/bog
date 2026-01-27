@@ -5,7 +5,6 @@ ARG FEDORA_MAJOR_VERSION=42
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
 # Copy NVIDIA driver RPMs from uBlue akmods
-# Use main-42 for Fedora 42 with main kernel
 COPY --from=ghcr.io/ublue-os/akmods-nvidia:main-${FEDORA_MAJOR_VERSION} /rpms /tmp/akmods-rpms
 
 # Copy configuration and scripts

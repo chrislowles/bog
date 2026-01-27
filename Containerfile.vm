@@ -1,5 +1,6 @@
 ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
 ARG IMAGE_TAG=latest
+
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
 # Copy configuration and scripts
@@ -18,3 +19,5 @@ RUN chmod +x /tmp/*.sh && \
     /tmp/cleanup.sh
 
 LABEL variant="vm"
+LABEL org.opencontainers.image.title="Bog VM"
+LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME and VM guest tools"
