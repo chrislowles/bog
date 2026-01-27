@@ -1,5 +1,6 @@
 ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
 ARG IMAGE_TAG=latest
+
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
 # Copy configuration files
