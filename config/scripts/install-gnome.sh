@@ -3,9 +3,9 @@ set -euo pipefail
 
 echo "Installing minimal GNOME desktop environment..."
 
-# Install minimal GNOME packages
+# Install GNOME Desktop group and essential packages
 rpm-ostree install \
-    gnome-shell \
+    @gnome-desktop \
     gdm \
     gnome-terminal \
     gnome-control-center \
