@@ -12,13 +12,7 @@ rpm-ostree install \
     gnome-system-monitor \
     nautilus \
     gnome-text-editor \
-    gnome-calculator \
-    gnome-tweaks \
-    gnome-browser-connector
-
-# Optional: Install additional GNOME utilities
-rpm-ostree install \
-    gnome-extensions-app \
+    gnome-browser-connector \
     dconf-editor
 
 echo "GNOME installation complete."
