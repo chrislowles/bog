@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-set -euo pipefail
 
 echo "Installing minimal GNOME desktop environment..."
 
