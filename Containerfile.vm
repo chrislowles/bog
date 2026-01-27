@@ -8,14 +8,13 @@ COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
 # Install VM guest tools
-RUN rpm-ostree install \
-        qemu-guest-agent \
-        open-vm-tools \
-        spice-vdagent && \
-    /bin/bash /tmp/install-gnome.sh && \
-    /bin/bash /tmp/setup-distrobox.sh && \
-    /bin/bash /tmp/configure-flatpak.sh && \
-    /bin/bash /tmp/cleanup.sh
+RUN rpm-ostree install qemu-guest-agent open-vm-tools spice-vdagent
+
+# Run other scripts
+RUN /bin/bash /tmp/install-gnome.sh
+RUN /bin/bash /tmp/setup-distrobox.sh
+RUN /bin/bash /tmp/configure-flatpak.sh
+RUN /bin/bash /tmp/cleanup.sh
 
 LABEL variant="vm"
 LABEL org.opencontainers.image.title="Bog VM"
