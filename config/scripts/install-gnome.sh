@@ -16,7 +16,7 @@ rpm-ostree install \
     gnome-text-editor \
     gnome-disk-utility \
     gnome-logs \
-    baobab
+    baobab \
     dconf-editor \
     xdg-desktop-portal-gnome \
     xdg-user-dirs-gtk \
