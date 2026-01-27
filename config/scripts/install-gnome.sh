@@ -1,32 +1,18 @@
 #!/usr/bin/bash
 
-echo "Installing minimal GNOME desktop environment..."
+echo "Installing base for system operations"
+rpm-ostree install NetworkManager-wifi NetworkManager-wwan
 
-rpm-ostree install \
-	gnome-shell \
-	gdm \
-	gnome-session \
-	gnome-settings-daemon \
-	gnome-terminal \
-	gnome-control-center \
-	gnome-system-monitor \
-	nautilus \
-	gnome-text-editor \
-	gnome-disk-utility \
-	gnome-logs \
-	baobab \
-	dconf-editor \
-	xdg-desktop-portal-gnome \
-	xdg-user-dirs-gtk \
-	gnome-keyring \
-	NetworkManager-wifi \
-	NetworkManager-wwan \
-	gstreamer1-plugins-base \
-	gstreamer1-plugins-good \
-	gstreamer1-plugins-bad-free \
-	google-noto-sans-fonts \
-	google-noto-serif-fonts \
-	google-noto-emoji-fonts \
-	liberation-fonts
+echo "Installing base for minimal GNOME desktop environment"
+rpm-ostree install gnome-shell gdm gnome-session gnome-settings-daemon gnome-keyring xdg-desktop-portal-gnome xdg-user-dirs-gtk
+
+echo "Installing base GNOME applications"
+rpm-ostree install gnome-terminal gnome-control-center gnome-system-monitor nautilus gnome-text-editor gnome-disk-utility gnome-logs baobab dconf-editor \
+
+echo "Installing gstreamer plugins"
+rpm-ostree install gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free
+
+echo "Installing fonts"
+rpm-ostree install google-noto-sans-fonts google-noto-serif-fonts google-noto-emoji-fonts liberation-fonts
 
 echo "GNOME installation complete."
