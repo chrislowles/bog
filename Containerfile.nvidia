@@ -15,21 +15,17 @@ COPY --from=akmods /rpms /tmp/akmods-rpms
 COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
-# Debug: List what we actually copied
-RUN echo "=== Checking akmods RPM structure ===" && \
-    ls -la /tmp/akmods-rpms/ && \
-    echo "=== Searching for NVIDIA RPMs ===" && \
-    find /tmp/akmods-rpms -name "*.rpm" -type f
-
 # Install GNOME first
 RUN /bin/bash /tmp/install-gnome.sh
 
-# Install NVIDIA drivers - with better path handling
-RUN if [ -d "/tmp/akmods-rpms" ]; then \
-        echo "Installing NVIDIA drivers..." && \
-        find /tmp/akmods-rpms -name "*.rpm" -type f -exec rpm-ostree install {} + ; \
+# Install only the NVIDIA addons (not the kernel module)
+# The kernel module (kmod) must match the running kernel, so it should be
+# layered at runtime using rpm-ostree, not baked into the image
+RUN if [ -f "/tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-"*".rpm" ]; then \
+        echo "Installing NVIDIA addons..." && \
+        rpm-ostree install /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm ; \
     else \
-        echo "WARNING: No akmods RPMs found, skipping NVIDIA driver installation" ; \
+        echo "WARNING: No NVIDIA addons found" ; \
     fi
 
 # Run remaining setup scripts
