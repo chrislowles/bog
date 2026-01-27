@@ -13,14 +13,13 @@ COPY config/scripts/setup-distrobox.sh /tmp/setup-distrobox.sh
 COPY config/scripts/configure-flatpak.sh /tmp/configure-flatpak.sh
 COPY config/scripts/cleanup.sh /tmp/cleanup.sh
 
-# Make scripts executable and run them
-RUN chmod +x /tmp/*.sh && \
-    /tmp/install-gnome.sh && \
-    /tmp/setup-distrobox.sh && \
-    /tmp/configure-flatpak.sh && \
-    /tmp/cleanup.sh
+# Call scripts with bash explicitly to avoid permission issues
+RUN /bin/bash /tmp/install-gnome.sh && \
+    /bin/bash /tmp/setup-distrobox.sh && \
+    /bin/bash /tmp/configure-flatpak.sh && \
+    /bin/bash /tmp/cleanup.sh
 
 # Metadata
-LABEL org.opencontainers.image.title="Bog"\
+LABEL org.opencontainers.image.title="Bog"
 LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/chrislowles/bog/main/README.md"
