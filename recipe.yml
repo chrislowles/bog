@@ -5,14 +5,14 @@ base-image: ghcr.io/ublue-os/base-main
 image-version: latest # Fedora version
 
 modules:
-  - type: files
-    files:
-      - source: config
-        destination: /tmp/config
+	- type: files
+		files:
+			- source: config
+				destination: /tmp/config
 
-  - type: script
-    scripts:
-      - install-gnome.sh
-      - setup-distrobox.sh
-      - configure-flatpak.sh
-      - cleanup.sh
+	- type: script
+		scripts:
+			- install-gnome.sh
+			- setup-distrobox.sh
+			- configure-flatpak.sh
+			- cleanup.sh
