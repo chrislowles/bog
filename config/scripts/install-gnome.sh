@@ -2,7 +2,6 @@
 
 echo "Installing minimal GNOME desktop environment..."
 
-# Install GNOME packages explicitly (full visibility of what's being installed)
 rpm-ostree install \
 	gnome-shell \
 	gdm \
