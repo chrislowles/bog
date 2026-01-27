@@ -24,7 +24,6 @@ rpm-ostree install \
 	NetworkManager-wwan \
 	gstreamer1-plugins-base \
 	gstreamer1-plugins-good \
-	gstreamer1-plugins-ugly \
 	gstreamer1-plugins-bad-free \
 	google-noto-sans-fonts \
 	google-noto-serif-fonts \
