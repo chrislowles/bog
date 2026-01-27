@@ -16,14 +16,14 @@ COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
 # Install NVIDIA drivers from the copied RPMs
-RUN chmod +x /tmp/*.sh && \
+# Call scripts with bash explicitly to avoid permission issues
+RUN /bin/bash /tmp/install-gnome.sh && \
     rpm-ostree install \
         /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
         /tmp/akmods-rpms/kmods/kmod-nvidia-*.rpm && \
-    /tmp/install-gnome.sh && \
-    /tmp/setup-distrobox.sh && \
-    /tmp/configure-flatpak.sh && \
-    /tmp/cleanup.sh
+    /bin/bash /tmp/setup-distrobox.sh && \
+    /bin/bash /tmp/configure-flatpak.sh && \
+    /bin/bash /tmp/cleanup.sh
 
 LABEL variant="nvidia"
 LABEL org.opencontainers.image.title="Bog NVIDIA"
