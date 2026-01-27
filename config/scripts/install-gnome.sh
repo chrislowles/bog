@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 echo "Installing base for system operations"
-rpm-ostree install NetworkManager-wifi NetworkManager-wwan
+rpm-ostree install NetworkManager-wifi NetworkManager-wwan NetworkManager-tui
 
 echo "Installing base for minimal GNOME desktop environment"
 rpm-ostree install gnome-shell gdm gnome-session gnome-settings-daemon gnome-keyring xdg-desktop-portal-gnome xdg-user-dirs-gtk
