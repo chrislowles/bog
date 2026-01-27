@@ -1,0 +1,21 @@
+ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
+ARG FEDORA_VERSION=40
+
+FROM ${BASE_IMAGE_URL}:${FEDORA_VERSION}
+
+# Copy configuration and scripts
+COPY config /tmp/config
+COPY config/scripts/*.sh /tmp/
+
+# Install VM guest tools
+RUN chmod +x /tmp/*.sh && \
+    rpm-ostree install \
+        qemu-guest-agent \
+        open-vm-tools \
+        spice-vdagent && \
+    /tmp/install-gnome.sh && \
+    /tmp/setup-distrobox.sh && \
+    /tmp/configure-flatpak.sh && \
+    /tmp/cleanup.sh
+
+LABEL variant="vm"

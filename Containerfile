@@ -1,40 +1,27 @@
-# Allow build scripts to be referenced without being copied into the final image
-FROM scratch AS ctx
-COPY build_files /
+# Containerfile - Builds your custom image
 
-# Base Image
-FROM ghcr.io/ublue-os/bazzite:stable
+ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
+ARG FEDORA_VERSION=40
 
-## Other possible base images include:
-# FROM ghcr.io/ublue-os/bazzite:latest
-# FROM ghcr.io/ublue-os/bluefin-nvidia:stable
-# 
-# ... and so on, here are more base images
-# Universal Blue Images: https://github.com/orgs/ublue-os/packages
-# Fedora base image: quay.io/fedora/fedora-bootc:41
-# CentOS base images: quay.io/centos-bootc/centos-bootc:stream10
+FROM ${BASE_IMAGE_URL}:${FEDORA_VERSION}
 
-### [IM]MUTABLE /opt
-## Some bootable images, like Fedora, have /opt symlinked to /var/opt, in order to
-## make it mutable/writable for users. However, some packages write files to this directory,
-## thus its contents might be wiped out when bootc deploys an image, making it troublesome for
-## some packages. Eg, google-chrome, docker-desktop.
-##
-## Uncomment the following line if one desires to make /opt immutable and be able to be used
-## by the package manager.
+# Copy configuration files
+COPY config /tmp/config
 
-# RUN rm /opt && mkdir /opt
+# Copy and execute installation scripts
+COPY config/scripts/install-gnome.sh /tmp/install-gnome.sh
+COPY config/scripts/setup-distrobox.sh /tmp/setup-distrobox.sh
+COPY config/scripts/configure-flatpak.sh /tmp/configure-flatpak.sh
+COPY config/scripts/cleanup.sh /tmp/cleanup.sh
 
-### MODIFICATIONS
-## make modifications desired in your image and install packages by modifying the build.sh script
-## the following RUN directive does all the things required to run "build.sh" as recommended.
+# Make scripts executable and run them
+RUN chmod +x /tmp/*.sh && \
+    /tmp/install-gnome.sh && \
+    /tmp/setup-distrobox.sh && \
+    /tmp/configure-flatpak.sh && \
+    /tmp/cleanup.sh
 
-RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
-    --mount=type=cache,dst=/var/cache \
-    --mount=type=cache,dst=/var/log \
-    --mount=type=tmpfs,dst=/tmp \
-    /ctx/build.sh
-    
-### LINTING
-## Verify final image and contents are correct.
-RUN bootc container lint
+# Metadata
+LABEL org.opencontainers.image.title="My Immutable OS"\
+LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME"
+LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/chrislowles/bog/main/README.md"

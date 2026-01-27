@@ -1,0 +1,18 @@
+# recipe.yml - Main configuration for your custom image
+name: bog
+description: Custom immutable Linux distribution with minimal GNOME
+base-image: ghcr.io/ublue-os/base-main
+image-version: 40 # Fedora version
+
+modules:
+  - type: files
+    files:
+      - source: config
+        destination: /tmp/config
+
+  - type: script
+    scripts:
+      - install-gnome.sh
+      - setup-distrobox.sh
+      - configure-flatpak.sh
+      - cleanup.sh
