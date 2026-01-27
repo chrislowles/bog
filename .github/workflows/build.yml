@@ -8,7 +8,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 0 * * 0'  # Weekly rebuild
+    - cron: '0 0 * * 2'  # Midnight on a Tuesday
   workflow_dispatch:
 
 env:
