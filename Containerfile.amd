@@ -7,14 +7,17 @@ FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
-# AMD drivers (mesa) are already included in the base image
-# Just install GNOME and other components
-RUN chmod +x /tmp/*.sh && \
-    /tmp/install-gnome.sh && \
-    /tmp/setup-distrobox.sh && \
-    /tmp/configure-flatpak.sh && \
-    /tmp/cleanup.sh
+# Install VM guest tools
+# Call scripts with bash explicitly to avoid permission issues
+RUN rpm-ostree install \
+        qemu-guest-agent \
+        open-vm-tools \
+        spice-vdagent && \
+    /bin/bash /tmp/install-gnome.sh && \
+    /bin/bash /tmp/setup-distrobox.sh && \
+    /bin/bash /tmp/configure-flatpak.sh && \
+    /bin/bash /tmp/cleanup.sh
 
-LABEL variant="amd"
-LABEL org.opencontainers.image.title="Bog AMD"
-LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME and AMD drivers"
+LABEL variant="vm"
+LABEL org.opencontainers.image.title="Bog VM"
+LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME and VM guest tools"
