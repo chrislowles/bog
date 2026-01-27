@@ -29,9 +29,9 @@ RUN if [ -f "/tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-"*".rpm" ]; then \
     fi
 
 # Run remaining setup scripts
-RUN /bin/bash /tmp/setup-distrobox.sh && \
-    /bin/bash /tmp/configure-flatpak.sh && \
-    /bin/bash /tmp/cleanup.sh
+RUN /bin/bash /tmp/setup-distrobox.sh
+RUN /bin/bash /tmp/configure-flatpak.sh
+RUN /bin/bash /tmp/cleanup.sh
 
 LABEL variant="nvidia"
 LABEL org.opencontainers.image.title="Bog NVIDIA"
