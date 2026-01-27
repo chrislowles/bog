@@ -2,10 +2,14 @@ ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
 ARG IMAGE_TAG=latest
 ARG FEDORA_MAJOR_VERSION=42
 
+# Create an intermediate stage for the akmods image
+FROM ghcr.io/ublue-os/akmods-nvidia:main-${FEDORA_MAJOR_VERSION} AS akmods
+
+# Main build stage
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
-# Copy NVIDIA driver RPMs from uBlue akmods
-COPY --from=ghcr.io/ublue-os/akmods-nvidia:main-${FEDORA_MAJOR_VERSION} /rpms /tmp/akmods-rpms
+# Copy NVIDIA driver RPMs from the akmods stage
+COPY --from=akmods /rpms /tmp/akmods-rpms
 
 # Copy configuration and scripts
 COPY config /tmp/config
