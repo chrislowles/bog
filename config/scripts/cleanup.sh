@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-set -euo pipefail
 
 echo "Cleaning up build artifacts..."
 
