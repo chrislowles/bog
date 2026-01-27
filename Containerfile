@@ -12,10 +12,10 @@ COPY config/scripts/configure-flatpak.sh /tmp/configure-flatpak.sh
 COPY config/scripts/cleanup.sh /tmp/cleanup.sh
 
 # Run installation scripts
-RUN /bin/bash /tmp/install-gnome.sh && \
-    /bin/bash /tmp/setup-distrobox.sh && \
-    /bin/bash /tmp/configure-flatpak.sh && \
-    /bin/bash /tmp/cleanup.sh
+RUN /bin/bash /tmp/install-gnome.sh
+RUN /bin/bash /tmp/setup-distrobox.sh
+RUN /bin/bash /tmp/configure-flatpak.sh
+RUN /bin/bash /tmp/cleanup.sh
 
 # Metadata
 LABEL org.opencontainers.image.title="Bog"
