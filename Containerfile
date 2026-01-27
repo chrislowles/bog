@@ -1,10 +1,8 @@
 # Containerfile - Builds your custom image
 
 ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
-ARG FEDORA_VERSION=40
-
-# FROM ${BASE_IMAGE_URL}
-FROM ${BASE_IMAGE_URL}:${FEDORA_VERSION}
+ARG IMAGE_TAG=latest
+FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
 # Copy configuration files
 COPY config /tmp/config
