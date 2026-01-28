@@ -9,7 +9,7 @@ COPY config/scripts/*.sh /tmp/
 
 # AMD drivers (mesa) are already included in the base image
 # Just install GNOME and other components
-RUN /bin/bash /tmp/install-gnome.sh
+RUN /bin/bash /tmp/install-desktop.sh
 RUN /bin/bash /tmp/setup-distrobox.sh
 RUN /bin/bash /tmp/configure-flatpak.sh
 RUN /bin/bash /tmp/cleanup.sh

@@ -16,7 +16,7 @@ COPY config /tmp/config
 COPY config/scripts/*.sh /tmp/
 
 # Install GNOME first
-RUN /bin/bash /tmp/install-gnome.sh
+RUN /bin/bash /tmp/install-desktop.sh
 
 # Install NVIDIA drivers and addons
 # This includes both the kernel module and the addons for full driver support

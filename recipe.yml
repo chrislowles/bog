@@ -12,7 +12,7 @@ modules:
 
 	- type: script
 		scripts:
-			- install-gnome.sh
+			- install-desktop.sh
 			- setup-distrobox.sh
 			- configure-flatpak.sh
 			- cleanup.sh

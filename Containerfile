@@ -7,13 +7,13 @@ FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 COPY config /tmp/config
 
 # Copy and execute installation scripts
-COPY config/scripts/install-gnome.sh /tmp/install-gnome.sh
+COPY config/scripts/install-desktop.sh /tmp/install-desktop.sh
 COPY config/scripts/setup-distrobox.sh /tmp/setup-distrobox.sh
 COPY config/scripts/configure-flatpak.sh /tmp/configure-flatpak.sh
 COPY config/scripts/cleanup.sh /tmp/cleanup.sh
 
 # Run installation scripts
-RUN /bin/bash /tmp/install-gnome.sh
+RUN /bin/bash /tmp/install-desktop.sh
 RUN /bin/bash /tmp/setup-distrobox.sh
 RUN /bin/bash /tmp/configure-flatpak.sh
 RUN /bin/bash /tmp/cleanup.sh

@@ -11,7 +11,7 @@ COPY config/scripts/*.sh /tmp/
 RUN rpm-ostree install qemu-guest-agent open-vm-tools spice-vdagent
 
 # Run other scripts
-RUN /bin/bash /tmp/install-gnome.sh
+RUN /bin/bash /tmp/install-desktop.sh
 RUN /bin/bash /tmp/setup-distrobox.sh
 RUN /bin/bash /tmp/configure-flatpak.sh
 RUN /bin/bash /tmp/cleanup.sh
