@@ -1,10 +1,15 @@
 #!/usr/bin/bash
+
 echo "Setting up distrobox for containerized software management..."
 rpm-ostree install distrobox
+
+echo "Checking if toolbx is installed and uninstalling it"
 set +e
 rpm-ostree override remove toolbox 2>/dev/null
 set -e
+
 mkdir -p /etc/distrobox
+
 cat > /etc/distrobox/distrobox.ini << 'EOF'
 [General]
 container_image_registry_credentials=""
@@ -21,4 +26,5 @@ list=""
 rm=""
 stop=""
 EOF
+
 echo "Distrobox setup complete."
