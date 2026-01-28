@@ -64,7 +64,7 @@ Searching your added flatpak repos:
 flatpak search com.spotify.Client
 ```
 
-Searching specific flatpak repos (flathub):
+Searching specific flatpak repos (Flathub):
 ```bash
 flatpak search flathub com.spotify.Client
 ```
