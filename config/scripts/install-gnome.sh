@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+echo "Installing topgrade for unified system upgrading"
+rpm-ostree install topgrade
+
 echo "Installing base for system operations"
 rpm-ostree install NetworkManager-wifi NetworkManager-wwan NetworkManager-tui
 
