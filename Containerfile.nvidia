@@ -18,14 +18,21 @@ COPY config/scripts/*.sh /tmp/
 # Install GNOME first
 RUN /bin/bash /tmp/install-gnome.sh
 
-# Install only the NVIDIA addons (not the kernel module)
-# The kernel module (kmod) must match the running kernel, so it should be layered at runtime using rpm-ostree, not baked into the image
-RUN if [ -f "/tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-"*".rpm" ]; then \
-		echo "Installing NVIDIA addons..." && \
-		rpm-ostree install /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm ; \
+# Install NVIDIA drivers and addons
+# This includes both the kernel module and the addons for full driver support
+RUN if [ -d "/tmp/akmods-rpms/ublue-os" ]; then \
+		echo "Installing NVIDIA drivers and addons..." && \
+		find /tmp/akmods-rpms/ublue-os -name "*.rpm" -exec echo "Found: {}" \; && \
+		rpm-ostree install \
+			/tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
+			/tmp/akmods-rpms/kmods/*nvidia*.rpm || \
+		echo "WARNING: NVIDIA driver installation failed or packages not found" ; \
 	else \
-		echo "WARNING: No NVIDIA addons found" ; \
+		echo "WARNING: No NVIDIA packages found in /tmp/akmods-rpms/ublue-os" ; \
 	fi
+
+# Enable NVIDIA services
+RUN systemctl enable nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service nvidia-powerd.service || true
 
 # Run remaining setup scripts
 RUN /bin/bash /tmp/setup-distrobox.sh
@@ -34,4 +41,4 @@ RUN /bin/bash /tmp/cleanup.sh
 
 LABEL variant="nvidia"
 LABEL org.opencontainers.image.title="Bog NVIDIA"
-LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME and NVIDIA drivers"
+LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME and NVIDIA drivers pre-installed"
