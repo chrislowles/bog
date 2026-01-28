@@ -1,6 +1,12 @@
 #!/usr/bin/bash
 
-echo "Configuring Flatpak..."
+echo "Configuring Flatpak with Flathub..."
+
+# Add Flathub repository system-wide
+flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Enable Flathub by default
+flatpak remote-modify --enable flathub
 
 echo "Flatpak configuration complete."
-echo "Note: Flathub remote and flatpaks will be configured at first boot or by user"
+echo "Flathub is now available at first boot."
