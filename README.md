@@ -1,5 +1,5 @@
 # bog
-A barebones (some may say bog standard) immutable Linux distro using GNOME/GDM and flatpak/distrobox as a means for software management.
+A barebones (some may say _*bog*_ standard) immutable Linux distro using GNOME/GDM and flatpak/distrobox as a means for software management.
 
 ## Features
 - **Minimal GNOME Desktop**: Lightweight GNOME installation with essential applications, additional desktop applications available on Flathub (pre-installed)
