@@ -3,18 +3,43 @@ ARG IMAGE_TAG=latest
 
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
-# Copy configuration and scripts
-COPY config /tmp/config
-COPY config/scripts/*.sh /tmp/
+# Install Desktop Components, Fonts, Distrobox, and VM Tools
+# Combined from: install-desktop.sh, setup-distrobox.sh, and Containerfile.vm specific packages
+RUN rpm-ostree install \
+		NetworkManager-wifi NetworkManager-wwan NetworkManager-tui \
+		gnome-shell gdm gnome-session gnome-settings-daemon gnome-keyring \
+		xdg-desktop-portal-gnome xdg-user-dirs-gtk gnome-terminal \
+		gnome-control-center gnome-system-monitor nautilus gnome-text-editor \
+		gnome-disk-utility gnome-logs baobab dconf-editor \
+		gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free \
+		google-noto-sans-fonts google-noto-serif-fonts google-noto-emoji-fonts liberation-fonts \
+		distrobox \
+		qemu-guest-agent open-vm-tools spice-vdagent && \
+	rpm-ostree override remove toolbox && \
+	rpm-ostree cleanup -m
 
-# Install VM guest tools
-RUN rpm-ostree install qemu-guest-agent open-vm-tools spice-vdagent
+# Configure Distrobox
+RUN mkdir -p /etc/distrobox && \
+	cat > /etc/distrobox/distrobox.ini << 'EOF'
+[General]
+container_image_registry_credentials=""
+container_manager="podman"
+container_name_prefix="dev"
+non_interactive="false"
+skip_workdir="false"
+verbose="false"
 
-# Run other scripts
-RUN /bin/bash /tmp/install-desktop.sh
-RUN /bin/bash /tmp/setup-distrobox.sh
-RUN /bin/bash /tmp/configure-flatpak.sh
-RUN /bin/bash /tmp/cleanup.sh
+[container_manager_additional_flags]
+create=""
+enter=""
+list=""
+rm=""
+stop=""
+EOF
+
+# Configure Flatpak
+RUN flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
+	flatpak remote-modify --enable flathub
 
 LABEL variant="vm"
 LABEL org.opencontainers.image.title="Bog VM"

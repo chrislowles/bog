@@ -11,33 +11,56 @@ FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 # Copy NVIDIA driver RPMs from the akmods stage
 COPY --from=akmods /rpms /tmp/akmods-rpms
 
-# Copy configuration and scripts
-COPY config /tmp/config
-COPY config/scripts/*.sh /tmp/
-
-# Install GNOME first
-RUN /bin/bash /tmp/install-desktop.sh
+# Install Desktop Components, Fonts, and Distrobox (Base Setup)
+RUN rpm-ostree install \
+        NetworkManager-wifi NetworkManager-wwan NetworkManager-tui \
+        gnome-shell gdm gnome-session gnome-settings-daemon gnome-keyring \
+        xdg-desktop-portal-gnome xdg-user-dirs-gtk gnome-terminal \
+        gnome-control-center gnome-system-monitor nautilus gnome-text-editor \
+        gnome-disk-utility gnome-logs baobab dconf-editor \
+        gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free \
+        google-noto-sans-fonts google-noto-serif-fonts google-noto-emoji-fonts liberation-fonts \
+        distrobox && \
+    rpm-ostree override remove toolbox
 
 # Install NVIDIA drivers and addons
-# This includes both the kernel module and the addons for full driver support
 RUN if [ -d "/tmp/akmods-rpms/ublue-os" ]; then \
-		echo "Installing NVIDIA drivers and addons..." && \
-		find /tmp/akmods-rpms/ublue-os -name "*.rpm" -exec echo "Found: {}" \; && \
-		rpm-ostree install \
-			/tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
-			/tmp/akmods-rpms/kmods/*nvidia*.rpm || \
-		echo "WARNING: NVIDIA driver installation failed or packages not found" ; \
-	else \
-		echo "WARNING: No NVIDIA packages found in /tmp/akmods-rpms/ublue-os" ; \
-	fi
+        echo "Installing NVIDIA drivers and addons..." && \
+        find /tmp/akmods-rpms/ublue-os -name "*.rpm" -exec echo "Found: {}" \; && \
+        rpm-ostree install \
+            /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
+            /tmp/akmods-rpms/kmods/*nvidia*.rpm || \
+        echo "WARNING: NVIDIA driver installation failed or packages not found" ; \
+    else \
+        echo "WARNING: No NVIDIA packages found in /tmp/akmods-rpms/ublue-os" ; \
+    fi
 
 # Enable NVIDIA services
 RUN systemctl enable nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service nvidia-powerd.service || true
 
-# Run remaining setup scripts
-RUN /bin/bash /tmp/setup-distrobox.sh
-RUN /bin/bash /tmp/configure-flatpak.sh
-RUN /bin/bash /tmp/cleanup.sh
+# Configure Distrobox
+RUN mkdir -p /etc/distrobox && \
+    cat > /etc/distrobox/distrobox.ini << 'EOF'
+[General]
+container_image_registry_credentials=""
+container_manager="podman"
+container_name_prefix="dev"
+non_interactive="false"
+skip_workdir="false"
+verbose="false"
+
+[container_manager_additional_flags]
+create=""
+enter=""
+list=""
+rm=""
+stop=""
+EOF
+
+# Configure Flatpak & Final Cleanup
+RUN flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
+    flatpak remote-modify --enable flathub && \
+    rpm-ostree cleanup -m
 
 LABEL variant="nvidia"
 LABEL org.opencontainers.image.title="Bog NVIDIA"
