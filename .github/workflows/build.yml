@@ -8,15 +8,38 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 0 * * 2'  # Midnight on a Tuesday
+    - cron: '0 0 * * 2'
   workflow_dispatch:
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
 
 jobs:
+  # 1. Build the Base (AMD) Image First
+  build-amd:
+    name: Build AMD (Base) Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build AMD Image
+        uses: ./.github/actions/build-image
+        with:
+          image-name: bog-amd
+          image-suffix: amd
+          # Point this to the main Containerfile (the base)
+          containerfile: Containerfile
+
+  # 2. Build NVIDIA Image (Depends on AMD)
   build-nvidia:
     name: Build NVIDIA Image
+    needs: build-amd  # WAIT for base image to finish
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -34,27 +57,10 @@ jobs:
           image-suffix: nvidia
           containerfile: Containerfile.nvidia
 
-  build-amd:
-    name: Build AMD Image
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Build AMD Image
-        uses: ./.github/actions/build-image
-        with:
-          image-name: bog-amd
-          image-suffix: amd
-          containerfile: Containerfile.amd
-
+  # 3. Build VM Image (Depends on AMD)
   build-vm:
     name: Build VM Image
+    needs: build-amd  # WAIT for base image to finish
     runs-on: ubuntu-latest
     permissions:
       contents: read

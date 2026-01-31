@@ -1,27 +1,14 @@
-ARG BASE_IMAGE_URL=ghcr.io/ublue-os/base-main
-ARG IMAGE_TAG=latest
 ARG FEDORA_MAJOR_VERSION=42
+# Default to your GHCR image, but allow override for local builds
+ARG FROM_IMAGE=ghcr.io/chrislowles/bog-amd:latest
 
-# Create an intermediate stage for the akmods image
+# Stage 1: Get Drivers from uBlue (Unchanged)
 FROM ghcr.io/ublue-os/akmods-nvidia:main-${FEDORA_MAJOR_VERSION} AS akmods
 
-# Main build stage
-FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
+# Stage 2: Build on top of YOUR Base Image
+FROM ${FROM_IMAGE}
 
-# Copy NVIDIA driver RPMs from the akmods stage
 COPY --from=akmods /rpms /tmp/akmods-rpms
-
-# Install Desktop Components, Fonts, and Distrobox (Base Setup)
-RUN rpm-ostree install \
-        NetworkManager-wifi NetworkManager-wwan NetworkManager-tui \
-        gnome-shell gdm gnome-session gnome-settings-daemon gnome-keyring \
-        xdg-desktop-portal-gnome xdg-user-dirs-gtk gnome-terminal \
-        gnome-control-center gnome-system-monitor nautilus gnome-text-editor \
-        gnome-disk-utility gnome-logs baobab dconf-editor \
-        gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free \
-        google-noto-sans-fonts google-noto-serif-fonts google-noto-emoji-fonts liberation-fonts \
-        distrobox && \
-    rpm-ostree override remove toolbox
 
 # Install NVIDIA drivers and addons
 RUN if [ -d "/tmp/akmods-rpms/ublue-os" ]; then \
@@ -38,29 +25,8 @@ RUN if [ -d "/tmp/akmods-rpms/ublue-os" ]; then \
 # Enable NVIDIA services
 RUN systemctl enable nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service nvidia-powerd.service || true
 
-# Configure Distrobox
-RUN mkdir -p /etc/distrobox && \
-    cat > /etc/distrobox/distrobox.ini << 'EOF'
-[General]
-container_image_registry_credentials=""
-container_manager="podman"
-container_name_prefix="dev"
-non_interactive="false"
-skip_workdir="false"
-verbose="false"
-
-[container_manager_additional_flags]
-create=""
-enter=""
-list=""
-rm=""
-stop=""
-EOF
-
-# Configure Flatpak & Final Cleanup
-RUN flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
-    flatpak remote-modify --enable flathub && \
-    rpm-ostree cleanup -m
+# Cleanup
+RUN rpm-ostree cleanup -m
 
 LABEL variant="nvidia"
 LABEL org.opencontainers.image.title="Bog NVIDIA"

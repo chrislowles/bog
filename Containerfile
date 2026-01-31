@@ -3,6 +3,8 @@ ARG IMAGE_TAG=latest
 
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
+# --- COMMON SETUP START ---
+
 # Install Desktop Components, Fonts, and Distrobox
 RUN rpm-ostree install \
         NetworkManager-wifi NetworkManager-wwan NetworkManager-tui \
@@ -39,7 +41,9 @@ EOF
 RUN flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
     flatpak remote-modify --enable flathub
 
-# Metadata
-LABEL org.opencontainers.image.title="Bog"
+# --- COMMON SETUP END ---
+
+LABEL variant="amd"
+LABEL org.opencontainers.image.title="Bog AMD"
 LABEL org.opencontainers.image.description="Custom immutable Linux with minimal GNOME"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/chrislowles/bog/main/README.md"
