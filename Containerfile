@@ -4,7 +4,6 @@ ARG IMAGE_TAG=latest
 FROM ${BASE_IMAGE_URL}:${IMAGE_TAG}
 
 # Install Desktop Components, Fonts, and Distrobox
-# Combined from: install-desktop.sh, setup-distrobox.sh
 RUN rpm-ostree install \
         NetworkManager-wifi NetworkManager-wwan NetworkManager-tui \
         gnome-shell gdm gnome-session gnome-settings-daemon gnome-keyring \
@@ -18,7 +17,6 @@ RUN rpm-ostree install \
     rpm-ostree cleanup -m
 
 # Configure Distrobox
-# From: setup-distrobox.sh
 RUN mkdir -p /etc/distrobox && \
     cat > /etc/distrobox/distrobox.ini << 'EOF'
 [General]
@@ -38,7 +36,6 @@ stop=""
 EOF
 
 # Configure Flatpak
-# From: configure-flatpak.sh
 RUN flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
     flatpak remote-modify --enable flathub
 
