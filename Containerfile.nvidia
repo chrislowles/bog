@@ -1,6 +1,6 @@
 ARG FEDORA_MAJOR_VERSION=42
-# Default to the SAME version of the base image to prevent kernel mismatches
-ARG FROM_IMAGE=ghcr.io/chrislowles/bog-amd:${FEDORA_MAJOR_VERSION}
+# Use 'latest' as default to match what the build-image action creates
+ARG FROM_IMAGE=ghcr.io/chrislowles/bog-amd:latest
 
 # Stage 1: Get Drivers from uBlue
 FROM ghcr.io/ublue-os/akmods-nvidia:main-${FEDORA_MAJOR_VERSION} AS akmods

@@ -1,4 +1,4 @@
-# Default to 'latest' if not specified, but allow override
+# Use 'latest' as default to match what the build-image action creates
 ARG IMAGE_TAG=latest
 ARG FROM_IMAGE=ghcr.io/chrislowles/bog-amd:${IMAGE_TAG}
 

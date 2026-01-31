@@ -61,9 +61,10 @@ jobs:
           image-name: bog-nvidia
           image-suffix: nvidia
           containerfile: Containerfile.nvidia
-          # Ensure NVIDIA akmods pull from the same Fedora version
+          # FIX: Use 'latest' tag since that's what the AMD build creates
           build-args: |
             FEDORA_MAJOR_VERSION=${{ env.FEDORA_VERSION }}
+            FROM_IMAGE=ghcr.io/${{ github.repository_owner }}/bog-amd:latest
 
   # 3. Build VM Image (Depends on AMD)
   build-vm:
@@ -85,6 +86,7 @@ jobs:
           image-name: bog-vm
           image-suffix: vm
           containerfile: Containerfile.vm
-          # Ensure VM image pulls the specific base version
+          # FIX: Use 'latest' tag since that's what the AMD build creates
           build-args: |
-            IMAGE_TAG=${{ env.FEDORA_VERSION }}
+            IMAGE_TAG=latest
+            FROM_IMAGE=ghcr.io/${{ github.repository_owner }}/bog-amd:latest
