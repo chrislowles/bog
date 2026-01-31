@@ -1,0 +1,59 @@
+# VM variant
+name: bog-vm
+description: Bog optimized for virtual machines
+base-image: ghcr.io/ublue-os/base-main
+image-version: 42
+
+modules:
+  - type: rpm-ostree
+    install:
+      # Desktop Components
+      - NetworkManager-wifi
+      - NetworkManager-wwan
+      - NetworkManager-tui
+      - gnome-shell
+      - gdm
+      - gnome-session
+      - gnome-settings-daemon
+      - gnome-keyring
+      - xdg-desktop-portal-gnome
+      - xdg-user-dirs-gtk
+      - gnome-terminal
+      - gnome-control-center
+      - gnome-system-monitor
+      - nautilus
+      - gnome-text-editor
+      - gnome-disk-utility
+      - gnome-logs
+      - baobab
+      - dconf-editor
+      # Media Codecs
+      - gstreamer1-plugins-base
+      - gstreamer1-plugins-good
+      - gstreamer1-plugins-bad-free
+      # Fonts
+      - google-noto-sans-fonts
+      - google-noto-serif-fonts
+      - google-noto-emoji-fonts
+      - liberation-fonts
+      # Container Management
+      - distrobox
+      # VM Tools
+      - qemu-guest-agent
+      - open-vm-tools
+      - spice-vdagent
+    remove:
+      - toolbox
+
+  - type: default-flatpaks
+    notify: true
+    system:
+      repo-url: https://flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
+
+  - type: files
+    files:
+      - source: distrobox.ini
+        destination: /etc/distrobox/distrobox.ini
+
+  - type: signing
