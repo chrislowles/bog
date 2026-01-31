@@ -11,11 +11,12 @@ FROM ${FROM_IMAGE}
 COPY --from=akmods /rpms /tmp/akmods-rpms
 
 # Install NVIDIA drivers and addons
+# Use --allow-inactive to handle kernel version mismatches
 RUN if [ -d "/tmp/akmods-rpms/ublue-os" ]; \
 	then \
 		echo "Installing NVIDIA drivers and addons..." && \
 		find /tmp/akmods-rpms/ublue-os -name "*.rpm" -exec echo "Found: {}" \; && \
-		rpm-ostree install \
+		rpm-ostree install --allow-inactive \
 			/tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
 			/tmp/akmods-rpms/kmods/*nvidia*.rpm; \
 	else \
