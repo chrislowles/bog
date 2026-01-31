@@ -7,6 +7,7 @@ on:
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  FEDORA_VERSION: 42
 
 jobs:
   build-iso-nvidia:
@@ -32,7 +33,7 @@ jobs:
           image_name: bog-nvidia
           image_repo: ghcr.io/${{ github.repository_owner }}
           image_tag: latest
-          version: 42
+          version: ${{ env.FEDORA_VERSION }}
           variant: Server
           iso_name: bog-nvidia-${{ steps.timestamp.outputs.iso_timestamp }}.iso
 
@@ -75,7 +76,7 @@ jobs:
           image_name: bog-amd
           image_repo: ghcr.io/${{ github.repository_owner }}
           image_tag: latest
-          version: 42
+          version: ${{ env.FEDORA_VERSION }}
           variant: Server
           iso_name: bog-amd-${{ steps.timestamp.outputs.iso_timestamp }}.iso
 
@@ -118,7 +119,7 @@ jobs:
           image_name: bog-vm
           image_repo: ghcr.io/${{ github.repository_owner }}
           image_tag: latest
-          version: 42
+          version: ${{ env.FEDORA_VERSION }}
           variant: Server
           iso_name: bog-vm-${{ steps.timestamp.outputs.iso_timestamp }}.iso
 

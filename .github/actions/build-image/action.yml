@@ -43,3 +43,5 @@ runs:
         labels: |
           org.opencontainers.image.title=${{ inputs.image-name }}
           org.opencontainers.image.description=Custom immutable OS - ${{ inputs.image-suffix }} variant
+        cache-from: type=gha
+        cache-to: type=gha,mode=max

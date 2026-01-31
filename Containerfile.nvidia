@@ -12,18 +12,17 @@ COPY --from=akmods /rpms /tmp/akmods-rpms
 
 # Install NVIDIA drivers and addons
 RUN if [ -d "/tmp/akmods-rpms/ublue-os" ]; then \
-        echo "Installing NVIDIA drivers and addons..." && \
-        find /tmp/akmods-rpms/ublue-os -name "*.rpm" -exec echo "Found: {}" \; && \
-        rpm-ostree install \
-            /tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
-            /tmp/akmods-rpms/kmods/*nvidia*.rpm || \
-        echo "WARNING: NVIDIA driver installation failed or packages not found" ; \
-    else \
-        echo "WARNING: No NVIDIA packages found in /tmp/akmods-rpms/ublue-os" ; \
-    fi
+		echo "Installing NVIDIA drivers and addons..." && \
+		find /tmp/akmods-rpms/ublue-os -name "*.rpm" -exec echo "Found: {}" \; && \
+		rpm-ostree install \
+			/tmp/akmods-rpms/ublue-os/ublue-os-nvidia-addons-*.rpm \
+			/tmp/akmods-rpms/kmods/*nvidia*.rpm; \
+	else \
+		echo "ERROR: No NVIDIA packages found in /tmp/akmods-rpms/ublue-os" && exit 1; \
+	fi
 
 # Enable NVIDIA services
-RUN systemctl enable nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service nvidia-powerd.service || true
+RUN systemctl enable nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service nvidia-powerd.service
 
 # Cleanup
 RUN rpm-ostree cleanup -m
