@@ -1,5 +1,6 @@
-# Default to your GHCR image, but allow override for local builds
-ARG FROM_IMAGE=ghcr.io/chrislowles/bog-amd:latest
+# Default to 'latest' if not specified, but allow override
+ARG IMAGE_TAG=latest
+ARG FROM_IMAGE=ghcr.io/chrislowles/bog-amd:${IMAGE_TAG}
 
 FROM ${FROM_IMAGE}
 

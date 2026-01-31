@@ -11,6 +11,9 @@ inputs:
   containerfile:
     description: 'Path to Containerfile'
     required: true
+  build-args:
+    description: 'List of build-time variables'
+    required: false
 
 runs:
   using: composite
@@ -43,5 +46,6 @@ runs:
         labels: |
           org.opencontainers.image.title=${{ inputs.image-name }}
           org.opencontainers.image.description=Custom immutable OS - ${{ inputs.image-suffix }} variant
+        build-args: ${{ inputs.build-args }}
         cache-from: type=gha
         cache-to: type=gha,mode=max

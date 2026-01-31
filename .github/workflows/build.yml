@@ -13,6 +13,8 @@ on:
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  # Central version definition to keep Base and NVIDIA images in sync
+  FEDORA_VERSION: 42
 
 jobs:
   # 1. Build the Base (AMD) Image First
@@ -35,6 +37,9 @@ jobs:
           image-suffix: amd
           # Point this to the main Containerfile (the base)
           containerfile: Containerfile
+          # Pass the specific Fedora version to the base image
+          build-args: |
+            IMAGE_TAG=${{ env.FEDORA_VERSION }}
 
   # 2. Build NVIDIA Image (Depends on AMD)
   build-nvidia:
@@ -56,6 +61,9 @@ jobs:
           image-name: bog-nvidia
           image-suffix: nvidia
           containerfile: Containerfile.nvidia
+          # Ensure NVIDIA akmods pull from the same Fedora version
+          build-args: |
+            FEDORA_MAJOR_VERSION=${{ env.FEDORA_VERSION }}
 
   # 3. Build VM Image (Depends on AMD)
   build-vm:
@@ -77,3 +85,6 @@ jobs:
           image-name: bog-vm
           image-suffix: vm
           containerfile: Containerfile.vm
+          # Ensure VM image pulls the specific base version
+          build-args: |
+            IMAGE_TAG=${{ env.FEDORA_VERSION }}

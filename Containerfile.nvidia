@@ -1,8 +1,8 @@
 ARG FEDORA_MAJOR_VERSION=42
-# Default to your GHCR image, but allow override for local builds
-ARG FROM_IMAGE=ghcr.io/chrislowles/bog-amd:latest
+# Default to the SAME version of the base image to prevent kernel mismatches
+ARG FROM_IMAGE=ghcr.io/chrislowles/bog-amd:${FEDORA_MAJOR_VERSION}
 
-# Stage 1: Get Drivers from uBlue (Unchanged)
+# Stage 1: Get Drivers from uBlue
 FROM ghcr.io/ublue-os/akmods-nvidia:main-${FEDORA_MAJOR_VERSION} AS akmods
 
 # Stage 2: Build on top of YOUR Base Image
@@ -11,7 +11,8 @@ FROM ${FROM_IMAGE}
 COPY --from=akmods /rpms /tmp/akmods-rpms
 
 # Install NVIDIA drivers and addons
-RUN if [ -d "/tmp/akmods-rpms/ublue-os" ]; then \
+RUN if [ -d "/tmp/akmods-rpms/ublue-os" ]; \
+	then \
 		echo "Installing NVIDIA drivers and addons..." && \
 		find /tmp/akmods-rpms/ublue-os -name "*.rpm" -exec echo "Found: {}" \; && \
 		rpm-ostree install \
