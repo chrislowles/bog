@@ -58,10 +58,9 @@ sha256sum -c bog-nvidia-20240201.iso-CHECKSUM
 rpm-ostree upgrade
 ```
 
-* **GUI Applications**: Though Bog is a low effort distro it's encouraged to use the terminal to at least install your software to install from Flathub:
+* **GUI Applications**: Though Bog is a low effort distro it's encouraged to use the terminal to at least install your software:
 ```bash
 flatpak install flathub org.mozilla.firefox
-
 ```
 
 ### Containerized Environments (Distrobox)
