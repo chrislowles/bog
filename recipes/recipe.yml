@@ -18,6 +18,10 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: script
+    scripts:
+      - dconf-update.sh
+
   - type: dnf
     install:
       packages:
@@ -36,6 +40,7 @@ modules:
         - gnome-system-monitor
         - gnome-text-editor
         - steam
+        - dconf
     remove:
       packages:
         - toolbox
@@ -61,6 +66,7 @@ modules:
           - org.signal.Signal
           - org.nickvision.tubeconverter
           - com.google.Chrome
+          - com.spotify.Client
       - notify: true
         scope: system
         repo:
