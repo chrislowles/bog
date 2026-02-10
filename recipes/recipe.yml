@@ -21,8 +21,6 @@ modules:
   - type: dnf
     install:
       packages:
-        - NetworkManager
-        - NetworkManager-wifi
         - network-manager-applet
         - distrobox
         - gnome-shell
@@ -56,15 +54,15 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - scope: user
-        repo:
-          title: Flathub (user)
-        install:
-          - dev.vencord.Vesktop
-          - org.signal.Signal
-          - org.nickvision.tubeconverter
-          - com.google.Chrome
-          - com.spotify.Client
+      #- scope: user
+      #  repo:
+      #    title: Flathub (user)
+      #  install:
+      #    - dev.vencord.Vesktop
+      #    - org.signal.Signal
+      #    - org.nickvision.tubeconverter
+      #    - com.google.Chrome
+      #    - com.spotify.Client
       - notify: true
         scope: system
         repo:
