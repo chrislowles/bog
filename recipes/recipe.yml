@@ -29,15 +29,17 @@ modules:
         - gnome-session
         - gnome-settings-daemon
         - gnome-control-center
-        - gnome-terminal
+        - gnome-console
         - gdm
         - xdg-desktop-portal-gnome
         - nautilus
         - gnome-system-monitor
         - gnome-text-editor
         - steam
-        - google-noto-fonts-all
-        - google-noto-emoji-color-fonts
+    remove:
+      packages:
+        - toolbox
+
 
   - type: default-flatpaks
     configurations:
@@ -45,9 +47,11 @@ modules:
         scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
+          - io.github.kolunmi.Bazaar
           - org.mozilla.firefox
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
+          - com.usebottles.bottles
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
           - com.vysp3r.ProtonPlus
@@ -59,5 +63,28 @@ modules:
           - com.obsproject.Studio.Plugin.Gstreamer
           - com.obsproject.Studio.Plugin.OBSVkCapture
       - scope: system
+
+  - type: fonts
+    fonts:
+      google-fonts:
+        - Inter
+      #url-fonts:
+      #  - name: CustomFont
+      #    url: https://example.com/my-font.otf
+      #  - name: CompanyFonts
+      #    url: https://company.com/fonts.tar.gz
+
+  - type: gnome-extensions
+    install:
+      - 3088 # extension list
+      - 615 # appindicator support
+      - 8 # places menu
+      - 1319 # gsconnect
+      - 517 # caffeine
+      - 5263 # gtk desktop icons ng (ding)
+      - 600 # launch new instance
+      - 36 # lock keys
+    #uninstall:
+    #  - GSConnect
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
