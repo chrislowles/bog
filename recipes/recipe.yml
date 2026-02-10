@@ -1,11 +1,12 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
-name: template
+name: bog
 # description will be included in the image's metadata
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
+# base-image: ghcr.io/ublue-os/base-nvidia:latest
 base-image: ghcr.io/ublue-os/base-main
 image-version: latest # latest is also supported if you want new updates ASAP
 
@@ -20,7 +21,23 @@ modules:
   - type: dnf
     install:
       packages:
-        - micro
+        - NetworkManager
+        - NetworkManager-wifi
+        - network-manager-applet
+        - distrobox
+        - gnome-shell
+        - gnome-session
+        - gnome-settings-daemon
+        - gnome-control-center
+        - gnome-terminal
+        - gdm
+        - xdg-desktop-portal-gnome
+        - nautilus
+        - gnome-system-monitor
+        - gnome-text-editor
+        - steam
+        - google-noto-fonts-all
+        - google-noto-emoji-color-fonts
 
   - type: default-flatpaks
     configurations:
@@ -29,7 +46,18 @@ modules:
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
           - org.mozilla.firefox
-          - org.gnome.Loupe
+          - com.github.tchx84.Flatseal
+          - com.ranfdev.DistroShelf
+          - io.github.flattool.Ignition
+          - com.mattjakeman.ExtensionManager
+          - com.vysp3r.ProtonPlus
+          - org.qbittorrent.qBittorrent
+          - de.haeckerfelix.Shortwave
+          - io.github.celluloid_player.Celluloid
+          - com.obsproject.Studio
+          - com.obsproject.Studio.Plugin.DroidCam
+          - com.obsproject.Studio.Plugin.Gstreamer
+          - com.obsproject.Studio.Plugin.OBSVkCapture
       - scope: system
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
