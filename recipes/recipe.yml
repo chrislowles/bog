@@ -18,10 +18,6 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-  - type: script
-    scripts:
-      - dconf-update.sh
-
   - type: dnf
     install:
       packages:
@@ -47,6 +43,9 @@ modules:
         - htop
         - nvtop
 
+  - type: script
+    scripts:
+      - dconf-update.sh
 
   #- type: default-flatpaks
     #configurations:
