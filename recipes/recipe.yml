@@ -13,105 +13,105 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-	- type: files
-		files:
-			- source: system
-				destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+  - type: files
+    files:
+      - source: system
+        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-	- type: dnf
-		install:
-			packages:
-				- NetworkManager
-				- NetworkManager-wifi
-				- network-manager-applet
-				- distrobox
-				- gnome-shell
-				- gnome-session
-				- gnome-settings-daemon
-				- gnome-control-center
-				- gnome-console
-				- gdm
-				- xdg-desktop-portal-gnome
-				- nautilus
-				- gnome-system-monitor
-				- gnome-text-editor
-				- steam
-		remove:
-			packages:
-				- toolbox
-				- htop
-				- nvtop
+  - type: dnf
+    install:
+      packages:
+        - NetworkManager
+        - NetworkManager-wifi
+        - network-manager-applet
+        - distrobox
+        - gnome-shell
+        - gnome-session
+        - gnome-settings-daemon
+        - gnome-control-center
+        - gnome-console
+        - gdm
+        - xdg-desktop-portal-gnome
+        - nautilus
+        - gnome-system-monitor
+        - gnome-text-editor
+        - steam
+    remove:
+      packages:
+        - toolbox
+        - htop
+        - nvtop
 
 
-	#- type: default-flatpaks
-		#configurations:
-			#- notify: true # Send notification after install/uninstall is finished (true/false)
-			#	scope: system
-			#	# If no repo information is specified, Flathub will be used by default
-			#	install: # system flatpaks we want all users to have and not remove
-			#- scope: system
+  #- type: default-flatpaks
+    #configurations:
+      #- notify: true # Send notification after install/uninstall is finished (true/false)
+      # scope: system
+      # # If no repo information is specified, Flathub will be used by default
+      # install: # system flatpaks we want all users to have and not remove
+      #- scope: system
 
-	- type: default-flatpaks
-		configurations:
-			- scope: user
-				repo:
-					title: Flathub (user)
-				install:
-					- dev.vencord.Vesktop
-					- org.signal.Signal
-					- org.nickvision.tubeconverter
-					- com.google.Chrome
-			- notify: true
-				scope: system
-				repo:
-					title: Flathub (system)
-				install:
-					- io.github.kolunmi.Bazaar
-					- ca.desrt.dconf-editor
-					- org.mozilla.firefox
-					- com.github.tchx84.Flatseal
-					- com.ranfdev.DistroShelf
-					- org.gnome.Calendar
-					- org.gnome.NetworkDisplays
-					- io.github.flattool.Ignition
-					- com.mattjakeman.ExtensionManager
-					- io.github.celluloid_player.Celluloid
-					- com.usebottles.bottles
-					- com.github.qarmin.czkawka
-					- me.timschneeberger.jdsp4linux
-					- org.gnome.Boxes
-					- org.gnome.Boxes.Extension.OsinfoDb
-					- com.vysp3r.ProtonPlus
-					- org.libreoffice.LibreOffice
-					- org.kde.krita
-					- org.kde.kdenlive
-					- org.audacityteam.Audacity
-					- com.obsproject.Studio
-					- com.obsproject.Studio.Plugin.DroidCam
-					- com.obsproject.Studio.Plugin.Gstreamer
-					- com.obsproject.Studio.Plugin.OBSVkCapture
+  - type: default-flatpaks
+    configurations:
+      - scope: user
+        repo:
+          title: Flathub (user)
+        install:
+          - dev.vencord.Vesktop
+          - org.signal.Signal
+          - org.nickvision.tubeconverter
+          - com.google.Chrome
+      - notify: true
+        scope: system
+        repo:
+          title: Flathub (system)
+        install:
+          - io.github.kolunmi.Bazaar
+          - ca.desrt.dconf-editor
+          - org.mozilla.firefox
+          - com.github.tchx84.Flatseal
+          - com.ranfdev.DistroShelf
+          - org.gnome.Calendar
+          - org.gnome.NetworkDisplays
+          - io.github.flattool.Ignition
+          - com.mattjakeman.ExtensionManager
+          - io.github.celluloid_player.Celluloid
+          - com.usebottles.bottles
+          - com.github.qarmin.czkawka
+          - me.timschneeberger.jdsp4linux
+          - org.gnome.Boxes
+          - org.gnome.Boxes.Extension.OsinfoDb
+          - com.vysp3r.ProtonPlus
+          - org.libreoffice.LibreOffice
+          - org.kde.krita
+          - org.kde.kdenlive
+          - org.audacityteam.Audacity
+          - com.obsproject.Studio
+          - com.obsproject.Studio.Plugin.DroidCam
+          - com.obsproject.Studio.Plugin.Gstreamer
+          - com.obsproject.Studio.Plugin.OBSVkCapture
 
-	- type: fonts
-		fonts:
-			google-fonts:
-				- Inter
-			#url-fonts:
-			#  - name: CustomFont
-			#    url: https://example.com/my-font.otf
-			#  - name: CompanyFonts
-			#    url: https://company.com/fonts.tar.gz
+  - type: fonts
+    fonts:
+      google-fonts:
+        - Inter
+      #url-fonts:
+      #  - name: CustomFont
+      #    url: https://example.com/my-font.otf
+      #  - name: CompanyFonts
+      #    url: https://company.com/fonts.tar.gz
 
-	- type: gnome-extensions
-		install:
-			- 3088 # extension list
-			- 615 # appindicator support
-			- 8 # places menu
-			- 1319 # gsconnect
-			- 517 # caffeine
-			- 5263 # gtk desktop icons ng (ding)
-			- 600 # launch new instance
-			- 36 # lock keys
-		#uninstall:
-		#  - GSConnect
+  - type: gnome-extensions
+    install:
+      - 3088 # extension list
+      - 615 # appindicator support
+      - 8 # places menu
+      - 1319 # gsconnect
+      - 517 # caffeine
+      - 5263 # gtk desktop icons ng (ding)
+      - 600 # launch new instance
+      - 36 # lock keys
+    #uninstall:
+    #  - GSConnect
 
-	- type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
