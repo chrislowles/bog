@@ -34,7 +34,6 @@ modules:
         - xdg-desktop-portal-gnome
         - nautilus
         - gnome-system-monitor
-        - gnome-text-editor
         - steam
         - dconf
     remove:
@@ -76,6 +75,7 @@ modules:
           - org.mozilla.firefox
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
+          - org.gnome.TextEditor
           - org.gnome.Calendar
           - org.gnome.NetworkDisplays
           - io.github.flattool.Ignition
@@ -87,7 +87,7 @@ modules:
           - org.gnome.Boxes
           - org.gnome.Boxes.Extension.OsinfoDb
           - com.vysp3r.ProtonPlus
-          - org.libreoffice.LibreOffice
+          - org.onlyoffice.desktopeditors
           - org.kde.krita
           - org.kde.kdenlive
           - org.audacityteam.Audacity
