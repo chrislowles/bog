@@ -2,8 +2,7 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
 name: bog
-# description will be included in the image's metadata
-description: This is my personal OS image.
+description: My personal uBlue/Fedora image.
 
 # the base image to build on top of (FROM) and the version tag to use
 # base-image: ghcr.io/ublue-os/base-nvidia:latest
@@ -13,6 +12,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+
   - type: files
     files:
       - source: system
@@ -34,6 +34,8 @@ modules:
         - gnome-system-monitor
         - steam
         - dconf
+        - nano
+        - micro
     remove:
       packages:
         - toolbox
@@ -114,6 +116,7 @@ modules:
       - 5263 # gtk desktop icons ng (ding)
       - 600 # launch new instance
       - 36 # lock keys
+      - 5721 # clipboard indicator
     #uninstall:
     #  - GSConnect
 
