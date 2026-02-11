@@ -45,6 +45,8 @@ modules:
   - type: script
     scripts:
       - dconf-update.sh
+      # below for future script, maybe post-first-boot script if bluebuild supports that
+      # distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git" -- bash -c "git clone https://aur.archlinux.org/yay-bin.git;cd yay-bin;makepkg -si"
 
   #- type: default-flatpaks
     #configurations:
@@ -54,6 +56,7 @@ modules:
       # install: # system flatpaks we want all users to have and not remove
       #- scope: system
 
+  # gotta figure out some way to have restrictions on the copy of bazaar (or download it and set it, idk whatever bazzite does lol)
   - type: default-flatpaks
     configurations:
       #- scope: user
@@ -75,26 +78,33 @@ modules:
           - org.mozilla.firefox
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
-          - org.gnome.TextEditor
+          - org.gnome.Loupe
+          - org.gnome.Papers
+          - org.gnome.Weather
+          - org.gnome.clocks
+          - org.gnome.font-viewer
+          - org.gnome.Calculator
+          - org.gnome.Contacts
           - org.gnome.Calendar
+          - org.gnome.Logs
+          - org.gnome.FileRoller
+          - org.gnome.TextEditor
           - org.gnome.NetworkDisplays
+          - org.gnome.Boxes
+          - org.gnome.Boxes.Extension.OsinfoDb
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
           - io.github.celluloid_player.Celluloid
           - com.usebottles.bottles
-          - com.github.qarmin.czkawka
-          - me.timschneeberger.jdsp4linux
-          - org.gnome.Boxes
-          - org.gnome.Boxes.Extension.OsinfoDb
           - com.vysp3r.ProtonPlus
           - org.onlyoffice.desktopeditors
-          - org.kde.krita
-          - org.kde.kdenlive
-          - org.audacityteam.Audacity
-          - com.obsproject.Studio
-          - com.obsproject.Studio.Plugin.DroidCam
-          - com.obsproject.Studio.Plugin.Gstreamer
-          - com.obsproject.Studio.Plugin.OBSVkCapture
+          #- org.kde.krita
+          #- org.kde.kdenlive
+          #- org.audacityteam.Audacity
+          #- com.obsproject.Studio
+          #- com.github.qarmin.czkawka
+          #- me.timschneeberger.jdsp4linux
+
 
   - type: fonts
     fonts:
