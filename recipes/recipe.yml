@@ -116,7 +116,7 @@ modules:
       - 5263 # gtk desktop icons ng (ding)
       - 600 # launch new instance
       - 36 # lock keys
-      - 5721 # clipboard indicator
+      #- 5721 # clipboard indicator
     #uninstall:
     #  - GSConnect
 
