@@ -5,7 +5,7 @@ name: bog
 description: My personal uBlue/Fedora image.
 
 # the base image to build on top of (FROM) and the version tag to use
-# base-image: ghcr.io/ublue-os/base-nvidia:latest
+# base-image: ghcr.io/ublue-os/base-nvidia
 base-image: ghcr.io/ublue-os/base-main
 image-version: latest # latest is also supported if you want new updates ASAP
 
@@ -56,7 +56,8 @@ modules:
       # install: # system flatpaks we want all users to have and not remove
       #- scope: system
 
-  # gotta figure out some way to have restrictions on the copy of bazaar (or download it and set it, idk whatever bazzite does lol)
+  # gotta figure out some way to have settings configured on the copy of bazaar (or download rpm and set it, idk whatever bazzite does lol)
+  # maybe once we get the filter for the gnome desktop flatpaks we can root install them and just use bazaar exclusively for other shit
   - type: default-flatpaks
     configurations:
       #- scope: user
@@ -98,23 +99,21 @@ modules:
           - com.usebottles.bottles
           - com.vysp3r.ProtonPlus
           - org.onlyoffice.desktopeditors
-          #- org.kde.krita
-          #- org.kde.kdenlive
-          #- org.audacityteam.Audacity
-          #- com.obsproject.Studio
-          #- com.github.qarmin.czkawka
-          #- me.timschneeberger.jdsp4linux
+          - org.kde.krita
+          - org.kde.kdenlive
+          - org.audacityteam.Audacity
+          - com.obsproject.Studio
+          - me.timschneeberger.jdsp4linux
 
-
-  - type: fonts
-    fonts:
-      google-fonts:
-        - Inter
-      #url-fonts:
-      #  - name: CustomFont
-      #    url: https://example.com/my-font.otf
-      #  - name: CompanyFonts
-      #    url: https://company.com/fonts.tar.gz
+  #- type: fonts
+  #  fonts:
+  #    google-fonts:
+  #      - Inter
+  #    url-fonts:
+  #      - name: CustomFont
+  #        url: https://example.com/my-font.otf
+  #      - name: CompanyFonts
+  #        url: https://company.com/fonts.tar.gz
 
   - type: gnome-extensions
     install:
@@ -127,7 +126,5 @@ modules:
       - 600 # launch new instance
       - 36 # lock keys
       #- 5721 # clipboard indicator
-    #uninstall:
-    #  - GSConnect
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
