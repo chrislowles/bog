@@ -1,32 +1,17 @@
 # bog (ublue/fedora atomic image)
-A standard minimal GNOME/GDM system that uses flatpak/distrobox for daily operations (also pre-installed Steam)
+A standard minimal GNOME/GDM system that uses flatpak/distrobox for daily operations (also root-installed Steam)
 
-We plan on using this to build a modern NVIDIA build made soon so stay tuned :)
+I plan on using this to build an NVIDIA image soon so stay tuned :)
 
 ## Installation
 
 ### Method 1: `sudo bootc switch`
-One such method of switching to `bog` is by using the `sudo bootc switch ghcr.io/chrislowles/bog:latest`
-
-### Method 2: `rpm-ostree rebase`
-Another method is to use rpm-ostree to rebase an existing rpm-ostree distro (Bazzite, Bluefin, Silverblue), to rebase to the latest build of `bog`:
-
-First rebase to the unsigned image, to get the proper signing keys and policies installed:
+One such method of switching to `bog` is by typing the below command into the terminal of your existing Fedora Atomic system:
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/blue-build/template:latest
+sudo bootc switch ghcr.io/chrislowles/bog:latest
 ```
 
-Reboot to complete the rebase:
-```bash
-systemctl reboot
-```
-
-Then rebase to the signed image, like so:
-```bash
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/blue-build/template:latest
-```
-
-Reboot again to complete the installation:
+Reboot to complete the switch:
 ```bash
 systemctl reboot
 ```
