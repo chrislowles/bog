@@ -41,8 +41,8 @@ modules:
       packages:
         - toolbox
 
-  - type: script
-    scripts:
+  #- type: script
+    #scripts:
       # - dconf-update.sh
       # below for future script, maybe post-first-boot script if bluebuild supports that
       # - distrobox-preinstall.sh
