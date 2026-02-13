@@ -17,7 +17,7 @@ modules:
         - gnome-control-center              # Settings
         - gnome-system-monitor              # Task manager
         - gnome-settings-daemon             # Hardware management
-        - dconf
+        - dconf                             # Basically GNOMEs version of registry keys
         
         # Essential Interface & Tools
         - nautilus                          # File Manager
