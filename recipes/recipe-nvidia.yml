@@ -1,0 +1,81 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: bog-nvidia
+description: My personal uBlue/Fedora image (NVIDIA Edition)
+
+base-image: ghcr.io/ublue-os/base-nvidia
+image-version: latest
+
+modules:
+
+  - type: files
+    files:
+      - source: system
+        destination: /
+
+  - type: dnf
+    install:
+      packages:
+        # GNOME Core (Minimal)
+        - gdm                               # Login Manager
+        - gnome-shell                       # Desktop Interface
+        - gnome-session-wayland-session     # Wayland Session
+        - gnome-control-center              # Settings
+        - gnome-settings-daemon             # Hardware management
+        
+        # Essential Interface & Tools
+        - nautilus                          # File Manager
+        - gnome-console                     # Minimal Terminal
+        - gvfs                              # Virtual Filesystem (Trash/Mounts)
+        - xdg-desktop-portal-gnome          # Flatpak Portal Support
+        - gnome-keyring                     # Password/Key Management
+        
+        # Networking
+        - NetworkManager-wifi               # Ensure WiFi support
+
+        # Software Store
+        - gnome-software                    # App Store
+        - flatpak                           # Flatpak backend
+        
+        # Utilities (Kept from your original list)
+        - distrobox
+        - steam
+        - nano
+        - micro
+    remove:
+      packages:
+        - toolbox
+
+  - type: script
+    scripts:
+      - dconf-update.sh
+      # below for future script, maybe post-first-boot script if bluebuild supports that
+      # - distrobox-preinstall.sh
+      # distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git" -- bash -c "git clone https://aur.archlinux.org/yay-bin.git;cd yay-bin;makepkg -si"
+
+  - type: systemd
+    system:
+      enabled:
+        - gdm.service
+
+  - type: default-flatpaks
+    configurations:
+      - notify: true
+        scope: system
+        repo:
+          title: Flathub (System)
+        install:
+          - org.mozilla.firefox
+          - com.github.tchx84.Flatseal
+          - io.github.DenysMb.Kontainer
+          - org.videolan.VLC
+          - com.usebottles.bottles
+          - com.vysp3r.ProtonPlus
+          - org.onlyoffice.desktopeditors
+          - org.kde.krita
+          - org.kde.kdenlive
+          - org.audacityteam.Audacity
+          - com.obsproject.Studio
+          - me.timschneeberger.jdsp4linux
+
+  - type: signing
