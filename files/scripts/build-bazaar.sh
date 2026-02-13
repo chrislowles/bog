@@ -21,7 +21,9 @@ dnf install -y \
     libxmlb-devel \
     libyaml-devel \
     blueprint-compiler \
-    desktop-file-utils
+    desktop-file-utils \
+    glycin-devel \
+    glycin-gtk4-devel
 
 # Clone Bazaar
 BAZAAR_VERSION="v0.7.8"
