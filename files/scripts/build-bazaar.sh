@@ -23,11 +23,11 @@ dnf install -y \
     blueprint-compiler \
     desktop-file-utils \
     glycin-devel \
-    glycin-gtk4-devel
+    glycin-gtk4-devel \
+    md4c-devel
 
-# Clone Bazaar
-BAZAAR_VERSION="v0.7.8"
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
+BAZAAR_VERSION="v0.7.8"
 cd /tmp
 git clone --depth 1 --branch ${BAZAAR_VERSION} https://github.com/kolunmi/bazaar.git
 cd bazaar
@@ -72,7 +72,7 @@ dnf remove -y \
 
 dnf clean all
 
-echo "✓ Bazaar custom build complete!"
+echo "Bazaar custom build complete!"
 echo "  - Configuration: /etc/bazaar/main.yaml"
 echo "  - Blocklist: /etc/bazaar/blocklist.yaml"
 echo "  - Curated content: /etc/bazaar/curated.yaml"
