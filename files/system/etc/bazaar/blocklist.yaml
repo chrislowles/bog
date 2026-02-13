@@ -1,0 +1,32 @@
+# Bazaar Blocklist
+# Location: /etc/bazaar/blocklist.yaml
+# 
+# This file prevents Flatpak versions of system-installed applications
+# from appearing in Bazaar's interface (search, browse, categories)
+#
+# Why? To prevent users from accidentally installing duplicate versions
+# of apps that are already installed via dnf/rpm packages
+
+blocked-apps:
+
+  # Bazaar itself (now a system package, not Flatpak)
+  - io.github.kolunmi.Bazaar
+
+  # Gaming - Steam is installed via dnf
+  - com.valvesoftware.Steam
+
+  # Alternative browsers (if Firefox is your only browser)
+  # - org.gnome.Epiphany
+  # - com.google.Chrome
+  # - org.chromium.Chromium
+  # - com.microsoft.Edge
+  # - com.brave.Browser
+
+  # Old/deprecated GNOME apps
+  - org.gnome.gedit                    # Old text editor (replaced by TextEditor)
+  - org.gnome.Totem                    # Old video player
+  - org.gnome.eog
+
+  # Development tools
+  - com.visualstudio.code              # VS Code
+  #- com.sublimehq.SublimeText

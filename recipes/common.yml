@@ -30,29 +30,39 @@ modules:
         - NetworkManager-wifi               # Ensure WiFi support
         
         # Utilities
-        - distrobox                         # Container-based system management, for when flatpak isn't cutting it
-        - steam                             # Primary gaming platform for PCs
+        - distrobox                         # Container-based system management
+        - steam                             # Primary gaming platform
         - micro                             # TUI Text Editor
+        
+        # Bazaar runtime dependencies (build deps removed after build)
+        - gtk4
+        - libadwaita
+        - libdex
+        - flatpak
+        - appstream
+        - json-glib
+        - libsoup3
+        - libxmlb
+        - libyaml
+        
     remove:
       packages:
         - toolbox
         - htop
         - nvtop
 
+  # Build custom Bazaar from source
   - type: script
     scripts:
+      - build-bazaar.sh
       - dconf-update.sh
-      # below for future script, maybe post-first-boot script if bluebuild supports that
-      # - distrobox-preinstall.sh
-      # distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git" -- bash -c "git clone https://aur.archlinux.org/yay-bin.git;cd yay-bin;makepkg -si"
 
   - type: systemd
     system:
       enabled:
         - gdm.service
 
-  # gotta figure out some way to have settings configured on the copy of bazaar (or download rpm and set it, idk whatever bazzite does lol)
-  # maybe once we get the filter for the gnome desktop flatpaks we can root install them and just use bazaar exclusively for other shit
+  # Install other flatpaks (excluding Bazaar since it's now root-installed)
   - type: default-flatpaks
     configurations:
       - notify: true
@@ -60,36 +70,30 @@ modules:
         repo:
           title: Flathub (System)
         install:
-          - io.github.kolunmi.Bazaar
-          - com.mattjakeman.ExtensionManager
-          - ca.desrt.dconf-editor
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
+          - ca.desrt.dconf-editor
+          - io.github.flattool.Ignition
+          - com.usebottles.bottles
+          - com.mattjakeman.ExtensionManager
           - org.mozilla.firefox
-          - org.gnome.Loupe
-          - org.gnome.Papers
-          - org.gnome.Weather
-          - org.gnome.clocks
+          - io.github.celluloid_player.Celluloid
+          - com.vysp3r.ProtonPlus
+          - me.timschneeberger.jdsp4linux
           - org.gnome.font-viewer
-          - org.gnome.Calculator
-          - org.gnome.Contacts
-          - org.gnome.Calendar
           - org.gnome.Logs
           - org.gnome.FileRoller
           - org.gnome.TextEditor
+          - org.gnome.Calculator
+          - org.gnome.Loupe
+          - org.gnome.Papers
+          - org.gnome.Contacts
+          - org.gnome.Calendar
+          - org.gnome.clocks
           - org.gnome.NetworkDisplays
           - org.gnome.Boxes
-          - org.gnome.Boxes.Extension.OsinfoDb
-          - io.github.flattool.Ignition
-          - io.github.celluloid_player.Celluloid
-          - com.usebottles.bottles
-          - com.vysp3r.ProtonPlus
-          - org.onlyoffice.desktopeditors
-          - org.kde.krita
-          - org.kde.kdenlive
-          - org.audacityteam.Audacity
-          - com.obsproject.Studio
-          - me.timschneeberger.jdsp4linux
+          - org.gnome.Weather
+          - org.gnome.SoundRecorder
 
   - type: gnome-extensions
     install:

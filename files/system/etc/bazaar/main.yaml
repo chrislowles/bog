@@ -1,0 +1,17 @@
+# Bazaar Main Configuration
+# This file is compiled into Bazaar at build time
+# Location: /etc/bazaar/main.yaml
+
+yaml-blocklist-paths:
+  - /etc/bazaar/blocklist.yaml
+
+curated-config-paths:
+  - /etc/bazaar/curated.yaml
+
+hooks:
+  - id: welcome
+    when: before-transaction
+    dialogs:
+      - id: welcome-dialog
+        title: "Welcome to bog!"
+        body: ":))))))))))))))"
