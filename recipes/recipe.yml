@@ -22,18 +22,21 @@ modules:
     install:
       packages:
         - distrobox
-        - plasma-desktop
         - sddm
-        - konsole
-        - dolphin
-        - plasma-discover
-        - plasma-discover-flatpak
-        - plasma-discover-kns
-        - plasma-discover-notifier
-        - plasma-discover-offline-updates
+        - plasma-workspace-wayland
+        - plasma-desktop
         - plasma-workspace
+        - polkit-kde
+        - systemsettings
+        - kscreen
         - plasma-nm
         - plasma-pa
+        - dolphin
+        - konsole
+        - sddm-kcm
+        - plasma-discover
+        - plasma-discover-notifier
+        - plasma-discover-flatpak
         - steam
         - nano
         - micro
