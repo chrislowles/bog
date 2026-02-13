@@ -1,0 +1,103 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+modules:
+
+  - type: files
+    files:
+      - source: system
+        destination: /
+
+  - type: dnf
+    install:
+      packages:
+        # GNOME Core (Minimal)
+        - gdm                               # Login Manager
+        - gnome-shell                       # Desktop Interface
+        - gnome-session-wayland-session     # Wayland Session
+        - gnome-control-center              # Settings
+        - gnome-system-monitor              # Task manager
+        - gnome-settings-daemon             # Hardware management
+        - dconf
+        
+        # Essential Interface & Tools
+        - nautilus                          # File Manager
+        - gnome-console                     # Minimal Terminal
+        - gvfs                              # Virtual Filesystem (Trash/Mounts)
+        - xdg-desktop-portal-gnome          # Flatpak Portal Support
+        - gnome-keyring                     # Password/Key Management
+
+        # Networking
+        - NetworkManager-wifi               # Ensure WiFi support
+        
+        # Utilities
+        - distrobox                         # Container-based system management, for when flatpak isn't cutting it
+        - steam                             # Primary gaming platform for PCs
+        - micro                             # TUI Text Editor
+    remove:
+      packages:
+        - toolbox
+        - htop
+        - nvtop
+
+  - type: script
+    scripts:
+      - dconf-update.sh
+      # below for future script, maybe post-first-boot script if bluebuild supports that
+      # - distrobox-preinstall.sh
+      # distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git" -- bash -c "git clone https://aur.archlinux.org/yay-bin.git;cd yay-bin;makepkg -si"
+
+  - type: systemd
+    system:
+      enabled:
+        - gdm.service
+
+  # gotta figure out some way to have settings configured on the copy of bazaar (or download rpm and set it, idk whatever bazzite does lol)
+  # maybe once we get the filter for the gnome desktop flatpaks we can root install them and just use bazaar exclusively for other shit
+  - type: default-flatpaks
+    configurations:
+      - notify: true
+        scope: system
+        repo:
+          title: Flathub (System)
+        install:
+          - io.github.kolunmi.Bazaar
+          - com.mattjakeman.ExtensionManager
+          - ca.desrt.dconf-editor
+          - com.github.tchx84.Flatseal
+          - com.ranfdev.DistroShelf
+          - org.mozilla.firefox
+          - org.gnome.Loupe
+          - org.gnome.Papers
+          - org.gnome.Weather
+          - org.gnome.clocks
+          - org.gnome.font-viewer
+          - org.gnome.Calculator
+          - org.gnome.Contacts
+          - org.gnome.Calendar
+          - org.gnome.Logs
+          - org.gnome.FileRoller
+          - org.gnome.TextEditor
+          - org.gnome.NetworkDisplays
+          - org.gnome.Boxes
+          - org.gnome.Boxes.Extension.OsinfoDb
+          - io.github.flattool.Ignition
+          - io.github.celluloid_player.Celluloid
+          - com.usebottles.bottles
+          - com.vysp3r.ProtonPlus
+          - org.onlyoffice.desktopeditors
+          - org.kde.krita
+          - org.kde.kdenlive
+          - org.audacityteam.Audacity
+          - com.obsproject.Studio
+          - me.timschneeberger.jdsp4linux
+
+  - type: gnome-extensions
+    install:
+      - 615 # appindicator support
+      - 8 # places menu
+      - 1319 # gsconnect
+      - 517 # caffeine
+      - 5263 # gtk desktop icons ng (ding)
+      - 600 # launch new instance
+      - 36 # lock keys
+      #- 5721 # clipboard indicator
