@@ -24,7 +24,10 @@ dnf install -y \
     desktop-file-utils \
     glycin-devel \
     glycin-gtk4-devel \
-    md4c-devel
+    md4c-devel \
+    webkitgtk6.0-devel \
+    libsecret-devel \
+    openssl-devel
 
 BAZAAR_VERSION="v0.7.8"
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
