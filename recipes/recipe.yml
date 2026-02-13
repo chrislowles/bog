@@ -1,76 +1,75 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
 name: bog
 description: My personal uBlue/Fedora image.
 
 # the base image to build on top of (FROM) and the version tag to use
 # base-image: ghcr.io/ublue-os/base-nvidia
+# image-version: latest # latest is also supported if you want new updates ASAP
 base-image: ghcr.io/ublue-os/base-main
-image-version: latest # latest is also supported if you want new updates ASAP
+image-version: latest
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
 
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+  #- type: files
+    #files:
+      #- source: system
+        #destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
     install:
       packages:
-        - distrobox
-        - sddm
-        - plasma-workspace-wayland
-        - plasma-desktop
-        - plasma-workspace
-        - polkit-kde
-        - systemsettings
-        - kscreen
-        - plasma-nm
-        - plasma-pa
-        - dolphin
-        - konsole
-        - sddm-kcm
-        - plasma-discover
-        - plasma-discover-notifier
-        - plasma-discover-flatpak
-        - steam
-        - nano
-        - micro
+        # Core Plasma Desktop - Minimal Set
+        - plasma-desktop          # Core desktop shell
+        - plasma-workspace        # Session management
+        - plasma-workspace-wayland # Wayland session support
+        - kwin                    # Window manager
+        
+        # Display Manager
+        - sddm                    # Display manager
+        - sddm-breeze             # Breeze theme for SDDM
+        - sddm-kcm               # SDDM configuration module
+        - sddm-wayland-plasma    # Wayland support for SDDM
+        
+        # Plasma System Settings & Integration
+        - systemsettings          # System settings app
+        - polkit-kde             # Authentication agent
+        - kscreen                 # Display configuration
+        - plasma-nm              # Network management
+        - plasma-pa              # Audio control
+        - bluedevil              # Bluetooth support
+        
+        # Discover Store with Flatpak Support
+        - plasma-discover         # Discover software center
+        - plasma-discover-flatpak # Flatpak backend for Discover
+        - plasma-discover-notifier # Update notifications
+        - flatpak                # Flatpak runtime
+        
+        # Essential Applications
+        - dolphin                 # File manager
+        - konsole                 # Terminal
+        
+        # Utilities & Tools
+        - distrobox              # Container management
+        - steam                  # Gaming platform
+        - nano                   # Text editor (legacy but people might use it so here it is)
+        - micro                  # Modern text editor
+        
     remove:
       packages:
         - toolbox
+        - plasma-discover-packagekit  # Remove RPM package management
+        - plasma-discover-rpm-ostree  # Not needed for atomic desktop
 
-  #- type: script
-    #scripts:
+  # - type: script
+    # scripts:
       # - dconf-update.sh
       # below for future script, maybe post-first-boot script if bluebuild supports that
       # - distrobox-preinstall.sh
       # distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git" -- bash -c "git clone https://aur.archlinux.org/yay-bin.git;cd yay-bin;makepkg -si"
 
-  #- type: default-flatpaks
-    #configurations:
-      #- notify: true # Send notification after install/uninstall is finished (true/false)
-      # scope: system
-      # # If no repo information is specified, Flathub will be used by default
-      # install: # system flatpaks we want all users to have and not remove
-      #- scope: system
-
-  # gotta figure out some way to have restrictions on the copy of bazaar (or download it and set it, idk whatever bazzite does lol)
   - type: default-flatpaks
     configurations:
-      #- scope: user
-      #  repo:
-      #    title: Flathub (user)
-      #  install:
-      #    - dev.vencord.Vesktop
-      #    - org.signal.Signal
-      #    - org.nickvision.tubeconverter
-      #    - com.google.Chrome
-      #    - com.spotify.Client
       - notify: true
         scope: system
         repo:
@@ -86,8 +85,8 @@ modules:
           - org.kde.krita
           - org.kde.kdenlive
           - org.audacityteam.Audacity
-          #- com.obsproject.Studio
+          - com.obsproject.Studio
           #- com.github.qarmin.czkawka
-          #- me.timschneeberger.jdsp4linux
+          - me.timschneeberger.jdsp4linux
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
