@@ -26,8 +26,8 @@ dnf install -y \
     glycin-gtk4-devel \
     md4c-devel
 
-echo "Cloning Bazaar ${BAZAAR_VERSION}..."
 BAZAAR_VERSION="v0.7.8"
+echo "Cloning Bazaar ${BAZAAR_VERSION}..."
 cd /tmp
 git clone --depth 1 --branch ${BAZAAR_VERSION} https://github.com/kolunmi/bazaar.git
 cd bazaar
