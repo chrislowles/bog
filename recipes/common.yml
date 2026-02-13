@@ -34,7 +34,7 @@ modules:
         - steam                             # Primary gaming platform
         - micro                             # TUI Text Editor
         
-        # Bazaar runtime dependencies (build deps removed after build)
+        # Bazaar runtime dependencies
         - gtk4
         - libadwaita
         - libdex
@@ -44,6 +44,10 @@ modules:
         - libsoup3
         - libxmlb
         - libyaml
+        - webkitgtk6.0
+        - libsecret
+        - openssl-libs
+        - glycin-loaders
         
     remove:
       packages:
