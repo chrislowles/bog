@@ -3,61 +3,41 @@
 name: bog
 description: My personal uBlue/Fedora image.
 
-# the base image to build on top of (FROM) and the version tag to use
-# base-image: ghcr.io/ublue-os/base-nvidia
-# image-version: latest # latest is also supported if you want new updates ASAP
 base-image: ghcr.io/ublue-os/base-main
 image-version: latest
 
 modules:
 
-  #- type: files
-    #files:
-      #- source: system
-        #destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+  - type: files
+    files:
+      - source: system
+        destination: /
 
   - type: dnf
     install:
       packages:
-        # Core Plasma Desktop - Minimal Set
-        - plasma-desktop
-        - plasma-workspace
-        - plasma-workspace-wayland
-        - plasma-workspace-x11      # ADD: X11 session support
-        - kwin
+        # GNOME Core (Minimal)
+        - gdm                               # Login Manager
+        - gnome-shell                       # Desktop Interface
+        - gnome-session-wayland-session     # Wayland Session
+        - gnome-control-center              # Settings
+        - gnome-settings-daemon             # Hardware management
         
-        # Display Manager
-        - sddm
-        - sddm-breeze
-        - sddm-kcm
-        - sddm-wayland-plasma
+        # Essential Interface & Tools
+        - nautilus                          # File Manager
+        - gnome-console                     # Minimal Terminal
+        - gvfs                              # Virtual Filesystem (Trash/Mounts)
+        - xdg-desktop-portal-gnome          # Flatpak Portal Support
+        - gnome-keyring                     # Password/Key Management
         
-        # Plasma System Settings & Integration
-        - systemsettings
-        - polkit-kde
-        - kscreen
-        - plasma-nm
-        - plasma-pa
-        - bluedevil
+        # Networking
+        - NetworkManager-wifi               # Ensure WiFi support
+
+        # Software Store
+        - gnome-software                    # App Store
+        - flatpak                           # Flatpak backend
         
-        # Discover Store with Flatpak Support
-        - plasma-discover
-        - plasma-discover-flatpak
-        - plasma-discover-notifier
-        - flatpak
-        
-        # CRITICAL: Missing Discover dependencies (Fedora packaging bug)
-        - kf6-purpose              # ADD: Required for Discover QML modules
-        - kf6-kitemmodels          # ADD: Required for Discover item models
-        
-        # Qt6 Components
-        - qt6-qtbase-gui           # ADD: Qt6 GUI support
-        
-        # Essential Applications
-        - dolphin
-        - konsole
-        
-        # Utilities & Tools
+        # Utilities (Kept from your original list)
         - distrobox
         - steam
         - nano
@@ -66,17 +46,17 @@ modules:
       packages:
         - toolbox
 
-  # - type: script
-    # scripts:
-      # - dconf-update.sh
+  - type: script
+    scripts:
+      - dconf-update.sh
       # below for future script, maybe post-first-boot script if bluebuild supports that
       # - distrobox-preinstall.sh
       # distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git" -- bash -c "git clone https://aur.archlinux.org/yay-bin.git;cd yay-bin;makepkg -si"
 
   - type: systemd
-      system:
-        enabled:
-          - sddm.service
+    system:
+      enabled:
+        - gdm.service
 
   - type: default-flatpaks
     configurations:
@@ -96,7 +76,6 @@ modules:
           - org.kde.kdenlive
           - org.audacityteam.Audacity
           - com.obsproject.Studio
-          #- com.github.qarmin.czkawka
           - me.timschneeberger.jdsp4linux
 
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: signing
