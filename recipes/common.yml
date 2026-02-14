@@ -55,18 +55,17 @@ modules:
         - htop
         - nvtop
 
-  # Build custom Bazaar from source
   - type: script
     scripts:
       - build-bazaar.sh
       - dconf-update.sh
+      #- preinstall-distrobox.sh
 
   - type: systemd
     system:
       enabled:
         - gdm.service
 
-  # Install other flatpaks (excluding Bazaar since it's now root-installed)
   - type: default-flatpaks
     configurations:
       - notify: true
@@ -108,4 +107,3 @@ modules:
       - 5263 # gtk desktop icons ng (ding)
       - 600 # launch new instance
       - 36 # lock keys
-      #- 5721 # clipboard indicator
