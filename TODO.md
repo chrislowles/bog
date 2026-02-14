@@ -1,0 +1,2 @@
+* Pre-configuration of Celluloid or MPV if it's decided upon to use that instead, refer to the config written in the `debian` repo
+* Some preconfigured means to set a window as always on top (probably with the same dconf scripting)
