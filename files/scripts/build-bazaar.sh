@@ -35,8 +35,6 @@ cd /tmp
 git clone --depth 1 --branch ${BAZAAR_VERSION} https://github.com/kolunmi/bazaar.git
 cd bazaar
 
-# Build with custom config that points to /etc/bazaar/main.yaml
-# This file is already installed via the files module
 echo "Building Bazaar with custom configuration..."
 meson setup build \
     --prefix=/usr \
@@ -48,14 +46,9 @@ ninja -C build
 echo "Installing Bazaar..."
 ninja -C build install
 
-# The config files (main.yaml, blocklist.yaml, curated.yaml) are already
-# installed to /etc/bazaar/ via the files module, so we don't need to copy them
-
-# Compile gschema
 echo "Compiling gschema..."
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 
-# Clean up build dependencies to keep image size down
 echo "Cleaning up build dependencies..."
 dnf remove -y \
     git \
