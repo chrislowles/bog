@@ -1,66 +1,67 @@
-- id: browsers
-  title: Browsers
-  description: Get your flavor of Gecko or Chromium-based browsers.
-  apps:
-    - org.mozilla.firefox
-    - io.gitlab.librewolf-community
-    - app.zen_browser.zen
-    - com.microsoft.Edge
-    - com.google.Chrome
-    - com.brave.Browser
-    - com.opera.Opera
-    - org.torproject.torbrowser-launcher
-    - org.chromium.Chromium
-    - one.ablaze.floorp
-    - net.waterfox.waterfox
+sections:
+  - id: browsers
+    title: Browsers
+    description: Get your flavor of Gecko or Chromium-based browsers.
+    apps:
+      - org.mozilla.firefox
+      - io.gitlab.librewolf-community
+      - app.zen_browser.zen
+      - com.microsoft.Edge
+      - com.google.Chrome
+      - com.brave.Browser
+      - com.opera.Opera
+      - org.torproject.torbrowser-launcher
+      - org.chromium.Chromium
+      - one.ablaze.floorp
+      - net.waterfox.waterfox
 
-- id: gaming-minus-steam
-  title: Gaming (minus Steam)
-  description: Get your game on with a number of launchers (minus Steam, that's already sorted)
-  enable-bulk-install: true
-  apps:
-    - com.heroicgameslauncher.hgl
-    - io.itch.itch
-    - io.github.limo_app.limo
-    - org.prismlauncher.PrismLauncher
-    - org.vinegarhq.Sober
-    - org.libretro.RetroArch
-    - io.github.astralvixen.geforce-infinity
-    - io.github.radiolamp.mangojuice
+  - id: gaming-minus-steam
+    title: Gaming (minus Steam)
+    description: Get your game on with a number of launchers (minus Steam, that's already sorted)
+    enable-bulk-install: true
+    apps:
+      - com.heroicgameslauncher.hgl
+      - io.itch.itch
+      - io.github.limo_app.limo
+      - org.prismlauncher.PrismLauncher
+      - org.vinegarhq.Sober
+      - org.libretro.RetroArch
+      - io.github.astralvixen.geforce-infinity
+      - io.github.radiolamp.mangojuice
 
   - id: media
-  title: Media
-  description: Local or streaming.
-  apps:
-    - app.ytmdesktop.ytmdesktop
-    - com.spotify.Client
-    - org.videolan.VLC
-    - dev.dergs.Tonearm
-    - io.m51.Gelly
-    - dev.aunetx.deezer
-    - io.github.cmus.cmus
-    - org.qbittorrent.qBittorrent
-    - org.nicotine_plus.Nicotine
+    title: Media
+    description: Local or streaming.
+    apps:
+      - app.ytmdesktop.ytmdesktop
+      - com.spotify.Client
+      - org.videolan.VLC
+      - dev.dergs.Tonearm
+      - io.m51.Gelly
+      - dev.aunetx.deezer
+      - io.github.cmus.cmus
+      - org.qbittorrent.qBittorrent
+      - org.nicotine_plus.Nicotine
 
-- id: chat
-  title: Chat
-  description: Chat and pray your friends list doesn't get age-gated.
-  apps:
-    - com.discordapp.Discord
-    - org.signal.Signal
-    - com.github.IsmaelMartinez.teams_for_linux
-    - com.teamspeak.TeamSpeak
-    - in.cinny.Cinny
+  - id: chat
+    title: Chat
+    description: Chat and pray your friends list doesn't get age-gated.
+    apps:
+      - com.discordapp.Discord
+      - org.signal.Signal
+      - com.github.IsmaelMartinez.teams_for_linux
+      - com.teamspeak.TeamSpeak
+      - in.cinny.Cinny
 
-- id: productivity
-  title: Productivity
-  description: Common programs assosiated with getting shit done.
-  enable-bulk-install: true
-  apps:
-    - org.onlyoffice.desktopeditors
-    - org.kde.krita
-    - org.kde.kdenlive
-    - com.obsproject.Studio
-    - org.audacityteam.Audacity
-    - org.blender.Blender
-    - org.ardour.Ardour
+  - id: productivity
+    title: Productivity
+    description: Common programs assosiated with getting shit done.
+    enable-bulk-install: true
+    apps:
+      - org.onlyoffice.desktopeditors
+      - org.kde.krita
+      - org.kde.kdenlive
+      - com.obsproject.Studio
+      - org.audacityteam.Audacity
+      - org.blender.Blender
+      - org.ardour.Ardour
