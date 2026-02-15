@@ -10,6 +10,7 @@ modules:
   - type: dnf
     install:
       packages:
+
         # GNOME Core (Minimal)
         - gdm                               # Login Manager
         - gnome-shell                       # Desktop Interface
@@ -18,22 +19,28 @@ modules:
         - gnome-system-monitor              # Task manager
         - gnome-settings-daemon             # Hardware management
         - dconf                             # Basically GNOMEs version of registry keys
-        
+        - dconf-editor                      # Basically GNOMEs version of registry editor
+
         # Essential Interface & Tools
-        - nautilus                          # File Manager
-        - gnome-console                     # Minimal Terminal
+        - gnome-console                     # Terminal emulator
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
         - xdg-desktop-portal-gnome          # Flatpak Portal Support
         - gnome-keyring                     # Password/Key Management
+        - gnome-disk-utility                # GNOME Disks
+        - baobab                            # Dir tree analyzer
+        - gnome-logs                        # SystemD log viewer
+        - gnome-font-viewer                 # Font viewer/installer
+        - nautilus                          # File manager
+        - gnome-text-editor                 # Text editor
 
         # Networking
         - NetworkManager-wifi               # Ensure WiFi support
-        
+
         # Utilities
         - distrobox                         # Container-based system management
         - steam                             # Primary gaming platform
         - micro                             # TUI Text Editor
-        
+
         # Bazaar runtime dependencies
         - gtk4
         - libadwaita
@@ -51,7 +58,7 @@ modules:
         - md4c
         - glycin-gtk4-libs
         - libgweather4
-        
+
     remove:
       packages:
         - toolbox
@@ -78,28 +85,23 @@ modules:
         install:
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
-          - ca.desrt.dconf-editor
           - io.github.flattool.Ignition
-          - com.usebottles.bottles
           - com.mattjakeman.ExtensionManager
           - org.mozilla.firefox
           - io.github.celluloid_player.Celluloid
           - com.vysp3r.ProtonPlus
+          - com.usebottles.bottles
           - me.timschneeberger.jdsp4linux
-          - org.gnome.font-viewer
-          - org.gnome.Logs
-          - org.gnome.FileRoller
-          - org.gnome.TextEditor
-          - org.gnome.Calculator
-          - org.gnome.Loupe
-          - org.gnome.Papers
+
+          # Pre-installed selection from GNOME Bazaar curation group
           - org.gnome.Contacts
           - org.gnome.Calendar
           - org.gnome.clocks
-          - org.gnome.NetworkDisplays
-          - org.gnome.Boxes
-          - org.gnome.Weather
           - org.gnome.SoundRecorder
+          - org.gnome.Decibels
+          - org.gnome.Snapshot
+          - org.gnome.Characters
+          - org.gnome.SimpleScan
 
   - type: gnome-extensions
     install:
