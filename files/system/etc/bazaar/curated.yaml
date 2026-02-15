@@ -24,6 +24,21 @@ css: |
     margin: 15px;
     border-radius: 25px;
   }
+  .gnome-section {
+    background-color: #3584E4;
+  }
+  .browser-section {
+    background-color: #33D17A;
+  }
+  .productivity-section {
+    background-color: #FF7800;
+  }
+  .conversating-section {
+    background-color: #E01B24;
+  }
+  .gaming-section {
+    background-color: #77767B;
+  }
 
 rows:
 
@@ -31,73 +46,38 @@ rows:
     - expand-horizontally: true
       classes:
         - bazzite-section
+        - gnome-section
       category:
         title:
-          en: "Gaming (minus Steam)"
+          en: "GNOME"
         subtitle:
-          en: "Get your game on with a number of launchers (minus Steam, that's already sorted)"
+          en: "From the creator of the desktop you're using."
         banner-height: 300
         banner-text-halign: start
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
-          - com.heroicgameslauncher.hgl
-          - io.itch.itch
-          - io.github.limo_app.limo
-          - org.prismlauncher.PrismLauncher
-          - org.vinegarhq.Sober
-          - org.libretro.RetroArch
-          - io.github.astralvixen.geforce-infinity
-          - io.github.radiolamp.mangojuice
+          - org.gnome.Calculator
+          - org.gnome.Loupe
+          - org.gnome.Papers
+          - org.gnome.Contacts
+          - org.gnome.Calendar
+          - org.gnome.clocks
+          - org.gnome.NetworkDisplays
+          - org.gnome.Boxes
+          - org.gnome.Weather
+          - org.gnome.SoundRecorder
+          - org.gnome.Decibels
+          - org.gnome.Snapshot
+          - org.gnome.Characters
+          - org.gnome.Connections
+          - org.gnome.SimpleScan
 
   - sections:
     - expand-horizontally: true
       classes:
         - bazzite-section
-      category:
-        title:
-          en: "Media"
-        subtitle:
-          en: "Local or streaming."
-        banner-height: 300
-        banner-text-halign: start
-        banner-text-valign: center
-        banner-text-label-xalign: 0.0
-        appids:
-          - app.ytmdesktop.ytmdesktop
-          - com.spotify.Client
-          - org.videolan.VLC
-          - dev.dergs.Tonearm
-          - io.m51.Gelly
-          - dev.aunetx.deezer
-          - io.github.cmus.cmus
-          - org.qbittorrent.qBittorrent
-          - org.nicotine_plus.Nicotine
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bazzite-section
-      category:
-        title:
-          en: "Chatting"
-        subtitle:
-          en: "Chat and pray your friends list doesn't get age-gated."
-        banner-height: 300
-        banner-text-halign: start
-        banner-text-valign: center
-        banner-text-label-xalign: 0.0
-        appids:
-          - com.discordapp.Discord
-          - org.signal.Signal
-          - com.github.IsmaelMartinez.teams_for_linux
-          - com.teamspeak.TeamSpeak
-          - in.cinny.Cinny
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bazzite-section
+        - browser-section
       category:
         title:
           en: "Browsers"
@@ -124,6 +104,7 @@ rows:
     - expand-horizontally: true
       classes:
         - bazzite-section
+        - productivity-section
       category:
         title:
           en: "Productivity"
@@ -141,3 +122,73 @@ rows:
           - org.audacityteam.Audacity
           - org.blender.Blender
           - org.ardour.Ardour
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bazzite-section
+        - conversating-section
+      category:
+        title:
+          en: "Conversating"
+        subtitle:
+          en: "Pray your friends list doesn't get age-gated."
+        banner-height: 300
+        banner-text-halign: start
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - com.discordapp.Discord
+          - org.signal.Signal
+          - com.github.IsmaelMartinez.teams_for_linux
+          - com.teamspeak.TeamSpeak
+          - in.cinny.Cinny
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bazzite-section
+        - gaming-section
+      category:
+        title:
+          en: "Gaming (minus Steam)"
+        subtitle:
+          en: "Get ye vidgya grame on (minus Steam, that's already sorted)"
+        banner-height: 300
+        banner-text-halign: start
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - com.heroicgameslauncher.hgl
+          - io.itch.itch
+          - io.github.limo_app.limo
+          - org.prismlauncher.PrismLauncher
+          - org.vinegarhq.Sober
+          - org.libretro.RetroArch
+          - io.github.astralvixen.geforce-infinity
+          - io.github.radiolamp.mangojuice
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bazzite-section
+        - media-section
+      category:
+        title:
+          en: "Media"
+        subtitle:
+          en: "Local or streaming."
+        banner-height: 300
+        banner-text-halign: start
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - app.ytmdesktop.ytmdesktop
+          - com.spotify.Client
+          - org.videolan.VLC
+          - dev.dergs.Tonearm
+          - io.m51.Gelly
+          - dev.aunetx.deezer
+          - io.github.cmus.cmus
+          - org.qbittorrent.qBittorrent
+          - org.nicotine_plus.Nicotine
