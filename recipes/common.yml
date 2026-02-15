@@ -48,6 +48,7 @@ modules:
         - libsecret
         - openssl-libs
         - glycin-loaders
+        - glycin-gtk4
         
     remove:
       packages:
