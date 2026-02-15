@@ -1,17 +1,16 @@
 # This is to prevent accidental dupe installations of flatpak releases of system installed apps
-blocked-apps:
 
-  # Bazaar is system-installed
-  - io.github.kolunmi.Bazaar
+# Bazaar is system-installed
+- io.github.kolunmi.Bazaar
 
-  # Steam is system-installed
-  - com.valvesoftware.Steam
+# Steam is system-installed
+- com.valvesoftware.Steam
 
-  # deprecated
-  - org.gnome.gedit
-  - org.gnome.Totem
-  - org.gnome.eog
+# deprecated
+- org.gnome.gedit
+- org.gnome.Totem
+- org.gnome.eog
 
-  # notably kneecapped development tools
-  - com.visualstudio.code
-  - com.sublimehq.SublimeText
+# notably kneecapped development tools
+- com.visualstudio.code
+- com.sublimehq.SublimeText
