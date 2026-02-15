@@ -1,26 +1,26 @@
 css: |
-  .bazzite-section banner {
+  .bog-section banner {
      margin-top: 30px;
      margin-left: 30px;
      margin-right: 30px;
      border-radius: 10px;
   }
-  .bazzite-section banner-text-overlay {
+  .bog-section banner-text-overlay {
      margin: 30px;
      padding: 20px;
   }
-  .bazzite-section banner-text {
+  .bog-section banner-text {
      padding: 50px;
      color: #ffffff;
   }
-  .bazzite-section title {
+  .bog-section title {
      color: #ffffff;
   }
-  .bazzite-section subtitle {
+  .bog-section subtitle {
     color: #ffffff;
     font-weight: 400;
   }
-  .bazzite-section {
+  .bog-section {
     margin: 15px;
     border-radius: 25px;
   }
@@ -30,7 +30,7 @@ css: |
   .browser-section {
     background-color: #33D17A;
   }
-  .productivity-section {
+  .prod-prod-section {
     background-color: #FF7800;
   }
   .conversating-section {
@@ -39,20 +39,23 @@ css: |
   .gaming-section {
     background-color: #77767B;
   }
+  .media-section {
+    background-color: #9141AC;
+  }
 
 rows:
 
   - sections:
     - expand-horizontally: true
       classes:
-        - bazzite-section
+        - bog-section
         - gnome-section
       category:
         title:
           en: "GNOME"
         subtitle:
           en: "From the creator of the desktop you're using."
-        banner-height: 300
+        banner-height: 260
         banner-text-halign: start
         banner-text-valign: center
         banner-text-label-xalign: 0.0
@@ -72,11 +75,12 @@ rows:
           - org.gnome.Characters
           - org.gnome.Connections
           - org.gnome.SimpleScan
+          - org.gnome.Fractal
 
   - sections:
     - expand-horizontally: true
       classes:
-        - bazzite-section
+        - bog-section
         - browser-section
       category:
         title:
@@ -90,6 +94,7 @@ rows:
         appids:
           - org.mozilla.firefox
           - io.gitlab.librewolf-community
+          - io.github.ungoogled_software.ungoogled_chromium
           - app.zen_browser.zen
           - com.microsoft.Edge
           - com.google.Chrome
@@ -103,11 +108,11 @@ rows:
   - sections:
     - expand-horizontally: true
       classes:
-        - bazzite-section
-        - productivity-section
+        - bog-section
+        - prod-prod-section
       category:
         title:
-          en: "Productivity"
+          en: "Productivity & Production"
         subtitle:
           en: "Common programs assosiated with getting shit done."
         banner-height: 300
@@ -116,6 +121,7 @@ rows:
         banner-text-label-xalign: 0.0
         appids:
           - org.onlyoffice.desktopeditors
+          - org.libreoffice.LibreOffice
           - org.kde.krita
           - org.kde.kdenlive
           - com.obsproject.Studio
@@ -126,7 +132,7 @@ rows:
   - sections:
     - expand-horizontally: true
       classes:
-        - bazzite-section
+        - bog-section
         - conversating-section
       category:
         title:
@@ -143,11 +149,14 @@ rows:
           - com.github.IsmaelMartinez.teams_for_linux
           - com.teamspeak.TeamSpeak
           - in.cinny.Cinny
+          - chat.rocket.RocketChat
+          - org.gajim.Gajim
+          - sm.puri.Chatty
 
   - sections:
     - expand-horizontally: true
       classes:
-        - bazzite-section
+        - bog-section
         - gaming-section
       category:
         title:
@@ -171,7 +180,7 @@ rows:
   - sections:
     - expand-horizontally: true
       classes:
-        - bazzite-section
+        - bog-section
         - media-section
       category:
         title:
@@ -189,6 +198,5 @@ rows:
           - dev.dergs.Tonearm
           - io.m51.Gelly
           - dev.aunetx.deezer
-          - io.github.cmus.cmus
           - org.qbittorrent.qBittorrent
           - org.nicotine_plus.Nicotine
