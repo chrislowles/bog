@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-echo "Building custom Bazaar from source with blocklist..."
+echo "Building Bazaar from source with custom configurations..."
 
 # Install build dependencies
-echo "Installing build dependencies..."
+echo "Installing build dependencies for source-built Bazaar..."
 dnf install -y \
     git \
     meson \
@@ -73,9 +73,7 @@ fi
 echo "Compiling gschema..."
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 
-# CRITICAL FIX: Only remove -devel packages, keep runtime libraries
-# Using wildcard removal to catch all devel packages in one go
-echo "Cleaning up BUILD-ONLY dependencies (keeping runtime libraries)..."
+echo "Cleaning up build-only dependencies (keeping runtime libraries)..."
 dnf remove -y \
     git \
     meson \
@@ -84,8 +82,7 @@ dnf remove -y \
     pkgconfig \
     '*-devel'
 
-# Explicitly verify critical runtime libraries are still present
-echo "Verifying runtime libraries..."
+echo "Explicitly verifying critical runtime libraries are still present..."
 if ldconfig -p | grep -q "libglycin-gtk4-2.so.0"; then
     echo "libglycin-gtk4-2.so.0 is present"
 else
@@ -95,20 +92,28 @@ fi
 dnf clean all
 
 echo ""
+
 echo "============================================"
 echo "Bazaar custom build complete!"
 echo "============================================"
-echo "  Configuration:"
-echo "    - Main config: /etc/bazaar/main.yaml"
-echo "    - Blocklist: /etc/bazaar/blocklist.yaml"
-echo "    - Curated content: /etc/bazaar/curated.yaml"
+
+echo "Configuration:"
+echo "  - Main config: /etc/bazaar/main.yaml"
+echo "  - Blocklist: /etc/bazaar/blocklist.yaml"
+echo "  - Curated content: /etc/bazaar/curated.yaml"
+
 echo ""
-echo "  Service files:"
-echo "    - User service: /usr/lib/systemd/user/io.github.kolunmi.Bazaar.service"
-echo "    - D-Bus service: /usr/share/dbus-1/services/io.github.kolunmi.Bazaar.service"
+
+echo "Service files:"
+echo "  - User service: /usr/lib/systemd/user/io.github.kolunmi.Bazaar.service"
+echo "  - D-Bus service: /usr/share/dbus-1/services/io.github.kolunmi.Bazaar.service"
+
 echo ""
-echo "  To modify configuration:"
-echo "    Edit files in: files/system/etc/bazaar/"
+
+echo "To modify configuration:"
+echo "Edit files in: files/system/etc/bazaar/"
+
 echo ""
-echo "  Note: Runtime libraries preserved during cleanup."
+
+echo "Note: Runtime libraries preserved during cleanup."
 echo "============================================"
