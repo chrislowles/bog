@@ -24,33 +24,18 @@ css: |
     margin: 15px;
     border-radius: 25px;
   }
-  .gaming-section {
-    background: linear-gradient(45deg, #171a49, #52136c);
-  }
-  .streaming-section {
-    background: linear-gradient(135deg, #3550ec, #252b4b);
-  }
-  .music-section {
-    background: linear-gradient(45deg, #196d28, #3a944a);
-  }
-  .office-section {
-    background: linear-gradient(135deg, #6f8396, #4d5c69);
-  }
-  .utilities-section {
-    background: linear-gradient(45deg, #ed5b00, #a6480d);
-  }
 
 rows:
+
   - sections:
     - expand-horizontally: true
       classes:
         - bazzite-section
-        - gaming-section
       category:
         title:
-          en: "Gaming"
+          en: "Gaming (minus Steam)"
         subtitle:
-          en: "Protocol 3: Protect the Pilot"
+          en: "Get your game on with a number of launchers (minus Steam, that's already sorted)"
         banner-height: 300
         banner-text-halign: start
         banner-text-valign: center
@@ -58,182 +43,101 @@ rows:
         appids:
           - com.heroicgameslauncher.hgl
           - io.itch.itch
-          - io.github.Faugus.faugus-launcher
-          - org.prismlauncher.PrismLauncher
-          - io.mrarm.mcpelauncher
-          - at.vintagestory.VintageStory
-          - org.vinegarhq.Sober
-          - org.zdoom.GZDoom
-          - org.zdoom.Raze
-          - org.openmw.OpenMW
-          - dev.goats.xivlauncher
-          - net.retrodeck.retrodeck
-          - org.libretro.RetroArch
-          - page.kramo.Cartridges
-          - com.github._0negal.Viper
-          - info.cemu.Cemu
-          - org.DolphinEmu.dolphin-emu
-          - io.github.shiiion.primehack
-          - net.kuribo64.melonDS
-          - com.snes9x.Snes9x
-          - io.mgba.mGBA
-          - org.ppsspp.PPSSPP
-          - net.pcsx2.PCSX2
-          - net.rpcs3.RPCS3
-          - app.xemu.xemu
-          - org.mamedev.MAME
-          - io.github.stella_emu.Stella
-          - org.scummvm.ScummVM
-          - io.github.dosbox-staging
-          - rs.ruffle.Ruffle
-          - com.supermodel3.Supermodel
-          - net.hhoney.rota
-          - io.github.doukutsu_rs.doukutsu-rs
-          - com.github.k4zmu2a.spacecadetpinball
-          - sh.ppy.osu
-          - com.pokemmo.PokeMMO
-          - com.etlegacy.ETLegacy
-          - com.realm667.Wolfenstein_Blade_of_Agony
-          - net.stabyourself.nottetris2
-          - org.srb2.SRB2
-          - org.srb2.SRB2Kart
-          - org.endlessaccess.threadbare
-          - org.kartkrew.RingRacers
-          - org.supertuxproject.SuperTux
-          - net.supertuxkart.SuperTuxKart
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bazzite-section
-        - streaming-section
-      category:
-        title:
-          en: "Streaming & Chat"
-        subtitle:
-          en: "Sprunk'd it."
-        banner-height: 300
-        banner-text-halign: end
-        banner-text-valign: center
-        banner-text-label-xalign: 1.0
-        appids:
-          - com.obsproject.Studio
-          - com.feaneron.Boatswain
-          - com.moonlight_stream.Moonlight
-          - com.valvesoftware.SteamLink
-          - io.github.astralvixen.geforce-infinity
-          - com.parsecgaming.parsec
-          - com.discordapp.Discord
-          - dev.vencord.Vesktop
-          - im.pidgin.Pidgin
-          - com.teamspeak.TeamSpeak
-          - info.mumble.Mumble
-          - im.riot.Riot
-          - org.squidowl.halloy
-          - org.gnome.Fractal
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bazzite-section
-        - music-section
-      category:
-        title:
-          en: "Music & Media"
-        subtitle:
-          en: "Let me break it down for you."
-        banner-height: 300
-        banner-text-halign: start
-        banner-text-valign: center
-        banner-text-label-xalign: 0.0
-        appids:
-          - io.bassi.Amberol
-          - com.github.neithern.g4music
-          - org.atheme.audacious
-          - com.spotify.Client
-          - com.mastermindzh.tidal-hifi
-          - org.videolan.VLC
-          - com.github.iwalton3.jellyfin-media-player
-          - tv.plex.PlexDesktop
-          - com.plexamp.Plexamp
-          - rocks.shy.VacuumTube
-          - org.strawberrymusicplayer.strawberry
-          - camp.nook.nookdesktop
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bazzite-section
-        - office-section
-      category:
-        title:
-          en: "Office & Productivity"
-        subtitle:
-          en: "May the paperclip fellow have mercy."
-        banner-height: 300
-        banner-text-halign: end
-        banner-text-valign: center
-        banner-text-label-xalign: 1.0
-        appids:
-          - org.mozilla.Thunderbird
-          - org.libreoffice.LibreOffice
-          - org.onlyoffice.desktopeditors
-          - org.gimp.GIMP
-          - org.kde.krita
-          - org.inkscape.Inkscape
-          - org.blender.Blender
-          - io.github.nokse22.Exhibit
-          - io.github.jliljebl.Flowblade
-          - de.leopoldluley.Clapgrep
-          - org.audacityteam.Audacity
-          - org.ardour.Ardour
-          - md.obsidian.Obsidian
-          - org.standardnotes.standardnotes
-          - com.slack.Slack
-          - com.github.IsmaelMartinez.teams_for_linux
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bazzite-section
-        - utilities-section
-      category:
-        title:
-          en: "Utilities"
-        subtitle:
-          en: "Stuff you didn't need until now."
-        banner-height: 300
-        banner-text-halign: start
-        banner-text-valign: center
-        banner-text-label-xalign: 0.0
-        appids:
-          - io.github.ilya_zlobintsev.LACT
           - io.github.limo_app.limo
+          - org.prismlauncher.PrismLauncher
+          - org.vinegarhq.Sober
+          - org.libretro.RetroArch
+          - io.github.astralvixen.geforce-infinity
           - io.github.radiolamp.mangojuice
-          - io.github.rfrench3.scopebuddy-gui
-          - io.github.trigg.discover_overlay
-          - com.github.wwmm.easyeffects
-          - me.timschneeberger.jdsp4linux
-          - com.github.Alcaro.Flips
-          - io.github.thetumultuousunicornofdarkness.cpu-x
-          - io.github.arunsivaramanneo.GPUViewer
-          - dev.deedles.Trayscale
-          - app.drey.Warp
-          - com.rustdesk.RustDesk
-          - io.github.IshuSinghSE.aurynk
-          - org.deskflow.deskflow
-          - io.github.linx_systems.ClamUI
-          - io.github.pwr_solaar.solaar
-          - it.mijorus.gearlever
-          - io.github.flattool.Ignition
-          - io.github.fastrizwaan.WineZGUI
-          - io.github.berarma.Oversteer
-          - io.github.lawstorant.boxflat
-          - org.keepassxc.KeePassXC
-          - com.bitwarden.desktop
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bazzite-section
+      category:
+        title:
+          en: "Media"
+        subtitle:
+          en: "Local or streaming."
+        banner-height: 300
+        banner-text-halign: start
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - app.ytmdesktop.ytmdesktop
+          - com.spotify.Client
+          - org.videolan.VLC
+          - dev.dergs.Tonearm
+          - io.m51.Gelly
+          - dev.aunetx.deezer
+          - io.github.cmus.cmus
           - org.qbittorrent.qBittorrent
-          - com.github.zocker_160.SyncThingy
-          - org.fedoraproject.MediaWriter
-          - org.raspberrypi.rpi-imager
-          - cc.arduino.IDE2
-          - org.gnome.GHex
+          - org.nicotine_plus.Nicotine
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bazzite-section
+      category:
+        title:
+          en: "Chatting"
+        subtitle:
+          en: "Chat and pray your friends list doesn't get age-gated."
+        banner-height: 300
+        banner-text-halign: start
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - com.discordapp.Discord
+          - org.signal.Signal
+          - com.github.IsmaelMartinez.teams_for_linux
+          - com.teamspeak.TeamSpeak
+          - in.cinny.Cinny
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bazzite-section
+      category:
+        title:
+          en: "Browsers"
+        subtitle:
+          en: "Get your flavor of Gecko or Chromium-based browsers."
+        banner-height: 300
+        banner-text-halign: start
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - org.mozilla.firefox
+          - io.gitlab.librewolf-community
+          - app.zen_browser.zen
+          - com.microsoft.Edge
+          - com.google.Chrome
+          - com.brave.Browser
+          - com.opera.Opera
+          - org.torproject.torbrowser-launcher
+          - org.chromium.Chromium
+          - one.ablaze.floorp
+          - net.waterfox.waterfox
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bazzite-section
+      category:
+        title:
+          en: "Productivity"
+        subtitle:
+          en: "Common programs assosiated with getting shit done."
+        banner-height: 300
+        banner-text-halign: start
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - org.onlyoffice.desktopeditors
+          - org.kde.krita
+          - org.kde.kdenlive
+          - com.obsproject.Studio
+          - org.audacityteam.Audacity
+          - org.blender.Blender
+          - org.ardour.Ardour
