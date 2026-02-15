@@ -1,5 +1,11 @@
 # This is to prevent accidental dupe installations of flatpak releases of system installed apps
-- block:
+blocklists:
+  - priority: 0
+    block:
+
+    # Flatpak releases of system-installed packages
+    - io.github.zyedidia.micro
+
     # Bazaar is system-installed
     - io.github.kolunmi.Bazaar
 
@@ -11,6 +17,6 @@
     - org.gnome.Totem
     - org.gnome.eog
 
-    # notably kneecapped development tools
+    # Known kneecapped development tools
     - com.visualstudio.code
     - com.sublimehq.SublimeText
