@@ -56,18 +56,18 @@ chmod 644 /usr/share/dbus-1/services/io.github.kolunmi.Bazaar.service || true
 
 echo "Verifying executable..."
 if [ -f /usr/bin/bazaar ]; then
-    echo "  ✓ Bazaar executable installed at /usr/bin/bazaar"
+    echo "Bazaar executable installed at /usr/bin/bazaar"
     chmod 755 /usr/bin/bazaar
-    echo "  ✓ Set executable permissions"
+    echo "Set executable permissions"
 else
-    echo "  ✗ WARNING: Bazaar executable not found!"
+    echo "WARNING: Bazaar executable not found!"
 fi
 
 echo "Verifying desktop file..."
 if [ -f /usr/share/applications/io.github.kolunmi.Bazaar.desktop ]; then
-    echo "  ✓ Desktop file installed"
+    echo "Desktop file installed"
 else
-    echo "  ✗ WARNING: Desktop file not found!"
+    echo "WARNING: Desktop file not found!"
 fi
 
 echo "Compiling gschema..."
@@ -87,9 +87,9 @@ dnf remove -y \
 # Explicitly verify critical runtime libraries are still present
 echo "Verifying runtime libraries..."
 if ldconfig -p | grep -q "libglycin-gtk4-2.so.0"; then
-    echo "  ✓ libglycin-gtk4-2.so.0 is present"
+    echo "libglycin-gtk4-2.so.0 is present"
 else
-    echo "  ✗ WARNING: libglycin-gtk4-2.so.0 not found!"
+    echo "WARNING: libglycin-gtk4-2.so.0 not found!"
 fi
 
 dnf clean all
