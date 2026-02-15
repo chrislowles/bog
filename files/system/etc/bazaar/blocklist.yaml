@@ -25,3 +25,6 @@ blocklists:
     # Known kneecapped development tools
     - com.visualstudio.code
     - com.sublimehq.SublimeText
+
+    # Preference for the third-party GNOME Ext manager
+    - org.gnome.Extensions
