@@ -8,6 +8,10 @@ modules:
         destination: /
 
   - type: dnf
+    #repos:
+    #  copr:
+    #    enable:
+    #      - lilay/topgrade # official topgrade copr repo
     install:
       packages:
 
@@ -58,7 +62,6 @@ modules:
         - md4c
         - glycin-gtk4-libs
         - libgweather4
-
     remove:
       packages:
         - toolbox
