@@ -49,6 +49,7 @@ modules:
         - openssl-libs
         - glycin-loaders
         - glycin
+        - libglycin-gtk4
         
     remove:
       packages:
