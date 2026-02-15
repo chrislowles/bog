@@ -4,6 +4,11 @@ blocklists:
     block:
 
     # Flatpak releases of system-installed packages
+    - ca.desrt.dconf-editor
+    - org.gnome.baobab
+    - org.gnome.Logs
+    - org.gnome.font-viewer
+    - org.gnome.TextEditor
     - io.github.zyedidia.micro
 
     # Bazaar is system-installed
@@ -12,7 +17,7 @@ blocklists:
     # Steam is system-installed
     - com.valvesoftware.Steam
 
-    # deprecated
+    # Deprecated
     - org.gnome.gedit
     - org.gnome.Totem
     - org.gnome.eog
