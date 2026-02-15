@@ -55,16 +55,8 @@ dnf remove -y \
     meson \
     ninja-build \
     gcc \
-    gtk4-devel \
-    libadwaita-devel \
-    libdex-devel \
-    flatpak-devel \
-    appstream-devel \
-    json-glib-devel \
-    libsoup3-devel \
-    libxmlb-devel \
-    libyaml-devel \
-    blueprint-compiler
+    pkgconfig \
+    '*-devel'
 
 dnf clean all
 
