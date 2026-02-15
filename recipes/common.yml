@@ -48,8 +48,9 @@ modules:
         - libsecret
         - openssl-libs
         - glycin-loaders
-        # NOTE: libglycin-gtk4-2.so.0 is preserved by the build script
-        # No need to explicitly install it here
+        - md4c
+        - glycin-gtk4-libs
+        - libgweather4
         
     remove:
       packages:
