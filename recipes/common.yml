@@ -44,6 +44,11 @@ modules:
         - distrobox                         # Container-based system management
         - steam                             # Primary gaming platform
         - micro                             # TUI Text Editor
+        - wget                              # CLI for http transfer/download
+        - curl                              # The other CLI for http transfer/download
+        - git                               # Version control system
+        - yt-dlp                            # CLI media downloader
+        - ffmpeg                            # Suite of media processing libraries
 
         # Bazaar runtime dependencies
         - gtk4
