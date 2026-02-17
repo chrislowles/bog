@@ -56,7 +56,7 @@ rows:
         subtitle:
           en: "From the creator of the desktop you're using."
         banner-height: 180
-        banner-text-halign: start
+        banner-text-halign: middle
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -88,19 +88,19 @@ rows:
         subtitle:
           en: "Get your flavor of Gecko or Chromium-based browsers."
         banner-height: 220
-        banner-text-halign: start
+        banner-text-halign: middle
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
           - org.mozilla.firefox
           - io.gitlab.librewolf-community
+          - net.codelogistics.webapps
           - io.github.ungoogled_software.ungoogled_chromium
           - app.zen_browser.zen
           - com.microsoft.Edge
           - com.google.Chrome
           - com.brave.Browser
           - com.opera.Opera
-          - org.torproject.torbrowser-launcher
           - org.chromium.Chromium
           - one.ablaze.floorp
           - net.waterfox.waterfox
@@ -114,9 +114,9 @@ rows:
         title:
           en: "Productivity & Production"
         subtitle:
-          en: "Common programs assosiated with getting shit done."
+          en: "Common programs assosiated with getting stuff done."
         banner-height: 240
-        banner-text-halign: start
+        banner-text-halign: middle
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -140,7 +140,7 @@ rows:
         subtitle:
           en: "Pray your friends list doesn't get age-gated."
         banner-height: 180
-        banner-text-halign: start
+        banner-text-halign: middle
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -148,11 +148,11 @@ rows:
           - org.signal.Signal
           - com.github.IsmaelMartinez.teams_for_linux
           - com.teamspeak.TeamSpeak
-          - in.cinny.Cinny
-          - chat.rocket.RocketChat
           - org.gajim.Gajim
+          - info.mumble.Mumble
+          - in.cinny.Cinny
           - sm.puri.Chatty
-          - network.loki.Session
+          - com.slack.Slack
 
   - sections:
     - expand-horizontally: true
@@ -163,9 +163,9 @@ rows:
         title:
           en: "Gaming (minus Steam)"
         subtitle:
-          en: "Get ye vidgya grame on (minus Steam, that's already sorted)"
+          en: "Get ya game on (minus Steam, that's already sorted)"
         banner-height: 220
-        banner-text-halign: start
+        banner-text-halign: middle
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -189,7 +189,7 @@ rows:
         subtitle:
           en: "Local or streaming."
         banner-height: 180
-        banner-text-halign: start
+        banner-text-halign: middle
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
