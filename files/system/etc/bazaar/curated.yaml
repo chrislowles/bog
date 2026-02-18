@@ -56,7 +56,7 @@ rows:
         subtitle:
           en: "From the creator of the desktop you're using."
         banner-height: 180
-        banner-text-halign: middle
+        banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -88,7 +88,7 @@ rows:
         subtitle:
           en: "Get your flavor of Gecko or Chromium-based browsers."
         banner-height: 220
-        banner-text-halign: middle
+        banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -116,7 +116,7 @@ rows:
         subtitle:
           en: "Common programs assosiated with getting stuff done."
         banner-height: 240
-        banner-text-halign: middle
+        banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -140,7 +140,7 @@ rows:
         subtitle:
           en: "Pray your friends list doesn't get age-gated."
         banner-height: 180
-        banner-text-halign: middle
+        banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -165,7 +165,7 @@ rows:
         subtitle:
           en: "Get ya game on (minus Steam, that's already sorted)"
         banner-height: 220
-        banner-text-halign: middle
+        banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
@@ -189,7 +189,7 @@ rows:
         subtitle:
           en: "Local or streaming."
         banner-height: 180
-        banner-text-halign: middle
+        banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
