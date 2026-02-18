@@ -68,7 +68,6 @@ modules:
         - appstream
         - json-glib
         - libsoup3
-        - libsoup3.i686
         - libxmlb
         - libyaml
         - webkitgtk6.0
@@ -86,6 +85,7 @@ modules:
 
   - type: script
     scripts:
+      - fix-libsoup3-multilib.sh
       - build-bazaar.sh
       - dconf-update.sh
       #- preinstall-distrobox.sh
