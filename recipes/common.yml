@@ -68,6 +68,7 @@ modules:
         - appstream
         - json-glib
         - libsoup3
+        - libsoup3.i686
         - libxmlb
         - libyaml
         - webkitgtk6.0
