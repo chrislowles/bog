@@ -26,6 +26,8 @@ modules:
     #  copr:
     #    enable:
     #      - lilay/topgrade # official topgrade copr repo
+    # secureblue ships a copr repo with bazaar, we already sorted out building it but
+    # if we can just install it with deps sorted and configure it that'll make things easy
     install:
       packages:
 
