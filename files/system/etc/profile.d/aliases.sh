@@ -2,3 +2,4 @@
 
 # getmp4() { yt-dlp }
 # getmp3() { yt-dlp }
+testfunc() { echo "haiiiii" }
