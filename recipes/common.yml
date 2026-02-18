@@ -15,6 +15,10 @@ modules:
   #    ID_LIKE: fedora
   #    VERSION_ID: 43
 
+  - type: script
+    scripts:
+      - fix-libsoup3-multilib.sh
+
   - type: dnf
     #repos:
     #  copr:
@@ -83,17 +87,16 @@ modules:
         - htop
         - nvtop
 
-  - type: script
-    scripts:
-      - fix-libsoup3-multilib.sh
-      - build-bazaar.sh
-      - dconf-update.sh
-      #- preinstall-distrobox.sh
-
   - type: systemd
     system:
       enabled:
         - gdm.service
+
+  - type: script
+    scripts:
+      - build-bazaar.sh
+      - dconf-update.sh
+      #- preinstall-distrobox.sh
 
   - type: default-flatpaks
     configurations:
