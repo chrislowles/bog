@@ -7,19 +7,13 @@ modules:
       - source: system
         destination: /
 
-  #- type: bling
-  #  install:
-  #    - uupd # https://github.com/ublue-os/uupd
-  #    - dconf-update-service # a service unit that updates the dconf db on boot
-  #    - gnome-vrr # given vrr is no longer considered experimental by the devs i might as well enable it
-
-  - type: os-release
-    properties:
-      NAME: bog
-      PRETTY_NAME: bog 43
-      #ID: fedora
-      #ID_LIKE: fedora
-      #VERSION_ID: 43
+  #- type: os-release
+  #  properties:
+  #    NAME: bog
+  #    PRETTY_NAME: bog 43
+  #    ID: fedora
+  #    ID_LIKE: fedora
+  #    VERSION_ID: 43
 
   - type: dnf
     #repos:
