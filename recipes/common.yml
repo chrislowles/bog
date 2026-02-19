@@ -126,10 +126,10 @@ modules:
 
   - type: gnome-extensions
     install:
-      - 615 # appindicator support
-      - 8 # places menu
-      - 1319 # gsconnect
-      - 517 # caffeine
-      - 5263 # gtk desktop icons ng (ding)
-      - 600 # launch new instance
-      - 36 # lock keys
+      - 615 # AppIndicator Support
+      - 8 # Places Menu
+      - 1319 # GSConnect
+      - 517 # Caffeine
+      - 5263 # GTK desktop icons ng (ding)
+      - 600 # Launch new instance
+      - 36 # Lock keys
