@@ -42,6 +42,9 @@ css: |
   .media-section {
     background-color: #9141AC;
   }
+  .oddsnends-section {
+    background-color: #77767B;
+  }
 
 rows:
 
@@ -124,9 +127,12 @@ rows:
           - org.libreoffice.LibreOffice
           - org.kde.krita
           - org.kde.kdenlive
+          - org.gimp.GIMP
+          - org.inkscape.Inkscape
           - com.obsproject.Studio
           - org.audacityteam.Audacity
           - org.blender.Blender
+          - de.leopoldluley.Clapgrep
           - org.ardour.Ardour
 
   - sections:
@@ -151,7 +157,7 @@ rows:
           - org.gajim.Gajim
           - info.mumble.Mumble
           - in.cinny.Cinny
-          - sm.puri.Chatty
+          - im.dino.Dino
           - com.slack.Slack
 
   - sections:
@@ -171,12 +177,34 @@ rows:
         appids:
           - com.heroicgameslauncher.hgl
           - io.itch.itch
+          - io.github.Faugus.faugus-launcher
           - io.github.limo_app.limo
-          - org.prismlauncher.PrismLauncher
-          - org.vinegarhq.Sober
-          - org.libretro.RetroArch
           - io.github.astralvixen.geforce-infinity
+          - com.github.AmatCoder.mednaffe
+          - net.pcsx2.PCSX2
+          - net.rpcs3.RPCS3
+          - net.shadps4.shadPS4
+          - io.github.streetpea.Chiaki4deck
+          - org.prismlauncher.PrismLauncher
+          - app.xemu.xemu
           - io.github.radiolamp.mangojuice
+          - org.vinegarhq.Sober
+          - io.mrarm.mcpelauncher
+          - info.cemu.Cemu
+          - org.DolphinEmu.dolphin-emu
+          - net.kuribo64.melonDS
+          - com.snes9x.Snes9x
+          - io.mgba.mGBA
+          - org.ppsspp.PPSSPP
+          - org.mamedev.MAME
+          - org.flycast.Flycast
+          - org.azahar_emu.Azahar
+          - io.github.ryubing.Ryujinx
+          - rs.ruffle.Ruffle
+          - sh.ppy.osu
+          - net.supertuxkart.SuperTuxKart
+          - uk.co.powdertoy.tpt
+          - org.luanti.luanti
 
   - sections:
     - expand-horizontally: true
@@ -201,3 +229,32 @@ rows:
           - dev.aunetx.deezer
           - org.qbittorrent.qBittorrent
           - org.nicotine_plus.Nicotine
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bog-section
+        - oddsnends-section
+      category:
+        title:
+          en: "Oddsnends"
+        subtitle:
+          en: "Lightweight utilities for all kinds of things."
+        banner-height: 220
+        banner-text-halign: center
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - io.github.flattool.Warehouse
+          - it.mijorus.gearlever
+          - io.github.pwr_solaar.solaar
+          - com.github.tchx84.Flatseal
+          - com.ranfdev.DistroShelf
+          - io.github.flattool.Ignition
+          - com.mattjakeman.ExtensionManager
+          - com.vysp3r.ProtonPlus
+          - com.usebottles.bottles
+          - me.timschneeberger.jdsp4linux
+          - io.github.ilya_zlobintsev.LACT
+          - org.deskflow.deskflow
+          - dev.deedles.Trayscale
