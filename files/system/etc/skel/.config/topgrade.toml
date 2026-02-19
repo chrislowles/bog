@@ -1,84 +1,39 @@
-# topgrade configuration for bog
-# Reference: https://github.com/topgrade-rs/topgrade/blob/main/config.example.toml
-#
-# This image is Fedora Atomic (bootc). System packages are managed by the
-# image build pipeline — NOT by dnf at runtime. Do not enable dnf/rpm-ostree
-# steps here; use `bootc upgrade` for OS-level updates instead.
+### GLOBAL
+assume_yes = true # Don't ask for confirmations before running each step
+cleanup = true # Clean up package manager caches and temp files after the run
+no_retry = true # Don't ask to retry failed steps
 
-[misc]
-# Don't ask for confirmation before running each step
-assume_yes = true
+# Run only the steps listed here instead of everything (alternative to disable):
+only = [
+    "system",
+    "flatpak",
+    "distrobox",
+    "gnome_shell_extensions",
+    "mandb"
+]
 
-# Cleanup package manager caches after upgrading
-cleanup = true
-
-# Run `sudo` commands without a password prompt where possible
-# (relies on the user having appropriate sudoers config)
-# sudo_command = "sudo"
-
-# Notify when a step fails rather than aborting the whole run
-# error_on_failure = false
-
-### STEPS
+# Ignore failures for specific steps rather than aborting the whole run:
+ignore_failures = [
+    "gnome_shell_extensions"
+]
 
 [linux]
-# System packages are managed by the bootc image build — disable dnf entirely
-# so topgrade doesn't try to touch the read-only /usr or trigger rpm-ostree.
-enable_dnf = false
-enable_rpm_ostree = false
-
-# Firmware updates via fwupd — safe to run on atomic systems
-enable_fwupdmgr = true
+bootc = true
+rpm_ostree = false
+redhat_distro_sync = false
 
 [flatpak]
-# Update all system and user flatpaks
 use_system = true
 use_user = true
+# use_sudo = true
 
+# Check for and apply updates to installed GNOME Shell extensions via gdbus.
 [gnome]
-# Update GNOME Shell extensions via the Extensions Manager
 upgrade_extensions = true
 
-[distrobox]
-# Pull updated container images and run their internal package managers.
-# Each named container below will be upgraded; remove any you don't use.
-# Leave the list empty ([]) to upgrade all detected containers.
-containers = []
-# Example to target specific containers:
-# containers = ["arch"]
+# Commands to run after everything else has finished.
+[post_commands]
+"Remind me" = "notify-send 'topgrade' 'All done! You should reboot now.'"
 
-### Disabled / not applicable
-# The sections below are explicitly disabled because they either aren't
-# installed system-wide on bog or are managed through other means.
-
-[brew]
-enable = false
-
-[pip]
-enable_pip3 = false
-
-[node]
-enable = false
-
-[gem]
-enable = false
-
-[cargo]
-enable = false
-
-[composer]
-enable = false
-
-[vim]
-enable = false
-
-[emacs]
-enable = false
-
-# ─── Customisation ────────────────────────────────────────────────────────────
-# Uncomment and adjust the block below if you want to run extra commands
-# as part of a topgrade run (e.g. pulling dotfiles, syncing configs).
-
-# [[commands]]
-# name = "Sync dotfiles"
-# command = "git -C ~/.dotfiles pull --rebase"
+[mandb]
+enable = true
