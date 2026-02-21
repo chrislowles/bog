@@ -61,7 +61,8 @@ modules:
         - git                               # Version control system
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
-        - topgrade                          # Universal system updater
+        - topgrade                          # Universal system updater (COPR)
+        - fastfetch                         # System information readout (neofetch-like)
 
         # Bazaar runtime dependencies
         - gtk4
@@ -130,6 +131,7 @@ modules:
       - 8 # Places Menu
       - 1319 # GSConnect
       - 517 # Caffeine
-      - 5263 # GTK desktop icons ng (ding)
-      - 600 # Launch new instance
-      - 36 # Lock keys
+      - 5263 # GTK Desktop Icons NG (DING)
+      - 600 # Launch New Instance
+      - 36 # Lock Keys
+      - 5904 # Volume Scroller
