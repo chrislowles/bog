@@ -2,7 +2,7 @@
 Name=System Upgrade
 Comment=Update and upgrade everything on the system.
 Exec=kgx -- bash -c "topgrade"
-Icon=up-arrow-in-a-star-symbolic
+Icon=view-refresh-symbolic
 Terminal=false
 Type=Application
 Categories=System;
