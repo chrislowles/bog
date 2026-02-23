@@ -64,6 +64,12 @@ modules:
         - topgrade                          # Universal system updater (COPR)
         - fastfetch                         # System information readout (neofetch-like)
 
+        # Podman stuff
+        - podman                            # Should already be present on ublue base
+        - podman-compose                    # Fallback CLI if ever needed
+        - slirp4netns                       # Rootless networking
+        - fuse-overlayfs                    # Rootless storage driver
+
         # Bazaar runtime dependencies
         - gtk4
         - libadwaita
@@ -95,6 +101,7 @@ modules:
   - type: script
     scripts:
       - build-bazaar.sh
+      - setup-podman.sh
       - dconf-update.sh
       #- preinstall-distrobox.sh
 
@@ -114,6 +121,9 @@ modules:
           - com.vysp3r.ProtonPlus
           - com.usebottles.bottles
           - me.timschneeberger.jdsp4linux
+
+          # Pre-installed selection from other curated groups
+          - org.qbittorrent.qBittorrent
 
           # Pre-installed selection from GNOME Bazaar curation group
           - org.gnome.Contacts
