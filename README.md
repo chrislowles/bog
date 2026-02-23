@@ -16,6 +16,16 @@ Reboot to complete the switch:
 systemctl reboot
 ```
 
+## First-run Recommendation: Pull/Enable Jackett
+Jackett comes pre-installed with bog, for use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting.
+```bash
+systemctl --user enable --now jackett
+```
+
+--
+
+### Regarding Bluebuild:
+
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
 ## ISO
