@@ -134,6 +134,7 @@ rows:
           - org.blender.Blender
           - de.leopoldluley.Clapgrep
           - org.ardour.Ardour
+          - io.github.pol_rivero.github-desktop-plus
 
   - sections:
     - expand-horizontally: true
@@ -150,8 +151,9 @@ rows:
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
-          - com.discordapp.Discord
+          - im.riot.Riot
           - org.signal.Signal
+          - com.discordapp.Discord
           - com.github.IsmaelMartinez.teams_for_linux
           - com.teamspeak.TeamSpeak
           - org.gajim.Gajim
@@ -221,6 +223,7 @@ rows:
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
+          - de.haeckerfelix.Shortwave
           - app.ytmdesktop.ytmdesktop
           - com.spotify.Client
           - org.videolan.VLC
@@ -229,6 +232,8 @@ rows:
           - dev.aunetx.deezer
           - org.qbittorrent.qBittorrent
           - org.nicotine_plus.Nicotine
+          - io.freetubeapp.FreeTube
+          - dev.fredol.open-tv
 
   - sections:
     - expand-horizontally: true
@@ -256,5 +261,6 @@ rows:
           - com.usebottles.bottles
           - me.timschneeberger.jdsp4linux
           - io.github.ilya_zlobintsev.LACT
+          - io.gitlab.theevilskeleton.Upscaler
           - org.deskflow.deskflow
           - dev.deedles.Trayscale
