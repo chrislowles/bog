@@ -58,7 +58,7 @@ rows:
           en: "GNOME"
         subtitle:
           en: "From the creator of the desktop you're using."
-        banner-height: 180
+        banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
@@ -90,7 +90,7 @@ rows:
           en: "Browsers"
         subtitle:
           en: "Get your flavor of Gecko or Chromium-based browsers."
-        banner-height: 220
+        banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
@@ -145,7 +145,7 @@ rows:
           en: "Conversating"
         subtitle:
           en: "Pray your friends list doesn't get age-gated."
-        banner-height: 180
+        banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
@@ -170,7 +170,7 @@ rows:
           en: "Gaming (minus Steam)"
         subtitle:
           en: "Get ya game on (minus Steam, that's already sorted)"
-        banner-height: 220
+        banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
@@ -216,7 +216,7 @@ rows:
           en: "Media"
         subtitle:
           en: "Local or streaming."
-        banner-height: 180
+        banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
@@ -240,7 +240,7 @@ rows:
           en: "Oddsnends"
         subtitle:
           en: "Lightweight utilities for all kinds of things."
-        banner-height: 220
+        banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
