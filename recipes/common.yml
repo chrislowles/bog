@@ -103,7 +103,6 @@ modules:
       - build-bazaar.sh
       - setup-podman.sh
       - dconf-update.sh
-      #- preinstall-distrobox.sh
 
   - type: default-flatpaks
     configurations:
