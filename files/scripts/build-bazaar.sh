@@ -3,7 +3,6 @@ set -oue pipefail
 
 echo "Building Bazaar from source with custom configurations..."
 
-# Install build dependencies
 echo "Installing build dependencies for source-built Bazaar..."
 dnf install -y \
     git \
