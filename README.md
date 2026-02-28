@@ -1,12 +1,10 @@
 # bog (ublue/fedora atomic image)
 A standard minimal GNOME/GDM system that uses flatpak/distrobox for daily operations (also root-installed Steam)
 
-I plan on using this to build an NVIDIA image soon so stay tuned :)
-
 ## Installation
 
 ### Method 1: `sudo bootc switch`
-One such method of switching to `bog` is by typing the below command into the terminal of your existing Fedora Atomic system:
+One such method of switching to `bog` is by typing the below command into the terminal of an existing Fedora Atomic system:
 ```bash
 sudo bootc switch ghcr.io/chrislowles/bog:latest
 ```
@@ -17,7 +15,7 @@ systemctl reboot
 ```
 
 ## First-run Recommendation: Pull/Enable Jackett
-Jackett comes pre-installed with bog, for use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting.
+Jackett comes pre-installed with bog, for use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting as opposed to seperate search plugins for different services.
 ```bash
 systemctl --user enable --now jackett
 ```
