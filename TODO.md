@@ -1,3 +1,5 @@
 * Pre-configuration of Celluloid or MPV if it's decided upon to use that instead, refer to the config written in my `debian` repo
 * Some preconfigured means to set a window as always on top (probably with the same dconf scripting)
 * Secureblue ships a COPR repo with Bazaar, we already sorted out building it but if we can just install it with deps sorted and configure it that'll make things easy. It does mean relying on another distro to maintain a build so maybe just stick to what we have
+* Any documented way to get Jackett, the search engine manager plugin for the preinstalled flatpak qBittorrent configured at installation/rebasing?
+* Any documented way to have pre-installed Arch Linux Distrobox with yay AUR helper set up at first login? I have a oneliner for execution: distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git" -- bash -c "git clone https://aur.archlinux.org/yay-bin.git;cd yay-bin;makepkg -si"
