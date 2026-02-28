@@ -8,6 +8,9 @@ yaml-blocklist-paths:
 curated-config-paths:
   - /etc/bazaar/curated.yaml
 
+override-eol-markings:
+  - com.obsproject.Studio
+
 hooks:
   - id: welcome
     when: before-transaction
