@@ -31,7 +31,10 @@ dnf install -y \
 BAZAAR_VERSION="v0.7.8"
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
 cd /tmp
-git clone --depth 1 --branch ${BAZAAR_VERSION} https://github.com/kolunmi/bazaar.git
+git clone \
+    --depth 1 \
+    --branch ${BAZAAR_VERSION} \
+    https://github.com/kolunmi/bazaar.git
 cd bazaar
 
 echo "Building Bazaar with custom configuration..."
