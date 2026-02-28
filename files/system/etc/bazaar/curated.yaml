@@ -262,5 +262,6 @@ rows:
           - me.timschneeberger.jdsp4linux
           - io.github.ilya_zlobintsev.LACT
           - io.gitlab.theevilskeleton.Upscaler
+          - net.mkiol.SpeechNote
           - org.deskflow.deskflow
           - dev.deedles.Trayscale
