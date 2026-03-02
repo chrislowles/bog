@@ -15,7 +15,7 @@ systemctl reboot
 ```
 
 ## First-run Recommendation: Pull/Enable Jackett
-Jackett comes pre-installed with bog, for use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting as opposed to seperate search plugins for different services.
+bog comes pre-installed with Jackett, for use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting as opposed to seperate search plugins for different services.
 ```bash
 systemctl --user enable --now jackett
 ```
