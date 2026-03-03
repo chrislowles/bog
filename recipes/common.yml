@@ -48,8 +48,8 @@ modules:
         - gnome-font-viewer                 # Font viewer/installer
         - nautilus                          # File manager
         - gnome-text-editor                 # Text editor
-        - gnome-backgrounds                 # GNOME default backgrounds
-        - gnome-backgrounds-extra           # (Extra) backgrounds for GNOME
+        #- gnome-backgrounds                 # GNOME default backgrounds
+        #- gnome-backgrounds-extra           # (Extra) backgrounds for GNOME
 
         # Networking
         - NetworkManager-wifi               # Ensure WiFi support
