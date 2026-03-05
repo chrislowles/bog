@@ -3,8 +3,33 @@ set -oue pipefail
 
 echo "Building Bazaar from source with custom configurations..."
 
-BAZAAR_VERSION="v0.7.10"
+echo "Installing build dependencies for source-built Bazaar..."
+dnf install -y \
+    git \
+    meson \
+    ninja-build \
+    gcc \
+    pkgconfig \
+    gtk4-devel \
+    libadwaita-devel \
+    libdex-devel \
+    flatpak-devel \
+    appstream-devel \
+    json-glib-devel \
+    libsoup3-devel \
+    libxmlb-devel \
+    libyaml-devel \
+    blueprint-compiler \
+    desktop-file-utils \
+    glycin-devel \
+    glycin-gtk4-devel \
+    md4c-devel \
+    webkitgtk6.0-devel \
+    libsecret-devel \
+    openssl-devel \
+    libproxy-devel
 
+BAZAAR_VERSION="v0.7.10"
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
 cd /tmp
 git clone \
@@ -12,19 +37,6 @@ git clone \
     --branch ${BAZAAR_VERSION} \
     https://github.com/kolunmi/bazaar.git
 cd bazaar
-
-echo "Snapshotting pre-existing packages..."
-rpm -qa --queryformat '%{NAME}\n' | sort > /tmp/before-build-deps.txt
-
-echo "Installing build dependencies from spec..."
-SPEC_FILE=$(find /tmp/bazaar -name "*.spec" -print -quit)
-if [ -n "$SPEC_FILE" ]; then
-    echo "Found spec file at: $SPEC_FILE"
-    dnf builddep -y "$SPEC_FILE"
-else
-    echo "ERROR: No spec file found in repository, cannot resolve build dependencies."
-    exit 1
-fi
 
 echo "Building Bazaar with custom configuration..."
 meson setup build \
@@ -64,14 +76,14 @@ fi
 echo "Compiling gschema..."
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 
-echo "Removing build-only dependencies..."
-rpm -qa --queryformat '%{NAME}\n' | sort > /tmp/after-build-deps.txt
-ADDED=$(comm -13 /tmp/before-build-deps.txt /tmp/after-build-deps.txt | tr '\n' ' ')
-if [ -n "$ADDED" ]; then
-    dnf remove -y $ADDED
-else
-    echo "No new packages to remove."
-fi
+echo "Cleaning up build-only dependencies (keeping runtime libraries)..."
+dnf remove -y \
+    git \
+    meson \
+    ninja-build \
+    gcc \
+    pkgconfig \
+    '*-devel'
 
 echo "Explicitly verifying critical runtime libraries are still present..."
 if ldconfig -p | grep -q "libglycin-gtk4-2.so.0"; then
@@ -83,6 +95,7 @@ fi
 dnf clean all
 
 echo ""
+
 echo "============================================"
 echo "Bazaar custom build complete!"
 echo "============================================"
