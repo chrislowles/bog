@@ -28,7 +28,7 @@ dnf install -y \
     libsecret-devel \
     openssl-devel
 
-BAZAAR_VERSION="v0.7.8"
+BAZAAR_VERSION="v0.7.10"
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
 cd /tmp
 git clone \
