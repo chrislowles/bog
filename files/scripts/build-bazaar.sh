@@ -17,7 +17,14 @@ echo "Snapshotting pre-existing packages..."
 rpm -qa --queryformat '%{NAME}\n' | sort > /tmp/before-build-deps.txt
 
 echo "Installing build dependencies from spec..."
-dnf builddep -y /tmp/bazaar/bazaar.spec
+SPEC_FILE=$(find /tmp/bazaar -name "*.spec" -print -quit)
+if [ -n "$SPEC_FILE" ]; then
+    echo "Found spec file at: $SPEC_FILE"
+    dnf builddep -y "$SPEC_FILE"
+else
+    echo "ERROR: No spec file found in repository, cannot resolve build dependencies."
+    exit 1
+fi
 
 echo "Building Bazaar with custom configuration..."
 meson setup build \
