@@ -26,7 +26,8 @@ dnf install -y \
     md4c-devel \
     webkitgtk6.0-devel \
     libsecret-devel \
-    openssl-devel
+    openssl-devel \
+    libproxy-devel
 
 BAZAAR_VERSION="v0.7.10"
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
