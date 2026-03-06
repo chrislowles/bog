@@ -224,16 +224,17 @@ rows:
         banner-text-label-xalign: 0.0
         appids:
           - de.haeckerfelix.Shortwave
-          - app.ytmdesktop.ytmdesktop
           - com.spotify.Client
+          - app.ytmdesktop.ytmdesktop
           - org.videolan.VLC
           - dev.dergs.Tonearm
           - io.m51.Gelly
           - dev.aunetx.deezer
-          - org.qbittorrent.qBittorrent
+          - de.haeckerfelix.Fragments
           - org.nicotine_plus.Nicotine
           - io.freetubeapp.FreeTube
           - dev.fredol.open-tv
+          - org.qbittorrent.qBittorrent
 
   - sections:
     - expand-horizontally: true
