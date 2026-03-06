@@ -1,3 +1,5 @@
+# Nabbed some of the code from Bazzite's Bazaar source build configuration, completely rewritten for my purposes though
+# Gonna need to actually learn styles for this lol
 css: |
   .bog-section banner {
      margin-top: 30px;
