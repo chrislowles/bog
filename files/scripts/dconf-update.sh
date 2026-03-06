@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 set -oue pipefail
-# no need to update this, this is for when i'm presetting dconf keys
+
+# No need to update this, this is for when I'm presetting dconf keys.
 dconf update
