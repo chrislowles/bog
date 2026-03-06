@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=System Upgrade
-Comment=Update and upgrade everything on the system.
-Exec=kgx -- bash -c "topgrade"
+Comment=Upgrade the base.
+Exec=kgx -- bash -c "sudo bootc upgrade"
 Icon=view-refresh-symbolic
 Terminal=false
 Type=Application
 Categories=System;
-Keywords=update;upgrade;topgrade;system;
+Keywords=update;upgrade;system;
