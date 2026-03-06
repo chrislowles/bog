@@ -20,10 +20,6 @@ modules:
       - fix-libsoup3-multilib.sh
 
   - type: dnf
-    repos:
-      copr:
-        enable:
-          - lilay/topgrade # Officially recommended COPR repo for Topgrade
     install:
       packages:
 
@@ -63,7 +59,6 @@ modules:
         - git                               # Version control system
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
-        - topgrade                          # Universal system updater (COPR)
         - fastfetch                         # System information readout (neofetch-like)
 
         # Podman stuff
@@ -93,7 +88,6 @@ modules:
       packages:
         - toolbox
         - htop
-        - nvtop
 
   - type: systemd
     system:
