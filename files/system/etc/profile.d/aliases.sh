@@ -1,7 +1,7 @@
 alias pls="sudo"
 
 distrobox_arch_create() {
-    distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git" -- bash -c "distrobox_arch_enter;distrobox_arch_yay;echo 'You can now install AUR packages!"
+    distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git"
 }
 
 distrobox_arch_enter() {
@@ -45,6 +45,6 @@ test_aliases() {
 }
 
 get_the_new_shit() {
-    sudo bootc upgrade
+    pls bootc upgrade
     flatpak update
 }
