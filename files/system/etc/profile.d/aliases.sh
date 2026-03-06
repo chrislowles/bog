@@ -9,7 +9,9 @@ distrobox_arch_enter() {
 }
 
 distrobox_arch_yay() {
-    git clone https://aur.archlinux.org/yay-bin.git -- bash -c "cd yay-bin;makepkg -si"
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
+    makepkg -si
 }
 
 getmp4() {
@@ -36,4 +38,13 @@ set_nextdns() {
     nmcli con up "$con"
 
     echo "DNS updated successfully on: $con"
+}
+
+test_aliases() {
+    echo "it worky ;))"
+}
+
+get_the_new_shit() {
+    sudo bootc upgrade
+    flatpak update
 }
