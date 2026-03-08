@@ -68,7 +68,8 @@ modules:
         - fuse-overlayfs                    # Rootless storage driver
 
         # appimages support improvement
-        - fuse2 # needed by most AppImages
+        #- fuse # FUSE 3 (already likely present in base)
+        #- fuse2 # needed by most AppImages
         - vulkan-loader
         - vulkan-tools
 
