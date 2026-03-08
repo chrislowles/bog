@@ -137,6 +137,7 @@ rows:
           - de.leopoldluley.Clapgrep
           - org.ardour.Ardour
           - io.github.pol_rivero.github-desktop-plus
+          - org.freecad.FreeCAD
 
   - sections:
     - expand-horizontally: true
@@ -163,6 +164,9 @@ rows:
           - com.teamspeak.TeamSpeak
           - im.dino.Dino
           - com.slack.Slack
+          - us.zoom.Zoom
+          - dev.geopjr.Tuba
+          - dev.vencord.Vesktop
 
   - sections:
     - expand-horizontally: true
@@ -179,6 +183,7 @@ rows:
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
+          - com.vysp3r.ProtonPlus
           - com.heroicgameslauncher.hgl
           - io.itch.itch
           - io.github.Faugus.faugus-launcher
@@ -194,6 +199,8 @@ rows:
           - io.github.radiolamp.mangojuice
           - org.vinegarhq.Sober
           - io.mrarm.mcpelauncher
+          - com.github.mtkennerly.ludusavi
+          - org.libretro.RetroArch
           - info.cemu.Cemu
           - org.DolphinEmu.dolphin-emu
           - net.kuribo64.melonDS
@@ -234,9 +241,11 @@ rows:
           - dev.aunetx.deezer
           - de.haeckerfelix.Fragments
           - org.nicotine_plus.Nicotine
+          - org.qbittorrent.qBittorrent
+          - org.nickvision.tubeconverter
           - io.freetubeapp.FreeTube
           - dev.fredol.open-tv
-          - org.qbittorrent.qBittorrent
+          - org.musicbrainz.Picard
 
   - sections:
     - expand-horizontally: true
@@ -260,11 +269,21 @@ rows:
           - com.ranfdev.DistroShelf
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
-          - com.vysp3r.ProtonPlus
           - com.usebottles.bottles
           - me.timschneeberger.jdsp4linux
+          - com.github.wwmm.easyeffects
           - io.github.ilya_zlobintsev.LACT
+          - com.github.qarmin.czkawka
           - io.gitlab.theevilskeleton.Upscaler
+          - com.github.huluti.Curtail
+          - io.github.wartybix.Constrict
+          - io.github.mightycreak.Diffuse
+          - me.kozec.syncthingtk
           - net.mkiol.SpeechNote
           - org.deskflow.deskflow
           - dev.deedles.Trayscale
+          - re.sonny.Playhouse
+          - me.iepure.devtoolbox
+          - com.github.tenderowl.frog
+          - com.feaneron.Boatswain
+          - com.yacreader.YACReader
