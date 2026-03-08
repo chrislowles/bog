@@ -153,14 +153,14 @@ rows:
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
-          - im.riot.Riot
-          - org.signal.Signal
           - com.discordapp.Discord
           - com.github.IsmaelMartinez.teams_for_linux
-          - com.teamspeak.TeamSpeak
+          - org.signal.Signal
+          - in.cinny.Cinny
           - org.gajim.Gajim
           - info.mumble.Mumble
-          - in.cinny.Cinny
+          - im.riot.Riot
+          - com.teamspeak.TeamSpeak
           - im.dino.Dino
           - com.slack.Slack
 
