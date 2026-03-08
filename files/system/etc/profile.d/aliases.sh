@@ -1,5 +1,7 @@
+# custom sudo alias, "pls getmp4 https://youtu.be/dQw4w9WgXcQ" for example
 alias pls="sudo"
 
+# preset arch linux distrobox cmd
 distrobox_arch_create() {
     distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git"
 }
