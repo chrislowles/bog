@@ -140,3 +140,17 @@ modules:
       - 600 # Launch New Instance
       - 36 # Lock Keys
       - 5904 # Volume Scroller
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - JetBrainsMono
+        - NerdFontsSymbolsOnly
+      google-fonts:
+        - Open Sans
+        - Inter
+      #url-fonts:
+      #  - name: CustomFont
+      #    url: https://example.com/my-font.otf
+      #  - name: CompanyFonts
+      #    url: https://company.com/fonts.tar.gz
