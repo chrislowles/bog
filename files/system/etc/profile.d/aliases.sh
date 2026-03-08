@@ -36,13 +36,10 @@ set_nextdns() {
     local connection
     connection="$(nmcli -t -f NAME connection show --active | head -1)"
 
-    read -rp "Enter your two IPv4 addresses provided by NextDNS (space-separated): " ipv4_1 ipv4_2
-    read -rp "Enter your two IPv6 addresses provided by NextDNS (space-separated): " ipv6_1 ipv6_2
+    read -rp "Enter your two NextDNS IPv6 addresses (space-separated): " ipv6_1 ipv6_2
 
     nmcli connection modify "$connection" \
-        ipv4.dns "$ipv4_1 $ipv4_2" \
         ipv6.dns "$ipv6_1 $ipv6_2" \
-        ipv4.ignore-auto-dns yes \
         ipv6.ignore-auto-dns yes \
         && nmcli connection up "$connection"
 }
