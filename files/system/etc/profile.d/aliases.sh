@@ -1,6 +1,14 @@
 # custom sudo alias, "pls getmp4 https://youtu.be/dQw4w9WgXcQ" for example
 alias pls="sudo"
 
+restart() {
+    systemctl reboot
+}
+
+turnoff() {
+    shutdown -n now
+}
+
 # preset arch linux distrobox cmd
 distrobox_arch_create() {
     distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git"
@@ -25,25 +33,18 @@ getmp3() {
 }
 
 set_nextdns() {
-    read -rp "Enter the 2 NextDNS-provided IPv4 addresses (space-separated): " ipv4_1 ipv4_2
-    read -rp "Enter the 2 NextDNS-provided IPv6 addresses (space-separated): " ipv6_1 ipv6_2
+    local connection
+    connection="$(nmcli -t -f NAME connection show --active | head -1)"
 
-    local con
-    con="$(nmcli -t -f NAME con show --active | head -1)"
+    read -rp "Enter your two IPv4 addresses provided by NextDNS (space-separated): " ipv4_1 ipv4_2
+    read -rp "Enter your two IPv6 addresses provided by NextDNS (space-separated): " ipv6_1 ipv6_2
 
-    nmcli con mod "$con" \
+    nmcli connection modify "$connection" \
         ipv4.dns "$ipv4_1 $ipv4_2" \
-        ipv4.ignore-auto-dns yes \
         ipv6.dns "$ipv6_1 $ipv6_2" \
-        ipv6.ignore-auto-dns yes
-    
-    nmcli con up "$con"
-
-    echo "DNS updated successfully on: $con"
-}
-
-test_aliases() {
-    echo "it worky ;))"
+        ipv4.ignore-auto-dns yes \
+        ipv6.ignore-auto-dns yes \
+        && nmcli connection up "$connection"
 }
 
 get_the_new_shit() {
