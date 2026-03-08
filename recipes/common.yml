@@ -67,9 +67,11 @@ modules:
         - slirp4netns                       # Rootless networking
         - fuse-overlayfs                    # Rootless storage driver
 
-        # fuse (appimages support)
+        # appimages support improvement
         - fuse # FUSE 3 (already likely present in base)
         - fuse2 # needed by most AppImages
+        - vulkan-loader
+        - vulkan-tools
 
         # Bazaar runtime dependencies
         - gtk4
