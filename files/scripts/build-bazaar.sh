@@ -30,7 +30,7 @@ dnf install -y \
     openssl-devel \
     libproxy-devel
 
-BAZAAR_VERSION="v0.7.10"
+BAZAAR_VERSION="v0.7.12"
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
 cd /tmp
 git clone \
