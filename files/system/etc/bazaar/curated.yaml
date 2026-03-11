@@ -269,6 +269,7 @@ rows:
           - com.ranfdev.DistroShelf
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
+          - io.github.linx_systems.ClamUI
           - com.usebottles.bottles
           - me.timschneeberger.jdsp4linux
           - com.github.wwmm.easyeffects
