@@ -236,6 +236,7 @@ rows:
           - com.spotify.Client
           - app.ytmdesktop.ytmdesktop
           - org.videolan.VLC
+          - io.mpv.Mpv
           - dev.dergs.Tonearm
           - io.m51.Gelly
           - dev.aunetx.deezer
