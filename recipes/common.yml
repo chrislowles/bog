@@ -15,9 +15,9 @@ modules:
   #    ID_LIKE: fedora
   #    VERSION_ID: 43
 
-  - type: script
-    scripts:
-      - fix-libsoup3-multilib.sh
+  #- type: script
+  #  scripts:
+  #    - fix-libsoup3-multilib.sh
 
   - type: dnf
     install:
