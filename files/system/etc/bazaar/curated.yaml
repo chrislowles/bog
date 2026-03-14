@@ -129,14 +129,15 @@ rows:
           - org.libreoffice.LibreOffice
           - org.kde.krita
           - org.kde.kdenlive
-          - org.gimp.GIMP
-          - org.inkscape.Inkscape
           - com.obsproject.Studio
           - org.audacityteam.Audacity
-          - org.blender.Blender
-          - de.leopoldluley.Clapgrep
-          - org.ardour.Ardour
+          - org.gimp.GIMP
           - io.github.pol_rivero.github-desktop-plus
+          - com.jeffser.Alpaca
+          - de.leopoldluley.Clapgrep
+          - org.blender.Blender
+          - org.inkscape.Inkscape
+          - org.ardour.Ardour
           - org.freecad.FreeCAD
 
   - sections:
@@ -243,6 +244,7 @@ rows:
           - de.haeckerfelix.Fragments
           - org.nicotine_plus.Nicotine
           - org.qbittorrent.qBittorrent
+          - com.mastermindzh.tidal-hifi
           - org.nickvision.tubeconverter
           - io.freetubeapp.FreeTube
           - dev.fredol.open-tv
