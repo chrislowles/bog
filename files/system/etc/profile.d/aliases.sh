@@ -9,6 +9,11 @@ turnoff() {
     shutdown -n now
 }
 
+gethenewshit() {
+    pls bootc upgrade
+    flatpak update
+}
+
 # preset arch linux distrobox cmd
 distrobox_arch_create() {
     distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git"
@@ -43,7 +48,37 @@ set_nextdns() {
         && nmcli connection up "$connection"
 }
 
-gethenewshit() {
-    pls bootc upgrade
-    flatpak update
+# for when orphaned pkg removal isn't enough (ytmd client cough cough)
+flatpak_clean_orphans() {
+    local orphans
+    orphans=$(comm -23 \
+        <(ls ~/.var/app/ | sort) \
+        <(flatpak list --app --columns=application | sort))
+
+    if [[ -z "$orphans" ]]; then
+        echo "No orphaned app data found."
+        return 0
+    fi
+
+    echo "Orphaned Flatpak app data directories:"
+    local to_delete=()
+
+    while IFS= read -r app; do
+        read -rp "Delete ~/.var/app/$app ? [y/N] " answer
+        if [[ "$answer" =~ ^[Yy]$ ]]; then
+            to_delete+=("$app")
+        fi
+    done <<< "$orphans"
+
+    if [[ ${#to_delete[@]} -eq 0 ]]; then
+        echo "Nothing deleted."
+        return 0
+    fi
+
+    echo "Deleting:"
+    for app in "${to_delete[@]}"; do
+        echo "  ~/.var/app/$app"
+        pls rm -rf "~/.var/app/${app}"
+    done
+    echo "Done."
 }
