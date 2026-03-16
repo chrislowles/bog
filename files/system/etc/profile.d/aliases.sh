@@ -1,5 +1,6 @@
 # custom sudo alias, "pls getmp4 https://youtu.be/dQw4w9WgXcQ" for example
 alias pls="sudo"
+alias ls="ls -la"
 
 restart() {
     systemctl reboot
