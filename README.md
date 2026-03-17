@@ -1,5 +1,5 @@
 # bog (ublue/fedora atomic image)
-A standard minimal GNOME/GDM system that uses flatpak/distrobox for daily operations (also root-installed Steam)
+A barebones (some may say bog standard) immutable Linux distro based on Universal Blue technologies using GNOME/GDM and flatpak/distrobox as its means for software management (with root-installed Steam)
 
 ## Installation
 
@@ -14,10 +14,18 @@ Reboot to complete the switch:
 systemctl reboot
 ```
 
-## First-run Recommendation: Pull/Enable Jackett
-bog comes pre-installed with Jackett, for use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting as opposed to seperate search plugins for different services.
+## Optional Features
+
+### Jackett
+For use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting as opposed to seperate search plugins for different services.
 ```bash
 systemctl --user enable --now jackett
+```
+
+### SearXNG (Local Instance)
+This software is often used as a publically accessible alternative to commercial search engines like Google or Bing. You can enable, configure and local use of SearXNG in your browser of choice by running this command, [INCOMPLETE]. Defer to your browser of choices documenation to add and set search engines as your default. The resulting URL pattern needed to access it will be `https://localhost:8888/search?q=%s`
+```bash
+systemctl --user enable --now searxng
 ```
 
 --
