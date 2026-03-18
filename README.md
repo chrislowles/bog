@@ -22,10 +22,17 @@ For use if/when you want to install a Bittorrent client with Jackett plugin supp
 systemctl --user enable --now jackett
 ```
 
-### SearXNG (Local Instance)
-This software is often used as a publically accessible alternative to commercial search engines like Google or Bing. You can enable, configure and local use of SearXNG in your browser of choice by running this command, [INCOMPLETE]. Defer to your browser of choices documenation to add and set search engines as your default. The resulting URL pattern needed to access it will be `https://localhost:8888/search?q=%s`
+### OmniSearch (Local Instance)
+A lightweight self-hosted metasearch engine. Enable it with:
 ```bash
-systemctl --user enable --now searxng
+sudo systemctl enable --now omnisearch
+```
+
+To add it as a search engine in Firefox, use the URL pattern `http://localhost:8087/search?q=%s`. Refer to your browser's documentation for adding and setting custom search engines as default.
+
+To adjust configuration (bind address, port, proxy, cache settings):
+```bash
+sudo nano /etc/omnisearch/config.ini
 ```
 
 --
@@ -38,7 +45,7 @@ The `latest` tag will automatically point to the latest build. That build will s
 If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
 
 ## Verification
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigcos/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
 ```bash
 cosign verify --key cosign.pub ghcr.io/chrislowles/bog
 ```
