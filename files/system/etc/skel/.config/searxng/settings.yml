@@ -18,7 +18,7 @@ general:
   open_metrics: ''
 
 brand:
-  new_issue_url: https://github.com/searxng/searxng/issues/new
+  new_issue_url: https://github.com/chrislowles/bog/issues/new
   docs_url: https://docs.searxng.org/
   public_instances: https://searx.space
   wiki_url: https://github.com/searxng/searxng/wiki
@@ -91,8 +91,7 @@ server:
   # Is overwritten by ${SEARXNG_PUBLIC_INSTANCE}
   public_instance: false
 
-  # If your instance owns a /etc/searxng/settings.yml file, then set the following
-  # values there.
+  # If your instance owns a /etc/searxng/settings.yml file, then set the following values there.
 
   secret_key: "ultrasecretkey"  # Is overwritten by ${SEARXNG_SECRET}
   # Proxy image results through SearXNG. Is overwritten by ${SEARXNG_IMAGE_PROXY}
@@ -129,12 +128,12 @@ ui:
   # center the results ?
   center_alignment: false
   # URL prefix of the internet archive, don't forget trailing slash (if needed).
-  # cache_url: "https://webcache.googleusercontent.com/search?q=cache:"
+  cache_url: "https://web.archive.org/web/"
   # Default interface locale - leave blank to detect from browser information or
   # use codes from the 'locales' config section
   default_locale: ""
   # Open result links in a new tab by default
-  # results_on_new_tab: false
+  results_on_new_tab: true
   theme_args:
     # style of simple theme: auto, light, dark, black
     simple_style: auto
@@ -144,7 +143,7 @@ ui:
   # Hotkeys: default or vim
   hotkeys: default
   # URL formatting: pretty, full or host
-  url_formatting: pretty
+  url_formatting: full
 
 # Lock arbitrary settings on the preferences page.
 #
