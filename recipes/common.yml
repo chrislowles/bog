@@ -68,7 +68,7 @@ modules:
         - slirp4netns                       # Rootless networking
         - fuse-overlayfs                    # Rootless storage driver
 
-        # appimages support improvement
+        # AppImages support improvement
         #- fuse # FUSE 3 (already likely present in base)
         #- fuse2 # needed by most AppImages
         - vulkan-loader
@@ -91,6 +91,10 @@ modules:
         - md4c
         - glycin-gtk4-libs
         - libgweather4
+
+        # OmniSearch runtime dependencies
+        - libxml2
+        - libcurl
     remove:
       packages:
         - toolbox
@@ -104,6 +108,7 @@ modules:
   - type: script
     scripts:
       - build-bazaar.sh
+      - build-omnisearch.sh
       - setup-podman.sh
       - dconf-update.sh
 
