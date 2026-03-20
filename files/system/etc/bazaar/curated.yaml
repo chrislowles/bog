@@ -29,7 +29,7 @@ css: |
   .gnome-section {
     background-color: #3584E4;
   }
-  .browser-section {
+  .browsers-section {
     background-color: #33D17A;
   }
   .prod-prod-section {
@@ -59,7 +59,7 @@ rows:
         title:
           en: "GNOME"
         subtitle:
-          en: "From the creator of the desktop you're using."
+          en: "From the creators of the desktop you're using."
         banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
@@ -86,7 +86,7 @@ rows:
     - expand-horizontally: true
       classes:
         - bog-section
-        - browser-section
+        - browsers-section
       category:
         title:
           en: "Browsers"
@@ -114,10 +114,10 @@ rows:
     - expand-horizontally: true
       classes:
         - bog-section
-        - prod-prod-section
+        - prod-section
       category:
         title:
-          en: "Productivity & Production"
+          en: "Productivity"
         subtitle:
           en: "Common programs assosiated with getting stuff done."
         banner-height: 240
@@ -244,8 +244,8 @@ rows:
           - de.haeckerfelix.Fragments
           - org.nicotine_plus.Nicotine
           - org.qbittorrent.qBittorrent
-          - com.mastermindzh.tidal-hifi
           - org.nickvision.tubeconverter
+          - com.mastermindzh.tidal-hifi
           - io.freetubeapp.FreeTube
           - dev.fredol.open-tv
           - org.musicbrainz.Picard
@@ -259,7 +259,7 @@ rows:
         title:
           en: "Oddsnends"
         subtitle:
-          en: "Lightweight utilities for all kinds of things."
+          en: "Utilities for all kinds of things."
         banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
