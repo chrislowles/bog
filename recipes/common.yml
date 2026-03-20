@@ -91,10 +91,6 @@ modules:
         - md4c
         - glycin-gtk4-libs
         - libgweather4
-
-        # OmniSearch runtime dependencies
-        - libxml2
-        - libcurl
     remove:
       packages:
         - toolbox
@@ -108,7 +104,6 @@ modules:
   - type: script
     scripts:
       - build-bazaar.sh
-      - build-omnisearch.sh
       - setup-podman.sh
       - dconf-update.sh
 
