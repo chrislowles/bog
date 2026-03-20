@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # Enable systemd linger for the current user on first login
 # Required for rootless podman user services to start without active session
 
