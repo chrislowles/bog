@@ -233,11 +233,10 @@ rows:
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
+          - io.mpv.Mpv
           - de.haeckerfelix.Shortwave
           - com.spotify.Client
           - app.ytmdesktop.ytmdesktop
-          - org.videolan.VLC
-          - io.mpv.Mpv
           - dev.dergs.Tonearm
           - io.m51.Gelly
           - dev.aunetx.deezer
