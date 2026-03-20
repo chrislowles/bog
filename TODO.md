@@ -1,1 +1,0 @@
-* Pre-configuration to add the search engine install as a search option in the pre-installed Firefox Flatpak
