@@ -22,19 +22,6 @@ For use if/when you want to install a Bittorrent client with Jackett plugin supp
 systemctl --user enable --now jackett
 ```
 
-### OmniSearch (Local Instance)
-A lightweight self-hosted metasearch engine. Enable it with:
-```bash
-sudo systemctl enable --now omnisearch
-```
-
-To add it as a search engine in Firefox, use the URL pattern `http://localhost:8087/search?q=%s`. Refer to your browser's documentation for adding and setting custom search engines as default.
-
-To adjust configuration (bind address, port, proxy, cache settings):
-```bash
-sudo nano /etc/omnisearch/config.ini
-```
-
 --
 
 ### Regarding Bluebuild:
