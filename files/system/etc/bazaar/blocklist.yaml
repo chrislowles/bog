@@ -10,11 +10,7 @@ blocklists:
     - org.gnome.font-viewer
     - org.gnome.TextEditor
     - io.github.zyedidia.micro
-
-    # Bazaar is system-installed
     - io.github.kolunmi.Bazaar
-
-    # Steam is system-installed
     - com.valvesoftware.Steam
 
     # Deprecated
@@ -22,7 +18,7 @@ blocklists:
     - org.gnome.Totem
     - org.gnome.eog
 
-    # Known kneecapped development tools
+    # Development tools known to have been kneecapped as flatpaks
     - com.visualstudio.code
     - com.sublimehq.SublimeText
 
