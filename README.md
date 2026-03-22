@@ -22,7 +22,7 @@ For use if/when you want to install a Bittorrent client with Jackett plugin supp
 systemctl --user enable --now jackett
 ```
 
---
+---
 
 ### Regarding Bluebuild:
 
