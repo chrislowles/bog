@@ -12,7 +12,7 @@ turnoff() {
     shutdown -n now
 }
 
-gethenewshit() {
+get_the_new_shit() {
     pls bootc upgrade
     flatpak update
 }
