@@ -61,6 +61,8 @@ modules:
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
         - fastfetch                         # System information readout (neofetch-like)
+        - rsync                             # Common program for network syncing files
+        - rclone                            # Cloud storage rsync
 
         # Podman stuff
         - podman                            # Should already be present on ublue base
