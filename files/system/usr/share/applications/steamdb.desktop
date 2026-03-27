@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SteamDB
+Comment=Database of everything on Steam.
+Exec=xdg-open https://steamdb.info
+Icon=/usr/share/icons/steamdb.svg
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=proton;steam;gaming;
