@@ -2,7 +2,7 @@
 Name=PCGamingWiki
 Comment=Fixes and workarounds for every single PC game.
 Exec=xdg-open https://www.pcgamingwiki.com
-Icon=com.valvesoftware.Steam
+Icon=/usr/share/icons/pcgamingwiki.svg
 Terminal=false
 Type=Application
 Categories=Game;
