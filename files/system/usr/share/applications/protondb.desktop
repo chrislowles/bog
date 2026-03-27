@@ -2,7 +2,7 @@
 Name=ProtonDB
 Comment=Check game compatibility ratings for Steam on Linux.
 Exec=xdg-open https://www.protondb.com
-Icon=com.valvesoftware.Steam
+Icon=/usr/share/icons/protondb.svg
 Terminal=false
 Type=Application
 Categories=Game;
