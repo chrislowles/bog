@@ -63,6 +63,8 @@ modules:
         - fastfetch                         # System information readout (neofetch-like)
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage rsync
+        - lm_sensors                        # idk
+        - bat                               # cat clone with more features
 
         # Podman stuff
         - podman                            # Should already be present on ublue base
@@ -141,14 +143,15 @@ modules:
 
   - type: gnome-extensions
     install:
-      - 615 # AppIndicator Support
-      - 8 # Places Menu
-      - 1319 # GSConnect
-      - 517 # Caffeine
-      - 5263 # GTK Desktop Icons NG (DING)
-      - 600 # Launch New Instance
-      - 36 # Lock Keys
-      - 5904 # Volume Scroller
+      - 615   # AppIndicator Support
+      - 1319  # GSConnect
+      - 36    # Lock Keys
+      - 5904  # Volume Scroller
+      - 779   # Clipboard Indicator
+      - 517   # Caffeine
+      - 8     # Places Menu
+      - 5263  # GTK Desktop Icons NG (DING)
+      - 600   # Launch New Instance
 
   # I'd like to somehow have comic sans pre-installed in this, legally ofc lmao
   - type: fonts
