@@ -22,6 +22,28 @@ For use if/when you want to install a Bittorrent client with Jackett plugin supp
 systemctl --user enable --now jackett
 ```
 
+### Distrobox: A Traditional Linux Experience, Containerized
+For use if/when you find software/a utility with only 1 sure-fire set of instructions to install, such is the habit of software packagers sometimes. Below are a few example lines to create/manage a distrobox.
+
+#### Create Distrobox (Arch Linux w/ Basic Source-Building Utilities)
+```bash
+distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git"
+```
+
+#### Enter the distrobox
+```bash
+distrobox enter arch
+```
+
+#### Suggested first-time activity: Download and build `yay` AUR helper
+```bash
+# git is a version control system
+# cd is a standard cmd for navigating directories
+# makepkg -si is the standard cmd for building a package from the AUR with base-devel
+# just copy the line below and run when in the distrobox, the semi-colons and slashes are just to make it a one-liner
+git clone https://aur.archlinux.org/yay-bin.git; \ cd yay-bin; \ makepkg -si;
+```
+
 ---
 
 ### Regarding Bluebuild:
