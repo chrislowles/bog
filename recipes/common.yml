@@ -75,6 +75,7 @@ modules:
         # Plymouth stuff
         - plymouth
         - plymouth-system-theme
+        - plymouth-plugin-spinner
 
         # AppImages support improvement
         #- fuse # FUSE 3 (already likely present in base)
