@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-# Find spinner.so regardless of lib/lib64 location (Fedora moved these in F40+)
-SPINNER_SO=$(find /usr/lib/plymouth /usr/lib64/plymouth -name "spinner.so" 2>/dev/null | head -1)
+# Check for spinner.so at known locations (path changed from lib64 to lib in Fedora 40+)
+SPINNER_SO=""
+if [ -f /usr/lib/plymouth/spinner.so ]; then
+    SPINNER_SO=/usr/lib/plymouth/spinner.so
+elif [ -f /usr/lib64/plymouth/spinner.so ]; then
+    SPINNER_SO=/usr/lib64/plymouth/spinner.so
+fi
 
 if [ -z "${SPINNER_SO}" ]; then
-    echo "ERROR: spinner.so not found in Plymouth plugin directories"
-    echo "Available Plymouth plugins:"
-    find /usr/lib/plymouth /usr/lib64/plymouth -name "*.so" 2>/dev/null || echo "  (none found)"
+    echo "ERROR: spinner.so not found at /usr/lib/plymouth/ or /usr/lib64/plymouth/"
+    echo "Contents of /usr/lib/plymouth/ (if it exists):"
+    ls /usr/lib/plymouth/ 2>/dev/null || echo "  (directory does not exist)"
     exit 1
 fi
 
