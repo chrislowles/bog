@@ -17,19 +17,12 @@ get_the_new_shit() {
     flatpak update
 }
 
-# preset arch linux distrobox cmd
-distrobox_arch_create() {
-    distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git"
+steam_shortcut_list() {
+    find "$HOME/.local/share/applications" -name '*.desktop' -exec grep -l 'Exec=steam steam://rungameid/' {} \;
 }
 
-distrobox_arch_enter() {
-    distrobox enter arch
-}
-
-distrobox_arch_yay() {
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay-bin
-    makepkg -si
+steam_shortcut_flush() {
+    find "$HOME/.local/share/applications" -name '*.desktop' -exec grep -l 'Exec=steam steam://rungameid/' {} \; -delete
 }
 
 getmp4() {
