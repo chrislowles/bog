@@ -72,6 +72,10 @@ modules:
         - slirp4netns                       # Rootless networking
         - fuse-overlayfs                    # Rootless storage driver
 
+        # Plymouth stuff
+        - plymouth
+        - plymouth-system-theme
+
         # AppImages support improvement
         #- fuse # FUSE 3 (already likely present in base)
         #- fuse2 # needed by most AppImages
@@ -109,6 +113,8 @@ modules:
     scripts:
       - build-bazaar.sh
       - setup-podman.sh
+      - setup-plymouth.sh
+      - setup-os-release.sh
       - dconf-update.sh
 
   - type: default-flatpaks
