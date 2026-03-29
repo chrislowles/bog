@@ -57,7 +57,8 @@ modules:
         - lm_sensors                        # idk
         - bat                               # cat clone with more features
         
-        # X11 stuff (for now)
+        # X11 stuff (for now, mostly for debugging when pre-configuring fixes for flatpaks)
+        - xprop
         - xlsclients
 
         # Podman stuff
