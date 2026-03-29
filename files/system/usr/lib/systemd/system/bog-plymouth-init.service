@@ -1,0 +1,13 @@
+[Unit]
+Description=Rebuild initramfs for bog Plymouth theme
+ConditionPathExists=!/var/lib/bog-plymouth-init-done
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/plymouth-set-default-theme -R bog
+ExecStartPost=/usr/bin/touch /var/lib/bog-plymouth-init-done
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
