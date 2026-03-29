@@ -165,3 +165,7 @@ modules:
       #    url: https://example.com/my-font.otf
       #  - name: CompanyFonts
       #    url: https://company.com/fonts.tar.gz
+
+  # Plymouth theming stuff
+  - type: initramfs
+    rebuild: true
