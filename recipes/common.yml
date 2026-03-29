@@ -168,4 +168,3 @@ modules:
 
   # Plymouth theming stuff
   - type: initramfs
-    rebuild: true
