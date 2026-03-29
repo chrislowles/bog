@@ -7,15 +7,6 @@ modules:
       - source: system
         destination: /
 
-  # Is there some documented way to pass on the version of the Fedora base used in the source images on recipe.yml/recipe-nvidia.yml in the custom os-release block?
-  #- type: os-release
-  #  properties:
-  #    NAME: bog
-  #    PRETTY_NAME: bog <fedora-base-version-number>
-  #    ID: fedora
-  #    ID_LIKE: fedora
-  #    VERSION_ID: <fedora-base-version-number>
-
   #- type: script
   #  scripts:
   #    - source-build-mismatch.sh
