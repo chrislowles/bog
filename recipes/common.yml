@@ -60,6 +60,7 @@ modules:
         # X11 stuff (for now, mostly for debugging when pre-configuring fixes for flatpaks)
         - xprop
         - xlsclients
+        - xdotool
 
         # Podman stuff
         - podman                            # Should already be present on ublue base
