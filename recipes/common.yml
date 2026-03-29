@@ -56,6 +56,9 @@ modules:
         - rclone                            # Cloud storage rsync
         - lm_sensors                        # idk
         - bat                               # cat clone with more features
+        
+        # X11 stuff (for now)
+        - xlsclients
 
         # Podman stuff
         - podman                            # Should already be present on ublue base
