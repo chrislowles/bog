@@ -107,6 +107,8 @@ modules:
         - gdm.service
 
   - type: script
+    #snippets:
+    #  - "plymouth-set-default-theme bog"
     scripts:
       - build-bazaar.sh
       - setup-podman.sh
