@@ -1,9 +1,0 @@
-[Plymouth Theme]
-Name=bog
-Description=bog
-ModuleName=spinner
-
-[spinner]
-WatermarkHorizontalAlignment=.5
-WatermarkVerticalAlignment=.5
-DialogVerticalAlignment=.7
