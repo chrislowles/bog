@@ -173,3 +173,5 @@ modules:
 
   # Plymouth theming stuff
   - type: initramfs
+
+  - type: signing
