@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -oue pipefail
+set -euo pipefail
 
 source /usr/lib/os-release
 FEDORA_VERSION="${VERSION_ID}"
