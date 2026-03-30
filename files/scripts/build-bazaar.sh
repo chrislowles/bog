@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -oue pipefail
+set -euo pipefail
 
 echo "Building Bazaar from source with custom configurations..."
 
