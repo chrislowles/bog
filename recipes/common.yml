@@ -104,7 +104,6 @@ modules:
     system:
       enabled:
         - gdm.service
-        - bog-plymouth-init.service
 
   - type: script
     scripts:
