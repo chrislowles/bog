@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-set -oue pipefail
+set -euo pipefail
 
 # For if/when there's dependency mismatches/lags for source-built programs
