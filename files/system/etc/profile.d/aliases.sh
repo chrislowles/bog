@@ -4,33 +4,54 @@
 alias pls="sudo"
 alias ls="ls -la"
 
-restart() {
-    systemctl reboot
+# power [--reboot/-r | --shutdown/-s]
+power() {
+    case "${1:-}" in
+        --reboot|-r)    systemctl reboot ;;
+        --shutdown|-s)  shutdown -n now ;;
+        *)  echo "Usage: power [--reboot|-r | --shutdown|-s]" ;;
+    esac
 }
 
-turnoff() {
-    shutdown -n now
-}
-
+# get_the_new_shit [--reboot/-r | --shutdown/-s]
 get_the_new_shit() {
     pls bootc upgrade
     flatpak update
+    case "${1:-}" in
+        --reboot|-r)    power -r ;;
+        --shutdown|-s)  power -s ;;
+        *)  echo "Usage: power [--reboot|-r | --shutdown|-s]" ;;
+    esac
 }
 
-steam_shortcut_list() {
-    find "$HOME/.local/share/applications" -name '*.desktop' -exec grep -l 'Exec=steam steam://rungameid/' {} \;
+# steam_shortcuts [--list|-l | --flush|-f]
+steam_shortcuts() {
+    case "${1:-}" in
+        --list|-l)
+            find "$HOME/.local/share/applications" -name '*.desktop' \
+                -exec grep -l 'Exec=steam steam://rungameid/' {} \;
+            ;;
+        --flush|-f)
+            find "$HOME/.local/share/applications" -name '*.desktop' \
+                -exec grep -l 'Exec=steam steam://rungameid/' {} \; -delete
+            ;;
+        *)  echo "Usage: steam_shortcuts [--list|-l | --flush|-f]" ;;
+    esac
 }
 
-steam_shortcut_flush() {
-    find "$HOME/.local/share/applications" -name '*.desktop' -exec grep -l 'Exec=steam steam://rungameid/' {} \; -delete
-}
-
-getmp4() {
-    yt-dlp --format "bestvideo+bestaudio/best" --embed-metadata --embed-thumbnail --embed-subs --embed-chapters "$@"
-}
-
-getmp3() {
-    yt-dlp --format "bestaudio" --embed-metadata --embed-thumbnail --extract-audio --audio-format "mp3" --audio-quality "0" "$@"
+# getmedia [--mp4|-v | --mp3|-a] <url>
+getmedia() {
+    local mode="${1:-}"
+    shift || true
+    case "$mode" in
+        --mp4|-v)
+            yt-dlp --format "bestvideo+bestaudio/best" --embed-metadata --embed-thumbnail --embed-subs --embed-chapters "$@"
+            ;;
+        --mp3|-a)
+            yt-dlp --format "bestaudio" --embed-metadata --embed-thumbnail --extract-audio --audio-format "mp3" --audio-quality "0" "$@"
+            ;;
+        *)  echo "Usage: getmedia [--mp4|-v | --mp3|-a] <url>" ;;
+    esac
 }
 
 set_nextdns() {
