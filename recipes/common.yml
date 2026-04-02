@@ -112,7 +112,7 @@ modules:
     scripts:
       - build-bazaar.sh
       - setup-podman.sh
-      - setup-plymouth.sh
+      #- setup-plymouth.sh
       - setup-os-release.sh
       - dconf-update.sh
 
