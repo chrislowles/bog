@@ -35,47 +35,45 @@ modules:
         - gnome-logs                        # SystemD log viewer
         - gnome-font-viewer                 # Font viewer/installer
         - nautilus                          # File manager
-        - gnome-text-editor                 # Text editor
-        #- gnome-backgrounds                 # GNOME default backgrounds
-        #- gnome-backgrounds-extra           # (Extra) backgrounds for GNOME
+        - gnome-text-editor                 # GUI Text editor
 
-        # Networking
-        - NetworkManager-wifi               # Ensure WiFi support
-
-        # Utilities
+        # Key Utilities
         - distrobox                         # Container-based system management
         - steam                             # Primary gaming platform
+
+        # Misc Utilities
         - micro                             # TUI Text Editor
-        - wget                              # CLI for http transfer/download
-        - curl                              # The other CLI for http transfer/download
+        - curl                              # CLI for http transfer/download
+        - wget                              # The other CLI for http transfer/download
         - git                               # Version control system
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
         - fastfetch                         # System information readout (neofetch-like)
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage rsync
-        - lm_sensors                        # idk
-        - bat                               # cat clone with more features
+
+        # Networking
+        - NetworkManager-wifi               # Primary tooling for WiFi support
         
-        # X11 stuff (for now, mostly for debugging when pre-configuring fixes for flatpaks)
+        # X11 (mostly for debugging when patching/pre-configuring fixes for flatpaks)
         - xprop
         - xlsclients
         - xdotool
 
-        # Podman stuff
-        - podman                            # Should already be present on ublue base
+        # Podman
+        - podman                            # Should already be present on ublue base, included just in case
         - podman-compose                    # Fallback CLI if ever needed
         - slirp4netns                       # Rootless networking
         - fuse-overlayfs                    # Rootless storage driver
 
-        # Plymouth stuff
+        # Plymouth
         - plymouth
         - plymouth-system-theme
         - plymouth-plugin-script
 
-        # AppImages support improvement
-        #- fuse # FUSE 3 (already likely present in base)
-        #- fuse2 # needed by most AppImages
+        # AppImages
+        #- fuse # FUSE 3 (likely already present in base)
+        #- fuse2 # needed by most AppImages anyway
         - vulkan-loader
         - vulkan-tools
 
@@ -107,12 +105,10 @@ modules:
         - gdm.service
 
   - type: script
-    snippets:
-      - "plymouth-set-default-theme bog"
     scripts:
       - build-bazaar.sh
       - setup-podman.sh
-      #- setup-plymouth.sh
+      - setup-plymouth.sh
       - setup-os-release.sh
       - dconf-update.sh
 
