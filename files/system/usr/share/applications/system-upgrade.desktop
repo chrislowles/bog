@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=System Upgrade
-Comment=Upgrade the base.
-Exec=kgx -- bash -ilc "get_the_new_shit"
+Comment=Upgrade the base and apps.
+Exec=kgx -- bash -ilc "get_the_new_shit --button"
 Icon=view-refresh-symbolic
 Terminal=false
 Type=Application
