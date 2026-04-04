@@ -1,0 +1,38 @@
+.content #main-panel {
+    position: fixed;
+    left: -100%;
+    top: -100%;
+    display: none;
+}
+
+.content #side-panel {
+    flex: 1;
+    width: unset;
+    max-width: unset;
+}
+
+@media (min-width: 936px) {
+    .content #side-panel {
+        margin: unset;
+    }
+}
+
+#sections #items {
+    display: flex;
+    flex-direction: column;
+}
+
+#sections #items ytmusic-guide-entry-renderer[play-button-state="playing"] {
+    display: flex;
+    order: -1 !important;
+}
+
+ytmusic-guide-entry-renderer tp-yt-paper-item {
+    flex: 1;
+    overflow: hidden;
+}
+
+#contents #items :has(> .ytmusic-two-row-item-renderer [href="playlist?list=LM"]),
+#contents #items :has(> .ytmusic-two-row-item-renderer [href="playlist?list=RDPN"]) {
+  display: none;
+}
