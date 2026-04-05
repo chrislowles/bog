@@ -39,6 +39,7 @@ modules:
 
         # Key Utilities
         - distrobox                         # Container-based system management
+        - host-spawn                        # distrobox-host-exec support dep
         - steam                             # Primary gaming platform
 
         # Misc Utilities
