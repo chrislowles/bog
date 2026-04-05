@@ -43,14 +43,14 @@ Regarding the particulars of the command above, here is what each aspect relates
 
 ---
 
-### Regarding Bluebuild:
+## Regarding Bluebuild:
 
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
-## ISO
+### ISO
 If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
 
-## Verification
+### Verification
 These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigcos/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
 ```bash
 cosign verify --key cosign.pub ghcr.io/chrislowles/bog
