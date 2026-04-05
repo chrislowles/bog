@@ -1,9 +1,11 @@
 [Plymouth Theme]
 Name=bog
 Description=bog
-ModuleName=spinner
+ModuleName=fade-throbber
 
-[spinner]
-WatermarkHorizontalAlignment=.5
-WatermarkVerticalAlignment=.5
+[fade-throbber]
+ImageDir=/usr/share/plymouth/themes/bog
+Throbber=throbber-%02d.png
+HorizontalAlignment=.5
+VerticalAlignment=.5
 DialogVerticalAlignment=.7
