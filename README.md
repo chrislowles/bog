@@ -1,4 +1,4 @@
-# bog (ublue/fedora atomic image)
+# bog (Universal Blue/Fedora Atomic Image)
 A barebones (some may say bog standard) immutable Linux distro based on Universal Blue technologies using GNOME/GDM and flatpak/distrobox as its means for software management (with root-installed Steam)
 
 ## Installation
