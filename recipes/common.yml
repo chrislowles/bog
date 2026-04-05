@@ -70,7 +70,7 @@ modules:
         # Plymouth
         - plymouth
         - plymouth-system-theme
-        - plymouth-plugin-script
+        - plymouth-plugin-fade-throbber
 
         # AppImages
         #- fuse # FUSE 3 (likely already present in base)
