@@ -20,7 +20,6 @@ blocklists:
 
     # Development tools known to have been kneecapped as flatpaks
     - com.visualstudio.code
-    - com.sublimehq.SublimeText
 
     # Preference for the third-party GNOME Ext manager
     - org.gnome.Extensions
