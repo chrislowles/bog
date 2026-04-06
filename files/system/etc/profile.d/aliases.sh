@@ -16,15 +16,10 @@ power() {
     esac
 }
 
-# get_the_new_shit [--reboot/-r | --shutdown/-s | --button/--exit]
+# get_the_new_shit
 get_the_new_shit() {
     pls bootc upgrade
     flatpak update
-    case "${1:-}" in
-        --reboot|-r)     power -r ;;
-        --shutdown|-s)   power -s ;;
-        --button|--exit) exit 1 ;;
-    esac
 }
 
 # steam_shortcuts [--list/-l | --flush/-f]
