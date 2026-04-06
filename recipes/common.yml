@@ -115,23 +115,22 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - notify: true
+      - notify: false
         scope: system
         repo:
-          title: Flathub (System)
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+          name: flathub
+          title: "Flathub (System)"
         install:
+          # Suggested pre-installed system programs
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
-          - org.mozilla.firefox
           - io.github.celluloid_player.Celluloid
           - com.vysp3r.ProtonPlus
           - com.usebottles.bottles
           - me.timschneeberger.jdsp4linux
-
-          # Pre-installed selection from other curated groups
-          - org.qbittorrent.qBittorrent
 
           # Pre-installed selection from GNOME Bazaar curation group
           - org.gnome.Contacts
@@ -142,6 +141,15 @@ modules:
           - org.gnome.Snapshot
           - org.gnome.Characters
           - org.gnome.SimpleScan
+
+          # Pre-installed selection from other curated groups
+          - org.qbittorrent.qBittorrent
+      - notify: false
+        scope: user
+        repo:
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+          name: flathub-user
+          title: "Flathub (User)"
 
   - type: gnome-extensions
     install:
