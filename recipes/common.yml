@@ -100,18 +100,17 @@ modules:
         - toolbox
         - htop
 
-  - type: systemd
-    system:
-      enabled:
-        - gdm.service
-
   - type: script
     scripts:
       - build-bazaar.sh
       - setup-podman.sh
-      - setup-plymouth.sh
       - setup-os-release.sh
       - dconf-update.sh
+
+  - type: systemd
+      system:
+        enabled:
+          - gdm.service
 
   - type: default-flatpaks
     configurations:
@@ -163,7 +162,6 @@ modules:
       - 5263  # GTK Desktop Icons NG (DING)
       - 600   # Launch New Instance
       - 9419  # Video Lockscreen
-
 
   # I'd like to somehow have comic sans pre-installed in this, legally ofc lmao
   - type: fonts
