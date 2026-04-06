@@ -108,9 +108,9 @@ modules:
       - dconf-update.sh
 
   - type: systemd
-      system:
-        enabled:
-          - gdm.service
+    system:
+      enabled:
+        - gdm.service
 
   - type: default-flatpaks
     configurations:
