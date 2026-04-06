@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Github
+Comment=Track updates, report bugs and be generally annoying.
+Exec=xdg-open https://github.com/chrislowles/bog
+Icon=globe-alt2-symbolic
+Terminal=false
+Type=Application
+Categories=Internet;
+Keywords=software;github;bugs
