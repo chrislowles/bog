@@ -1,11 +1,12 @@
 [Plymouth Theme]
 Name=bog
-Description=bog
-ModuleName=fade-throbber
+Description=My custom bog theme
+ModuleName=two-step
 
-[fade-throbber]
+[two-step]
 ImageDir=/usr/share/plymouth/themes/bog
+Image=bog-logo.png
+Background=background-tile.png
 Throbber=throbber-%02d.png
 HorizontalAlignment=.5
 VerticalAlignment=.5
-DialogVerticalAlignment=.7
