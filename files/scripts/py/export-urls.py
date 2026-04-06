@@ -4,7 +4,7 @@ export-urls.py
 
 Walks a directory of yt-dlp-downloaded videos, extracts YouTube or Internet
 Archive IDs from filenames, and writes a plain-text URL list compatible with
-Parabolic's "Import from file" feature (one URL per line).
+Parabolic's "Batch" feature (one URL per line).
 
 Usage:
     python export-urls.py /path/to/videos
@@ -32,7 +32,6 @@ def extract_url(stem: str) -> str | None:
 
     # Fall back to last bracketed group as an Internet Archive identifier
     return f"https://archive.org/details/{all_brackets[-1]}"
-
 
 def main():
     parser = argparse.ArgumentParser(
