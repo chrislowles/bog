@@ -16,9 +16,9 @@ modules:
       packages:
 
         # GNOME Core (Minimal)
-        - gdm                               # Login Manager
         - gnome-shell                       # Desktop Interface
         - gnome-session-wayland-session     # Wayland Session
+        - gdm                               # Login Manager
         - gnome-control-center              # Settings
         - gnome-system-monitor              # Task manager
         - gnome-settings-daemon             # Hardware management
@@ -39,7 +39,7 @@ modules:
 
         # Key Utilities
         - distrobox                         # Container-based system management
-        - host-spawn                        # distrobox-host-exec support dep
+        - host-spawn                        # distrobox-host-exec dep
         - steam                             # Primary gaming platform
 
         # Misc Utilities
@@ -49,6 +49,7 @@ modules:
         - git                               # Version control system
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
+        #- ffprobe                          # Multimedia analysis tool
         - fastfetch                         # System information readout (neofetch-like)
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage rsync
@@ -114,7 +115,7 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - notify: false
+      - notify: true
         scope: system
         repo:
           url: https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -128,6 +129,7 @@ modules:
           - com.mattjakeman.ExtensionManager
           - io.github.celluloid_player.Celluloid
           - com.vysp3r.ProtonPlus
+          - com.github.mtkennerly.ludusavi
           - com.usebottles.bottles
           - me.timschneeberger.jdsp4linux
 
@@ -143,7 +145,7 @@ modules:
 
           # Pre-installed selection from other curated groups
           - org.qbittorrent.qBittorrent
-      - notify: false
+      - notify: true
         scope: user
         repo:
           url: https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -163,14 +165,10 @@ modules:
       - 600   # Launch New Instance
       - 9419  # Video Lockscreen
 
-  # I'd like to somehow have comic sans pre-installed in this, legally ofc lmao
+  # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
   - type: fonts
     fonts:
-      nerd-fonts:
-        - JetBrainsMono
-        - NerdFontsSymbolsOnly
       google-fonts:
-        - Open Sans
         - Inter
       #url-fonts:
       #  - name: CustomFont
