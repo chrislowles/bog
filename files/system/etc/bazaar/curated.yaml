@@ -44,7 +44,7 @@ css: |
   .media-section {
     background-color: #9141AC;
   }
-  .oddsnends-section {
+  .misc-section {
     background-color: #77767B;
   }
 
@@ -155,7 +155,7 @@ rows:
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
-          - com.discordapp.Discord
+          - dev.vencord.Vesktop
           - com.github.IsmaelMartinez.teams_for_linux
           - org.signal.Signal
           - in.cinny.Cinny
@@ -167,7 +167,7 @@ rows:
           - com.slack.Slack
           - us.zoom.Zoom
           - dev.geopjr.Tuba
-          - dev.vencord.Vesktop
+          - im.pidgin.Pidgin
 
   - sections:
     - expand-horizontally: true
@@ -227,13 +227,14 @@ rows:
         title:
           en: "Media"
         subtitle:
-          en: "Local or streaming."
+          en: "Local or streaming, watching or listening, making or transcoding."
         banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
         appids:
           - io.mpv.Mpv
+          - org.videolan.VLC
           - de.haeckerfelix.Shortwave
           - com.spotify.Client
           - app.ytmdesktop.ytmdesktop
@@ -249,17 +250,22 @@ rows:
           - io.freetubeapp.FreeTube
           - dev.fredol.open-tv
           - org.musicbrainz.Picard
+          - fr.handbrake.ghb
+          - net.fasterland.converseen
+          - io.gitlab.theevilskeleton.Upscaler
+          - com.github.huluti.Curtail
+          - io.github.wartybix.Constrict
 
   - sections:
     - expand-horizontally: true
       classes:
         - bog-section
-        - oddsnends-section
+        - misc-section
       category:
         title:
-          en: "Oddsnends"
+          en: "Misc."
         subtitle:
-          en: "Utilities for all kinds of things."
+          en: "Miscellaneous lightweight utilities for everything else."
         banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
@@ -272,21 +278,18 @@ rows:
           - com.ranfdev.DistroShelf
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
-          - net.fasterland.converseen
           - io.github.linx_systems.ClamUI
           - com.usebottles.bottles
-          - io.gitlab.theevilskeleton.Upscaler
-          - com.github.huluti.Curtail
-          - io.github.wartybix.Constrict
           - io.github.mightycreak.Diffuse
           - net.mkiol.SpeechNote
           - org.deskflow.deskflow
           - dev.deedles.Trayscale
-          - me.timschneeberger.jdsp4linux
           - io.github.ilya_zlobintsev.LACT
           - com.feaneron.Boatswain
           - com.github.qarmin.czkawka
+          - me.timschneeberger.jdsp4linux
           - com.github.wwmm.easyeffects
+          - com.github.wwmm.pulseeffects
           - me.kozec.syncthingtk
           - re.sonny.Playhouse
           - me.iepure.devtoolbox
