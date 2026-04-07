@@ -2,8 +2,7 @@
 """
 embed-metadata.py
 
-Scans a directory for yt-dlp-downloaded videos that are missing embedded
-metadata, fetches the metadata without redownloading, and embeds it in-place.
+Scans a directory for yt-dlp-downloaded videos that are missing embedded metadata, fetches the metadata without redownloading, and embeds it in-place.
 
 Supports YouTube and Internet Archive sources.
 
