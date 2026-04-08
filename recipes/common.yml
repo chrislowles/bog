@@ -145,12 +145,6 @@ modules:
 
           # Pre-installed selection from other curated groups
           - org.qbittorrent.qBittorrent
-      - notify: true
-        scope: user
-        repo:
-          url: https://dl.flathub.org/repo/flathub.flatpakrepo
-          name: flathub-user
-          title: "Flathub (User)"
 
   - type: gnome-extensions
     install:
