@@ -10,8 +10,8 @@ alias ls="ls -la"
 # power [--reboot/-r | --shutdown/-s]
 power() {
     case "${1:-}" in
-        --reboot|-r)    systemctl reboot ;;
-        --shutdown|-s)  shutdown -n now ;;
+        --reboot)   systemctl reboot ;;
+        --shutdown) systemctl poweroff ;;
         *)  echo "Usage: power [--reboot/-r | --shutdown/-s]" ;;
     esac
 }
@@ -20,6 +20,10 @@ power() {
 get_the_new_shit() {
     pls bootc upgrade
     flatpak update
+    read -rp "Reboot? [y/N] " response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+        power --reboot
+    fi
 }
 
 # steam_shortcuts [--list/-l | --flush/-f]
