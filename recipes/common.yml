@@ -37,6 +37,9 @@ modules:
         - nautilus                          # File manager
         - gnome-text-editor                 # GUI Text editor
 
+        # Niceties
+        - gnome-backgrounds
+
         # Key Utilities
         - distrobox                         # Container-based system management
         - host-spawn                        # distrobox-host-exec dep
@@ -100,6 +103,10 @@ modules:
       packages:
         - toolbox
         - htop
+        #- fedora-backgrounds
+        #- fedora-workstation-background
+        #- desktop-backgrounds-gnome
+        #- f*-backgrounds*
 
   - type: script
     scripts:
