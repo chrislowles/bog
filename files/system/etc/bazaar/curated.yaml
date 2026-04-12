@@ -274,6 +274,7 @@ rows:
         appids:
           - io.github.flattool.Warehouse
           - it.mijorus.gearlever
+          - page.tesk.Refine
           - io.github.pwr_solaar.solaar
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
