@@ -122,12 +122,13 @@ modules:
 
   - type: default-flatpaks
     configurations:
+      - scope: user
+        repo:
+          title: Flathub (User)
       - notify: true
         scope: system
         repo:
-          url: https://dl.flathub.org/repo/flathub.flatpakrepo
-          name: flathub
-          title: "Flathub (System)"
+          title: Flathub (System)
         install:
           # Suggested pre-installed system programs
           - com.github.tchx84.Flatseal
