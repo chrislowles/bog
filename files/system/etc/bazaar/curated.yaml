@@ -215,6 +215,7 @@ rows:
           - rs.ruffle.Ruffle
           - sh.ppy.osu
           - net.supertuxkart.SuperTuxKart
+          - org.zdoom.UZDoom
           - uk.co.powdertoy.tpt
           - org.luanti.luanti
 
