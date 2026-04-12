@@ -23,3 +23,7 @@ blocklists:
 
     # Preference for the third-party GNOME Ext manager
     - org.gnome.Extensions
+
+    # Irrelevant to GNOME system management
+    - dev.edfloreshz.CosmicTweaks
+    - io.github.pantheon_tweaks.pantheon-tweaks
