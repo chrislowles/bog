@@ -1,5 +1,3 @@
-# Nabbed some of the code from Bazzite's Bazaar source build configuration, completely rewritten for my purposes though
-# Gonna need to actually learn styles for this lol
 css: |
   .bog-section banner {
      margin-top: 30px;
@@ -13,39 +11,46 @@ css: |
   }
   .bog-section banner-text {
      padding: 50px;
-     color: #ffffff;
-  }
-  .bog-section title {
-     color: #ffffff;
   }
   .bog-section subtitle {
-    color: #ffffff;
     font-weight: 400;
+  }
+  .bog-section subtitle,
+  .bog-section title,
+  .bog-section banner-text {
+    color: #FFF;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   }
   .bog-section {
     margin: 15px;
     border-radius: 25px;
   }
   .gnome-section {
-    background-color: #3584E4;
-  }
-  .browsers-section {
-    background-color: #33D17A;
-  }
-  .prod-prod-section {
-    background-color: #FF7800;
-  }
-  .conversating-section {
-    background-color: #E01B24;
+    background: linear-gradient(135deg, #3584E4, #1a5ab5);
   }
   .gaming-section {
-    background-color: #77767B;
+    background: linear-gradient(135deg, #5c5a5e, #343234);
+  }
+  .browsers-section {
+    background: linear-gradient(135deg, #33D17A, #1a9655);
+  }
+  .office-section {
+    background: linear-gradient(135deg, #1C71D8, #0f459e);
+  }
+  .creative-section {
+    background: linear-gradient(135deg, #E66100, #b84c00);
+  }
+  .social-section {
+    background: linear-gradient(135deg, #E01B24, #a01018);
   }
   .media-section {
-    background-color: #9141AC;
+    background: linear-gradient(135deg, #9141AC, #642d7a);
+  }
+  .system-section {
+    background: linear-gradient(135deg, #2190A4, #145f6e);
   }
   .misc-section {
-    background-color: #77767B;
+    background: linear-gradient(135deg, #7a7a80, #4a4a50);
   }
 
 rows:
@@ -81,93 +86,6 @@ rows:
           - org.gnome.Connections
           - org.gnome.SimpleScan
           - org.gnome.Fractal
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bog-section
-        - browsers-section
-      category:
-        title:
-          en: "Browsers"
-        subtitle:
-          en: "Get your flavor of Gecko or Chromium-based browsers."
-        banner-height: 240
-        banner-text-halign: center
-        banner-text-valign: center
-        banner-text-label-xalign: 0.0
-        appids:
-          - org.mozilla.firefox
-          - io.gitlab.librewolf-community
-          - net.codelogistics.webapps
-          - io.github.ungoogled_software.ungoogled_chromium
-          - app.zen_browser.zen
-          - com.microsoft.Edge
-          - com.google.Chrome
-          - com.brave.Browser
-          - com.opera.Opera
-          - org.chromium.Chromium
-          - one.ablaze.floorp
-          - net.waterfox.waterfox
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bog-section
-        - prod-section
-      category:
-        title:
-          en: "Productivity"
-        subtitle:
-          en: "Common programs assosiated with getting stuff done."
-        banner-height: 240
-        banner-text-halign: center
-        banner-text-valign: center
-        banner-text-label-xalign: 0.0
-        appids:
-          - org.onlyoffice.desktopeditors
-          - org.libreoffice.LibreOffice
-          - org.kde.krita
-          - org.kde.kdenlive
-          - com.obsproject.Studio
-          - org.audacityteam.Audacity
-          - org.gimp.GIMP
-          - io.github.pol_rivero.github-desktop-plus
-          - com.jeffser.Alpaca
-          - de.leopoldluley.Clapgrep
-          - org.blender.Blender
-          - org.inkscape.Inkscape
-          - org.ardour.Ardour
-          - org.freecad.FreeCAD
-
-  - sections:
-    - expand-horizontally: true
-      classes:
-        - bog-section
-        - conversating-section
-      category:
-        title:
-          en: "Conversating"
-        subtitle:
-          en: "Pray your friends list doesn't get age-gated."
-        banner-height: 240
-        banner-text-halign: center
-        banner-text-valign: center
-        banner-text-label-xalign: 0.0
-        appids:
-          - dev.vencord.Vesktop
-          - com.github.IsmaelMartinez.teams_for_linux
-          - org.signal.Signal
-          - in.cinny.Cinny
-          - org.gajim.Gajim
-          - info.mumble.Mumble
-          - im.riot.Riot
-          - com.teamspeak.TeamSpeak
-          - im.dino.Dino
-          - com.slack.Slack
-          - us.zoom.Zoom
-          - dev.geopjr.Tuba
-          - im.pidgin.Pidgin
 
   - sections:
     - expand-horizontally: true
@@ -218,6 +136,92 @@ rows:
           - org.zdoom.UZDoom
           - uk.co.powdertoy.tpt
           - org.luanti.luanti
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bog-section
+        - browsers-section
+      category:
+        title:
+          en: "Browsers"
+        subtitle:
+          en: "Get your flavor of Gecko or Chromium-based browsers."
+        banner-height: 240
+        banner-text-halign: center
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - org.mozilla.firefox
+          - io.gitlab.librewolf-community
+          - net.codelogistics.webapps
+          - io.github.ungoogled_software.ungoogled_chromium
+          - app.zen_browser.zen
+          - com.microsoft.Edge
+          - com.google.Chrome
+          - com.brave.Browser
+          - com.opera.Opera
+          - org.chromium.Chromium
+          - one.ablaze.floorp
+          - net.waterfox.waterfox
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bog-section
+        - creative-section
+      category:
+        title:
+          en: "Docs & Creative"
+        subtitle:
+          en: "Image, audio, video, and 3D — make something."
+        banner-height: 240
+        banner-text-halign: center
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - org.kde.krita
+          - org.kde.kdenlive
+          - com.obsproject.Studio
+          - org.audacityteam.Audacity
+          - org.gimp.GIMP
+          - org.blender.Blender
+          - org.inkscape.Inkscape
+          - org.ardour.Ardour
+          - org.freecad.FreeCAD
+          - org.onlyoffice.desktopeditors
+          - org.libreoffice.LibreOffice
+          - io.github.pol_rivero.github-desktop-plus
+          - com.jeffser.Alpaca
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bog-section
+        - social-section
+      category:
+        title:
+          en: "Messaging & Social"
+        subtitle:
+          en: "Chat, call, and connect — wherever your people are."
+        banner-height: 240
+        banner-text-halign: center
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        appids:
+          - dev.vencord.Vesktop
+          - com.github.IsmaelMartinez.teams_for_linux
+          - org.signal.Signal
+          - in.cinny.Cinny
+          - org.gajim.Gajim
+          - info.mumble.Mumble
+          - im.riot.Riot
+          - com.teamspeak.TeamSpeak
+          - im.dino.Dino
+          - com.slack.Slack
+          - us.zoom.Zoom
+          - dev.geopjr.Tuba
+          - im.pidgin.Pidgin
 
   - sections:
     - expand-horizontally: true
@@ -275,25 +279,26 @@ rows:
           - io.github.flattool.Warehouse
           - it.mijorus.gearlever
           - page.tesk.Refine
-          - io.github.pwr_solaar.solaar
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
+          - com.github.wwmm.easyeffects
+          - com.github.wwmm.pulseeffects
+          - me.timschneeberger.jdsp4linux
+          - io.github.ilya_zlobintsev.LACT
+          - io.github.pwr_solaar.solaar
+          - org.deskflow.deskflow
+          - com.feaneron.Boatswain
+          - dev.deedles.Trayscale
+          - net.mkiol.SpeechNote
+          - de.leopoldluley.Clapgrep
           - io.github.linx_systems.ClamUI
           - com.usebottles.bottles
           - io.github.mightycreak.Diffuse
-          - net.mkiol.SpeechNote
-          - org.deskflow.deskflow
-          - dev.deedles.Trayscale
-          - io.github.ilya_zlobintsev.LACT
-          - com.feaneron.Boatswain
-          - com.github.qarmin.czkawka
-          - me.timschneeberger.jdsp4linux
-          - com.github.wwmm.easyeffects
-          - com.github.wwmm.pulseeffects
           - me.kozec.syncthingtk
           - re.sonny.Playhouse
           - me.iepure.devtoolbox
           - com.github.tenderowl.frog
           - com.yacreader.YACReader
+          - com.github.qarmin.czkawka
