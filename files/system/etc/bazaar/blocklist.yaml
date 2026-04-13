@@ -1,4 +1,3 @@
-# This is to prevent accidental dupe installations of flatpak releases of system installed apps
 blocklists:
   - priority: 0
     block:
