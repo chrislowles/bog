@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Github
+Name=Git Repo
 Comment=Track updates, report bugs and be generally annoying.
 Exec=xdg-open https://github.com/chrislowles/bog
-Icon=globe-alt2-symbolic
+Icon=git-symbolic
 Terminal=false
 Type=Application
 Categories=Internet;
-Keywords=software;github;bugs
+Keywords=software;github;bugs;
