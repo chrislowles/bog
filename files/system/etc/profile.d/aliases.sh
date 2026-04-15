@@ -20,10 +20,16 @@ power() {
 get_the_new_shit() {
     pls bootc upgrade
     flatpak update
-    read -rp "Reboot? [y/N] " response
-    if [[ "$response" =~ ^[Yy]$ ]]; then
-        power --reboot
-    fi
+    local mode="${1:-}"
+    shift || true
+    case "$mode" in
+        --menu)
+            read -rp "Reboot? [y/N] " response
+            if [[ "$response" =~ ^[Yy]$ ]]; then
+                power --reboot
+            fi
+            ;;
+    esac
 }
 
 # steam_shortcuts [--list/-l | --flush/-f]
