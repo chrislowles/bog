@@ -2,8 +2,8 @@
 Name=Git Repo
 Comment=Track updates, report bugs and be generally annoying.
 Exec=xdg-open https://github.com/chrislowles/bog
-Icon=git-symbolic
+Icon=/usr/share/icons/git-symbolic.svg
 Terminal=false
 Type=Application
 Categories=Internet;
-Keywords=software;github;bugs;
+Keywords=software;git;github;bugs;
