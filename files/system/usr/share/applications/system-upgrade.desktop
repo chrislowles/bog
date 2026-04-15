@@ -2,7 +2,7 @@
 Name=System Upgrade
 Comment=Upgrade the base and apps.
 Exec=kgx -- bash -ilc "get_the_new_shit"
-Icon=view-refresh-symbolic
+Icon=/usr/share/icons/update-symbolic.svg
 Terminal=false
 Type=Application
 Categories=System;
