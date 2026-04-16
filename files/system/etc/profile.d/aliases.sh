@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 ## ALIASES
+
 # Custom sudo alias
 # Example: pls get -v https://youtu.be/dQw4w9WgXcQ
 alias pls="sudo"
+
 # More detailed ls
 alias ls="ls -la"
 
