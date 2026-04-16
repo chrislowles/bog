@@ -38,7 +38,7 @@ modules:
         - slurp                             # Region selection for grim
 
         # Polkit & Auth
-        - polkit-gnome                      # Polkit agent (works outside GNOME)
+        - xfce-polkit                      # Polkit agent (works outside GNOME)
 
         # Audio (PipeWire stack — likely present in base, listed explicitly)
         - pipewire
