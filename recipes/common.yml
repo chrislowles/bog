@@ -10,12 +10,9 @@ modules:
   - type: dnf
     repos:
       copr:
-        # Primary Hyprland COPR for Fedora — provides hyprland, hyprpaper,
-        # hypridle, hyprlock, and related packages
+        # Primary Hyprland COPR for Fedora — provides hyprland, hyprpaper, hypridle, hyprlock, and related packages
         - solopasha/hyprland
-        # Note: ly has been in official Fedora repos since F39.
-        # If you hit a version lag or want a newer build, swap this in:
-        # - errornointernet/packages
+        - errornointernet/packages
     install:
       packages:
 
@@ -33,7 +30,7 @@ modules:
         # Display Manager
         - ly                                # TUI display manager
 
-        # Terminal (replaces gnome-console/kgx)
+        # Terminal
         - foot                              # Lightweight Wayland-native terminal
 
         # Screenshot tooling
