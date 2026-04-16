@@ -1,5 +1,5 @@
 # bog (Universal Blue/Fedora Atomic Image)
-A barebones (some may say bog standard) immutable Linux distro based on Universal Blue technologies using GNOME/GDM and flatpak/distrobox as its means for software management (with root-installed Steam)
+A barebones (some may say bog standard) immutable Linux distro based on Universal Blue technologies using Hyprland/ly and flatpak/distrobox as its means for software management (with root-installed Steam)
 
 ## Installation
 
@@ -17,7 +17,7 @@ systemctl reboot
 ## Optional Features
 
 ### Jackett
-For use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting as opposed to seperate search plugins for different services.
+For use if/when you want to install a Bittorrent client with Jackett plugin support, this is preferred when collecting public and private sources for torrenting as opposed to separate search plugins for different services.
 ```bash
 systemctl --user enable --now jackett
 ```
