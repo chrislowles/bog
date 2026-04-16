@@ -23,7 +23,7 @@ get_the_new_shit() {
     local mode="${1:-}"
     shift || true
     case "$mode" in
-        --menu)
+        --menu|--reboot|-r)
             read -rp "Reboot? [y/N] " response
             if [[ "$response" =~ ^[Yy]$ ]]; then
                 power --reboot
