@@ -150,28 +150,18 @@ modules:
         repo:
           title: Flathub (system)
         install:
+
             # System management
             - com.github.tchx84.Flatseal
             - com.ranfdev.DistroShelf
             - io.github.flattool.Ignition
-            # com.mattjakeman.ExtensionManager omitted — GNOME-extensions-specific
             - com.vysp3r.ProtonPlus
             - com.github.mtkennerly.ludusavi
             - com.usebottles.bottles
             - me.timschneeberger.jdsp4linux
 
-            # Useful GTK4 apps — all work fine on Hyprland
-            - io.github.celluloid_player.Celluloid
-            - org.gnome.Contacts
-            - org.gnome.Calendar
-            - org.gnome.clocks
-            - org.gnome.SoundRecorder
-            - org.gnome.Decibels
-            - org.gnome.Snapshot
-            - org.gnome.Characters
-            - org.gnome.SimpleScan
-
             # Media
+            - io.github.celluloid_player.Celluloid
             - org.qbittorrent.qBittorrent
 
   - type: fonts
