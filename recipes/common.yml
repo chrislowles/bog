@@ -28,7 +28,7 @@ modules:
         # Essential Interface & Tools
         - gnome-console                     # Terminal emulator
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
-        - xdg-desktop-portal-gnome          # Flatpak Portal Support
+        - xdg-desktop-portal-gnome          # XDG Portal for GNOME
         - gnome-keyring                     # Password/Key Management
         - gnome-disk-utility                # GNOME Disks
         - baobab                            # Dir tree analyzer
@@ -99,6 +99,7 @@ modules:
         - md4c
         - glycin-gtk4-libs
         - libgweather4
+
     remove:
       packages:
         - toolbox
