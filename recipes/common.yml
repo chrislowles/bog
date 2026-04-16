@@ -7,38 +7,63 @@ modules:
       - source: system
         destination: /
 
-  #- type: script
-  #  scripts:
-  #    - source-build-mismatch.sh
-
   - type: dnf
+    repos:
+      copr:
+        # Primary Hyprland COPR for Fedora — provides hyprland, hyprpaper,
+        # hypridle, hyprlock, and related packages
+        - solopasha/hyprland
+        # Note: ly has been in official Fedora repos since F39.
+        # If you hit a version lag or want a newer build, swap this in:
+        # - errornointernet/packages
     install:
       packages:
 
-        # GNOME Core (Minimal)
-        - gnome-shell                       # Desktop Interface
-        - gnome-session-wayland-session     # Wayland Session
-        - gdm                               # Login Manager
-        - gnome-control-center              # Settings
-        - gnome-system-monitor              # Task manager
-        - gnome-settings-daemon             # Hardware management
-        - dconf                             # Basically GNOMEs version of registry keys
-        - dconf-editor                      # Basically GNOMEs version of registry editor
+        # Hyprland Compositor & Ecosystem
+        - hyprland                          # Wayland compositor
+        - hyprpaper                         # Wallpaper daemon
+        - hypridle                          # Idle management daemon
+        - hyprlock                          # Screen locker
+        - waybar                            # Status bar
+        - wofi                              # App launcher (dmenu-compatible)
+        - mako                              # Notification daemon
+        - xdg-desktop-portal-hyprland       # Hyprland portal backend
+        - xdg-desktop-portal-gtk            # GTK portal backend (file picker etc.)
 
-        # Essential Interface & Tools
-        - gnome-console                     # Terminal emulator
-        - gvfs                              # Virtual Filesystem (Trash/Mounts)
-        - xdg-desktop-portal-gnome          # Flatpak Portal Support
+        # Display Manager
+        - ly                                # TUI display manager
+
+        # Terminal (replaces gnome-console/kgx)
+        - foot                              # Lightweight Wayland-native terminal
+
+        # Screenshot tooling
+        - grim                              # Wayland screenshot tool
+        - slurp                             # Region selection for grim
+
+        # Polkit & Auth
+        - polkit-gnome                      # Polkit agent (works outside GNOME)
+
+        # Audio (PipeWire stack — likely present in base, listed explicitly)
+        - pipewire
+        - pipewire-alsa
+        - pipewire-pulseaudio
+        - wireplumber
+        - playerctl                         # MPRIS media key control
+
+        # System tray networking
+        - network-manager-applet
+
+        # Input/brightness utilities
+        - brightnessctl
+
+        # GTK/GNOME utilities (all work under Hyprland)
         - gnome-keyring                     # Password/Key Management
-        - gnome-disk-utility                # GNOME Disks
-        - baobab                            # Dir tree analyzer
-        - gnome-logs                        # SystemD log viewer
+        - gnome-disk-utility                # Disks app
+        - baobab                            # Directory tree analyser
         - gnome-font-viewer                 # Font viewer/installer
-        - nautilus                          # File manager
-        - gnome-text-editor                 # GUI Text editor
-
-        # Niceties
-        - gnome-backgrounds
+        - ranger                            # File manager
+        - gvfs                              # Virtual filesystem (Trash/Mounts)
+        - dconf                             # Used by many GTK apps
 
         # Key Utilities
         - distrobox                         # Container-based system management
@@ -46,27 +71,26 @@ modules:
         - steam                             # Primary gaming platform
 
         # Misc Utilities
-        - micro                             # TUI Text Editor
-        - curl                              # CLI for http transfer/download
-        - wget                              # The other CLI for http transfer/download
+        - micro                             # TUI text editor
+        - curl                              # CLI for HTTP transfer/download
+        - wget                              # The other CLI for HTTP transfer/download
         - git                               # Version control system
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
-        #- ffprobe                          # Multimedia analysis tool
-        - fastfetch                         # System information readout (neofetch-like)
-        - rsync                             # Common program for network syncing files
+        - fastfetch                         # System information readout
+        - rsync                             # Network file syncing
         - rclone                            # Cloud storage rsync
 
         # Networking
-        - NetworkManager-wifi               # Primary tooling for WiFi support
-        
-        # X11 (mostly for debugging when patching/pre-configuring fixes for flatpaks)
+        - NetworkManager-wifi               # Primary WiFi tooling
+
+        # X11 (for debugging Flatpak/XWayland issues)
         - xprop
         - xlsclients
         - xdotool
 
         # Podman
-        - podman                            # Should already be present on ublue base, included just in case
+        - podman
         - podman-compose                    # Fallback CLI if ever needed
         - slirp4netns                       # Rootless networking
         - fuse-overlayfs                    # Rootless storage driver
@@ -77,8 +101,6 @@ modules:
         - plymouth-plugin-two-step
 
         # AppImages
-        #- fuse # FUSE 3 (likely already present in base)
-        #- fuse2 # needed by most AppImages anyway
         - vulkan-loader
         - vulkan-tools
 
@@ -99,50 +121,47 @@ modules:
         - md4c
         - glycin-gtk4-libs
         - libgweather4
+
     remove:
       packages:
         - toolbox
         - htop
-        #- fedora-backgrounds
-        #- fedora-workstation-background
-        #- desktop-backgrounds-gnome
-        #- f*-backgrounds*
 
   - type: script
     scripts:
       - build-bazaar.sh
       - setup-podman.sh
       - setup-os-release.sh
-      - dconf-update.sh
+      # dconf-update.sh omitted — no GNOME dconf defaults to push
 
   - type: systemd
     system:
       enabled:
-        - gdm.service
+        - ly.service
+        # gdm.service removed
 
   - type: default-flatpaks
     configurations:
       - scope: user
         repo:
           title: Flathub (user)
-          # if when we wanna pre-install something like a browser
       - notify: true
         scope: system
         repo:
           title: Flathub (system)
         install:
-            # Suggested pre-installed system programs
+            # System management
             - com.github.tchx84.Flatseal
             - com.ranfdev.DistroShelf
             - io.github.flattool.Ignition
-            - com.mattjakeman.ExtensionManager
-            - io.github.celluloid_player.Celluloid
+            # com.mattjakeman.ExtensionManager omitted — GNOME-extensions-specific
             - com.vysp3r.ProtonPlus
             - com.github.mtkennerly.ludusavi
             - com.usebottles.bottles
             - me.timschneeberger.jdsp4linux
 
-            # Pre-installed selection from GNOME Bazaar curation group
+            # Useful GTK4 apps — all work fine on Hyprland
+            - io.github.celluloid_player.Celluloid
             - org.gnome.Contacts
             - org.gnome.Calendar
             - org.gnome.clocks
@@ -152,34 +171,15 @@ modules:
             - org.gnome.Characters
             - org.gnome.SimpleScan
 
-            # Pre-installed selection from other curated groups
+            # Media
             - org.qbittorrent.qBittorrent
 
-  - type: gnome-extensions
-    install:
-      - 615   # AppIndicator Support
-      - 1319  # GSConnect
-      - 36    # Lock Keys
-      - 5904  # Volume Scroller
-      - 779   # Clipboard Indicator
-      - 517   # Caffeine
-      - 8     # Places Menu
-      - 5263  # GTK Desktop Icons NG (DING)
-      - 600   # Launch New Instance
-      - 9419  # Video Lockscreen
-
-  # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
   - type: fonts
     fonts:
       google-fonts:
         - Inter
-      #url-fonts:
-      #  - name: CustomFont
-      #    url: https://example.com/my-font.otf
-      #  - name: CompanyFonts
-      #    url: https://company.com/fonts.tar.gz
 
-  # Plymouth theming stuff
+  # Plymouth theming
   - type: initramfs
 
   - type: signing
