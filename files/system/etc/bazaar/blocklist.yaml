@@ -20,9 +20,8 @@ blocklists:
     # Development tools known to have been kneecapped as flatpaks
     - com.visualstudio.code
 
-    # Preference for the third-party GNOME Ext manager
-    - org.gnome.Extensions
-
-    # Irrelevant to GNOME system management
+    # Irrelevant to present desktops system management
     - dev.edfloreshz.CosmicTweaks
     - io.github.pantheon_tweaks.pantheon-tweaks
+    - com.mattjakeman.ExtensionManager
+    - org.gnome.Extensions
