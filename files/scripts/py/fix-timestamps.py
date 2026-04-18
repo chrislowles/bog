@@ -35,7 +35,7 @@ for fname in os.listdir('.'):
         f'-DateTimeOriginal={exif_date}',
         fname
     ])
-    print(f'✓ {fname} → {exif_date}')
+    print(f'SUCCESS: {fname} > {exif_date}')
 
 if skipped:
     print('\nSkipped:')
