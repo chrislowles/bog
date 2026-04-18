@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=System Upgrade
 Comment=Upgrade the base and apps.
-Exec=kgx -- bash -ilc "get_the_new_shit --menu"
+Exec=kgx -- bash -ilc "getthenewshit --menu"
 Icon=/usr/share/icons/update-symbolic.svg
 Terminal=false
 Type=Application
