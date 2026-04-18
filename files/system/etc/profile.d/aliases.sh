@@ -16,8 +16,8 @@ power() {
     esac
 }
 
-# get_the_new_shit
-get_the_new_shit() {
+# getthenewshit
+getthenewshit() {
     pls bootc upgrade
     flatpak update
     local mode="${1:-}"
