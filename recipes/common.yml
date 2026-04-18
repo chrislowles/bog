@@ -122,14 +122,8 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - scope: user
-        repo:
-          title: Flathub (user)
-          # if when we wanna pre-install something like a browser
-      - notify: true
-        scope: system
-        repo:
-          title: Flathub (system)
+      - scope: system
+        notify: true
         install:
             # Suggested pre-installed system programs
             - com.github.tchx84.Flatseal
