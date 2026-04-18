@@ -59,7 +59,7 @@ modules:
 
         # Networking
         - NetworkManager-wifi               # Primary tooling for WiFi support
-        
+
         # X11 (mostly for debugging when patching/pre-configuring fixes for flatpaks)
         - xprop
         - xlsclients
@@ -74,7 +74,7 @@ modules:
         # Plymouth
         - plymouth
         - plymouth-system-theme
-        - plymouth-plugin-two-step
+        #- plymouth-plugin-two-step
 
         # AppImages
         #- fuse # FUSE 3 (likely already present in base)
@@ -104,10 +104,9 @@ modules:
       packages:
         - toolbox
         - htop
-        #- fedora-backgrounds
-        #- fedora-workstation-background
-        #- desktop-backgrounds-gnome
-        #- f*-backgrounds*
+        #- fedora-release-identity-basic
+        #- fedora-logos
+        - fedora-bookmarks
 
   - type: script
     scripts:
