@@ -2,9 +2,7 @@
 """
 export-urls.py
 
-Walks a directory of yt-dlp-downloaded videos, extracts YouTube or Internet
-Archive IDs from filenames, and writes a plain-text URL list compatible with
-Parabolic's "Batch" feature (one URL per line).
+Walks a directory of yt-dlp-downloaded videos, extracts YouTube or Internet Archive IDs from filenames, and writes a plain-text URL list compatible with Parabolic's Batch File feature (one URL per line).
 
 Usage:
     python export-urls.py /path/to/videos
@@ -40,8 +38,8 @@ def main():
     parser.add_argument("directory", help="Directory to scan (recursive)")
     parser.add_argument(
         "-o", "--output",
-        default="parabolic-urls.txt",
-        help="Output file path (default: parabolic-urls.txt in current directory)",
+        default="batch-file.txt",
+        help="Output file path (default: batch-file.txt in current directory)",
     )
     args = parser.parse_args()
 
@@ -73,7 +71,7 @@ def main():
     if no_id:
         print(f"\n{len(no_id)} file(s) had no ID in filename and were skipped:")
         for v in no_id:
-            print(f"  • {v.name}")
+            print(f"  - {v.name}")
 
 
 if __name__ == "__main__":
