@@ -113,7 +113,11 @@ modules:
       - build-bazaar.sh
       - setup-podman.sh
       - setup-os-release.sh
-      - dconf-update.sh
+      #- dconf-update.sh
+
+  - type: bling
+    install:
+      - dconf-update-service
 
   - type: systemd
     system:
