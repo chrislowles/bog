@@ -171,6 +171,7 @@ modules:
     fonts:
       google-fonts:
         - Inter
+        - Comic Neue
       #url-fonts:
       #  - name: CustomFont
       #    url: https://example.com/my-font.otf
