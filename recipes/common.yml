@@ -111,6 +111,7 @@ modules:
   - type: script
     scripts:
       - build-bazaar.sh
+      - cleanup-flatpak-state.sh
       - setup-podman.sh
       - setup-os-release.sh
       #- dconf-update.sh
