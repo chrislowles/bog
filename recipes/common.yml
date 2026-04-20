@@ -114,7 +114,6 @@ modules:
       - cleanup-flatpak-state.sh
       - setup-podman.sh
       - setup-os-release.sh
-      #- dconf-update.sh
 
   - type: bling
     install:
@@ -124,7 +123,8 @@ modules:
     user:
       enabled:
         # Noticed a quirk with Bazaar when experimenting with the default-flatpaks key,
-        # clearing cache after reverting fixed it so I'm setting as a service
+        # clearing cache after reverting fixed it so I'm setting as a user service.
+        # Basically a cache clear is now intended to be apart of an image update now.
         - bazaar-cache-reset.service
     system:
       enabled:
