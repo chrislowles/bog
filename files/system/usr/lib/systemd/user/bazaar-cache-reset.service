@@ -1,0 +1,11 @@
+[Unit]
+Description=Clear Bazaar cache on session start
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=rm -rf %h/.cache/io.github.kolunmi.Bazaar/
+ExecStart=rm -rf %h/.local/share/io.github.kolunmi.Bazaar/
+
+[Install]
+WantedBy=default.target
