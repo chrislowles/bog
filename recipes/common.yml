@@ -121,6 +121,11 @@ modules:
       - dconf-update-service
 
   - type: systemd
+    user:
+      enabled:
+        # Noticed a quirk with Bazaar when experimenting with the default-flatpaks key,
+        # clearing cache after reverting fixed it so I'm setting as a service
+        - bazaar-cache-reset.service
     system:
       enabled:
         - gdm.service
