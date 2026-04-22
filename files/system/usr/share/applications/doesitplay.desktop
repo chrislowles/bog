@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DoesItPlay
+Comment=Resource for availability for games, preservation effort.
+Exec=xdg-open https://www.doesitplay.org/
+Icon=/usr/share/icons/doesitplay.svg
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=proton;steam;gaming;wiki;
