@@ -1,6 +1,0 @@
-[org/gnome/desktop/app-folders]
-folder-children=['Resources']
-
-[org/gnome/desktop/app-folders/folders/Resources]
-name='Resources'
-apps=['pcgamingwiki.desktop', 'protondb.desktop', 'steamdb.desktop', 'doesitplay.desktop' 'git-repo.desktop']
