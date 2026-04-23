@@ -1,0 +1,47 @@
+[org/gnome/desktop/break-reminders/eyesight]
+play-sound=true
+
+[org/gnome/desktop/break-reminders/movement]
+duration-seconds=uint32 300
+interval-seconds=uint32 1800
+play-sound=true
+
+[org/gnome/desktop/calendar]
+show-weekdate=true
+
+[org/gnome/desktop/datetime]
+automatic-timezone=false
+
+[org/gnome/desktop/interface]
+clock-format='12h'
+clock-show-seconds=true
+clock-show-weekday=true
+color-scheme='prefer-dark'
+show-battery-percentage=true
+
+[org/gnome/nautilus/icon-view]
+default-zoom-level='large'
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='icon-view'
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+
+[org/gtk/gtk4/settings/file-chooser]
+show-hidden=true
+sort-directories-first=true
+
+[org/gtk/settings/file-chooser]
+clock-format='12h'
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=167
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-position=(26, 23)
+window-size=(1203, 785)
