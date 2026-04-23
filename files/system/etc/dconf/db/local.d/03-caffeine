@@ -1,0 +1,29 @@
+[org/gnome/shell/extensions/caffeine]
+# Show the panel indicator:
+#   'always'      - always visible
+#   'only-active' - visible only when Caffeine is enabled
+#   'never'       - hidden at all times
+show-indicator='only-active'
+
+# Auto-enable Caffeine when a fullscreen app is detected
+enable-fullscreen=true
+
+# Restore the previous enabled/disabled state on login
+restore-state=true
+
+# The saved on/off state to restore (false = start disabled; restore-state brings it back)
+toggle-state=false
+
+# Pause Night Light while Caffeine is active:
+#   'never'       - never pause Night Light
+#   'always-pause'- always pause Night Light when Caffeine is on
+#   'for-apps'    - only pause when triggered by a specific app going fullscreen
+nightlight-pause='never'
+
+# Default timer duration in minutes; 0 means indefinite (no auto-disable)
+duration=uint32 0
+
+# Prevent screen blanking while Caffeine is active:
+#   'never'  - allow blanking (Caffeine only blocks sleep/suspend)
+#   'always' - also block screen blanking
+screen-blank='never'
