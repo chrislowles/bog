@@ -2,7 +2,7 @@
 
 ## ALIASES
 # Custom sudo alias
-# Example: pls get -v https://youtu.be/dQw4w9WgXcQ
+# Example: pls getmedia -v https://youtu.be/dQw4w9WgXcQ
 alias pls="sudo"
 # More detailed ls
 alias ls="ls -la"
@@ -10,14 +10,14 @@ alias ls="ls -la"
 # power [--reboot/-r | --shutdown/-s]
 power() {
     case "${1:-}" in
-        --reboot)   systemctl reboot ;;
-        --shutdown) systemctl poweroff ;;
+        --reboot|-r)   systemctl reboot ;;
+        --shutdown|-s) systemctl poweroff ;;
         *)  echo "Usage: power [--reboot/-r | --shutdown/-s]" ;;
     esac
 }
 
-# getthenewshit
-getthenewshit() {
+# gtns
+gtns() {
     pls bootc upgrade
     flatpak update
     read -rp "Uninstall unused packages? [y/N] " gtns1
@@ -54,13 +54,13 @@ getmedia() {
     local mode="${1:-}"
     shift || true
     case "$mode" in
-        -v)
+        --video|-v)
             yt-dlp --format "bestvideo+bestaudio/best" --embed-metadata --embed-thumbnail --embed-subs --embed-chapters "$@"
             ;;
-        -a)
+        --audio|-a)
             yt-dlp --format "bestaudio" --embed-metadata --embed-thumbnail --extract-audio --audio-format "mp3" --audio-quality "0" "$@"
             ;;
-        *)  echo "Usage: get [--video/-v | --audio/-a] <url>" ;;
+        *)  echo "Usage: getmedia [--video/-v | --audio/-a] <url>" ;;
     esac
 }
 
@@ -81,8 +81,9 @@ set_nextdns() {
 }
 
 # This is simply me automating a part of the process of clearing cache for apps
-# scans the list of installed apps against the flatpak app cache directories that still exist
-# I think Bazaar can do this but I wanted to write a bash function to cover the misses, also for GTNS to have a kind of granular option
+# scans the list of installed apps against the flatpak app cache directories that still exist.
+# Bazaar has a "leftover data" section but I wanted to write a bash function to cover the misses,
+# also for GTNS to have prompt for something similar
 flatpak_loosie_clean() {
     local loosies
     loosies=$(comm -23 \
