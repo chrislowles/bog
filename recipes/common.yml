@@ -162,6 +162,7 @@ modules:
   - type: gnome-extensions
     install:
       - 615   # AppIndicator Support
+      - 1160  # Dash to Panel
       - 1319  # GSConnect
       - 36    # Lock Keys
       - 5904  # Volume Scroller
