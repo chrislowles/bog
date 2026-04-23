@@ -20,16 +20,18 @@ power() {
 getthenewshit() {
     pls bootc upgrade
     flatpak update
-    local mode="${1:-}"
-    shift || true
-    case "$mode" in
-        --menu|--reboot|-r)
-            read -rp "Reboot? [y/N] " response
-            if [[ "$response" =~ ^[Yy]$ ]]; then
-                power --reboot
-            fi
-            ;;
-    esac
+    read -rp "Uninstall unused packages? [y/N] " gtns1
+    if [[ "$gtns1" =~ ^[Yy]$ ]]; then
+        flatpak uninstall --unused
+    fi
+    read -rp "Remove uninstalled app data? [y/N] " gtns2
+    if [[ "$gtns2" =~ ^[Yy]$ ]]; then
+        flatpak_loosie_clean
+    fi
+    read -rp "Reboot? [y/N] " gtns3
+    if [[ "$gtns3" =~ ^[Yy]$ ]]; then
+        power --reboot
+    fi
 }
 
 # steam_shortcuts [--list/-l | --flush/-f]
@@ -47,21 +49,24 @@ steam_shortcuts() {
     esac
 }
 
-# get [--video/-v | --audio/-a] <url>
-get() {
+# getmedia [-v | -a] <url>
+getmedia() {
     local mode="${1:-}"
     shift || true
     case "$mode" in
-        --video|-v)
+        -v)
             yt-dlp --format "bestvideo+bestaudio/best" --embed-metadata --embed-thumbnail --embed-subs --embed-chapters "$@"
             ;;
-        --audio|-a)
+        -a)
             yt-dlp --format "bestaudio" --embed-metadata --embed-thumbnail --extract-audio --audio-format "mp3" --audio-quality "0" "$@"
             ;;
         *)  echo "Usage: get [--video/-v | --audio/-a] <url>" ;;
     esac
 }
 
+# TODO: refactor "set_nextdns" as generic "setdns" function,
+# nextdns as a provider under "--provider nextdns" and flags like "-ipv6-1 <1st-ipv6-addr> -ipv6-2 <2nd-ipv6-addr> -ipv4-1 <1st-ipv4-addr> -ipv4-2 <2nd-ipv2-addr>" to expediate the setting being set,
+# none written prompts the process to add the addresses as directed below.
 set_nextdns() {
     local connection
     connection="$(nmcli -t -f NAME connection show --active | head -1)"
@@ -75,19 +80,21 @@ set_nextdns() {
         && nmcli connection up "$connection"
 }
 
-# For when the official pkg data removal tools aren't enough (ytmd client cough cough)
-flatpak_clean_orphans() {
-    local orphans
-    orphans=$(comm -23 \
+# This is simply me automating a part of the process of clearing cache for apps
+# scans the list of installed apps against the flatpak app cache directories that still exist
+# I think Bazaar can do this but I wanted to write a bash function to cover the misses, also for GTNS to have a kind of granular option
+flatpak_loosie_clean() {
+    local loosies
+    loosies=$(comm -23 \
         <(ls ~/.var/app/ | sort) \
         <(flatpak list --app --columns=application | sort))
 
-    if [[ -z "$orphans" ]]; then
-        echo "No orphaned app data found."
+    if [[ -z "$loosies" ]]; then
+        echo "No loose app cache folders found."
         return 0
     fi
 
-    echo "Orphaned Flatpak app data directories:"
+    echo "Loose Flatpak app cache directories:"
 
     local to_delete=()
     while IFS= read -r app; do
@@ -95,7 +102,7 @@ flatpak_clean_orphans() {
         if [[ "$answer" =~ ^[Yy]$ ]]; then
             to_delete+=("$app")
         fi
-    done <<< "$orphans"
+    done <<< "$loosies"
 
     if [[ ${#to_delete[@]} -eq 0 ]]; then
         echo "Nothing deleted."
