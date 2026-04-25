@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-## ALIASES
-# Custom sudo alias
-# Example: pls getmedia -v https://youtu.be/dQw4w9WgXcQ
-alias pls="sudo"
-# More detailed ls
-alias ls="ls -la"
-
 # power [--reboot/-r | --shutdown/-s]
 power() {
     case "${1:-}" in
@@ -16,9 +9,9 @@ power() {
     esac
 }
 
-# gtns
+# gtns: get the new shit
 gtns() {
-    pls bootc upgrade
+    sudo bootc upgrade
     flatpak update
     read -rp "Uninstall unused packages? [y/N] " gtns1
     if [[ "$gtns1" =~ ^[Yy]$ ]]; then
@@ -67,7 +60,7 @@ getmedia() {
 # setdns --provider <name> [-ipv6-1 <addr>] [-ipv6-2 <addr>] [-ipv4-1 <addr>] [-ipv4-2 <addr>]
 #
 # Configures DNS for the active NetworkManager connection.
-# Supported providers: nextdns (more can be added)
+# Supported providers: nextdns (more to be added)
 #
 # Addresses can be supplied inline via flags, or left out to be prompted interactively.
 #
@@ -170,7 +163,7 @@ flatpak_loosie_clean() {
 
     for app in "${to_delete[@]}"; do
         echo "Deleting: ~/.var/app/$app"
-        pls rm -rf "~/.var/app/${app}"
+        sudo rm -rf "~/.var/app/${app}"
     done
 
     echo "Done."
