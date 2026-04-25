@@ -1,0 +1,10 @@
+[Unit]
+Description=Flatpak/Bazaar cleanup on session start
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /usr/libexec/bog/cleanup-flatpak-state.sh
+
+[Install]
+WantedBy=default.target
