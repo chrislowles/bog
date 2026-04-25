@@ -7,6 +7,15 @@ icon-saturation=0.0
 icon-size=0
 legacy-tray-enabled=true
 
+[org/gnome/shell/extensions/caffeine]
+show-indicator='only-active'
+enable-fullscreen=true
+restore-state=true
+toggle-state=false
+nightlight-pause='never'
+duration=uint32 0
+screen-blank='never'
+
 [org/gnome/shell/extensions/clipboard-indicator]
 disable-down-arrow=true
 display-mode=2
@@ -14,60 +23,3 @@ history-size=24
 move-item-first=true
 preview-size=100
 topbar-preview-size=50
-
-[org/gnome/shell/extensions/dash-to-panel]
-animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
-context-menu-entries='[{"title":"Task Manager","cmd":"gnome-system-monitor"},{"title":"File Explorer","cmd":"nautilus"}]'
-dot-position='BOTTOM'
-dot-style-focused='DOTS'
-dot-style-unfocused='DOTS'
-extension-version=73
-global-border-radius=0
-group-apps=true
-hide-overview-on-startup=true
-hot-keys=true
-hotkeys-overlay-combo='TEMPORARILY'
-intellihide=false
-panel-anchors='{"CMN-0x00000000":"MIDDLE"}'
-panel-element-positions='{"CMN-0x00000000":[{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"centerMonitor"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'
-panel-lengths='{"CMN-0x00000000":100}'
-panel-positions='{"CMN-0x00000000":"TOP"}'
-panel-side-margins=0
-panel-side-padding=0
-panel-sizes='{"CMN-0x00000000":32}'
-panel-top-bottom-margins=0
-panel-top-bottom-padding=0
-prefs-opened=false
-show-apps-icon-file=''
-stockgs-keep-dash=false
-stockgs-keep-top-panel=false
-stockgs-panelbtn-click-only=false
-window-preview-title-position='TOP'
-
-[org/gnome/shell/extensions/gtk4-ding]
-show-desktop-widgets=false
-
-[org/gnome/shell/extensions/hotedge]
-fallback-in-use=false
-
-[org/gnome/shell/extensions/caffeine]
-# Show the panel indicator:
-#   'always'      - always visible
-#   'only-active' - visible only when Caffeine is enabled
-#   'never'       - hidden at all times
-show-indicator='only-active'
-enable-fullscreen=true # Auto-enable Caffeine when a fullscreen app is detected
-restore-state=true # Restore the previous enabled/disabled state on login
-toggle-state=false # The saved on/off state to restore (false = start disabled; restore-state brings it back)
-
-# Pause Night Light while Caffeine is active:
-#   'never'       - never pause Night Light
-#   'always-pause'- always pause Night Light when Caffeine is on
-#   'for-apps'    - only pause when triggered by a specific app going fullscreen
-nightlight-pause='never'
-duration=uint32 0 # Default timer duration in minutes; 0 means indefinite (no auto-disable)
-
-# Prevent screen blanking while Caffeine is active:
-#   'never'  - allow blanking (Caffeine only blocks sleep/suspend)
-#   'always' - also block screen blanking
-screen-blank='never'
