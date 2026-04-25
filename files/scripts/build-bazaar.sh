@@ -3,7 +3,8 @@ set -euo pipefail
 
 echo "Building Bazaar from source with custom configurations..."
 
-# Hoping to resolve dependencies for source builds of bazaar automatically it took me hours to actually figure the deps out lmao
+# Hoping to resolve dependencies for source builds of bazaar automatically
+# it took me hours to actually figure the deps out lmao
 echo "Installing build dependencies for source-built Bazaar..."
 dnf install -y \
     git \
@@ -30,7 +31,7 @@ dnf install -y \
     openssl-devel \
     libproxy-devel
 
-BAZAAR_VERSION="v0.7.12"
+BAZAAR_VERSION="v0.7.15"
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
 cd /tmp
 git clone \
