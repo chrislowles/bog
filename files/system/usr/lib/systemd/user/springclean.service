@@ -1,0 +1,10 @@
+[Unit]
+Description=Generic system cleanup on session start
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /usr/libexec/bog/springclean.sh
+
+[Install]
+WantedBy=default.target
