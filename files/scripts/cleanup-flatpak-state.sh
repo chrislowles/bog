@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# TODO: refactor this as merging the function of this into the bazaar-cache-reset service
+
 echo "Cleaning up loose Flatpak/Bazaar state..."
 
 # Remove any stale extra installation configs not intentionally placed (keeps system + user, removes ghost entries)
