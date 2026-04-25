@@ -26,31 +26,31 @@ css: |
     border-radius: 25px;
   }
   .gnome-section {
-    background: linear-gradient(135deg, #3584E4, #1a5ab5);
+    background: linear-gradient(135deg, #3584E4, #1A5AB5);
   }
   .gaming-section {
-    background: linear-gradient(135deg, #5c5a5e, #343234);
+    background: linear-gradient(135deg, #5C5A5E, #343234);
   }
   .browsers-section {
-    background: linear-gradient(135deg, #33D17A, #1a9655);
+    background: linear-gradient(135deg, #33D17A, #1A9655);
   }
   .office-section {
-    background: linear-gradient(135deg, #1C71D8, #0f459e);
+    background: linear-gradient(135deg, #1C71D8, #0F459E);
   }
   .creative-section {
-    background: linear-gradient(135deg, #E66100, #b84c00);
+    background: linear-gradient(135deg, #E66100, #B84C00);
   }
   .social-section {
-    background: linear-gradient(135deg, #E01B24, #a01018);
+    background: linear-gradient(135deg, #E01B24, #A01018);
   }
   .media-section {
-    background: linear-gradient(135deg, #9141AC, #642d7a);
+    background: linear-gradient(135deg, #9141AC, #642D7A);
   }
   .system-section {
-    background: linear-gradient(135deg, #2190A4, #145f6e);
+    background: linear-gradient(135deg, #2190A4, #145F6E);
   }
   .misc-section {
-    background: linear-gradient(135deg, #7a7a80, #4a4a50);
+    background: linear-gradient(135deg, #7A7A80, #4A4A50);
   }
 
 rows:
@@ -153,12 +153,12 @@ rows:
         banner-text-label-xalign: 0.0
         appids:
           - org.mozilla.firefox
+          - com.google.Chrome
+          - com.microsoft.Edge
           - io.gitlab.librewolf-community
           - net.codelogistics.webapps
           - io.github.ungoogled_software.ungoogled_chromium
           - app.zen_browser.zen
-          - com.microsoft.Edge
-          - com.google.Chrome
           - com.brave.Browser
           - com.opera.Opera
           - org.chromium.Chromium
