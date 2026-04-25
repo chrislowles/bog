@@ -32,6 +32,7 @@ dnf install -y \
     libproxy-devel
 
 BAZAAR_VERSION="v0.7.15"
+
 echo "Cloning Bazaar ${BAZAAR_VERSION}..."
 cd /tmp
 git clone \
