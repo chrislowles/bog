@@ -123,6 +123,8 @@ modules:
         # Noticed a quirk with Bazaar when experimenting with the default-flatpaks key,
         # clearing cache after reverting fixed it so I'm setting as a user service.
         # Basically a cache clear is now intended to be apart of an image update now.
+        # UPDATE: merged this with the actual Bazaar cache clean run and made it an overall "springcleaning" service
+        # TODO: consider user and system versions of these services/scripts
         - springclean.service
     system:
       enabled:
