@@ -6,9 +6,9 @@ modules:
       - source: system
         destination: /
 
-  #- type: script
-  #  scripts:
-  #    - source-build-mismatch.sh
+  - type: script
+    scripts:
+      - source-build-mismatch.sh
 
   - type: dnf
     install:
