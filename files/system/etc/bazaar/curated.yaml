@@ -191,6 +191,9 @@ rows:
           - org.freecad.FreeCAD
           - org.onlyoffice.desktopeditors
           - org.libreoffice.LibreOffice
+          - org.onlyoffice.desktopeditors
+          - com.wps.Office
+          - md.obsidian.Obsidian
           - io.github.pol_rivero.github-desktop-plus
           - com.jeffser.Alpaca
 
@@ -283,7 +286,6 @@ rows:
           - com.ranfdev.DistroShelf
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
-          - com.github.wwmm.easyeffects
           - com.github.wwmm.pulseeffects
           - me.timschneeberger.jdsp4linux
           - io.github.ilya_zlobintsev.LACT
