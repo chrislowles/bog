@@ -1,4 +1,4 @@
-name: bluebuild
+name: Bluebuild Release
 on:
   schedule:
     - cron:
@@ -7,7 +7,6 @@ on:
   push:
     paths-ignore: # don't rebuild if only documentation has changed
       - "**.md"
-
   pull_request:
   workflow_dispatch: # allow manually triggering builds
 concurrency:
@@ -15,23 +14,23 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 jobs:
-  bluebuild:
-    name: Build Custom Image
+  push-update:
+    name: Build Image
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
       id-token: write
     strategy:
-      fail-fast: false # stop github from cancelling all matrix builds if one fails
+      fail-fast: false # stop gh from cancelling all matrix builds if one fails
       matrix:
         recipe:
           - recipe.yml
           - recipe-nvidia.yml
     steps:
       # the build is fully handled by the reusable github action
-      - name: Build Custom Image
-        uses: blue-build/github-action@v1.11
+      - name: Build Image
+        uses: blue-build/github-action@v1.11.1
         with:
           recipe: ${{ matrix.recipe }}
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
