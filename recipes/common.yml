@@ -163,16 +163,16 @@ modules:
   - type: gnome-extensions
     install:
       - 615   # AppIndicator Support
-      - 1160  # Dash to Panel
-      - 1319  # GSConnect
-      - 36    # Lock Keys
-      - 5904  # Volume Scroller
-      - 779   # Clipboard Indicator
+      #- 1160  # Dash to Panel
+      #- 1319  # GSConnect
+      #- 36    # Lock Keys
+      #- 5904  # Volume Scroller
+      #- 779   # Clipboard Indicator
       - 517   # Caffeine
-      - 8     # Places Menu
-      - 5263  # GTK Desktop Icons NG (DING)
-      - 600   # Launch New Instance
-      - 9419  # Video Lockscreen
+      #- 8     # Places Menu
+      #- 5263  # GTK Desktop Icons NG (DING)
+      #- 600   # Launch New Instance
+      #- 9419  # Video Lockscreen
 
   # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
   - type: fonts
