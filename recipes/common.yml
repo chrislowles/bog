@@ -25,21 +25,23 @@ modules:
         - dconf-editor                      # Basically GNOMEs version of registry editor
 
         # Essential Interface & Tools
-        - gnome-console                     # Terminal emulator
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
+        - gvfs-goa                          # GOA integration + Google Drive backend
+        - gnome-online-accounts             # GOA daemon
         - xdg-desktop-portal-gnome          # XDG Portal for GNOME
         - gnome-keyring                     # Password/Key Management
         - gnome-disk-utility                # GNOME Disks
         - baobab                            # Dir tree analyzer
         - gnome-logs                        # SystemD log viewer
         - gnome-font-viewer                 # Font viewer/installer
+        - gnome-console                     # Terminal emulator
         - nautilus                          # File manager
         - gnome-text-editor                 # GUI Text editor
 
         # Niceties
         - gnome-backgrounds
 
-        # Key Utilities
+        # Utilities for System Management Beyond Flatpaks (idk how to describe this lol)
         - distrobox                         # Container-based system management
         - host-spawn                        # distrobox-host-exec dep
         - steam                             # Primary gaming platform
