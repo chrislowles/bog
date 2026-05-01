@@ -24,9 +24,20 @@ modules:
         - dconf                             # Basically GNOMEs version of registry keys
         - dconf-editor                      # Basically GNOMEs version of registry editor
 
-        # Essential Interface & Tools
+        # Filesystem
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
-        - gvfs-goa                          # GOA integration + Google Drive backend
+        - gvfs-afc                          # AFC support for gvfs
+        - gvfs-afp                          # AFP support for gvfs
+        - gvfs-archive                      # Archiving support for gvfs
+        - gvfs-client                       # Client modules of backends for the gio framework in GLib
+        - gvfs-fuse                         # FUSE support for gvfs
+        - gvfs-goa                          # GOA support for gvfs
+        - gvfs-gphoto2                      # gphoto2 support for gvfs
+        - gvfs-mtp                          # MTP support for gvfs
+        - gvfs-nfs                          # NFS support for gvfs
+        - gvfs-smb                          # SMD support for gvfs
+
+        # Essential Interface & Tools
         - gnome-online-accounts             # GOA daemon
         - xdg-desktop-portal-gnome          # XDG Portal for GNOME
         - gnome-keyring                     # Password/Key Management
