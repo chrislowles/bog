@@ -43,3 +43,6 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
+
+[org/gnome/desktop/wm/preferences]
+button-layout=':minimize,maximize,close'
