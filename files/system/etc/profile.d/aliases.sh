@@ -17,9 +17,9 @@ gtns() {
     if [[ "$gtns1" =~ ^[Yy]$ ]]; then
         flatpak uninstall --unused
     fi
-    read -rp "Remove uninstalled app data? [y/N] " gtns2
+    read -rp "Scan flatpak cache folder for uninstalled app data? [y/N] " gtns2
     if [[ "$gtns2" =~ ^[Yy]$ ]]; then
-        flatpak_loosie_clean
+        flatpak_loosie_collection
     fi
     read -rp "Reboot? [y/N] " gtns3
     if [[ "$gtns3" =~ ^[Yy]$ ]]; then
@@ -135,7 +135,7 @@ setdns() {
 # scans the list of installed apps against the flatpak app cache directories that still exist.
 # Bazaar has a "leftover data" section but I wanted to write a bash function to cover the misses,
 # also for GTNS to have prompt for something similar
-flatpak_loosie_clean() {
+flatpak_loosie_collection() {
     local loosies
     loosies=$(comm -23 \
         <(ls ~/.var/app/ | sort) \
