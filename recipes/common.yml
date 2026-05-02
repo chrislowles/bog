@@ -52,6 +52,7 @@ modules:
         - distrobox                         # Container-based system management
         - host-spawn                        # distrobox-host-exec dep
         - steam                             # Primary gaming platform
+        - system-reinstall-bootc            # Effective system reset via bootc
 
         # Misc Utilities
         - micro                             # TUI Text Editor
