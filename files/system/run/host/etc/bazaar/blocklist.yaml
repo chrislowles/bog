@@ -1,0 +1,31 @@
+blocklists:
+  - priority: 0
+    block:
+
+    # To prevent accidental uninstallation of the app store
+    - io.github.kolunmi.Bazaar
+
+    # Flatpak releases of system-installed packages
+    - ca.desrt.dconf-editor
+    - org.gnome.baobab
+    - org.gnome.Logs
+    - org.gnome.font-viewer
+    - org.gnome.TextEditor
+    - io.github.zyedidia.micro
+    - io.github.kolunmi.Bazaar
+    - com.valvesoftware.Steam
+
+    # Deprecated
+    - org.gnome.gedit
+    - org.gnome.Totem
+    - org.gnome.eog
+
+    # Development tools known to have been kneecapped as flatpaks
+    - com.visualstudio.code
+
+    # Preference for the third-party GNOME Ext manager
+    - org.gnome.Extensions
+
+    # Irrelevant to GNOME system management
+    - dev.edfloreshz.CosmicTweaks
+    - io.github.pantheon_tweaks.pantheon-tweaks
