@@ -8,8 +8,7 @@ echo "Taking care of Flatpak and Bazaar..."
 # ── Bazaar user cache ──────────────────────────────────────────────────────────
 # Clears the Bazaar runtime cache on each session start so it rebuilds cleanly.
 echo "Clearing Bazaar user cache..."
-rm -rf "${HOME}/.cache/io.github.kolunmi.Bazaar/"
-rm -rf "${HOME}/.local/share/io.github.kolunmi.Bazaar/"
+rm -rf "${HOME}/.var/app/io.github.kolunmi.Bazaar/cache/"
 
 # ── Stale Flatpak installation configs ────────────────────────────────────────
 # Removes ghost extra-installation entries not intentionally placed.
