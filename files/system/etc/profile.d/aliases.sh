@@ -131,6 +131,66 @@ setdns() {
         && echo "Done. DNS set to $provider on '$connection'."
 }
 
+restore_skel_app() {
+    local app_id="$1"
+
+    # Step A: Verify an app ID was provided
+    if [ -z "$app_id" ]; then
+        echo "Error: Please provide a Flatpak App ID."
+        echo "Example: restore_skel_app com.spotify.Client"
+        return 1
+    fi
+
+    local skel_dir="/etc/skel/.var/app/$app_id"
+    local user_dir="$HOME/.var/app/$app_id"
+
+    # Step B: Check if a template actually exists for this app
+    if [ ! -d "$skel_dir" ]; then
+        echo "Error: No skeleton template found at $skel_dir"
+        return 1
+    fi
+
+    # Step C: Recreate the user's base app directory if it was completely wiped
+    mkdir -p "$user_dir"
+
+    # Step D: Safely sync the missing files
+    echo "Restoring missing configurations for $app_id..."
+    rsync -av --ignore-existing "$skel_dir/" "$user_dir/"
+
+    echo "Restore complete!"
+}
+
+restore_bog_permissions() {
+    local app_id="$1"
+
+    # Step A: Check if you provided an app name
+    if [ -z "$app_id" ]; then
+        echo "Error: Please provide a Flatpak App ID."
+        echo "Example: restore_bog_permissions com.spotify.Client"
+        return 1
+    fi
+
+    local system_override="/usr/share/flatpak/overrides/$app_id"
+    local user_override_dir="$HOME/.local/share/flatpak/overrides"
+
+    # Step B: Check if your 'bog' system actually has a premade config for this app
+    if [ ! -f "$system_override" ]; then
+        echo "Note: No system-wide bog permissions found for $app_id at $system_override."
+        echo "Clearing any conflicting user permissions just in case..."
+        flatpak override --user --reset "$app_id"
+        return 0
+    fi
+
+    # Step C: Recreate the user override folder if it was deleted
+    mkdir -p "$user_override_dir"
+
+    # Step D: Copy the official bog permissions directly into your user folder
+    echo "Restoring bog permissions for $app_id..."
+    cp "$system_override" "$user_override_dir/$app_id"
+
+    echo "Permissions restored successfully!"
+}
+
 # Scans ~/.var/app/ for directories belonging to apps that are no longer installed,
 # then prompts to delete them one by one.
 # Bazaar has a similar tool but I'd like for GTNS to prompt for something like it as well,
