@@ -131,23 +131,28 @@ setdns() {
         && echo "Done. DNS set to $provider on '$connection'."
 }
 
-# This is simply me automating a part of the process of clearing cache for apps
-# scans the list of installed apps against the flatpak app cache directories that still exist.
-# Bazaar has a "leftover data" section but I wanted to write a bash function to cover the misses,
-# also for GTNS to have prompt for something similar
+# Scans ~/.var/app/ for directories belonging to apps that are no longer installed,
+# then prompts to delete them one by one.
+# Bazaar has a similar tool but I'd like for GTNS to prompt for something like it as well,
+# also sometimes Bazaar misses and a hardline function hits better.
 flatpak_loosie_collection() {
+    if [[ ! -d "$HOME/.var/app" ]]; then
+        echo "No Flatpak app data directory found (~/.var/app doesn't exist)."
+        return 0
+    fi
+ 
     local loosies
     loosies=$(comm -23 \
-        <(ls ~/.var/app/ | sort) \
-        <(flatpak list --app --columns=application | sort))
-
+        <(find "$HOME/.var/app/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort) \
+        <(flatpak list --app --columns=application | awk '{print $1}' | grep -v '^$' | sort))
+ 
     if [[ -z "$loosies" ]]; then
         echo "No loose app cache folders found."
         return 0
     fi
-
+ 
     echo "Loose Flatpak app cache directories:"
-
+ 
     local to_delete=()
     while IFS= read -r app; do
         read -rp "Delete ~/.var/app/$app ? [y/N] " answer
@@ -155,16 +160,16 @@ flatpak_loosie_collection() {
             to_delete+=("$app")
         fi
     done <<< "$loosies"
-
+ 
     if [[ ${#to_delete[@]} -eq 0 ]]; then
         echo "Nothing deleted."
         return 0
     fi
-
+ 
     for app in "${to_delete[@]}"; do
         echo "Deleting: ~/.var/app/$app"
-        sudo rm -rf "~/.var/app/${app}"
+        rm -rf "$HOME/.var/app/${app}"
     done
-
+ 
     echo "Done."
 }
