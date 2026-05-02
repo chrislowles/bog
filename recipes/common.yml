@@ -113,7 +113,6 @@ modules:
 
   - type: script
     scripts:
-      - build-bazaar.sh
       - setup-podman.sh
       - setup-os-release.sh
 
