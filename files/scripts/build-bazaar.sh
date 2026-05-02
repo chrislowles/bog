@@ -23,6 +23,7 @@ dnf install -y \
     libyaml-devel \
     blueprint-compiler \
     desktop-file-utils \
+    python3-babel\
     glycin-devel \
     glycin-gtk4-devel \
     md4c-devel \
