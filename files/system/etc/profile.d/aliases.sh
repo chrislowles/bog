@@ -155,7 +155,7 @@ restore_skel_app() {
 
     # Step D: Safely sync the missing files
     echo "Restoring missing configurations for $app_id..."
-    rsync -av --ignore-existing "$skel_dir/" "$user_dir/"
+    rsync -av "$skel_dir/" "$user_dir/"
 
     echo "Restore complete!"
 }
