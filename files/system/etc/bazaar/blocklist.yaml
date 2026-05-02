@@ -12,7 +12,6 @@ blocklists:
     - org.gnome.font-viewer
     - org.gnome.TextEditor
     - io.github.zyedidia.micro
-    - io.github.kolunmi.Bazaar
     - com.valvesoftware.Steam
 
     # Deprecated
