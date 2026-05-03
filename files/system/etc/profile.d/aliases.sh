@@ -177,19 +177,22 @@ flatpak_loosie_collection() {
         echo "No Flatpak app data directory found (~/.var/app doesn't exist)."
         return 0
     fi
- 
+
     local loosies
     loosies=$(comm -23 \
-        <(find "$HOME/.var/app/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort) \
-        <(flatpak list --app --columns=application | awk '{print $1}' | grep -v '^$' | sort))
- 
+        <(find "$HOME/.var/app/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' \
+            | LC_ALL=C sort) \
+        <(flatpak list --app --columns=application \
+            | grep -E '^[a-zA-Z]' \
+            | LC_ALL=C sort))
+
     if [[ -z "$loosies" ]]; then
         echo "No loose app cache folders found."
         return 0
     fi
- 
+
     echo "Loose Flatpak app cache directories:"
- 
+
     local to_delete=()
     while IFS= read -r app; do
         read -rp "Delete ~/.var/app/$app ? [y/N] " answer
@@ -197,16 +200,16 @@ flatpak_loosie_collection() {
             to_delete+=("$app")
         fi
     done <<< "$loosies"
- 
+
     if [[ ${#to_delete[@]} -eq 0 ]]; then
         echo "Nothing deleted."
         return 0
     fi
- 
+
     for app in "${to_delete[@]}"; do
         echo "Deleting: ~/.var/app/$app"
         rm -rf "$HOME/.var/app/${app}"
     done
- 
+
     echo "Done."
 }
