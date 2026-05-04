@@ -60,7 +60,7 @@ getmedia() {
 # setdns --provider <name> [-ipv6-1 <addr>] [-ipv6-2 <addr>] [-ipv4-1 <addr>] [-ipv4-2 <addr>]
 #
 # Configures DNS for the active NetworkManager connection.
-# Supported providers: nextdns (more to be added)
+# Supported providers: nextdns (more to be added, like quad9 or controld)
 #
 # Addresses can be supplied inline via flags, or left out to be prompted interactively.
 #
