@@ -15,17 +15,19 @@ modules:
         - gnome-session-wayland-session     # Wayland Session
         - gdm                               # Login Manager
         - gnome-control-center              # Settings
-        - gnome-system-monitor              # Task manager
-        - gnome-settings-daemon             # Hardware management
+        - gnome-system-monitor              # Task Manager
+        - gnome-settings-daemon             # Hardware Management
+
+        # dconf (desktop/etc configuration in gnome)
         - dconf                             # Basically GNOMEs version of registry keys
         - dconf-editor                      # Basically GNOMEs version of registry editor
 
         # Filesystem
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
+        - gvfs-client                       # Client modules of backends for the gio framework in GLib
+        - gvfs-archive                      # Archiving support for gvfs
         - gvfs-afc                          # AFC support for gvfs
         - gvfs-afp                          # AFP support for gvfs
-        - gvfs-archive                      # Archiving support for gvfs
-        - gvfs-client                       # Client modules of backends for the gio framework in GLib
         - gvfs-fuse                         # FUSE support for gvfs
         - gvfs-goa                          # GOA support for gvfs
         - gvfs-gphoto2                      # gphoto2 support for gvfs
@@ -34,12 +36,12 @@ modules:
         - gvfs-smb                          # SMD support for gvfs
 
         # Essential Interface & Tools
-        - gnome-online-accounts             # GOA daemon
         - xdg-desktop-portal-gnome          # XDG Portal for GNOME
+        - gnome-online-accounts             # GOA daemon
         - gnome-keyring                     # Password/Key Management
         - gnome-disk-utility                # GNOME Disks
-        - baobab                            # Dir tree analyzer
         - gnome-logs                        # SystemD log viewer
+        - baobab                            # Directory tree analyzer
         - gnome-font-viewer                 # Font viewer/installer
         - gnome-console                     # Terminal emulator
         - nautilus                          # File manager
@@ -48,23 +50,22 @@ modules:
         # Niceties
         - gnome-backgrounds
 
-        # Utilities for System Management Beyond Flatpaks (idk how to describe this lol)
+        # System Management Beyond Flatpaks (idk how to describe this lol)
         - distrobox                         # Container-based system management
         - host-spawn                        # distrobox-host-exec dep
         - steam                             # Primary gaming platform
         - system-reinstall-bootc            # Effective system reset via bootc
 
-        # Misc Utilities
+        # Misc
         - micro                             # TUI Text Editor
+        - git                               # Version control system
         - curl                              # CLI for http transfer/download
         - wget                              # The other CLI for http transfer/download
-        - git                               # Version control system
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
-        #- ffprobe                          # Multimedia analysis tool
-        - fastfetch                         # System information readout (neofetch-like)
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage rsync
+        - fastfetch                         # System information readout (neofetch-like)
 
         # Networking
         - NetworkManager-wifi               # Primary tooling for WiFi support
@@ -75,7 +76,7 @@ modules:
         - xdotool
 
         # Podman
-        - podman                            # Should already be present on ublue base, included just in case
+        - podman                            # Should already be present on uBlue base, explicit just in case
         - podman-compose                    # Fallback CLI if ever needed
         - slirp4netns                       # Rootless networking
         - fuse-overlayfs                    # Rootless storage driver
@@ -122,8 +123,7 @@ modules:
       enabled:
         # Noticed a quirk with Bazaar when experimenting with the default-flatpaks key,
         # clearing cache after reverting fixed it so I'm setting as a user service.
-        # Basically a cache clear is now intended to be apart of an image update now.
-        # UPDATE: merged this with the actual Bazaar cache clean run and made it an overall "springcleaning" service
+        # Basically a cache clear is now intended to be apart of an image update/upgrade now.
         # TODO: consider user and system versions of these services/scripts
         - springclean.service
     system:
@@ -135,7 +135,7 @@ modules:
       - scope: system
         notify: true
         install:
-            # the app store itself
+            # The app store itself
             - io.github.kolunmi.Bazaar
 
             # Suggested pre-installed system programs
@@ -162,6 +162,7 @@ modules:
             # Pre-installed selection from other curated groups
             - org.mozilla.firefox
             - org.qbittorrent.qBittorrent
+            - org.bleachbit.BleachBit
 
   - type: gnome-extensions
     install:
