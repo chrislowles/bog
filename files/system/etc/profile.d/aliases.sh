@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-# power [--reboot/-r | --shutdown/-s]
+# power [--reboot | --shutdown]
 power() {
     case "${1:-}" in
-        --reboot|-r)   systemctl reboot ;;
-        --shutdown|-s) systemctl poweroff ;;
-        *)  echo "Usage: power [--reboot/-r | --shutdown/-s]" ;;
+        --reboot)   systemctl reboot ;;
+        --shutdown) systemctl poweroff ;;
+        --suspend)  systemctl suspend ;;
+        *)  echo "Usage: power [--reboot | --shutdown | --suspend]" ;;
     esac
 }
 
 # gtns: get the new shit
+# TODO: preface gtns execution with prompts then run based on them, rather than the one at a time method implemented
 gtns() {
     sudo bootc upgrade
     flatpak update
@@ -28,6 +30,7 @@ gtns() {
 }
 
 # steam_shortcuts [--list/-l | --flush/-f]
+# List Steam shortcuts in GNOME menu and an option to fully clear them out (one time I installed a bunch of Steam games, accidentally left the shortcut option on and had like 40 shortcuts made, Google fixed it and I wanted to make it a function)
 steam_shortcuts() {
     case "${1:-}" in
         --list|-l)
@@ -43,6 +46,7 @@ steam_shortcuts() {
 }
 
 # getmedia [-v | -a] <url>
+# yt-dlp shorthand command
 getmedia() {
     local mode="${1:-}"
     shift || true
@@ -60,13 +64,13 @@ getmedia() {
 # setdns --provider <name> [-ipv6-1 <addr>] [-ipv6-2 <addr>] [-ipv4-1 <addr>] [-ipv4-2 <addr>]
 #
 # Configures DNS for the active NetworkManager connection.
-# Supported providers: nextdns (more to be added, like quad9 or controld)
+# Supported providers: nextdns (more to be added, static options like quad9 or more dynamic options like controld)
 #
 # Addresses can be supplied inline via flags, or left out to be prompted interactively.
 #
 # Examples:
-#   setdns --provider nextdns
-#   setdns --provider nextdns -ipv6-1 2a07::1 -ipv6-2 2a07::2 -ipv4-1 45.90.28.0 -ipv4-2 45.90.30.0
+# > setdns --provider nextdns
+# > setdns --provider nextdns -ipv6-1 2a07::1 -ipv6-2 2a07::2 -ipv4-1 45.90.28.0 -ipv4-2 45.90.30.0
 setdns() {
     local provider="" ipv6_1="" ipv6_2="" ipv4_1="" ipv4_2=""
 
@@ -126,12 +130,12 @@ setdns() {
     echo "Applying DNS to connection: $connection"
     nmcli connection modify "$connection" \
         ipv6.dns "$ipv6_1 $ipv6_2" ipv6.ignore-auto-dns yes \
-        ipv4.dns "$ipv4_1 $ipv4_2" ipv4.ignore-auto-dns yes \
-        && nmcli connection up "$connection" \
-        && echo "Done. DNS set to $provider on '$connection'."
+        ipv4.dns "$ipv4_1 $ipv4_2" ipv4.ignore-auto-dns yes
+    nmcli connection up "$connection"
+    echo "Done. DNS set to $provider on '$connection'."
 }
 
-# reapply pre-configurations for an app (if any have been written)
+# Re-apply pre-configurations for an app (if any have been written)
 restore_bog_guts() {
     local app_id="$1"
 
@@ -168,6 +172,7 @@ restore_bog_guts() {
     echo "Done!"
 }
 
+# CURRENTLY WIP
 # Scans ~/.var/app/ for directories belonging to apps that are no longer installed,
 # then prompts to delete them one by one.
 # Bazaar has a similar tool but I'd like for GTNS to prompt for something like it as well,
@@ -193,20 +198,20 @@ flatpak_loosie_collection() {
 
     echo "Loose Flatpak app cache directories:"
 
-    local to_delete=()
+    local to_be_deleted=()
     while IFS= read -r app; do
         read -rp "Delete ~/.var/app/$app ? [y/N] " answer
         if [[ "$answer" =~ ^[Yy]$ ]]; then
-            to_delete+=("$app")
+            to_be_deleted+=("$app")
         fi
     done <<< "$loosies"
 
-    if [[ ${#to_delete[@]} -eq 0 ]]; then
+    if [[ ${#to_be_deleted[@]} -eq 0 ]]; then
         echo "Nothing deleted."
         return 0
     fi
 
-    for app in "${to_delete[@]}"; do
+    for app in "${to_be_deleted[@]}"; do
         echo "Deleting: ~/.var/app/$app"
         rm -rf "$HOME/.var/app/${app}"
     done
