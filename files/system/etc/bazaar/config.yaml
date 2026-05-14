@@ -174,7 +174,7 @@ rows:
         title:
           en: "Docs & Creative"
         subtitle:
-          en: "Image, audio, video, and 3D — make something."
+          en: "Make something, ya dingus."
         banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
@@ -184,17 +184,18 @@ rows:
           - org.kde.kdenlive
           - com.obsproject.Studio
           - org.audacityteam.Audacity
+          - de.wwwtech.gitte
           - org.gimp.GIMP
           - org.blender.Blender
           - org.inkscape.Inkscape
           - org.ardour.Ardour
+          - org.libreoffice.LibreOffice
+          - io.github.pol_rivero.github-desktop-plus
           - org.freecad.FreeCAD
           - org.onlyoffice.desktopeditors
-          - org.libreoffice.LibreOffice
           - org.onlyoffice.desktopeditors
           - com.wps.Office
           - md.obsidian.Obsidian
-          - io.github.pol_rivero.github-desktop-plus
           - com.jeffser.Alpaca
 
   - sections:
