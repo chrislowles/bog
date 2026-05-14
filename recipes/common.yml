@@ -64,7 +64,7 @@ modules:
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
         - rsync                             # Common program for network syncing files
-        - rclone                            # Cloud storage rsync
+        - rclone                            # Cloud storage management
         - fastfetch                         # System information readout (neofetch-like)
 
         # Networking
@@ -161,6 +161,7 @@ modules:
 
             # Pre-installed selection from other curated groups
             - org.mozilla.firefox
+            - com.rcloneui.RcloneUI
             - org.qbittorrent.qBittorrent
             - org.bleachbit.BleachBit
 
