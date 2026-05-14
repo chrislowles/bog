@@ -249,6 +249,7 @@ rows:
           - dev.dergs.Tonearm
           - io.m51.Gelly
           - dev.aunetx.deezer
+          - com.blitzfc.qbz
           - de.haeckerfelix.Fragments
           - org.nicotine_plus.Nicotine
           - org.qbittorrent.qBittorrent
