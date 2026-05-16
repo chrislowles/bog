@@ -158,6 +158,7 @@ modules:
             - org.gnome.Snapshot
             - org.gnome.Characters
             - org.gnome.SimpleScan
+            - org.gnome.Papers
 
             # Pre-installed selection from other curated groups
             - org.mozilla.firefox
