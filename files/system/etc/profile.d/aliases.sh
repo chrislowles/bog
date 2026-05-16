@@ -10,22 +10,59 @@ power() {
     esac
 }
 
-# gtns: get the new shit
-# TODO: preface gtns execution with prompts then run based on them, rather than the one at a time method implemented
+# gtns [--launcher]
+# Get the new shit. Front-loads all prompts before executing.
+# --launcher: used when invoked from the GNOME menu or keyboard shortcut;
+#             holds the terminal open after completion rather than leaving
+#             an orphaned shell window or closing before output can be read.
 gtns() {
+    local launcher=false
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --launcher) launcher=true; shift ;;
+            *)
+                echo "Unknown option: $1"
+                echo "Usage: gtns [--launcher]"
+                return 1
+                ;;
+        esac
+    done
+
+    echo "GET THE NEW SHIT"
+
+    local do_uninstall=false do_loosie=false do_reboot=false
+
+    read -rp "Uninstall unused Flatpak packages after update? [y/N] " ans1
+    [[ "$ans1" =~ ^[Yy]$ ]] && do_uninstall=true
+
+    read -rp "Scan Flatpak cache for uninstalled app data? [y/N] " ans2
+    [[ "$ans2" =~ ^[Yy]$ ]] && do_loosie=true
+
+    read -rp "Reboot when done? [y/N] " ans3
+    [[ "$ans3" =~ ^[Yy]$ ]] && do_reboot=true
+
+    echo "Getting the new shit (among other things)"
+
     sudo bootc upgrade
     flatpak update
-    read -rp "Uninstall unused packages? [y/N] " gtns1
-    if [[ "$gtns1" =~ ^[Yy]$ ]]; then
+
+    if $do_uninstall; then
         flatpak uninstall --unused
     fi
-    read -rp "Scan flatpak cache folder for uninstalled app data? [y/N] " gtns2
-    if [[ "$gtns2" =~ ^[Yy]$ ]]; then
+
+    if $do_loosie; then
         flatpak_loosie_collection
     fi
-    read -rp "Reboot? [y/N] " gtns3
-    if [[ "$gtns3" =~ ^[Yy]$ ]]; then
+
+    if $do_reboot; then
         power --reboot
+    else
+        echo "Shit gotten."
+        if $launcher; then
+            echo ""
+            read -rp "Press Enter to close/reboot..."
+        fi
     fi
 }
 
