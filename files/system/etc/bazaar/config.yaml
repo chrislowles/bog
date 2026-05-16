@@ -86,6 +86,16 @@ rows:
           - org.gnome.Connections
           - org.gnome.SimpleScan
           - org.gnome.Fractal
+          - org.gnome.Maps
+          - org.gnome.Music
+          - org.gnome.Mines
+          - org.gnome.GHex
+          - org.gnome.Manuals
+          - org.gnome.dspy
+          - org.gnome.Podcasts
+          - org.gnome.World.Iotas
+          - org.gnome.World.Secrets
+          - org.gnome.Polari
 
   - sections:
     - expand-horizontally: true
