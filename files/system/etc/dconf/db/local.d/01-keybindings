@@ -16,5 +16,5 @@ binding='<Super>t'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
 name='System Upgrade (gtns)'
-command='kgx -- bash -ilc "gtns"'
+command='kgx -- bash -ilc "gtns --launcher"'
 binding='<Super>u'
