@@ -160,12 +160,6 @@ modules:
             - org.gnome.SimpleScan
             - org.gnome.Papers
 
-            # Pre-installed selection from other curated groups
-            - org.mozilla.firefox
-            - com.rcloneui.RcloneUI
-            - org.qbittorrent.qBittorrent
-            - org.bleachbit.BleachBit
-
   - type: gnome-extensions
     install:
       - 615   # AppIndicator Support
