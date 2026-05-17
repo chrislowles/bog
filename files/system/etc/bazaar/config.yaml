@@ -316,3 +316,4 @@ rows:
           - com.github.tenderowl.frog
           - com.yacreader.YACReader
           - com.github.qarmin.czkawka
+          - org.bleachbit.BleachBit
