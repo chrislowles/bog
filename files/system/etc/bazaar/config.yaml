@@ -69,6 +69,7 @@ rows:
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
+        enable-bulk-install: true
         appids:
           - org.gnome.Calculator
           - org.gnome.Loupe
@@ -111,11 +112,11 @@ rows:
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
+        enable-bulk-install: true
         appids:
           - com.vysp3r.ProtonPlus
           - com.heroicgameslauncher.hgl
           - io.itch.itch
-          - io.github.Faugus.faugus-launcher
           - io.github.limo_app.limo
           - io.github.astralvixen.geforce-infinity
           - com.github.AmatCoder.mednaffe
@@ -161,6 +162,7 @@ rows:
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
+        enable-bulk-install: true
         appids:
           - org.mozilla.firefox
           - com.google.Chrome
@@ -189,20 +191,20 @@ rows:
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
+        enable-bulk-install: true
         appids:
+          - org.libreoffice.LibreOffice
           - org.kde.krita
           - org.kde.kdenlive
           - com.obsproject.Studio
-          - org.audacityteam.Audacity
-          - de.wwwtech.gitte
           - org.gimp.GIMP
           - org.blender.Blender
           - org.inkscape.Inkscape
           - org.ardour.Ardour
-          - org.libreoffice.LibreOffice
+          - org.audacityteam.Audacity
+          - de.wwwtech.gitte
           - io.github.pol_rivero.github-desktop-plus
           - org.freecad.FreeCAD
-          - org.onlyoffice.desktopeditors
           - org.onlyoffice.desktopeditors
           - com.wps.Office
           - md.obsidian.Obsidian
@@ -222,6 +224,7 @@ rows:
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
+        enable-bulk-install: true
         appids:
           - dev.vencord.Vesktop
           - com.github.IsmaelMartinez.teams_for_linux
@@ -251,6 +254,7 @@ rows:
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
+        enable-bulk-install: true
         appids:
           - io.mpv.Mpv
           - org.videolan.VLC
@@ -290,6 +294,7 @@ rows:
         banner-text-halign: center
         banner-text-valign: center
         banner-text-label-xalign: 0.0
+        enable-bulk-install: true
         appids:
           - io.github.flattool.Warehouse
           - it.mijorus.gearlever
@@ -313,7 +318,6 @@ rows:
           - me.kozec.syncthingtk
           - re.sonny.Playhouse
           - me.iepure.devtoolbox
-          - com.github.tenderowl.frog
           - com.yacreader.YACReader
           - com.github.qarmin.czkawka
           - org.bleachbit.BleachBit
