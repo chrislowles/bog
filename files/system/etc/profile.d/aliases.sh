@@ -31,13 +31,15 @@ gtns() {
 
     echo "GET THE NEW SHIT"
 
-    local do_uninstall=false do_loosie=false do_reboot=false
+    local do_uninstall=false
+    local loosie_clear=false
+    local do_reboot=false
 
     read -rp "Uninstall unused Flatpak packages after update? [y/N] " ans1
     [[ "$ans1" =~ ^[Yy]$ ]] && do_uninstall=true
 
     read -rp "Scan Flatpak cache for uninstalled app data? [y/N] " ans2
-    [[ "$ans2" =~ ^[Yy]$ ]] && do_loosie=true
+    [[ "$ans2" =~ ^[Yy]$ ]] && loosie_clear=true
 
     read -rp "Reboot when done? [y/N] " ans3
     [[ "$ans3" =~ ^[Yy]$ ]] && do_reboot=true
@@ -59,10 +61,6 @@ gtns() {
         power --reboot
     else
         echo "Shit gotten."
-        if $launcher; then
-            echo ""
-            read -rp "Press Enter to close/reboot..."
-        fi
     fi
 }
 
