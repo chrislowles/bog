@@ -1,0 +1,26 @@
+[Filter]
+allow=*
+
+# Flatpak releases of system-installed packages
+deny=app/ca.desrt.dconf-editor
+deny=app/org.gnome.baobab
+deny=app/org.gnome.Logs
+deny=app/org.gnome.font-viewer
+deny=app/org.gnome.TextEditor
+deny=app/io.github.zyedidia.micro
+deny=app/com.valvesoftware.Steam
+
+# Deprecated
+deny=app/org.gnome.gedit
+deny=app/org.gnome.Totem
+deny=app/org.gnome.eog
+
+# Development tools known to have been kneecapped as flatpaks
+deny=app/com.visualstudio.code
+
+# Preference for the third-party GNOME Ext manager
+deny=app/org.gnome.Extensions
+
+# Irrelevant to GNOME system management
+deny=app/dev.edfloreshz.CosmicTweaks
+deny=app/io.github.pantheon_tweaks.pantheon-tweaks
