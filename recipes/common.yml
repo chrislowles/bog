@@ -129,10 +129,13 @@ modules:
     system:
       enabled:
         - gdm.service
+        - flatpak-filter.service
 
   - type: default-flatpaks
     configurations:
       - scope: system
+        repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        repo-name: flathub
         notify: true
         install:
             # The app store itself
