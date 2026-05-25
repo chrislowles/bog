@@ -1,7 +1,14 @@
 [Filter]
+
+# This is functionally the blocklist from Bazaar but at a system level, not just a UI layer.
+# This is so people can't install apps via terminal unless they KNOW WHAT THEY'RE DOING
+
+# Allow everything
 allow=*
 
-# Flatpak releases of system-installed packages
+# EXCEPT...
+
+# ...flatpak releases of system-installed packages...
 deny=app/ca.desrt.dconf-editor
 deny=app/org.gnome.baobab
 deny=app/org.gnome.Logs
@@ -10,17 +17,17 @@ deny=app/org.gnome.TextEditor
 deny=app/io.github.zyedidia.micro
 deny=app/com.valvesoftware.Steam
 
-# Deprecated
+# ...deprecated apps...
 deny=app/org.gnome.gedit
 deny=app/org.gnome.Totem
 deny=app/org.gnome.eog
 
-# Development tools known to have been kneecapped as flatpaks
+# ...development tools known to have been kneecapped as flatpaks...
 deny=app/com.visualstudio.code
 
-# Preference for the third-party GNOME Ext manager
+# ...the meh first-party GNOME ext manager (it literally just opens the website lmao)...
 deny=app/org.gnome.Extensions
 
-# Irrelevant to GNOME system management
+# ...and apps irrelevant to GNOME system management...
 deny=app/dev.edfloreshz.CosmicTweaks
 deny=app/io.github.pantheon_tweaks.pantheon-tweaks
