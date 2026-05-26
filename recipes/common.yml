@@ -129,7 +129,6 @@ modules:
     system:
       enabled:
         - gdm.service
-        - flatpak-filter.service
 
   - type: default-flatpaks
     configurations:
@@ -146,11 +145,7 @@ modules:
             - com.ranfdev.DistroShelf
             - io.github.flattool.Ignition
             - com.mattjakeman.ExtensionManager
-            - io.github.celluloid_player.Celluloid
             - com.vysp3r.ProtonPlus
-            - com.github.mtkennerly.ludusavi
-            - com.usebottles.bottles
-            - me.timschneeberger.jdsp4linux
 
             # Pre-installed selection from GNOME Bazaar curation group
             - org.gnome.Contacts
