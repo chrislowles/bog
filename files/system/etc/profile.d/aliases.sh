@@ -171,12 +171,12 @@ setdns() {
 }
 
 # Re-apply pre-configurations for an app (if any have been written)
-restore_bog_guts() {
+restore_app_guts() {
     local app_id="$1"
 
     if [ -z "$app_id" ]; then
         echo "Error: Please provide a Flatpak App ID."
-        echo "Example: restore_bog_app com.spotify.Client"
+        echo "Example: restore_app_guts com.spotify.Client"
         return 1
     fi
 
@@ -194,14 +194,19 @@ restore_bog_guts() {
         echo "Note: No skel template found for $app_id - skipping config restore."
     fi
 
-    # Restore bog permissions
+    local resetperm=false
+
+    # Restore permissions
     if [ -f "$system_override" ]; then
-        echo "Restoring bog permissions for $app_id..."
+        echo "Restoring pre-written permissions for $app_id..."
         mkdir -p "$user_override_dir"
         cp "$system_override" "$user_override_dir/$app_id"
     else
-        echo "Note: No system overrides found for $app_id - resolving to clearing any conflicting user permissions..."
-        flatpak override --user --reset "$app_id"
+        read -rp "Note: No system overrides found for $app_id - would you like to reset user permissions instead?" ansresetperm
+        [[ "$ansresetperm" =~ ^[Yy]$ ]] && resetperm=true
+        if $resetperm; then
+            flatpak override --user --reset "$app_id"
+        fi
     fi
 
     echo "Done!"
