@@ -329,7 +329,8 @@ rows:
           - com.ranfdev.DistroShelf
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
-          - com.github.wwmm.pulseeffects
+          - com.github.wwmm.easyeffects
+          - io.github.dimtpap.coppwr
           - me.timschneeberger.jdsp4linux
           - io.github.ilya_zlobintsev.LACT
           - io.github.pwr_solaar.solaar
