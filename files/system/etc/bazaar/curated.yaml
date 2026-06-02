@@ -37,7 +37,7 @@ css: |
   .office-section {
     background: linear-gradient(135deg, #1C71D8, #0F459E);
   }
-  .creative-section {
+  .productivity-section {
     background: linear-gradient(135deg, #E66100, #B84C00);
   }
   .social-section {
@@ -142,11 +142,39 @@ rows:
           - org.azahar_emu.Azahar
           - io.github.ryubing.Ryujinx
           - rs.ruffle.Ruffle
-          - sh.ppy.osu
-          - net.supertuxkart.SuperTuxKart
+
+  - sections:
+    - expand-horizontally: true
+      classes:
+        - bog-section
+        - os-games-section
+      category:
+        title:
+          en: "Open-Source Games"
+        subtitle:
+          en: "Games that run without (mostly) without proprietary components."
+        banner-height: 240
+        banner-text-halign: center
+        banner-text-valign: center
+        banner-text-label-xalign: 0.0
+        enable-bulk-install: true
+        appids:
           - org.zdoom.UZDoom
+          - org.openttd.OpenTTD
           - uk.co.powdertoy.tpt
+          - org.supertuxproject.SuperTux
+          - net.supertuxkart.SuperTuxKart
+          - com.github.Anuken.Mindustry
+          - org.neverball.Neverball
+          - io.jor.bugdom
+          - io.jor.bugdom2
+          - sh.ppy.osu
           - org.luanti.luanti
+          - org.flightgear.FlightGear
+          - net.redeclipse.RedEclipse
+          - org.sauerbraten.Sauerbraten
+          - gg.tesseract.Tesseract
+          - org.taisei_project.Taisei
 
   - sections:
     - expand-horizontally: true
@@ -181,10 +209,10 @@ rows:
     - expand-horizontally: true
       classes:
         - bog-section
-        - creative-section
+        - productivity-section
       category:
         title:
-          en: "Docs & Creative"
+          en: "Productivity"
         subtitle:
           en: "Make something, ya dingus."
         banner-height: 240
@@ -193,7 +221,7 @@ rows:
         banner-text-label-xalign: 0.0
         enable-bulk-install: true
         appids:
-          - org.libreoffice.LibreOffice
+          - org.onlyoffice.desktopeditors
           - org.kde.krita
           - org.kde.kdenlive
           - com.obsproject.Studio
@@ -205,8 +233,6 @@ rows:
           - de.wwwtech.gitte
           - io.github.pol_rivero.github-desktop-plus
           - org.freecad.FreeCAD
-          - org.onlyoffice.desktopeditors
-          - com.wps.Office
           - md.obsidian.Obsidian
           - com.jeffser.Alpaca
 
@@ -219,7 +245,7 @@ rows:
         title:
           en: "Messaging & Social"
         subtitle:
-          en: "Chat, call, and connect — wherever your people are."
+          en: "Wherever your people are."
         banner-height: 240
         banner-text-halign: center
         banner-text-valign: center
