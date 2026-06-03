@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=ProtonDB
-Comment=Check game compatibility ratings for Steam on Linux.
+Comment=Check third-party game compatibility ratings for Steam on Linux.
 Exec=xdg-open https://www.protondb.com
 Icon=/usr/share/icons/protondb.svg
 Terminal=false
