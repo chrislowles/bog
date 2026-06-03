@@ -11,7 +11,7 @@ power() {
 }
 
 # gtns [--launcher]
-# Get the new shit. Front-loads all prompts before executing.
+# Get the new shit.
 # --launcher: used when invoked from the GNOME menu or keyboard shortcut;
 #             holds the terminal open after completion rather than leaving
 #             an orphaned shell window or closing before output can be read.
@@ -44,7 +44,7 @@ gtns() {
     read -rp "Reboot when done? [y/N] " ans3
     [[ "$ans3" =~ ^[Yy]$ ]] && do_reboot=true
 
-    echo "Getting the new shit (among other things)"
+    echo "Getting the new shit."
 
     sudo bootc upgrade
     flatpak update
@@ -212,7 +212,7 @@ restore_app_guts() {
     echo "Done!"
 }
 
-# CURRENTLY WIP
+# CURRENTLY WIP, NEEDS WORK
 # Scans ~/.var/app/ for directories belonging to apps that are no longer installed,
 # then prompts to delete them one by one.
 # Bazaar has a similar tool but I'd like for GTNS to prompt for something like it as well,
