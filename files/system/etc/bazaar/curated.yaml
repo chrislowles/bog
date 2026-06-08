@@ -146,7 +146,7 @@ rows:
       - expand-horizontally: true
         classes:
           - bog-section
-          - os-games-section
+          - oss-games-section
         category:
           title:
             en: "Open-Source Games"
@@ -171,6 +171,7 @@ rows:
             - org.luanti.luanti
             - org.flightgear.FlightGear
             - net.redeclipse.RedEclipse
+            - org.quetoo.Quetoo
             - org.sauerbraten.Sauerbraten
             - gg.tesseract.Tesseract
             - org.taisei_project.Taisei
