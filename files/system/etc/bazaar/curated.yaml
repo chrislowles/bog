@@ -270,7 +270,7 @@ rows:
           banner-text-valign: center
           banner-text-label-xalign: 0.0
           appids:
-            - dev.vencord.Vesktop
+            - com.discordapp.Discord
             - com.github.IsmaelMartinez.teams_for_linux
             - org.signal.Signal
             - in.cinny.Cinny
