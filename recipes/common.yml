@@ -132,10 +132,14 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - scope: system
-        repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-        repo-name: flathub
-        notify: true
+      - scope: user
+        repo:
+          # you can override the title to make inclusion of both system and user repos clearer
+          title: Flathub (user)
+      - notify: true
+        scope: system
+        repo:
+          title: Flathub (system)
         install:
             # The app store itself
             - io.github.kolunmi.Bazaar
