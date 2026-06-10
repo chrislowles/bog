@@ -22,9 +22,7 @@ modules:
         - cosmic-bg
         - cosmic-applets
         - xdg-desktop-portal-cosmic
-        - cosmic-shell                      # Shell / Core UI
         - cosmic-greeter                    # Login Manager
-        - cosmic-dock                       # Dock
         - cosmic-osd                        # OSD
         - cosmic-idle                       # Idle daemon
         - cosmic-files                      # File manager
