@@ -10,17 +10,26 @@ modules:
     install:
       packages:
 
-        # GNOME Core (Minimal)
-        - gnome-shell                       # Desktop Interface
-        - gnome-session-wayland-session     # Wayland Session
-        - gdm                               # Login Manager
-        - gnome-control-center              # Settings
-        - gnome-system-monitor              # Task Manager
-        - gnome-settings-daemon             # Hardware Management
-
-        # dconf (desktop/etc configuration in GNOME)
-        - dconf                             # Basically GNOMEs version of registry keys
-        - dconf-editor                      # Basically GNOMEs version of registry editor
+        # COSMIC Core
+        - cosmic-session
+        - cosmic-comp
+        - cosmic-settings
+        - cosmic-settings-daemon
+        - cosmic-launcher
+        - cosmic-notifications
+        - cosmic-panel
+        - cosmic-term
+        - cosmic-bg
+        - cosmic-applets
+        - xdg-desktop-portal-cosmic
+        - cosmic-shell                      # Shell / Core UI
+        - cosmic-greeter                    # Login Manager
+        - cosmic-dock                       # Dock
+        - cosmic-osd                        # OSD
+        - cosmic-idle                       # Idle daemon
+        - cosmic-files                      # File manager
+        - cosmic-edit                       # GUI Text editor
+        - cosmic-store                      # Software center
 
         # Filesystem
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
@@ -36,19 +45,7 @@ modules:
         - gvfs-smb                          # SMD support for gvfs
 
         # Essential Interface & Tools
-        - xdg-desktop-portal-gnome          # XDG Portal for GNOME
-        - gnome-online-accounts             # GOA daemon
-        - gnome-keyring                     # Password/Key Management
-        - gnome-disk-utility                # GNOME Disks
-        - gnome-logs                        # SystemD log viewer
-        - baobab                            # Directory tree analyzer
-        - gnome-font-viewer                 # Font viewer/installer
-        - gnome-console                     # Terminal emulator
-        - nautilus                          # File manager
-        - gnome-text-editor                 # GUI Text editor
-
-        # Niceties
-        - gnome-backgrounds
+        - gnome-disk-utility                # GNOME Disks (No 1:1 COSMIC utility yet)
 
         # System Management Beyond Flatpaks (idk how to describe this lol)
         - distrobox                         # Container-based system management
@@ -114,10 +111,6 @@ modules:
       - setup-podman.sh
       - setup-os-release.sh
 
-  - type: bling
-    install:
-      - dconf-update-service
-
   - type: systemd
     user:
       enabled:
@@ -128,62 +121,19 @@ modules:
         - springclean.service
     system:
       enabled:
-        - gdm.service
+        - cosmic-greeter.service
 
   - type: default-flatpaks
     configurations:
       - scope: system
-        repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-        repo-name: flathub
         notify: true
         install:
-            # The app store itself
-            - io.github.kolunmi.Bazaar
 
             # Suggested pre-installed system programs
             - com.github.tchx84.Flatseal
             - com.ranfdev.DistroShelf
-            - io.github.flattool.Ignition
-            - com.mattjakeman.ExtensionManager
+            #- com.mattjakeman.ExtensionManager  # Removed as GNOME extensions are incompatible with COSMIC
             - com.vysp3r.ProtonPlus
-
-            # Pre-installed selection from GNOME Bazaar curation group
-            - org.gnome.Contacts
-            - org.gnome.Calendar
-            - org.gnome.clocks
-            - org.gnome.SoundRecorder
-            - org.gnome.Decibels
-            - org.gnome.Snapshot
-            - org.gnome.Characters
-            - org.gnome.SimpleScan
-            - org.gnome.Papers
-
-  - type: gnome-extensions
-    install:
-      - 615     # AppIndicator Support
-      #- 1160   # Dash to Panel
-      #- 1319   # GSConnect
-      #- 36     # Lock Keys
-      #- 5904   # Volume Scroller
-      #- 779    # Clipboard Indicator
-      - 517     # Caffeine
-      - 9788    # Quick Sound Switcher
-      #- 8      # Places Menu
-      #- 5263   # GTK Desktop Icons NG (DING)
-      #- 600    # Launch New Instance
-      #- 9419   # Video Lockscreen
-
-  # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
-  - type: fonts
-    fonts:
-      google-fonts:
-        - Inter
-        - Comic Neue
-      #url-fonts:
-      #  - name: CustomFont
-      #    url: https://example.com/my-font.otf
-      #  - name: CompanyFonts
-      #    url: https://company.com/fonts.tar.gz
 
   # Plymouth theming stuff
   - type: initramfs

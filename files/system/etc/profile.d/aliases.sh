@@ -12,7 +12,7 @@ power() {
 
 # gtns [--launcher]
 # Get the new shit.
-# --launcher: used when invoked from the GNOME menu or keyboard shortcut;
+# --launcher: used when invoked from the menu or keyboard shortcut;
 #             holds the terminal open after completion rather than leaving
 #             an orphaned shell window or closing before output can be read.
 gtns() {
@@ -65,7 +65,7 @@ gtns() {
 }
 
 # steam_shortcuts [--list/-l | --flush/-f]
-# List Steam shortcuts in GNOME menu and an option to fully clear them out (one time I installed a bunch of Steam games, accidentally left the shortcut option on and had like 40 shortcuts made, Google fixed it and I wanted to make it a function)
+# List Steam shortcuts in menu and an option to fully clear them out (one time I installed a bunch of Steam games, accidentally left the shortcut option on and had like 40 shortcuts made, Google fixed it and I wanted to make it a function)
 steam_shortcuts() {
     case "${1:-}" in
         --list|-l)
