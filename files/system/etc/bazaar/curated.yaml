@@ -25,40 +25,12 @@ css: |
     margin: 15px;
     border-radius: 25px;
   }
-  .gnome-section {
-    background: linear-gradient(135deg, #3584E4, #1A5AB5);
-  }
-  .gaming-section {
-    background: linear-gradient(135deg, #5C5A5E, #343234);
-  }
-  .browsers-section {
-    background: linear-gradient(135deg, #33D17A, #1A9655);
-  }
-  .office-section {
-    background: linear-gradient(135deg, #1C71D8, #0F459E);
-  }
-  .productivity-section {
-    background: linear-gradient(135deg, #E66100, #B84C00);
-  }
-  .social-section {
-    background: linear-gradient(135deg, #E01B24, #A01018);
-  }
-  .media-section {
-    background: linear-gradient(135deg, #9141AC, #642D7A);
-  }
-  .system-section {
-    background: linear-gradient(135deg, #2190A4, #145F6E);
-  }
-  .misc-section {
-    background: linear-gradient(135deg, #7A7A80, #4A4A50);
-  }
 
 rows:
   - sections:
       - expand-horizontally: true
         classes:
           - bog-section
-          - gnome-section
         category:
           title:
             en: "GNOME"
@@ -101,7 +73,6 @@ rows:
       - expand-horizontally: true
         classes:
           - bog-section
-          - gaming-section
         category:
           title:
             en: "Gaming (minus Steam)"
@@ -120,16 +91,15 @@ rows:
             - io.github.astralvixen.geforce-infinity
             - io.github.streetpea.Chiaki4deck
             - org.prismlauncher.PrismLauncher
+            - io.mrarm.mcpelauncher
             - io.github.radiolamp.mangojuice
             - org.vinegarhq.Sober
-            - io.mrarm.mcpelauncher
             - com.github.mtkennerly.ludusavi
 
   - sections:
       - expand-horizontally: true
         classes:
           - bog-section
-          - oss-games-section
         category:
           title:
             en: "Open-Source Games"
@@ -171,12 +141,12 @@ rows:
             - org.sauerbraten.Sauerbraten
             - gg.tesseract.Tesseract
             - org.taisei_project.Taisei
+            - at.vintagestory.VintageStory
 
   - sections:
       - expand-horizontally: true
         classes:
           - bog-section
-          - emulation-section
         category:
           title:
             en: "Emulation"
@@ -212,7 +182,6 @@ rows:
       - expand-horizontally: true
         classes:
           - bog-section
-          - browsers-section
         category:
           title:
             en: "Browsers"
@@ -240,7 +209,6 @@ rows:
       - expand-horizontally: true
         classes:
           - bog-section
-          - productivity-section
         category:
           title:
             en: "Productivity"
@@ -256,7 +224,7 @@ rows:
             - org.kde.krita
             - org.kde.kdenlive
             - com.obsproject.Studio
-            - org.gimp.GIMP
+            - com.parsecgaming.parsec
             - org.blender.Blender
             - org.inkscape.Inkscape
             - org.ardour.Ardour
@@ -272,7 +240,6 @@ rows:
       - expand-horizontally: true
         classes:
           - bog-section
-          - social-section
         category:
           title:
             en: "Messaging & Social"
@@ -301,7 +268,6 @@ rows:
       - expand-horizontally: true
         classes:
           - bog-section
-          - media-section
         category:
           title:
             en: "Media"
@@ -342,7 +308,6 @@ rows:
       - expand-horizontally: true
         classes:
           - bog-section
-          - misc-section
         category:
           title:
             en: "Misc."
