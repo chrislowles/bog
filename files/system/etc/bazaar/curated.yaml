@@ -142,18 +142,31 @@ rows:
           enable-bulk-install: true
           appids:
             - org.zdoom.UZDoom
+            - io.github.fabiangreffrath.Doom
             - org.openttd.OpenTTD
             - uk.co.powdertoy.tpt
             - org.supertuxproject.SuperTux
             - net.supertuxkart.SuperTuxKart
             - com.github.Anuken.Mindustry
+            - com.thebrokenrail.MCPIReborn
+            - net.runelite.RuneLite
+            - sh.ppy.osu
+            - com.epicgames.ut99
+            - com.epicgames.ut2004
+            - com.gitlab.coringao.cavestory-nx
+            - org.luanti.luanti
+            - net.gpro.gproapp
+            - net.huitsi.PhantomOverload
+            - com.fafarunner.FaFaRunner
+            - org.flightgear.FlightGear
+            - net.redeclipse.RedEclipse
             - org.neverball.Neverball
             - io.jor.bugdom
             - io.jor.bugdom2
-            - sh.ppy.osu
-            - org.luanti.luanti
-            - org.flightgear.FlightGear
-            - net.redeclipse.RedEclipse
+            - io.jor.cromagrally
+            - io.jor.nanosaur
+            - io.jor.nanosaur2
+            - org.tuxfamily.XMoto
             - org.quetoo.Quetoo
             - org.sauerbraten.Sauerbraten
             - gg.tesseract.Tesseract
