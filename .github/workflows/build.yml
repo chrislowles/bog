@@ -2,8 +2,8 @@ name: Bluebuild Release
 on:
   schedule:
     # Runs every Tuesday at 06:00 UTC; the build gate restricts actual builds to:
-    #   • the second Tuesday of each month  (monthly "Patch Tuesday" cadence), and
-    #   • the last Tuesday of September     (annual feature-update cadence)
+    #  - the second Tuesday of each month  (monthly "Patch Tuesday" cadence), and
+    #  - the last Tuesday of September     (annual feature-update cadence)
     - cron: '0 6 * * 2'
   push:
     paths-ignore: # don't rebuild if only documentation has changed
