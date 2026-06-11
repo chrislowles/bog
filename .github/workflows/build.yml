@@ -1,9 +1,10 @@
 name: Bluebuild Release
 on:
   schedule:
-    - cron:
-        "00 06 * * *" # build at 06:00 UTC every day
-        # (20 minutes after last ublue images start building)
+    # Runs every Tuesday at 06:00 UTC; the build gate restricts actual builds to:
+    #   • the second Tuesday of each month  (monthly "Patch Tuesday" cadence), and
+    #   • the last Tuesday of September     (annual feature-update cadence)
+    - cron: '0 6 * * 2'
   push:
     paths-ignore: # don't rebuild if only documentation has changed
       - "**.md"
@@ -14,8 +15,46 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 jobs:
+
+  build-gate:
+    name: Schedule Gate
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.gate.outputs.proceed }}
+    steps:
+      - name: Evaluate build cadence
+        id: gate
+        run: |
+          # Non-scheduled triggers (push, PR, manual dispatch) always proceed
+          if [[ "${{ github.event_name }}" != "schedule" ]]; then
+            echo "proceed=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          DAY=$(date +%-d)
+          MONTH=$(date +%-m)
+
+          # Monthly: the second Tuesday of the month always falls on days 8–14
+          if [[ $DAY -ge 8 && $DAY -le 14 ]]; then
+            echo "Patch Tuesday build (day $DAY of month $MONTH). Proceeding." >&2
+            echo "proceed=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Annual: the last Tuesday of September always falls on days 24–30 of month 9
+          if [[ $MONTH -eq 9 && $DAY -ge 24 && $DAY -le 30 ]]; then
+            echo "Annual September feature-update build (day $DAY). Proceeding." >&2
+            echo "proceed=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "Not a designated build Tuesday (day $DAY, month $MONTH) — skipping." >&2
+          echo "proceed=false" >> $GITHUB_OUTPUT
+
   push-update:
     name: Build Image
+    needs: build-gate
+    if: needs.build-gate.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
