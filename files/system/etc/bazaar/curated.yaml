@@ -196,7 +196,7 @@ rows:
             - io.gitlab.librewolf-community
             - io.github.ungoogled_software.ungoogled_chromium
             - com.microsoft.Edge
-            - net.codelogistics.webapps
+            - io.github.zaedus.spider
             - app.zen_browser.zen
             - com.brave.Browser
             - com.opera.Opera
@@ -229,6 +229,7 @@ rows:
             - org.audacityteam.Audacity
             - com.sublimehq.SublimeText
             - dev.zed.Zed
+            - io.gitlab.ilshat_apps.manuscript
             - de.wwwtech.gitte
             - io.github.pol_rivero.github-desktop-plus
             - org.freecad.FreeCAD
