@@ -292,7 +292,6 @@ rows:
             - de.haeckerfelix.Fragments
             - org.nicotine_plus.Nicotine
             - org.qbittorrent.qBittorrent
-            - io.github.giantpinkrobots.varia
             - org.nickvision.tubeconverter
             - com.nuclearplayer.Nuclear
             - com.mastermindzh.tidal-hifi
