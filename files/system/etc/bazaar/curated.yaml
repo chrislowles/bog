@@ -297,6 +297,7 @@ rows:
             - com.mastermindzh.tidal-hifi
             - io.freetubeapp.FreeTube
             - dev.fredol.open-tv
+            - com.dec05eba.gpu_screen_recorder
             - org.musicbrainz.Picard
             - fr.handbrake.ghb
             - net.fasterland.converseen
