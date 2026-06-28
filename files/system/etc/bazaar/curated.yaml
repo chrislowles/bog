@@ -280,6 +280,7 @@ rows:
           appids:
             - org.videolan.VLC
             - com.spotify.Client
+            - io.github.mpc_qt.mpc-qt
             - app.ytmdesktop.ytmdesktop
             - io.mpv.Mpv
             - de.haeckerfelix.Shortwave
