@@ -298,6 +298,7 @@ rows:
             - io.freetubeapp.FreeTube
             - dev.fredol.open-tv
             - com.dec05eba.gpu_screen_recorder
+            - com.makemkv.MakeMKV
             - org.musicbrainz.Picard
             - fr.handbrake.ghb
             - net.fasterland.converseen
