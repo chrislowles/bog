@@ -34,6 +34,7 @@ gtns() {
     local do_uninstall=false
     local loosie_clear=false
     local do_reboot=false
+    local auto_update_apps=false
 
     read -rp "Uninstall unused Flatpak packages after update? [y/N] " ans1
     [[ "$ans1" =~ ^[Yy]$ ]] && do_uninstall=true
@@ -44,12 +45,20 @@ gtns() {
     read -rp "Reboot when done? [y/N] " ans3
     [[ "$ans3" =~ ^[Yy]$ ]] && do_reboot=true
 
+    read -rp "Automatically accept app update prompt? [y/N] " ans4
+    [[ "$ans4" =~ ^[Yy]$ ]] && auto_update_apps=true
+
     echo "Getting the new shit."
 
     sudo bootc upgrade
-    flatpak update
 
-    if $do_uninstall; then
+    if $auto_update_apps; then
+        flatpak update -y --noninteractive
+    else
+        flatpak update
+    fi
+
+    if $uninstall_unused_apps; then
         flatpak uninstall --unused
     fi
 
