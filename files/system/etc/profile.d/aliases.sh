@@ -53,7 +53,7 @@ gtns() {
     sudo bootc upgrade
 
     if $auto_update_apps; then
-        flatpak update -y --noninteractive
+        flatpak update -y
     else
         flatpak update
     fi
