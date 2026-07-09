@@ -336,6 +336,7 @@ rows:
             - io.github.pwr_solaar.solaar
             - com.github.marhkb.Pods
             - org.deskflow.deskflow
+            - dev.mufeed.Wordbook
             - com.feaneron.Boatswain
             - dev.deedles.Trayscale
             - net.mkiol.SpeechNote
