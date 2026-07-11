@@ -350,4 +350,5 @@ rows:
             - com.yacreader.YACReader
             - com.github.qarmin.czkawka
             - org.bleachbit.BleachBit
+            - com.github.jkotra.eovpn
             - org.gnome.design.IconLibrary
