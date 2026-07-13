@@ -1,4 +1,5 @@
 name: Bluebuild Release
+
 on:
   schedule:
     # Runs every Tuesday at 06:00 UTC; the build gate restricts actual builds to:
@@ -10,10 +11,13 @@ on:
       - "**.md"
   pull_request:
   workflow_dispatch: # allow manually triggering builds
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
+
   build-gate:
     name: Schedule Gate
     runs-on: ubuntu-latest
