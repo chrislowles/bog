@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # https://workshop.blue-build.org/images
 name: bog
 description: My personal uBlue/Fedora image.
