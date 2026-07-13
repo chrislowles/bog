@@ -12,11 +12,22 @@ jobs:
       contents: write
       packages: read
     strategy:
+      fail-fast: false # don't cancel bog-nvidia just because bog failed (or vice versa)
       matrix:
         image_name: [bog, bog-nvidia]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
 
       - name: Build ISO
         uses: jasonn3/build-container-installer@v1.4.0
