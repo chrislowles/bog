@@ -1,20 +1,24 @@
-name: Build and Release ISOs
+name: Build ISOs
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
+  # You can uncomment the lines below to automate builds when you create a new release
+  # release:
+  #   types: [published]
 
 jobs:
-  build-isos:
+  build-iso:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # This gives the action permission to write to your Releases tab.
       packages: read
+    
     strategy:
-      fail-fast: false # don't cancel bog-nvidia just because bog failed (or vice versa)
+      fail-fast: false
       matrix:
         image_name: [bog, bog-nvidia]
+        major_version: [40] 
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,28 +26,30 @@ jobs:
       - name: Free disk space
         uses: jlumbroso/free-disk-space@main
         with:
-          tool-cache: true
+          tool-cache: false
           android: true
           dotnet: true
           haskell: true
-          large-packages: true
-          swap-storage: true
+          large-packages: false
+          docker-images: true
+          swap-storage: false
 
       - name: Build ISO
-        uses: jasonn3/build-container-installer@v1.4.0
+        uses: jasonn3/build-container-installer@v1.2.2
         id: build
         with:
           arch: x86_64
           image_name: ${{ matrix.image_name }}
           image_repo: ghcr.io/${{ github.repository_owner }}
           image_tag: latest
-          version: 43
-          variant: Silverblue
-          iso_name: ${{ matrix.image_name }}-installer.iso
+          version: ${{ matrix.major_version }}
+          iso_name: ${{ matrix.image_name }}.iso
 
-      - name: Upload ISO to GitHub Release
+      - name: Upload ISO to Releases Tab
         uses: softprops/action-gh-release@v2
-        if: github.event_name == 'release'
         with:
           files: |
-            ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}
+            ${{ matrix.image_name }}.iso
+          tag_name: latest-iso
+          name: "Latest ISO Build"
+          body: "Automated ISO build for ${{ matrix.image_name }}."
