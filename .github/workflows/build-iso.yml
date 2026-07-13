@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [bog, bog-nvidia]
-        major_version: [44] 
+        # We removed the hardcoded major_version here to dynamically retrieve it below.
 
     steps:
       - name: Checkout repository
@@ -34,15 +34,28 @@ jobs:
           docker-images: true
           swap-storage: false
 
+      - name: Extract Fedora Version from Image
+        id: get_version
+        run: |
+          # Pull the latest image to inspect it
+          docker pull ghcr.io/${{ github.repository_owner }}/${{ matrix.image_name }}:latest
+          
+          # Read the version directly from the image's os-release file
+          FEDORA_VERSION=$(docker run --rm ghcr.io/${{ github.repository_owner }}/${{ matrix.image_name }}:latest bash -c 'source /etc/os-release && echo $VERSION_ID')
+          
+          # Pass the extracted version variable to the next step
+          echo "version=$FEDORA_VERSION" >> $GITHUB_OUTPUT
+
       - name: Build ISO
-        uses: jasonn3/build-container-installer@v1.2.2
+        uses: jasonn3/build-container-installer@main
         id: build
         with:
           arch: x86_64
           image_name: ${{ matrix.image_name }}
           image_repo: ghcr.io/${{ github.repository_owner }}
           image_tag: latest
-          version: ${{ matrix.major_version }}
+          # Utilize the dynamically extracted version 
+          version: ${{ steps.get_version.outputs.version }}
           iso_name: ${{ matrix.image_name }}.iso
 
       - name: Upload ISO to Releases Tab
