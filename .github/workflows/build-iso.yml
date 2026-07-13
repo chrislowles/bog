@@ -1,0 +1,38 @@
+name: Build and Release ISOs
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build-isos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: read
+    strategy:
+      matrix:
+        image_name: [bog, bog-nvidia]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build ISO
+        uses: jasonn3/build-container-installer@v1.4.0
+        id: build
+        with:
+          arch: x86_64
+          image_name: ${{ matrix.image_name }}
+          image_repo: ghcr.io/${{ github.repository_owner }}
+          image_tag: latest
+          version: 40
+          variant: Silverblue
+          iso_name: ${{ matrix.image_name }}-installer.iso
+
+      - name: Upload ISO to GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: github.event_name == 'release'
+        with:
+          files: |
+            ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}
