@@ -1,4 +1,5 @@
 name: Build ISOs
+
 on:
   workflow_dispatch:
   push:
@@ -11,6 +12,7 @@ on:
     paths:
       - 'recipes/**'
       - '.github/workflows/build-isos.yml'
+
 jobs:
   build-isos:
     runs-on: ubuntu-24.04
@@ -27,7 +29,8 @@ jobs:
       id-token: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
+
       - name: Free Disk Space
         uses: jlumbroso/free-disk-space@main
         with:
@@ -38,6 +41,7 @@ jobs:
           large-packages: true
           swap-storage: true
           docker-images: true
+
       - name: Set up environment
         run: |
           echo "IMAGE_NAME=${{ matrix.image.name }}" >> $GITHUB_ENV
@@ -46,12 +50,14 @@ jobs:
           echo "VERSION=$(date +%Y%m%d)" >> $GITHUB_ENV
           echo "VARIANT=${{ matrix.image.variant }}" >> $GITHUB_ENV
           echo "ARCH=x86_64" >> $GITHUB_ENV
+
       - name: Build and Push Container Image
         uses: blue-build/github-action@main
         with:
           recipe: recipes/${{ matrix.image.name }}.yml
           push: true
-      - name: Build ISO
+
+      - name: Build ISO (Netinstall + zstd)
         uses: jasonn3/build-container-installer@v1.5.0
         id: build
         with:
@@ -71,12 +77,14 @@ jobs:
           offline: false
           # Enable bootc/ostreecontainer for atomic installs
           use_bootc: true
+
       - name: Generate CHECKSUM
         run: |
           cd ${{ steps.build.outputs.iso_path }}
           sha256sum ${{ steps.build.outputs.iso_name }} > ${{ steps.build.outputs.iso_name }}-CHECKSUM
+
       - name: Upload ISO to Release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
           tag_name: v${{ env.VERSION }}
@@ -91,8 +99,9 @@ jobs:
             
             **Netinstall Mode**: Small ISO (~<1GB) that pulls layers from ghcr.io at install time.
             Primary install method: `sudo bootc switch ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest`
+
       - name: Upload as Artifact (for PRs)
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.IMAGE_NAME }}-iso
           path: |
