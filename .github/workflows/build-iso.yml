@@ -42,7 +42,7 @@ jobs:
 
       # Upload to GitHub Release (your original) + Artifact fallback
       - name: Upload ISO to Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         if: github.ref == 'refs/heads/main'
         with:
           tag_name: iso-${{ github.sha }}
@@ -56,7 +56,7 @@ jobs:
             Built from main. Pulls latest container layers on install (smaller ISO).
 
       - name: Upload as Artifact (for PRs/debug)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.image }}-iso
           path: |
