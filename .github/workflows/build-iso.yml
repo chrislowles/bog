@@ -1,110 +1,57 @@
-name: Build ISOs
-
+name: generate-iso
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
       - 'recipes/**'
-      - '.github/workflows/build-isos.yml'
-  pull_request:
-    branches: [main]
-    paths:
-      - 'recipes/**'
-      - '.github/workflows/build-isos.yml'
 
 jobs:
-  build-isos:
-    runs-on: ubuntu-24.04
+  iso:
+    name: Create and Upload ISO
+    runs-on: ubuntu-latest
     strategy:
+      fail-fast: false # stop GH from cancelling all matrix builds if one fails
       matrix:
         image:
-          - name: bog
-            variant: main
-          - name: bog-nvidia
-            variant: nvidia
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
+          - bog
+          - bog-nvidia
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Free Disk Space
-        uses: jlumbroso/free-disk-space@main
+      - name: Build ISO
+        uses: jasonn3/build-container-installer@main
+        id: iso
         with:
-          tool-cache: true
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
-          docker-images: true
-
-      - name: Set up environment
-        run: |
-          echo "IMAGE_NAME=${{ matrix.image.name }}" >> $GITHUB_ENV
-          echo "IMAGE_REPO=ghcr.io/${{ github.repository_owner }}" >> $GITHUB_ENV
-          echo "IMAGE_TAG=latest" >> $GITHUB_ENV
-          echo "VERSION=$(date +%Y%m%d)" >> $GITHUB_ENV
-          echo "VARIANT=${{ matrix.image.variant }}" >> $GITHUB_ENV
-          echo "ARCH=x86_64" >> $GITHUB_ENV
-
-      - name: Build and Push Container Image
-        uses: blue-build/github-action@main
-        with:
-          recipe: recipes/${{ matrix.image.name }}.yml
-          push: true
-
-      - name: Build ISO (Netinstall + zstd)
-        uses: jasonn3/build-container-installer@v1.5.0
-        id: build
-        with:
-          arch: ${{ env.ARCH }}
-          image_name: ${{ env.IMAGE_NAME }}
-          image_repo: ${{ env.IMAGE_REPO }}
-          image_tag: ${{ env.IMAGE_TAG }}
-          version: ${{ env.VERSION }}
-          variant: ${{ env.VARIANT }}
-          iso_name: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_TAG }}-${{ env.VERSION }}-netinstall.iso
-          # Netinstall / minimal mode - pulls most content from registry at install time
-          enable_netinstall: true
-          # zstd compression for smaller ISO footprint (faster decompression too)
-          compression: zstd
-          compression_level: 3
-          # Additional minimal flags
-          offline: false
-          # Enable bootc/ostreecontainer for atomic installs
-          use_bootc: true
+          arch: x86_64
+          image_name: ${{ matrix.image }}
+          image_repo: ghcr.io/${{ github.repository_owner }}
+          image_tag: latest
+          version: latest
+          iso_name: ${{ matrix.image }}-latest.iso
+          variant: silverblue  # Adjust based on base-image; for bog it's base-main, but try silverblue or kinoite equivalent
 
       - name: Generate CHECKSUM
         run: |
-          cd ${{ steps.build.outputs.iso_path }}
-          sha256sum ${{ steps.build.outputs.iso_name }} > ${{ steps.build.outputs.iso_name }}-CHECKSUM
+          cd ${{ steps.iso.outputs.iso_path }}
+          sha256sum ${{ steps.iso.outputs.iso_name }} > ${{ steps.iso.outputs.iso_name }}-CHECKSUM
 
       - name: Upload ISO to Release
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
-          tag_name: v${{ env.VERSION }}
-          name: ${{ env.IMAGE_NAME }} ${{ env.VERSION }}
+          tag_name: iso-${{ github.sha }}
+          name: ${{ matrix.image }} ISO
           files: |
-            ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}
-            ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM
+            ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}
+            ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}-CHECKSUM
           overwrite: true
           body: |
-            Automated netinstall ISO for ${{ env.IMAGE_NAME }} (${{ env.VARIANT }} variant).
-            Built on: ${{ github.event.head_commit.timestamp || 'workflow dispatch' }}
-            
-            **Netinstall Mode**: Small ISO (~<1GB) that pulls layers from ghcr.io at install time.
-            Primary install method: `sudo bootc switch ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest`
+            Automated ISO for ${{ matrix.image }} built from main.
 
       - name: Upload as Artifact (for PRs)
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.IMAGE_NAME }}-iso
+          name: ${{ matrix.image }}-iso
           path: |
-            ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}
-            ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM
+            ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}
+            ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}-CHECKSUM
           retention-days: 7
