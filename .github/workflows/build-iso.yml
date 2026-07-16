@@ -1,5 +1,7 @@
 name: generate-iso
 on:
+  schedule:
+    - cron: "00 10 * * 1"  # Every Monday 10AM UTC
   workflow_dispatch:
   push:
     branches: [main]
@@ -11,7 +13,7 @@ jobs:
     name: Create and Upload ISO
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false # stop GH from cancelling all matrix builds if one fails
+      fail-fast: false
       matrix:
         image:
           - bog
@@ -25,29 +27,35 @@ jobs:
           image_name: ${{ matrix.image }}
           image_repo: ghcr.io/${{ github.repository_owner }}
           image_tag: latest
-          version: latest
+          version: 44 # Match your Fedora version (check image; base-main tracks recent)
           iso_name: ${{ matrix.image }}-latest.iso
-          variant: silverblue  # Adjust based on base-image; for bog it's base-main, but try silverblue or kinoite equivalent
+          variant: base # Critical: Try 'base' or 'silverblue'. Test via workflow_dispatch
+          # Optional netinstaller tweaks for smaller size:
+          rootfs_size: "2"  # GiB for squashfs runtime (keep small)
+          enable_cache_dnf: "true"
+          enable_cache_skopeo: "true"
 
       - name: Generate CHECKSUM
         run: |
           cd ${{ steps.iso.outputs.iso_path }}
           sha256sum ${{ steps.iso.outputs.iso_name }} > ${{ steps.iso.outputs.iso_name }}-CHECKSUM
 
+      # Upload to GitHub Release (your original) + Artifact fallback
       - name: Upload ISO to Release
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
           tag_name: iso-${{ github.sha }}
-          name: ${{ matrix.image }} ISO
+          name: ${{ matrix.image }} ISO (netinstall)
           files: |
             ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}
             ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}-CHECKSUM
           overwrite: true
           body: |
-            Automated ISO for ${{ matrix.image }} built from main.
+            Automated netinstall ISO for ${{ matrix.image }}.
+            Built from main. Pulls latest container layers on install (smaller ISO).
 
-      - name: Upload as Artifact (for PRs)
+      - name: Upload as Artifact (for PRs/debug)
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.image }}-iso
