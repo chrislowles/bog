@@ -1,16 +1,26 @@
-name: generate-iso
+name: Build ISOs
+
+permissions:
+  contents: write  # For releases
+  packages: read   # For image pull
+
 on:
   schedule:
-    - cron: "00 10 * * 1"  # Every Monday 10AM UTC
-  workflow_dispatch:
+    - cron: "00 10 * * 1"  # Weekly (Monday 10AM UTC) - adjust as needed
   push:
     branches: [main]
     paths:
+      - 'files/**'
       - 'recipes/**'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
-  iso:
-    name: Create and Upload ISO
+  build-iso:
+    name: Build ISO for ${{ matrix.image }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -18,8 +28,20 @@ jobs:
         image:
           - bog
           - bog-nvidia
+        include:
+          - image: bog
+            fedora_version: 44  # Update to match your recipe/base-main
+          - image: bog-nvidia
+            fedora_version: 44
+
     steps:
-      - name: Build ISO
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set build date
+        run: echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+
+      - name: Build netinstall ISO
         uses: jasonn3/build-container-installer@main
         id: iso
         with:
@@ -27,39 +49,40 @@ jobs:
           image_name: ${{ matrix.image }}
           image_repo: ghcr.io/${{ github.repository_owner }}
           image_tag: latest
-          version: 44 # Match your Fedora version (check image; base-main tracks recent)
-          iso_name: ${{ matrix.image }}-latest.iso
-          variant: base # Critical: Try 'base' or 'silverblue'. Test via workflow_dispatch
-          # Optional netinstaller tweaks for smaller size:
-          rootfs_size: "2"  # GiB for squashfs runtime (keep small)
+          version: ${{ matrix.fedora_version }}
+          iso_name: ${{ matrix.image }}-${{ env.BUILD_DATE }}.iso
+          variant: base  # Or 'silverblue'/'kinoite' — test via workflow_dispatch if needed
+          # Netinstall optimizations (small ISO)
+          rootfs_size: "2" # GiB for squashfs
           enable_cache_dnf: "true"
           enable_cache_skopeo: "true"
 
       - name: Generate CHECKSUM
         run: |
           cd ${{ steps.iso.outputs.iso_path }}
-          sha256sum ${{ steps.iso.outputs.iso_name }} > ${{ steps.iso.outputs.iso_name }}-CHECKSUM
+          sha256sum ${{ steps.iso.outputs.iso_name }} > ${{ steps.iso.outputs.iso_name }}.sha256
 
-      # Upload to GitHub Release (your original) + Artifact fallback
-      - name: Upload ISO to Release
+      - name: Upload ISO to GitHub Release
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
-          tag_name: iso-${{ github.sha }}
-          name: ${{ matrix.image }} ISO (netinstall)
+          tag_name: iso-${{ env.BUILD_DATE }}
+          name: ${{ matrix.image }} ISO ${{ env.BUILD_DATE }}
+          body: |
+            Automated netinstall ISO for **${{ matrix.image }}**.
+            - Built from `main` on ${{ env.BUILD_DATE }}.
+            - Pulls latest layers during install (smaller download).
+            - SHA256: See attached checksum.
           files: |
             ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}
-            ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}-CHECKSUM
-          overwrite: true
-          body: |
-            Automated netinstall ISO for ${{ matrix.image }}.
-            Built from main. Pulls latest container layers on install (smaller ISO).
+            ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}.sha256
+          overwrite: true  # Update existing tag if re-run
 
-      - name: Upload as Artifact (for PRs/debug)
+      - name: Upload as Artifact (PRs / debug)
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.image }}-iso
+          name: ${{ matrix.image }}-iso-${{ env.BUILD_DATE }}
           path: |
             ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}
-            ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}-CHECKSUM
-          retention-days: 7
+            ${{ steps.iso.outputs.iso_path }}/${{ steps.iso.outputs.iso_name }}.sha256
+          retention-days: 14
