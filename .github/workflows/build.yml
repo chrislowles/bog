@@ -2,14 +2,11 @@ name: Bluebuild Release
 
 on:
   schedule:
-    # Runs every Tuesday at 10AM UTC; the build gate restricts actual builds to:
-    #  - the second Tuesday of each month  (monthly "Patch Tuesday" cadence), and
-    #  - the last Tuesday of September     (annual feature-update cadence)
-    - cron: '0 10 * * 2'
+    - cron: '0 10 * * 3' # Wednesday at 10AM UTC
   push:
     paths-ignore: # don't rebuild if only documentation has changed
       - "**.md"
-  pull_request:
+  pull_request: # successful pull request
   workflow_dispatch: # allow manually triggering builds
 
 concurrency:
@@ -17,45 +14,8 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-
-  build-gate:
-    name: Schedule Gate
-    runs-on: ubuntu-latest
-    outputs:
-      proceed: ${{ steps.gate.outputs.proceed }}
-    steps:
-      - name: Evaluate build cadence
-        id: gate
-        run: |
-          # Non-scheduled triggers (push, PR, manual dispatch) always proceed
-          if [[ "${{ github.event_name }}" != "schedule" ]]; then
-            echo "proceed=true" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          DAY=$(date +%-d)
-          MONTH=$(date +%-m)
-
-          # Monthly: the second Tuesday of the month always falls on days 8–14
-          if [[ $DAY -ge 8 && $DAY -le 14 ]]; then
-            echo "Patch Tuesday build (day $DAY of month $MONTH). Proceeding." >&2
-            echo "proceed=true" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          # Annual: the last Tuesday of September always falls on days 24–30 of month 9
-          if [[ $MONTH -eq 9 && $DAY -ge 24 && $DAY -le 30 ]]; then
-            echo "Annual September feature-update build (day $DAY). Proceeding." >&2
-            echo "proceed=true" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          echo "Not a designated build Tuesday (day $DAY, month $MONTH) — skipping." >&2
-          echo "proceed=false" >> $GITHUB_OUTPUT
   push-update:
     name: Build Image
-    needs: build-gate
-    if: needs.build-gate.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -76,6 +36,4 @@ jobs:
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
-
-          # enabled by default, disable if your image is small and you want faster builds
-          maximize_build_space: true
+          maximize_build_space: true # enabled by default, disable if your image is small and you want faster builds
