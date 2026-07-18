@@ -88,7 +88,7 @@ rows:
             - com.github.mtkennerly.ludusavi
             - io.github.limo_app.limo
             - io.github.astralvixen.geforce-infinity
-            - org.prismlauncher.PrismLauncher
+            - page.codeberg.JakobDev.jdMinecraftLauncher
             - io.github.streetpea.Chiaki4deck
             - io.github.radiolamp.mangojuice
             - org.vinegarhq.Sober
