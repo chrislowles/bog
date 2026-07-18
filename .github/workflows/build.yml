@@ -3,11 +3,11 @@ name: Bluebuild Release
 on:
   schedule:
     - cron: '0 10 * * 3' # Wednesday at 10AM UTC
-  push:
-    paths-ignore: # don't rebuild if only documentation has changed
+  push: # Any pushes to the repo (should consider specific to main branch)
+    paths-ignore: # Don't rebuild if only documentation has changed
       - "**.md"
-  pull_request: # successful pull request
-  workflow_dispatch: # allow manually triggering builds
+  pull_request: # Successful pull request
+  workflow_dispatch: # Manual rebuild dispatches
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
@@ -22,13 +22,13 @@ jobs:
       packages: write
       id-token: write
     strategy:
-      fail-fast: false # stop gh from cancelling all matrix builds if one fails
+      fail-fast: true # Stop GitHub from continuing all matrix builds if one fails.
       matrix:
         recipe:
           - recipe.yml
           - recipe-nvidia.yml
     steps:
-      # the build is fully handled by the reusable github action
+      # The build is fully handled by the reusable GitHub action
       - name: Build Image
         uses: blue-build/github-action@v1.12.0
         with:
