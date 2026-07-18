@@ -84,15 +84,14 @@ rows:
           enable-bulk-install: true
           appids:
             - com.vysp3r.ProtonPlus
-            - com.heroicgameslauncher.hgl
             - io.itch.itch
+            - com.github.mtkennerly.ludusavi
             - io.github.limo_app.limo
             - io.github.astralvixen.geforce-infinity
-            - io.github.streetpea.Chiaki4deck
             - org.prismlauncher.PrismLauncher
+            - io.github.streetpea.Chiaki4deck
             - io.github.radiolamp.mangojuice
             - org.vinegarhq.Sober
-            - com.github.mtkennerly.ludusavi
 
   - sections:
       - expand-horizontally: true
