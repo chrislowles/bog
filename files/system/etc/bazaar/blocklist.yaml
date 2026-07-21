@@ -13,6 +13,7 @@ blocklists:
     - org.gnome.TextEditor
     - io.github.zyedidia.micro
     - com.valvesoftware.Steam
+    - com.github.Matoking.protontricks
 
     # Deprecated
     - org.gnome.gedit
