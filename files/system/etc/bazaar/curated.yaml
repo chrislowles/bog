@@ -81,7 +81,6 @@ rows:
           banner-text-halign: center
           banner-text-valign: center
           banner-text-label-xalign: 0.0
-          enable-bulk-install: true
           appids:
             - com.vysp3r.ProtonPlus
             - io.itch.itch
@@ -330,6 +329,7 @@ rows:
             - com.github.wwmm.easyeffects
             - io.github.dimtpap.coppwr
             - me.timschneeberger.jdsp4linux
+            - me.amankhanna.opendeck
             - io.github.giantpinkrobots.bootqt
             - io.github.ilya_zlobintsev.LACT
             - io.github.pwr_solaar.solaar
