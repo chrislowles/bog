@@ -6,7 +6,7 @@ permissions:
 
 on:
   schedule:
-    - cron: "00 10 * * 1"  # Weekly (Monday 10AM UTC) - adjust as needed
+    - cron: "00 10 * * 1"  # Weekly (Monday 10AM UTC)
   push:
     branches: [main]
     paths:
