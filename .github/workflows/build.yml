@@ -4,10 +4,11 @@ on:
   schedule:
     - cron: '0 10 * * 3' # Wednesday at 10AM UTC
   push: # Any pushes to the repo (should consider specific to main branch)
+    # branches: [main]
     paths-ignore: # Don't rebuild if only documentation has changed
       - "**.md"
-  pull_request: # Successful pull request
-  workflow_dispatch: # Manual rebuild dispatches
+  pull_request: # Successful pull requests
+  workflow_dispatch: # Manual dispatches
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
