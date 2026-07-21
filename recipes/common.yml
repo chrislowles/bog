@@ -57,6 +57,10 @@ modules:
         - steam                             # Primary gaming platform
         - system-reinstall-bootc            # Effective system reset via bootc
 
+        # Wine & Family
+        - winetricks                        # Common Wine problem resolver
+        - protontricks                      # winetricks wrapper for Proton-specific games/programs
+
         # Misc
         - micro                             # TUI Text Editor
         - git                               # Version control system
@@ -93,7 +97,7 @@ modules:
         - vulkan-loader
         - vulkan-tools
 
-        # Broad system runtime dependencies (formerly source-built Bazaar dependencies)
+        # Broad system runtime dependencies (in part, formerly source-built Bazaar dependencies)
         - flatpak
         - appstream
         - libsoup3
@@ -135,7 +139,6 @@ modules:
     configurations:
       - scope: user
         repo:
-          # you can override the title to make inclusion of both system and user repos clearer
           title: Flathub (user)
       - notify: true
         scope: system
@@ -150,7 +153,11 @@ modules:
             - com.ranfdev.DistroShelf
             - io.github.flattool.Ignition
             - com.mattjakeman.ExtensionManager
+
+            # Video Games preferred and pre-installed selection
             - com.vysp3r.ProtonPlus
+            - com.github.mtkennerly.ludusavi
+            - io.github.limo_app.limo
 
             # Pre-installed selection from GNOME Bazaar curation group
             - org.gnome.Contacts
