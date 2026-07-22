@@ -1,13 +1,9 @@
 yaml-blocklist-paths:
   - /run/host/etc/bazaar/blocklist.yaml
-
-curated-config-paths:
-  # /run/host/etc/bazaar/config.yaml seems to be a default and writing it in results in the curated file getting added in twice, maybe we can omit this all together but we need something if we're to organize in the future
+curated-page-paths:
   - /run/host/etc/bazaar/curated.yaml
-
 override-eol-markings:
   - com.obsproject.Studio
-
 hooks:
   - id: welcome
     when: before-transaction
