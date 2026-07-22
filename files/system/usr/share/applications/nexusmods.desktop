@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Nexus Mods
+Comment=Popular video game mod hoster.
+Exec=xdg-open https://www.nexusmods.com/
+Icon=/usr/share/icons/nexusmods.svg
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=proton;steam;linux;compatibility;gaming;modding;
