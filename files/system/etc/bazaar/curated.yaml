@@ -1,353 +1,253 @@
-css: |
-  .bog-section banner {
-     margin-top: 30px;
-     margin-left: 30px;
-     margin-right: 30px;
-     border-radius: 10px;
-  }
-  .bog-section banner-text-overlay {
-     margin: 30px;
-     padding: 20px;
-  }
-  .bog-section banner-text {
-     padding: 50px;
-  }
-  .bog-section subtitle {
-    font-weight: 400;
-  }
-  .bog-section subtitle,
-  .bog-section title,
-  .bog-section banner-text {
-    color: #FFF;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  }
-  .bog-section {
-    margin: 15px;
-    border-radius: 25px;
-  }
-
 rows:
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "GNOME"
-          subtitle:
-            en: "From the creators of the desktop you're using."
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - org.gnome.Calculator
-            - org.gnome.Loupe
-            - org.gnome.Papers
-            - org.gnome.Contacts
-            - org.gnome.Calendar
-            - org.gnome.clocks
-            - org.gnome.NetworkDisplays
-            - org.gnome.Boxes
-            - org.gnome.Weather
-            - org.gnome.SoundRecorder
-            - org.gnome.Decibels
-            - org.gnome.Snapshot
-            - org.gnome.Characters
-            - org.gnome.Connections
-            - org.gnome.SimpleScan
-            - org.gnome.Fractal
-            - org.gnome.Maps
-            - org.gnome.Music
-            - org.gnome.Mines
-            - org.gnome.GHex
-            - org.gnome.Manuals
-            - org.gnome.dspy
-            - org.gnome.Podcasts
-            - org.gnome.World.Iotas
-            - org.gnome.World.Secrets
-            - org.gnome.Polari
 
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "Gaming (minus Steam)"
-          subtitle:
-            en: "Get ya game on (minus Steam, that's already sorted)"
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - com.vysp3r.ProtonPlus
-            - io.itch.itch
-            - com.github.mtkennerly.ludusavi
-            - io.github.limo_app.limo
-            - io.github.astralvixen.geforce-infinity
-            - page.codeberg.JakobDev.jdMinecraftLauncher
-            - io.github.streetpea.Chiaki4deck
-            - io.github.radiolamp.mangojuice
-            - org.vinegarhq.Sober
+  - section:
+    title: "GNOME"
+    subtitle: "From the creators of the desktop you're using."
+    appids:
+      list:
+        - org.gnome.Calculator
+        - org.gnome.Loupe
+        - org.gnome.Papers
+        - org.gnome.Contacts
+        - org.gnome.Calendar
+        - org.gnome.clocks
+        - org.gnome.NetworkDisplays
+        - org.gnome.Boxes
+        - org.gnome.Weather
+        - org.gnome.SoundRecorder
+        - org.gnome.Decibels
+        - org.gnome.Snapshot
+        - org.gnome.Characters
+        - org.gnome.Connections
+        - org.gnome.SimpleScan
+        - org.gnome.Fractal
+        - org.gnome.Maps
+        - org.gnome.Music
+        - org.gnome.Mines
+        - org.gnome.GHex
+        - org.gnome.Manuals
+        - org.gnome.dspy
+        - org.gnome.Podcasts
+        - org.gnome.World.Iotas
+        - org.gnome.World.Secrets
+        - org.gnome.Polari
 
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "Open-Source Games"
-          subtitle:
-            en: "Games that run without proprietary components."
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - org.zdoom.UZDoom
-            - io.github.fabiangreffrath.Doom
-            - org.openttd.OpenTTD
-            - uk.co.powdertoy.tpt
-            - org.supertuxproject.SuperTux
-            - net.supertuxkart.SuperTuxKart
-            - com.github.Anuken.Mindustry
-            - com.thebrokenrail.MCPIReborn
-            - net.runelite.RuneLite
-            - sh.ppy.osu
-            - com.epicgames.ut99
-            - com.epicgames.ut2004
-            - com.gitlab.coringao.cavestory-nx
-            - org.luanti.luanti
-            - net.gpro.gproapp
-            - net.huitsi.PhantomOverload
-            - com.fafarunner.FaFaRunner
-            - org.flightgear.FlightGear
-            - net.redeclipse.RedEclipse
-            - org.neverball.Neverball
-            - io.jor.bugdom
-            - io.jor.bugdom2
-            - io.jor.cromagrally
-            - io.jor.nanosaur
-            - io.jor.nanosaur2
-            - com.frogatto.Frogatto
-            - org.tuxfamily.XMoto
-            - org.quetoo.Quetoo
-            - org.sauerbraten.Sauerbraten
-            - gg.tesseract.Tesseract
-            - org.taisei_project.Taisei
-            - at.vintagestory.VintageStory
-            - com.teeworlds.Teeworlds
-            - com.realm667.Wolfenstein_Blade_of_Agony
+  - section:
+    title: "Gaming (minus Steam)"
+    subtitle: "Get ya game on (minus Steam, that's already sorted)"
+    appids:
+      list:
+        - com.vysp3r.ProtonPlus
+        - io.itch.itch
+        - com.github.mtkennerly.ludusavi
+        - io.github.limo_app.limo
+        - io.github.astralvixen.geforce-infinity
+        - page.codeberg.JakobDev.jdMinecraftLauncher
+        - io.github.streetpea.Chiaki4deck
+        - io.github.radiolamp.mangojuice
+        - org.vinegarhq.Sober
+  - section:
+    title: "Gaming (minus Steam)"
+    subtitle: "Get ya game on (minus Steam, that's already sorted)"
+    appids:
+      list:
+        - com.vysp3r.ProtonPlus
+        - io.itch.itch
+        - com.github.mtkennerly.ludusavi
+        - io.github.limo_app.limo
+        - io.github.astralvixen.geforce-infinity
+        - page.codeberg.JakobDev.jdMinecraftLauncher
+        - io.github.streetpea.Chiaki4deck
+        - io.github.radiolamp.mangojuice
+        - org.vinegarhq.Sober
+  - section:
+    title: "Open-Source Games"
+    subtitle: "Games that run without proprietary components."
+    appids:
+      list:
+        - org.zdoom.UZDoom
+        - io.github.fabiangreffrath.Doom
+        - org.openttd.OpenTTD
+        - uk.co.powdertoy.tpt
+        - org.supertuxproject.SuperTux
+        - net.supertuxkart.SuperTuxKart
+        - com.github.Anuken.Mindustry
+        - com.thebrokenrail.MCPIReborn
+        - net.runelite.RuneLite
+        - sh.ppy.osu
+        - com.epicgames.ut99
+        - com.epicgames.ut2004
+        - com.gitlab.coringao.cavestory-nx
+        - org.luanti.luanti
+        - net.gpro.gproapp
+        - net.huitsi.PhantomOverload
+        - com.fafarunner.FaFaRunner
+        - org.flightgear.FlightGear
+        - net.redeclipse.RedEclipse
+        - org.neverball.Neverball
+        - io.jor.bugdom
+        - io.jor.bugdom2
+        - io.jor.cromagrally
+        - io.jor.nanosaur
+        - io.jor.nanosaur2
+        - com.frogatto.Frogatto
+        - org.tuxfamily.XMoto
+        - org.quetoo.Quetoo
+        - org.sauerbraten.Sauerbraten
+        - gg.tesseract.Tesseract
+        - org.taisei_project.Taisei
+        - at.vintagestory.VintageStory
+        - com.teeworlds.Teeworlds
+        - com.realm667.Wolfenstein_Blade_of_Agony
+  - section:
+    title: "Emulation"
+    subtitle: "Emulation (almost) everything."
+    appids:
+      list:
+        - com.github.AmatCoder.mednaffe
+        - net.pcsx2.PCSX2
+        - net.rpcs3.RPCS3
+        - net.shadps4.shadPS4
+        - app.xemu.xemu
+        - org.libretro.RetroArch
+        - info.cemu.Cemu
+        - org.DolphinEmu.dolphin-emu
+        - net.kuribo64.melonDS
+        - com.snes9x.Snes9x
+        - io.mgba.mGBA
+        - org.ppsspp.PPSSPP
+        - org.mamedev.MAME
+        - org.flycast.Flycast
+        - org.azahar_emu.Azahar
+        - io.github.ryubing.Ryujinx
+        - rs.ruffle.Ruffle
+        - net._86box._86Box
+        - io.github.stella_emu.Stella
+  - section:
+    title: "Browsers"
+    subtitle: "Get your flavor of Chromium or Gecko-based browsers (among others)."
+    appids:
+      list:
+        - org.mozilla.firefox
+        - com.google.Chrome
+        - io.gitlab.librewolf-community
+        - io.github.ungoogled_software.ungoogled_chromium
+        - com.microsoft.Edge
+        - io.github.zaedus.spider
+        - app.zen_browser.zen
+        - com.brave.Browser
+        - com.opera.Opera
+        - org.chromium.Chromium
+        - one.ablaze.floorp
+        - net.waterfox.waterfox
+  - section:
+    title: "Productivity"
+    subtitle: "Make something, ya dingus."
+    appids:
+      list:
+        - org.onlyoffice.desktopeditors
+        - org.kde.krita
+        - org.kde.kdenlive
+        - com.obsproject.Studio
+        - com.parsecgaming.parsec
+        - org.blender.Blender
+        - org.inkscape.Inkscape
+        - org.ardour.Ardour
+        - org.audacityteam.Audacity
+        - com.sublimehq.SublimeText
+        - dev.zed.Zed
+        - io.gitlab.ilshat_apps.manuscript
+        - de.wwwtech.gitte
+        - io.github.pol_rivero.github-desktop-plus
+        - org.freecad.FreeCAD
+        - md.obsidian.Obsidian
+        - com.jeffser.Alpaca
+  - section:
+    title: "Messaging & Social"
+    subtitle: "Wherever your people are."
+    appids:
+      list:
+        - com.discordapp.Discord
+        - com.github.IsmaelMartinez.teams_for_linux
+        - org.signal.Signal
+        - in.cinny.Cinny
+        - org.gajim.Gajim
+        - info.mumble.Mumble
+        - im.riot.Riot
+        - com.teamspeak.TeamSpeak
+        - im.dino.Dino
+        - com.slack.Slack
+        - us.zoom.Zoom
+        - dev.geopjr.Tuba
+        - im.pidgin.Pidgin
+  - section:
+    title: "Media"
+    subtitle: "Local or streaming, watching or listening, making or transcoding."
+    appids:
+      list:
+        - org.videolan.VLC
+        - com.spotify.Client
+        - io.github.mpc_qt.mpc-qt
+        - app.ytmdesktop.ytmdesktop
+        - io.mpv.Mpv
+        - de.haeckerfelix.Shortwave
+        - dev.dergs.Tonearm
+        - io.m51.Gelly
+        - dev.aunetx.deezer
+        - com.blitzfc.qbz
+        - rocks.shy.VacuumTube
+        - nl.andreasknoben.Laser
+        - de.haeckerfelix.Fragments
+        - org.nicotine_plus.Nicotine
+        - org.qbittorrent.qBittorrent
+        - org.nickvision.tubeconverter
+        - com.nuclearplayer.Nuclear
+        - com.mastermindzh.tidal-hifi
+        - io.freetubeapp.FreeTube
+        - dev.fredol.open-tv
+        - com.dec05eba.gpu_screen_recorder
+        - com.makemkv.MakeMKV
+        - org.musicbrainz.Picard
+        - fr.handbrake.ghb
+        - net.fasterland.converseen
+        - io.gitlab.theevilskeleton.Upscaler
+        - com.github.huluti.Curtail
+        - io.github.wartybix.Constrict
 
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "Emulation"
-          subtitle:
-            en: "Emulate (almost) everything."
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - com.github.AmatCoder.mednaffe
-            - net.pcsx2.PCSX2
-            - net.rpcs3.RPCS3
-            - net.shadps4.shadPS4
-            - app.xemu.xemu
-            - org.libretro.RetroArch
-            - info.cemu.Cemu
-            - org.DolphinEmu.dolphin-emu
-            - net.kuribo64.melonDS
-            - com.snes9x.Snes9x
-            - io.mgba.mGBA
-            - org.ppsspp.PPSSPP
-            - org.mamedev.MAME
-            - org.flycast.Flycast
-            - org.azahar_emu.Azahar
-            - io.github.ryubing.Ryujinx
-            - rs.ruffle.Ruffle
-            - net._86box._86Box
-            - io.github.stella_emu.Stella
-
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "Browsers"
-          subtitle:
-            en: "Get your flavor of Chromium or Gecko-based browsers (among others)."
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - org.mozilla.firefox
-            - com.google.Chrome
-            - io.gitlab.librewolf-community
-            - io.github.ungoogled_software.ungoogled_chromium
-            - com.microsoft.Edge
-            - io.github.zaedus.spider
-            - app.zen_browser.zen
-            - com.brave.Browser
-            - com.opera.Opera
-            - org.chromium.Chromium
-            - one.ablaze.floorp
-            - net.waterfox.waterfox
-
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "Productivity"
-          subtitle:
-            en: "Make something, ya dingus."
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - org.onlyoffice.desktopeditors
-            - org.kde.krita
-            - org.kde.kdenlive
-            - com.obsproject.Studio
-            - com.parsecgaming.parsec
-            - org.blender.Blender
-            - org.inkscape.Inkscape
-            - org.ardour.Ardour
-            - org.audacityteam.Audacity
-            - com.sublimehq.SublimeText
-            - dev.zed.Zed
-            - io.gitlab.ilshat_apps.manuscript
-            - de.wwwtech.gitte
-            - io.github.pol_rivero.github-desktop-plus
-            - org.freecad.FreeCAD
-            - md.obsidian.Obsidian
-            - com.jeffser.Alpaca
-
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "Messaging & Social"
-          subtitle:
-            en: "Wherever your people are."
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - com.discordapp.Discord
-            - com.github.IsmaelMartinez.teams_for_linux
-            - org.signal.Signal
-            - in.cinny.Cinny
-            - org.gajim.Gajim
-            - info.mumble.Mumble
-            - im.riot.Riot
-            - com.teamspeak.TeamSpeak
-            - im.dino.Dino
-            - com.slack.Slack
-            - us.zoom.Zoom
-            - dev.geopjr.Tuba
-            - im.pidgin.Pidgin
-
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "Media"
-          subtitle:
-            en: "Local or streaming, watching or listening, making or transcoding."
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - org.videolan.VLC
-            - com.spotify.Client
-            - io.github.mpc_qt.mpc-qt
-            - app.ytmdesktop.ytmdesktop
-            - io.mpv.Mpv
-            - de.haeckerfelix.Shortwave
-            - dev.dergs.Tonearm
-            - io.m51.Gelly
-            - dev.aunetx.deezer
-            - com.blitzfc.qbz
-            - rocks.shy.VacuumTube
-            - nl.andreasknoben.Laser
-            - de.haeckerfelix.Fragments
-            - org.nicotine_plus.Nicotine
-            - org.qbittorrent.qBittorrent
-            - org.nickvision.tubeconverter
-            - com.nuclearplayer.Nuclear
-            - com.mastermindzh.tidal-hifi
-            - io.freetubeapp.FreeTube
-            - dev.fredol.open-tv
-            - com.dec05eba.gpu_screen_recorder
-            - com.makemkv.MakeMKV
-            - org.musicbrainz.Picard
-            - fr.handbrake.ghb
-            - net.fasterland.converseen
-            - io.gitlab.theevilskeleton.Upscaler
-            - com.github.huluti.Curtail
-            - io.github.wartybix.Constrict
-
-  - sections:
-      - expand-horizontally: true
-        classes:
-          - bog-section
-        category:
-          title:
-            en: "Misc."
-          subtitle:
-            en: "Miscellaneous lightweight utilities for everything else."
-          banner-height: 240
-          banner-text-halign: center
-          banner-text-valign: center
-          banner-text-label-xalign: 0.0
-          appids:
-            - io.github.flattool.Warehouse
-            - it.mijorus.gearlever
-            - page.tesk.Refine
-            - com.github.tchx84.Flatseal
-            - com.ranfdev.DistroShelf
-            - io.github.flattool.Ignition
-            - com.mattjakeman.ExtensionManager
-            - com.github.wwmm.easyeffects
-            - io.github.dimtpap.coppwr
-            - me.timschneeberger.jdsp4linux
-            - me.amankhanna.opendeck
-            - io.github.giantpinkrobots.bootqt
-            - io.github.ilya_zlobintsev.LACT
-            - io.github.pwr_solaar.solaar
-            - com.github.marhkb.Pods
-            - org.deskflow.deskflow
-            - dev.mufeed.Wordbook
-            - com.feaneron.Boatswain
-            - dev.deedles.Trayscale
-            - net.mkiol.SpeechNote
-            - de.leopoldluley.Clapgrep
-            - io.github.linx_systems.ClamUI
-            - com.usebottles.bottles
-            - io.github.mightycreak.Diffuse
-            - me.kozec.syncthingtk
-            - re.sonny.Playhouse
-            - me.iepure.devtoolbox
-            - com.yacreader.YACReader
-            - com.github.qarmin.czkawka
-            - org.bleachbit.BleachBit
-            - com.github.jkotra.eovpn
-            - org.gnome.design.IconLibrary
+  - section:
+    title: "Misc"
+    subtitle: "Miscellaneous lightweight utilities for everything else."
+    appids:
+      list:
+        - io.github.flattool.Warehouse
+        - it.mijorus.gearlever
+        - page.tesk.Refine
+        - com.github.tchx84.Flatseal
+        - com.ranfdev.DistroShelf
+        - io.github.flattool.Ignition
+        - com.mattjakeman.ExtensionManager
+        - com.github.wwmm.easyeffects
+        - io.github.dimtpap.coppwr
+        - me.timschneeberger.jdsp4linux
+        - me.amankhanna.opendeck
+        - io.github.giantpinkrobots.bootqt
+        - io.github.ilya_zlobintsev.LACT
+        - io.github.pwr_solaar.solaar
+        - com.github.marhkb.Pods
+        - org.deskflow.deskflow
+        - dev.mufeed.Wordbook
+        - com.feaneron.Boatswain
+        - dev.deedles.Trayscale
+        - net.mkiol.SpeechNote
+        - de.leopoldluley.Clapgrep
+        - io.github.linx_systems.ClamUI
+        - com.usebottles.bottles
+        - io.github.mightycreak.Diffuse
+        - me.kozec.syncthingtk
+        - re.sonny.Playhouse
+        - me.iepure.devtoolbox
+        - com.yacreader.YACReader
+        - com.github.qarmin.czkawka
+        - org.bleachbit.BleachBit
+        - com.github.jkotra.eovpn
+        - org.gnome.design.IconLibrary
