@@ -2,12 +2,3 @@ yaml-blocklist-paths:
   - /run/host/etc/bazaar/blocklist.yaml
 curated-page-paths:
   - /run/host/etc/bazaar/curated.yaml
-override-eol-markings:
-  - com.obsproject.Studio
-hooks:
-  - id: welcome
-    when: before-transaction
-    dialogs:
-      - id: welcome-dialog
-        title: "Welcome to bog!"
-        body: ":))))))))))))))"
