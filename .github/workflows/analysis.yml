@@ -1,0 +1,24 @@
+name: Failure Analysis
+
+on:
+  workflow_run:
+    workflows: ["Bluebuild Release"]
+    types: [completed]
+
+jobs:
+  analyze:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Run AI Failure Analysis
+        uses: calebevans/gha-failure-analysis@v1
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          llm-provider: gemini
+          llm-model: gemini-2.5-flash
+          llm-api-key: ${{ secrets.ANALYSIS_API_KEY }}
+          analyze-pr-context: true
+          post-pr-comment: true
