@@ -2,7 +2,7 @@ name: Failure Analysis
 
 on:
   workflow_run:
-    workflows: ["Bluebuild Release"]
+    workflows: ["Bluebuild Release","Build ISOs"]
     types: [completed]
 
 jobs:
