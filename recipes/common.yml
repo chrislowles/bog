@@ -28,6 +28,9 @@ modules:
         - dconf                             # Basically GNOMEs version of registry keys
         - dconf-editor                      # Basically GNOMEs version of registry editor
 
+        # app store
+        - gnome-software
+
         # Filesystem
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
         - gvfs-client                       # Client modules of backends for the gio framework in GLib
@@ -150,8 +153,6 @@ modules:
         repo:
           title: Flathub (system)
         install:
-            # The app store itself
-            - io.github.kolunmi.Bazaar
 
             # Suggested pre-installed system programs
             - com.github.tchx84.Flatseal
@@ -174,6 +175,10 @@ modules:
             - org.gnome.Characters
             - org.gnome.SimpleScan
             - org.gnome.Papers
+
+  - type: script
+    scripts:
+      - setup-flatpak-filter.sh
 
   - type: gnome-extensions
     install:
