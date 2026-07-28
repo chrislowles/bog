@@ -2,8 +2,10 @@ blocklists:
   - priority: 0
     block:
 
-    # Flatpak releases of system-installed packages
+    # To prevent accidental uninstallation of the app store
     - io.github.kolunmi.Bazaar
+
+    # Flatpak releases of system-installed packages
     - ca.desrt.dconf-editor
     - org.gnome.baobab
     - org.gnome.Logs
