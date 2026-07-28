@@ -177,9 +177,9 @@ modules:
             - org.gnome.SimpleScan
             - org.gnome.Papers
 
-  - type: script
-    scripts:
-      - setup-flatpak-filter.sh
+  #- type: script
+  #  scripts:
+  #    - setup-flatpak-filter.sh
 
   - type: gnome-extensions
     install:
