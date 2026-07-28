@@ -1,9 +1,6 @@
 rows:
   - section:
       title: "GNOME"
-      subtitle:
-        string: |
-          From the creators of the desktop you're using.
       appids:
         - org.gnome.Calculator
         - org.gnome.Loupe
@@ -33,9 +30,6 @@ rows:
         - org.gnome.Polari
   - section:
       title: "Gaming (minus Steam)"
-      subtitle:
-        string: |
-          Get ya game on (minus Steam, that's already sorted)
       appids:
         - com.vysp3r.ProtonPlus
         - io.itch.itch
@@ -48,9 +42,6 @@ rows:
         - org.vinegarhq.Sober
   - section:
       title: "Open-Source Games"
-      subtitle:
-        string: |
-          Games that run without proprietary components.
       appids:
         - org.zdoom.UZDoom
         - io.github.fabiangreffrath.Doom
@@ -88,9 +79,6 @@ rows:
         - com.realm667.Wolfenstein_Blade_of_Agony
   - section:
       title: "Emulation"
-      subtitle:
-        string: |
-          Emulation (almost) everything.
       appids:
         - com.github.AmatCoder.mednaffe
         - net.pcsx2.PCSX2
@@ -113,9 +101,6 @@ rows:
         - io.github.stella_emu.Stella
   - section:
       title: "Browsers"
-      subtitle:
-        string: |
-          Get your flavor of Chromium or Gecko-based browsers (among others).
       appids:
         - org.mozilla.firefox
         - com.google.Chrome
@@ -131,9 +116,6 @@ rows:
         - net.waterfox.waterfox
   - section:
       title: "Productivity"
-      subtitle:
-        string: |
-          Make something, ya dingus.
       appids:
         - org.onlyoffice.desktopeditors
         - org.kde.krita
@@ -154,9 +136,6 @@ rows:
         - com.jeffser.Alpaca
   - section:
       title: "Messaging & Social"
-      subtitle:
-        string: |
-          Wherever your people are.
       appids:
         - com.discordapp.Discord
         - com.github.IsmaelMartinez.teams_for_linux
@@ -173,9 +152,6 @@ rows:
         - im.pidgin.Pidgin
   - section:
       title: "Media"
-      subtitle:
-        string: |
-          Local or streaming, watching or listening, making or transcoding.
       appids:
         - org.videolan.VLC
         - com.spotify.Client
@@ -206,10 +182,7 @@ rows:
         - com.github.huluti.Curtail
         - io.github.wartybix.Constrict
   - section:
-      title: "Misc"
-      subtitle:
-        string: |
-          Miscellaneous lightweight utilities for everything else.
+      title: "Miscellaneous"
       appids:
         - io.github.flattool.Warehouse
         - it.mijorus.gearlever
