@@ -1,0 +1,19 @@
+# bog flatpak filter
+# Denylist mode: anything not listed here is allowed and searchable.
+# See `man flatpak-remote-add`, FILTER FILES section, for pattern syntax.
+
+deny ca.desrt.dconf-editor
+deny org.gnome.baobab
+deny org.gnome.Logs
+deny org.gnome.font-viewer
+deny org.gnome.TextEditor
+deny io.github.zyedidia.micro
+deny com.valvesoftware.Steam
+deny com.github.Matoking.protontricks
+deny org.gnome.gedit
+deny org.gnome.Totem
+deny org.gnome.eog
+deny com.visualstudio.code
+deny org.gnome.Extensions
+deny dev.edfloreshz.CosmicTweaks
+deny io.github.pantheon_tweaks.pantheon-tweaks
