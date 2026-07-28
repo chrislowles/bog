@@ -155,6 +155,7 @@ modules:
         install:
 
             # Suggested pre-installed system programs
+            #- io.github.flattool.Warehouse
             - com.github.tchx84.Flatseal
             - com.ranfdev.DistroShelf
             - io.github.flattool.Ignition
