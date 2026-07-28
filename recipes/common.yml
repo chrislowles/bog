@@ -1,15 +1,21 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 modules:
-
   - type: files
     files:
       - source: system
         destination: /
 
   - type: dnf
+    repos:
+      copr:
+        - ublue-os/packages
+
     install:
       packages:
+
+        # System-installed Bazaar
+        - bazaar
 
         # GNOME Core (Minimal)
         - gnome-shell                       # Desktop Interface
@@ -145,8 +151,6 @@ modules:
         repo:
           title: Flathub (system)
         install:
-            # The app store itself
-            - io.github.kolunmi.Bazaar
 
             # Suggested pre-installed system programs
             - com.github.tchx84.Flatseal
