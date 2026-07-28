@@ -1,2 +1,3 @@
 [org/gnome/software]
+show-ratings=true
 packaging-format-preference=['flatpak']
