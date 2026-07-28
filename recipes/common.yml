@@ -1,6 +1,7 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 modules:
+
   - type: files
     files:
       - source: system
@@ -11,11 +12,9 @@ modules:
       copr:
         - ublue-os/packages
 
+  - type: dnf
     install:
       packages:
-
-        # System-installed Bazaar
-        - bazaar
 
         # GNOME Core (Minimal)
         - gnome-shell                       # Desktop Interface
@@ -103,7 +102,7 @@ modules:
         - vulkan-loader
         - vulkan-tools
 
-        # Broad system runtime dependencies (in part, formerly source-built Bazaar dependencies)
+        # Broad system runtime dependencies (in part, formerly source-built Bazaar dependencies [TODO: TRY TO GET RID OF THESE AS YOU SET THE FLATPAK VERSION UP])
         - flatpak
         - appstream
         - libsoup3
@@ -151,6 +150,8 @@ modules:
         repo:
           title: Flathub (system)
         install:
+            # The app store itself
+            - io.github.kolunmi.Bazaar
 
             # Suggested pre-installed system programs
             - com.github.tchx84.Flatseal
