@@ -132,7 +132,6 @@ modules:
 
   - type: script
     scripts:
-      - setup-podman.sh
       - setup-os-release.sh
 
   - type: bling
