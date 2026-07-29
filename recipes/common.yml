@@ -29,7 +29,7 @@ modules:
         - dconf-editor                      # Basically GNOMEs version of registry editor
 
         # app store
-        - gnome-software
+        #- gnome-software
 
         # Filesystem
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
@@ -155,7 +155,7 @@ modules:
         install:
 
             # Suggested pre-installed system programs
-            #- io.github.flattool.Warehouse
+            - io.github.flattool.Warehouse
             - com.github.tchx84.Flatseal
             - com.ranfdev.DistroShelf
             - io.github.flattool.Ignition
@@ -195,6 +195,14 @@ modules:
       #- 5263   # GTK Desktop Icons NG (DING)
       #- 600    # Launch New Instance
       #- 9419   # Video Lockscreen
+
+  - type: gschema-overrides
+    include:
+      - zz1-pinned.gschema.override
+      - zz1-keybinds.gschema.override
+      - zz1-ext-enabled.gschema.override
+      - zz1-ext-conf.gschema.override
+      - zz1-desktop.gschema.override
 
   # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
   - type: fonts
