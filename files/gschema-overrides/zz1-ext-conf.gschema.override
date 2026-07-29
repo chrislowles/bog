@@ -12,7 +12,7 @@ show-indicator='only-active'
 enable-fullscreen=true
 restore-state=true
 cli-toggle=false
-duration=uint32 0
+nightlight-control='never'
 screen-blank='never'
 
 [org.gnome.shell.extensions.clipboard-indicator]
