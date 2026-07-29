@@ -21,13 +21,13 @@ modules:
         - ublue-os/packages
 
   - type: dnf
-    exclude:
-      # Firefox is Fedora's "browser of choice" and gets pulled in with GNOME installs using dnf (and probably other pkg managers lol) I prefer to just use the flatpak version, easier to deal with and adwaita-ify app for it (idk what it's called, you know the one) works best with the flatpak one (installing and uninstalling)
-      - firefox
-      - firefox-langpacks
-      # Weak dep of GNOME shell, I gotta exclude explicitly. I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in.
-      - gnome-tour
     install:
+      exclude:
+        # Firefox is Fedora's "browser of choice" and gets pulled in with GNOME installs using dnf (and probably other pkg managers lol) I prefer to just use the flatpak version, easier to deal with and adwaita-ify app for it (idk what it's called, you know the one) works best with the flatpak one (installing and uninstalling)
+        - firefox
+        - firefox-langpacks
+        # Weak dep of GNOME shell, I gotta exclude explicitly. I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in.
+        - gnome-tour
       packages:
 
         # GNOME Core (Minimal)
@@ -37,10 +37,22 @@ modules:
         - gnome-control-center              # Settings
         - gnome-system-monitor              # Task Manager
         - gnome-settings-daemon             # Hardware Management
+        - xdg-desktop-portal-gnome          # XDG Portal for GNOME
+        - gnome-online-accounts             # GOA daemon
+        - gnome-keyring                     # Password/Key Management
 
         # dconf (desktop/etc configuration in GNOME)
         - dconf                             # Basically GNOMEs version of registry keys
         - dconf-editor                      # Basically GNOMEs version of registry editor
+
+        # Essential Interface & Tools
+        - gnome-disk-utility                # GNOME Disks
+        - gnome-logs                        # SystemD log viewer
+        - baobab                            # Directory tree analyzer
+        - gnome-font-viewer                 # Font viewer/installer
+        - gnome-console                     # Terminal emulator
+        - nautilus                          # File manager
+        - gnome-text-editor                 # GUI Text editor
 
         # App Store (ublue-os/packages, check if actually available, was in pkg list in copr repo)
         - bazaar
@@ -58,17 +70,9 @@ modules:
         - gvfs-nfs                          # NFS support for gvfs
         - gvfs-smb                          # SMD support for gvfs
 
-        # Essential Interface & Tools
-        - xdg-desktop-portal-gnome          # XDG Portal for GNOME
-        - gnome-online-accounts             # GOA daemon
-        - gnome-keyring                     # Password/Key Management
-        - gnome-disk-utility                # GNOME Disks
-        - gnome-logs                        # SystemD log viewer
-        - baobab                            # Directory tree analyzer
-        - gnome-font-viewer                 # Font viewer/installer
-        - gnome-console                     # Terminal emulator
-        - nautilus                          # File manager
-        - gnome-text-editor                 # GUI Text editor
+        # Wine & Family
+        - winetricks                        # Common Wine problem resolver
+        - protontricks                      # winetricks wrapper for Proton-specific games/programs
 
         # Niceties
         - gnome-backgrounds
@@ -78,10 +82,6 @@ modules:
         - host-spawn                        # distrobox-host-exec dep
         - steam                             # Primary gaming platform
         - system-reinstall-bootc            # Effective system reset via bootc
-
-        # Wine & Family
-        - winetricks                        # Common Wine problem resolver
-        - protontricks                      # winetricks wrapper for Proton-specific games/programs
 
         # Misc
         - micro                             # TUI Text Editor
@@ -127,9 +127,11 @@ modules:
         #- libsecret
         #- libxmlb
         #- libyaml
-
     remove:
       packages:
+        - firefox
+        - firefox-langpacks
+        - gnome-tour
         - toolbox
         - htop
         #- fedora-release-identity-basic
