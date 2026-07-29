@@ -12,7 +12,6 @@ show-indicator='only-active'
 enable-fullscreen=true
 restore-state=true
 cli-toggle=false
-nightlight-pause='never'
 duration=uint32 0
 screen-blank='never'
 
