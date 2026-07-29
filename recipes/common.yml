@@ -2,6 +2,14 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 modules:
 
+  - type: os-release
+    properties:
+      ID: bog
+      ID_LIKE: fedora
+      NAME: bog
+      IMAGE_ID: bog
+      LOGO: bog-logo
+
   - type: files
     files:
       - source: system
@@ -28,10 +36,10 @@ modules:
         - dconf                             # Basically GNOMEs version of registry keys
         - dconf-editor                      # Basically GNOMEs version of registry editor
 
-        # app store
-        #- gnome-software
+        # App Store (ublue-os/packages, check if actually available, was in pkg list in copr repo)
+        - bazaar
 
-        # Filesystem
+        # Filesystem Gubbins
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
         - gvfs-client                       # Client modules of backends for the gio framework in GLib
         - gvfs-archive                      # Archiving support for gvfs
@@ -139,6 +147,7 @@ modules:
         # Basically a cache clear is now intended to be apart of an image update/upgrade now.
         # TODO: consider user and system versions of these services/scripts
         - springclean.service
+        - podman-auto-update.timer
     system:
       enabled:
         - gdm.service
