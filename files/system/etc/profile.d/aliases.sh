@@ -10,24 +10,8 @@ power() {
     esac
 }
 
-# gtns [--launcher]
-# Get the new shit.
-# --launcher: used when invoked from the menu or keyboard shortcut;
-#             holds the terminal open after completion rather than leaving
-#             an orphaned shell window or closing before output can be read.
+# gtns: Get the new shit.
 gtns() {
-    local launcher=false
-
-    while [[ $# -gt 0 ]]; do
-        case "$1" in
-            --launcher) launcher=true; shift ;;
-            *)
-                echo "Unknown option: $1"
-                echo "Usage: gtns [--launcher]"
-                return 1
-                ;;
-        esac
-    done
 
     echo "GET THE NEW SHIT"
 
@@ -221,9 +205,8 @@ restore_app_guts() {
     echo "Done!"
 }
 
-# CURRENTLY WIP, NEEDS WORK
-# Scans ~/.var/app/ for directories belonging to apps that are no longer installed,
-# then prompts to delete them one by one.
+# CURRENTLY VERY WIP, NEEDS WORK
+# Scans ~/.var/app/ for directories belonging to apps that are no longer installed, then prompts to delete them one by one.
 # Bazaar has a similar tool but I'd like for GTNS to prompt for something like it as well,
 # also sometimes Bazaar misses and a hardline function hits better.
 flatpak_loosie_collection() {
