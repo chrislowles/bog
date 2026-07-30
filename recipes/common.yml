@@ -19,6 +19,7 @@ modules:
     repos:
       copr:
         - ublue-os/packages
+        - hhd-dev/hhd
 
   - type: dnf
     install:
@@ -76,6 +77,11 @@ modules:
 
         # Niceties
         - gnome-backgrounds
+
+        # handheld daemon
+        - hhd
+        - adjustor
+        - hhd-ui
 
         # System Management Beyond Flatpaks (idk how to describe this lol)
         - distrobox                         # Container-based system management
@@ -139,6 +145,8 @@ modules:
         - fedora-bookmarks
 
   - type: script
+    #snippets:
+    #  - "sudo systemctl enable hhd@$(whoami)"
     scripts:
       - setup-os-release.sh
 
@@ -170,28 +178,31 @@ modules:
           title: Flathub (system)
         install:
 
-            # Suggested pre-installed system programs
-            - io.github.flattool.Warehouse
-            - com.github.tchx84.Flatseal
-            - com.ranfdev.DistroShelf
-            - io.github.flattool.Ignition
-            - com.mattjakeman.ExtensionManager
+          # Niceties
+          - org.mozilla.firefox
 
-            # Video Games preferred and pre-installed selection
-            - com.vysp3r.ProtonPlus
-            - com.github.mtkennerly.ludusavi
-            - io.github.limo_app.limo
+          # Suggested pre-installed system programs
+          - io.github.flattool.Warehouse
+          - com.github.tchx84.Flatseal
+          - com.ranfdev.DistroShelf
+          - io.github.flattool.Ignition
+          - com.mattjakeman.ExtensionManager
 
-            # Pre-installed selection from GNOME Bazaar curation group
-            - org.gnome.Contacts
-            - org.gnome.Calendar
-            - org.gnome.clocks
-            - org.gnome.SoundRecorder
-            - org.gnome.Decibels
-            - org.gnome.Snapshot
-            - org.gnome.Characters
-            - org.gnome.SimpleScan
-            - org.gnome.Papers
+          # Video Games preferred and pre-installed selection
+          - com.vysp3r.ProtonPlus
+          - com.github.mtkennerly.ludusavi
+          - io.github.limo_app.limo
+
+          # Pre-installed selection from GNOME Bazaar curation group
+          - org.gnome.Contacts
+          - org.gnome.Calendar
+          - org.gnome.clocks
+          - org.gnome.SoundRecorder
+          - org.gnome.Decibels
+          - org.gnome.Snapshot
+          - org.gnome.Characters
+          - org.gnome.SimpleScan
+          - org.gnome.Papers
 
   #- type: script
   #  scripts:
