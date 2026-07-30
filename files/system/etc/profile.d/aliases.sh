@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# power [--reboot | --shutdown]
+# power [--reboot | --shutdown | --suspend]
 power() {
     case "${1:-}" in
         --reboot)   systemctl reboot ;;
