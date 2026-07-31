@@ -19,6 +19,7 @@ modules:
     repos:
       copr:
         - ublue-os/packages
+        - scottames/ghostty
         - hhd-dev/hhd
 
   - type: dnf
@@ -51,7 +52,7 @@ modules:
         - gnome-logs                        # SystemD log viewer
         - baobab                            # Directory tree analyzer
         - gnome-font-viewer                 # Font viewer/installer
-        - gnome-console                     # Terminal emulator
+        - ghostty                           # Terminal emulator
         - nautilus                          # File manager
         - gnome-text-editor                 # GUI Text editor
 
