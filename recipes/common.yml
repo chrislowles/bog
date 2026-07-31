@@ -169,13 +169,8 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - scope: user
-        repo:
-          title: Flathub (user)
       - notify: true
         scope: system
-        repo:
-          title: Flathub (system)
         install:
 
           # Niceties
@@ -203,6 +198,14 @@ modules:
           - org.gnome.Characters
           - org.gnome.SimpleScan
           - org.gnome.Papers
+      # - notify: true
+      #   scope: system
+      #   repo:
+      #     url: https://<host>/bog-flatpak/bog-flatpak.flatpakrepo
+      #     name: bog-flatpak
+      #     title: bog-flatpak
+      #   install:
+      #     - com.example.SomeCuratedApp
 
   #- type: script
   #  scripts:
