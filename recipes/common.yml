@@ -19,8 +19,7 @@ modules:
     repos:
       copr:
         - ublue-os/packages
-        - scottames/ghostty
-        - hhd-dev/hhd
+        #- hhd-dev/hhd
 
   - type: dnf
     install:
@@ -52,7 +51,7 @@ modules:
         - gnome-logs                        # SystemD log viewer
         - baobab                            # Directory tree analyzer
         - gnome-font-viewer                 # Font viewer/installer
-        - ghostty                           # Terminal emulator
+        - gnome-console                     # Terminal emulator
         - nautilus                          # File manager
         - gnome-text-editor                 # GUI Text editor
 
@@ -79,10 +78,10 @@ modules:
         # Niceties
         - gnome-backgrounds
 
-        # handheld daemon
-        - hhd
-        - adjustor
-        - hhd-ui
+        # handheld daemon (hhd-dev/hhd copr)
+        #- hhd
+        #- adjustor
+        #- hhd-ui
 
         # System Management Beyond Flatpaks (idk how to describe this lol)
         - distrobox                         # Container-based system management
@@ -126,14 +125,9 @@ modules:
         - vulkan-loader
         - vulkan-tools
 
-        # Broad system runtime dependencies (in part, formerly source-built Bazaar dependencies [TODO: TRY TO GET RID OF THESE AS YOU SET THE FLATPAK VERSION UP])
+        # Broad system runtime dependencies (in part source-built Bazaar dependencies)
         - flatpak
         - appstream
-        #- libsoup3
-        #- json-glib
-        #- libsecret
-        #- libxmlb
-        #- libyaml
     remove:
       packages:
         - firefox
@@ -158,14 +152,11 @@ modules:
   - type: systemd
     user:
       enabled:
-        # Noticed a quirk with Bazaar when experimenting with the default-flatpaks key,
-        # clearing cache after reverting fixed it so I'm setting as a user service.
-        # Basically a cache clear is now intended to be apart of an image update/upgrade now.
-        # TODO: consider user and system versions of these services/scripts
         - springclean.service
         - podman-auto-update.timer
     system:
       enabled:
+        - springclean.service
         - gdm.service
 
   - type: default-flatpaks
