@@ -1,0 +1,10 @@
+[Unit]
+Description=System-scope system cleanup cleanup.
+After=flatpak-system-helper.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /usr/libexec/bog/springclean-system.sh
+
+[Install]
+WantedBy=multi-user.target
