@@ -1,5 +1,6 @@
 [Unit]
 Description=System-scope system cleanup cleanup.
+Wants=system-flatpak-setup.service
 After=flatpak-system-helper.service system-flatpak-setup.service
 
 [Service]
