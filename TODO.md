@@ -1,0 +1,1 @@
+* Refactor name seen in bootloader (setup-os-release.sh) as "bog <fedora-base> (<git commit hash for image>)" and restore (delete) versioning in the actual variables
