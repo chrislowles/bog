@@ -150,14 +150,18 @@ modules:
       - dconf-update-service
 
   - type: systemd
+    system:
+      disabled:
+        - flatpak-add-fedora-repos.service
+        - system-flatpak-setup.timer
+      enabled:
+        - springclean.service
+        - podman-auto-update.timer
+        - gdm.service
     user:
       enabled:
         - springclean.service
         - podman-auto-update.timer
-    system:
-      enabled:
-        - springclean.service
-        - gdm.service
 
   - type: default-flatpaks
     configurations:
