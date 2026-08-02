@@ -151,8 +151,6 @@ modules:
 
   - type: systemd
     system:
-      #disabled:
-      #  - flatpak-add-fedora-repos.service
       enabled:
         - springclean.service
         - podman-auto-update.timer
