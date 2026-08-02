@@ -2,7 +2,7 @@
 set -euo pipefail
 
 FLATHUB_FILTER="/etc/bog/flatpak-filter.txt"
-flatpak remote-modify --system --filter="${FLATHUB_FILTER}" flathub
+flatpak remote-modify --system --filter="${FLATHUB_FILTER}" flathub || true
 
 rm -f /etc/flatpak/installations.d/*.conf 2>/dev/null || true
 rm -f /usr/share/flatpak/installations.d/*.conf 2>/dev/null || true
