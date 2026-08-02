@@ -164,6 +164,10 @@ modules:
     configurations:
       - notify: true
         scope: system
+        #repo:
+        #  url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        #  name: flathub
+        #  title: Flathub
         install:
 
           # Niceties
