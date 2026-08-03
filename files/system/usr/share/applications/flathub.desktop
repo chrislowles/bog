@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Flathub
+Comment=Central repo for flatpak apps.
+Exec=xdg-open https://flathub.org/
+Icon=/usr/share/icons/flathub.svg
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=software;linux;flatpak;flathub;
