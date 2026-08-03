@@ -2,6 +2,7 @@
 # Denylist mode: anything not listed here is allowed and searchable.
 # See `man flatpak-remote-add`, FILTER FILES section, for pattern syntax.
 
+deny io.github.kolunmi.Bazaar
 deny ca.desrt.dconf-editor
 deny org.gnome.baobab
 deny org.gnome.Logs
