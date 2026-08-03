@@ -56,7 +56,7 @@ modules:
         - gnome-text-editor                 # GUI Text editor
 
         # App Store (ublue-os/packages, check if actually available, was in pkg list in copr repo)
-        #- bazaar
+        - bazaar
 
         # Filesystem Gubbins
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
@@ -130,18 +130,11 @@ modules:
         - appstream
     remove:
       packages:
-        - firefox
-        - firefox-langpacks
-        - gnome-tour
         - toolbox
         - htop
-        #- fedora-release-identity-basic
-        #- fedora-logos
         - fedora-bookmarks
 
   - type: script
-    #snippets:
-    #  - "sudo systemctl enable hhd@$(whoami)"
     scripts:
       - setup-os-release.sh
 
@@ -202,11 +195,7 @@ modules:
       #     name: bog-flatpak
       #     title: bog-flatpak
       #   install:
-      #     - com.example.SomeCuratedApp
-
-  #- type: script
-  #  scripts:
-  #    - setup-flatpak-filter.sh
+      #     - io.github.chrislowles.gtm
 
   - type: gnome-extensions
     install:
@@ -217,7 +206,7 @@ modules:
       #- 5904   # Volume Scroller
       #- 779    # Clipboard Indicator
       - 517     # Caffeine
-      - 9788    # Quick Sound Switcher
+      #- 9788    # Quick Sound Switcher
       #- 8      # Places Menu
       #- 5263   # GTK Desktop Icons NG (DING)
       #- 600    # Launch New Instance
@@ -232,16 +221,16 @@ modules:
       - zz1-desktop.gschema.override
 
   # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
-  - type: fonts
-    fonts:
-      google-fonts:
-        - Inter
-        - Comic Neue
-      #url-fonts:
-      #  - name: CustomFont
-      #    url: https://example.com/my-font.otf
-      #  - name: CompanyFonts
-      #    url: https://company.com/fonts.tar.gz
+  #- type: fonts
+  #  fonts:
+  #    google-fonts:
+  #      - Inter
+  #      - Comic Neue
+  #     url-fonts:
+  #       - name: CustomFont
+  #         url: https://example.com/my-font.otf
+  #       - name: CompanyFonts
+  #         url: https://company.com/fonts.tar.gz
 
   # Plymouth theming stuff
   - type: initramfs
