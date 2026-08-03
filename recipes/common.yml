@@ -56,7 +56,7 @@ modules:
         - gnome-text-editor                 # GUI Text editor
 
         # App Store (ublue-os/packages, check if actually available, was in pkg list in copr repo)
-        - bazaar
+        #- bazaar
 
         # Filesystem Gubbins
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
@@ -164,10 +164,10 @@ modules:
     configurations:
       - notify: true
         scope: system
-        #repo:
-        #  url: https://dl.flathub.org/repo/flathub.flatpakrepo
-        #  name: flathub
-        #  title: Flathub
+        repo:
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+          name: flathub
+          title: Flathub
         install:
 
           # Niceties
