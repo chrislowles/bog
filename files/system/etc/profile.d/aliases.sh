@@ -12,44 +12,41 @@ power() {
 
 # gtns: Get the new shit.
 gtns() {
-
     echo "GET THE NEW SHIT"
-
     local do_uninstall=false
     local loosie_clear=false
     local do_reboot=false
     local auto_update_apps=false
-
+    
     read -rp "Uninstall unused Flatpak packages after update? [y/N] " ans1
     [[ "$ans1" =~ ^[Yy]$ ]] && do_uninstall=true
-
+    
     read -rp "Scan Flatpak cache for uninstalled app data? [y/N] " ans2
     [[ "$ans2" =~ ^[Yy]$ ]] && loosie_clear=true
-
+    
     read -rp "Reboot when done? [y/N] " ans3
     [[ "$ans3" =~ ^[Yy]$ ]] && do_reboot=true
-
+    
     read -rp "Automatically accept app update prompt? [y/N] " ans4
     [[ "$ans4" =~ ^[Yy]$ ]] && auto_update_apps=true
-
+    
     echo "Getting the new shit."
-
     sudo bootc upgrade
-
+    
     if $auto_update_apps; then
         flatpak update -y
     else
         flatpak update
     fi
-
-    if $uninstall_unused_apps; then
+    
+    if $do_uninstall; then
         flatpak uninstall --unused
     fi
-
-    if $do_loosie; then
+    
+    if $loosie_clear; then
         flatpak_loosie_collection
     fi
-
+    
     if $do_reboot; then
         power --reboot
     else
@@ -78,6 +75,7 @@ steam_shortcuts() {
 getmedia() {
     local mode="${1:-}"
     shift || true
+    
     case "$mode" in
         --video|-v)
             yt-dlp --format "bestvideo+bestaudio/best" --embed-metadata --embed-thumbnail --embed-subs --embed-chapters "$@"
@@ -90,18 +88,15 @@ getmedia() {
 }
 
 # setdns --provider <name> [-ipv6-1 <addr>] [-ipv6-2 <addr>] [-ipv4-1 <addr>] [-ipv4-2 <addr>]
-#
 # Configures DNS for the active NetworkManager connection.
 # Supported providers: nextdns (more to be added, static options like quad9 or more dynamic options like controld)
-#
 # Addresses can be supplied inline via flags, or left out to be prompted interactively.
-#
 # Examples:
 # > setdns --provider nextdns
 # > setdns --provider nextdns -ipv6-1 2a07::1 -ipv6-2 2a07::2 -ipv4-1 45.90.28.0 -ipv4-2 45.90.30.0
 setdns() {
     local provider="" ipv6_1="" ipv6_2="" ipv4_1="" ipv4_2=""
-
+    
     # Parse arguments
     while [[ $# -gt 0 ]]; do
         case "$1" in
@@ -118,13 +113,13 @@ setdns() {
                 ;;
         esac
     done
-
+    
     if [[ -z "$provider" ]]; then
         echo "Usage: setdns --provider <name> [-ipv6-1 <addr>] [-ipv6-2 <addr>] [-ipv4-1 <addr>] [-ipv4-2 <addr>]"
         echo "Supported providers: nextdns"
         return 1
     fi
-
+    
     case "$provider" in
         nextdns)
             echo "Configuring NextDNS..."
@@ -140,25 +135,26 @@ setdns() {
             return 1
             ;;
     esac
-
+    
     # Validate that all four addresses were provided
     if [[ -z "$ipv6_1" || -z "$ipv6_2" || -z "$ipv4_1" || -z "$ipv4_2" ]]; then
         echo "Error: all four DNS addresses are required."
         return 1
     fi
-
+    
     local connection
     connection="$(nmcli -t -f NAME connection show --active | head -1)"
-
+    
     if [[ -z "$connection" ]]; then
         echo "Error: no active NetworkManager connection found."
         return 1
     fi
-
+    
     echo "Applying DNS to connection: $connection"
     nmcli connection modify "$connection" \
         ipv6.dns "$ipv6_1 $ipv6_2" ipv6.ignore-auto-dns yes \
         ipv4.dns "$ipv4_1 $ipv4_2" ipv4.ignore-auto-dns yes
+        
     nmcli connection up "$connection"
     echo "Done. DNS set to $provider on '$connection'."
 }
@@ -166,18 +162,17 @@ setdns() {
 # Re-apply pre-configurations for an app (if any have been written)
 restore_app_guts() {
     local app_id="$1"
-
     if [ -z "$app_id" ]; then
         echo "Error: Please provide a Flatpak App ID."
         echo "Example: restore_app_guts com.spotify.Client"
         return 1
     fi
-
+    
     local skel_dir="/etc/skel/.var/app/$app_id"
     local user_dir="$HOME/.var/app/$app_id"
     local system_override="/usr/share/flatpak/overrides/$app_id"
     local user_override_dir="$HOME/.local/share/flatpak/overrides"
-
+    
     # Restore skel config if a template exists
     if [ -d "$skel_dir" ]; then
         echo "Restoring skel configuration for $app_id..."
@@ -186,22 +181,20 @@ restore_app_guts() {
     else
         echo "Note: No skel template found for $app_id - skipping config restore."
     fi
-
+    
     local resetperm=false
-
     # Restore permissions
     if [ -f "$system_override" ]; then
         echo "Restoring pre-written permissions for $app_id..."
         mkdir -p "$user_override_dir"
         cp "$system_override" "$user_override_dir/$app_id"
     else
-        read -rp "Note: No system overrides found for $app_id - would you like to reset user permissions instead?" ansresetperm
+        read -rp "Note: No system overrides found for $app_id - would you like to reset user permissions instead? " ansresetperm
         [[ "$ansresetperm" =~ ^[Yy]$ ]] && resetperm=true
         if $resetperm; then
             flatpak override --user --reset "$app_id"
         fi
     fi
-
     echo "Done!"
 }
 
@@ -214,7 +207,7 @@ flatpak_loosie_collection() {
         echo "No Flatpak app data directory found (~/.var/app doesn't exist)."
         return 0
     fi
-
+    
     local loosies
     loosies=$(comm -23 \
         <(find "$HOME/.var/app/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' \
@@ -222,14 +215,13 @@ flatpak_loosie_collection() {
         <(flatpak list --app --columns=application \
             | grep -E '^[a-zA-Z]' \
             | LC_ALL=C sort))
-
+            
     if [[ -z "$loosies" ]]; then
         echo "No loose app cache folders found."
         return 0
     fi
-
+    
     echo "Loose Flatpak app cache directories:"
-
     local to_be_deleted=()
     while IFS= read -r app; do
         read -rp "Delete ~/.var/app/$app ? [y/N] " answer
@@ -237,16 +229,76 @@ flatpak_loosie_collection() {
             to_be_deleted+=("$app")
         fi
     done <<< "$loosies"
-
+    
     if [[ ${#to_be_deleted[@]} -eq 0 ]]; then
         echo "Nothing deleted."
         return 0
     fi
-
+    
     for app in "${to_be_deleted[@]}"; do
         echo "Deleting: ~/.var/app/$app"
         rm -rf "$HOME/.var/app/${app}"
     done
-
     echo "Done."
+}
+
+# steam_clean_app <appid> [--drive <path>]
+# Cleans up left-behind compatdata (Proton prefixes) and shader caches for a specific Steam game AppID.
+steam_clean_app() {
+    local app_id=""
+    local drive_path="$HOME/.local/share/Steam" # Default Steam installation path on Linux
+
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --drive) drive_path="${2:-}"; shift 2 ;;
+            -*) echo "Unknown option: $1"; return 1 ;;
+            *)
+                if [[ -z "$app_id" ]]; then
+                    app_id="$1"
+                    shift
+                else
+                    echo "Unknown argument: $1"
+                    return 1
+                fi
+                ;;
+        esac
+    done
+
+    if [[ -z "$app_id" ]]; then
+        echo "Usage: steam_clean_app <appid> [--drive <path>]"
+        echo "Example: steam_clean_app 1086940 --drive /run/media/user/Games/SteamLibrary"
+        return 1
+    fi
+
+    # Define exact directories based on the Steam library path
+    local compat_dir="$drive_path/steamapps/compatdata/$app_id"
+    local shader_dir="$drive_path/steamapps/shadercache/$app_id"
+    local found_anything=false
+
+    echo "Scanning for leftover files for AppID: $app_id..."
+
+    if [[ -d "$compat_dir" ]]; then
+        echo "Found compatdata: $compat_dir"
+        found_anything=true
+    fi
+
+    if [[ -d "$shader_dir" ]]; then
+        echo "Found shadercache: $shader_dir"
+        found_anything=true
+    fi
+
+    if ! $found_anything; then
+        echo "No leftover directories found for AppID $app_id in $drive_path."
+        return 0
+    fi
+
+    read -rp "Delete these leftover directories? [y/N] " answer
+    if [[ "$answer" =~ ^[Yy]$ ]]; then
+        [[ -d "$compat_dir" ]] && rm -rf "$compat_dir"
+        [[ -d "$shader_dir" ]] && rm -rf "$shader_dir"
+        echo "Done. Leftovers cleared for AppID $app_id."
+    else
+        echo "Operation cancelled. Nothing was deleted."
+    fi
 }
