@@ -24,11 +24,14 @@ modules:
   - type: dnf
     install:
       exclude:
+
         # Firefox is Fedora's "browser of choice" and gets pulled in with GNOME installs using dnf (and probably other pkg managers lol) I prefer to just use the flatpak version, easier to deal with and adwaita-ify app for it (idk what it's called, you know the one) works best with the flatpak one (installing and uninstalling)
         - firefox
         - firefox-langpacks
+
         # Weak dep of GNOME shell, I gotta exclude explicitly. I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in.
         - gnome-tour
+
       packages:
 
         # GNOME Core (Minimal)
