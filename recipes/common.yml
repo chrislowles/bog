@@ -25,7 +25,7 @@ modules:
     install:
       exclude:
 
-        # Firefox is Fedora's "browser of choice" and gets pulled in with GNOME installs using dnf (and probably other pkg managers lol) I prefer to just use the flatpak version, easier to deal with and adwaita-ify app for it (idk what it's called, you know the one) works best with the flatpak one (installing and uninstalling)
+        # Firefox is Fedora's "browser of choice" and gets pulled in with GNOME installs using dnf (and probably other pkg managers lol) I prefer to just use the flatpak version, easier to deal with and adwaita-ify app for it (idk what it's called) works best with the flatpak one (installing and uninstalling)
         - firefox
         - firefox-langpacks
 
