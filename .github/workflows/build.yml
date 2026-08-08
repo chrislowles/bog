@@ -2,7 +2,7 @@ name: Bluebuild Release
 
 on:
   schedule:
-    - cron: '0 10 * * 3' # Wednesday at 10AM UTC
+    - cron: '0 10 * * 3' # Every Wednesday at 10AM UTC
   push: # Any pushes to the repo (should consider specific to main branch)
     # branches: [main]
     paths-ignore: # Don't rebuild if only documentation has changed
