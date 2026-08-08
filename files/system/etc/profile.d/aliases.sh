@@ -12,7 +12,9 @@ power() {
 
 # gtns: Get the new shit.
 gtns() {
+
     echo "GET THE NEW SHIT"
+
     local do_uninstall=false
     local loosie_clear=false
     local do_reboot=false
@@ -22,18 +24,18 @@ gtns() {
     [[ "$ans1" =~ ^[Yy]$ ]] && do_uninstall=true
     
     read -rp "Scan Flatpak cache for uninstalled app data? [y/N] " ans2
-    [[ "$ans2" =~ ^[Yy]$ ]] && loosie_clear=true
+    [[ "$ans2" =~ ^[Yy]$ ]] && do_flatpak_loosie_clear=true
     
     read -rp "Reboot when done? [y/N] " ans3
     [[ "$ans3" =~ ^[Yy]$ ]] && do_reboot=true
     
     read -rp "Automatically accept app update prompt? [y/N] " ans4
-    [[ "$ans4" =~ ^[Yy]$ ]] && auto_update_apps=true
+    [[ "$ans4" =~ ^[Yy]$ ]] && do_update_apps=true
     
     echo "Getting the new shit."
     sudo bootc upgrade
     
-    if $auto_update_apps; then
+    if $do_update_apps; then
         flatpak update -y
     else
         flatpak update
@@ -43,7 +45,7 @@ gtns() {
         flatpak uninstall --unused
     fi
     
-    if $loosie_clear; then
+    if $do_flatpak_loosie_clear; then
         flatpak_loosie_collection
     fi
     
@@ -55,7 +57,7 @@ gtns() {
 }
 
 # steam_shortcuts [--list/-l | --flush/-f]
-# List Steam shortcuts in menu and an option to fully clear them out (one time I installed a bunch of Steam games, accidentally left the shortcut option on and had like 40 shortcuts made, Google fixed it and I wanted to make it a function)
+# List Steam shortcuts in menu and an option to fully clear them out (one time I installed a bunch of Steam games, accidentally left the shortcut option on and had like 40 shortcuts made lol, Google fixed it and I wanted to make it a function)
 steam_shortcuts() {
     case "${1:-}" in
         --list|-l)
@@ -71,11 +73,10 @@ steam_shortcuts() {
 }
 
 # getmedia [-v | -a] <url>
-# yt-dlp shorthand command
+# yt-dlp shorthand command (cookies likely needed)
 getmedia() {
     local mode="${1:-}"
     shift || true
-    
     case "$mode" in
         --video|-v)
             yt-dlp --format "bestvideo+bestaudio/best" --embed-metadata --embed-thumbnail --embed-subs --embed-chapters "$@"
@@ -95,7 +96,8 @@ getmedia() {
 # > setdns --provider nextdns
 # > setdns --provider nextdns -ipv6-1 2a07::1 -ipv6-2 2a07::2 -ipv4-1 45.90.28.0 -ipv4-2 45.90.30.0
 setdns() {
-    local provider="" ipv6_1="" ipv6_2="" ipv4_1="" ipv4_2=""
+    local provider=""
+    local ipv6_1="" ipv6_2="" ipv4_1="" ipv4_2=""
     
     # Parse arguments
     while [[ $# -gt 0 ]]; do
@@ -240,65 +242,4 @@ flatpak_loosie_collection() {
         rm -rf "$HOME/.var/app/${app}"
     done
     echo "Done."
-}
-
-# steam_clean_app <appid> [--drive <path>]
-# Cleans up left-behind compatdata (Proton prefixes) and shader caches for a specific Steam game AppID.
-steam_clean_app() {
-    local app_id=""
-    local drive_path="$HOME/.local/share/Steam" # Default Steam installation path on Linux
-
-    # Parse arguments
-    while [[ $# -gt 0 ]]; do
-        case "$1" in
-            --drive) drive_path="${2:-}"; shift 2 ;;
-            -*) echo "Unknown option: $1"; return 1 ;;
-            *)
-                if [[ -z "$app_id" ]]; then
-                    app_id="$1"
-                    shift
-                else
-                    echo "Unknown argument: $1"
-                    return 1
-                fi
-                ;;
-        esac
-    done
-
-    if [[ -z "$app_id" ]]; then
-        echo "Usage: steam_clean_app <appid> [--drive <path>]"
-        echo "Example: steam_clean_app 1086940 --drive /run/media/user/Games/SteamLibrary"
-        return 1
-    fi
-
-    # Define exact directories based on the Steam library path
-    local compat_dir="$drive_path/steamapps/compatdata/$app_id"
-    local shader_dir="$drive_path/steamapps/shadercache/$app_id"
-    local found_anything=false
-
-    echo "Scanning for leftover files for AppID: $app_id..."
-
-    if [[ -d "$compat_dir" ]]; then
-        echo "Found compatdata: $compat_dir"
-        found_anything=true
-    fi
-
-    if [[ -d "$shader_dir" ]]; then
-        echo "Found shadercache: $shader_dir"
-        found_anything=true
-    fi
-
-    if ! $found_anything; then
-        echo "No leftover directories found for AppID $app_id in $drive_path."
-        return 0
-    fi
-
-    read -rp "Delete these leftover directories? [y/N] " answer
-    if [[ "$answer" =~ ^[Yy]$ ]]; then
-        [[ -d "$compat_dir" ]] && rm -rf "$compat_dir"
-        [[ -d "$shader_dir" ]] && rm -rf "$shader_dir"
-        echo "Done. Leftovers cleared for AppID $app_id."
-    else
-        echo "Operation cancelled. Nothing was deleted."
-    fi
 }
