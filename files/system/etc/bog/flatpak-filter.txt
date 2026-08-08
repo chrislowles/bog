@@ -1,5 +1,5 @@
 # bog flatpak filter
-# Denylist mode: anything not listed here is allowed and searchable.
+# Denylist mode: anything not listed here is allowed, searchable and installable.
 # See `man flatpak-remote-add`, FILTER FILES section, for pattern syntax.
 
 deny io.github.kolunmi.Bazaar
