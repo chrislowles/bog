@@ -2,8 +2,10 @@
 set -euo pipefail
 
 FLATHUB_FILTER="/etc/bog/flatpak-filter.txt"
+
 echo "springclean-system: applying filter to flathub"
 flatpak remote-modify --system --filter="${FLATHUB_FILTER}" flathub
+
 echo "springclean-system: post-apply state:"
 flatpak remote-info --system flathub | grep -i filter || echo "  (no filter field found immediately after applying)"
 
