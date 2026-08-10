@@ -17,11 +17,10 @@ modules:
 
   - type: dnf
     repos:
+      cleanup: true
       copr:
         - ublue-os/packages
         #- hhd-dev/hhd
-
-  - type: dnf
     install:
       exclude:
 
@@ -128,7 +127,7 @@ modules:
         - vulkan-loader
         - vulkan-tools
 
-        # Broad system runtime dependencies (in part source-built Bazaar dependencies)
+        # Broad system runtime dependencies
         - flatpak
         - appstream
     remove:
@@ -198,6 +197,8 @@ modules:
       #     name: bog-flatpak
       #     title: bog-flatpak
       #   install:
+      #     - io.github.chrislowles.bog-sys-utils
+      #     - io.github.chrislowles.bog-gaming-utils
       #     - io.github.chrislowles.gtm
 
   - type: gnome-extensions
@@ -224,16 +225,16 @@ modules:
       - zz1-desktop.gschema.override
 
   # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
-  #- type: fonts
-  #  fonts:
-  #    google-fonts:
-  #      - Inter
-  #      - Comic Neue
-  #     url-fonts:
-  #       - name: CustomFont
-  #         url: https://example.com/my-font.otf
-  #       - name: CompanyFonts
-  #         url: https://company.com/fonts.tar.gz
+  - type: fonts
+    fonts:
+      google-fonts:
+        - Inter
+        - Comic Neue
+  #   url-fonts:
+  #     - name: CustomFont
+  #       url: https://example.com/my-font.otf
+  #     - name: CompanyFonts
+  #       url: https://company.com/fonts.tar.gz
 
   # Plymouth theming stuff
   - type: initramfs
