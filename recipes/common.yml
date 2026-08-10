@@ -73,10 +73,6 @@ modules:
         - gvfs-nfs                          # NFS support for gvfs
         - gvfs-smb                          # SMD support for gvfs
 
-        # Wine & Family
-        - winetricks                        # Common Wine problem resolver
-        - protontricks                      # winetricks wrapper for Proton-specific games/programs
-
         # Niceties
         - gnome-backgrounds
 
@@ -227,6 +223,10 @@ modules:
   # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
   - type: fonts
     fonts:
+      nerd-fonts:
+        - FiraCode
+        - SourceCodePro
+        - JetBrainsMono
       google-fonts:
         - Inter
         - Comic Neue
