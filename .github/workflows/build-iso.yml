@@ -94,7 +94,7 @@ jobs:
         run: |
           aws s3 cp \
             "${{ steps.upload-directory.outputs.iso-upload-dir }}/${{ steps.build.outputs.iso_name }}" \
-            "s3://${{ vars.R2_BUCKET }}/${{ steps.build.outputs.iso_name }}" \
+            "s3://${{ vars.R2_BUCKET }}/${{ matrix.image_name }}.iso" \
             --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
             --region auto
 
@@ -106,7 +106,8 @@ jobs:
           {
             echo "image_name=${{ matrix.image_name }}"
             echo "iso_name=${{ steps.build.outputs.iso_name }}"
-            echo "iso_url=${{ vars.R2_PUBLIC_URL }}/${{ steps.build.outputs.iso_name }}"
+            echo "iso_url=${{ vars.R2_PUBLIC_URL }}/${{ matrix.image_name }}.iso"
+            echo "build_date=${{ env.TIMESTAMP }}"
           } > "meta/${{ matrix.image_name }}.env"
 
       - name: Upload release metadata
@@ -137,13 +138,13 @@ jobs:
             echo "Auto-built installer ISOs, refreshed on each image build/schedule."
             echo '`bootc switch` from an existing Fedora Atomic install is still the recommended path — these ISOs are for installing from scratch.'
             echo ""
-            echo "| Image | Download | SHA256 |"
-            echo "|---|---|---|"
+            echo "| Image | Download | Built | SHA256 |"
+            echo "|---|---|---|---|"
             for dir in meta/*-meta; do
               source "$dir"/*.env
               CHECKSUM_FILE=$(find "$dir" -name '*-CHECKSUM')
               SUM=$(cut -d' ' -f1 "$CHECKSUM_FILE")
-              echo "| $image_name | [$iso_name]($iso_url) | \`$SUM\` |"
+              echo "| $image_name | [$image_name.iso]($iso_url) | $build_date | \`$SUM\` |"
             done
           } > body.md
 
