@@ -135,8 +135,7 @@ jobs:
         shell: bash
         run: |
           {
-            echo "Auto-built installer ISOs, refreshed on each image build/schedule."
-            echo '`bootc switch` from an existing Fedora Atomic install is still the recommended path — these ISOs are for installing from scratch.'
+            echo "Auto-built installer ISOs, refreshed on each image build/schedule. `bootc switch` from an existing Fedora Atomic install is still the recommended path — these ISOs are for installing from scratch.'
             echo ""
             echo "| Image | Download | Built | SHA256 |"
             echo "|---|---|---|---|"
@@ -151,8 +150,8 @@ jobs:
       - name: Publish to GitHub Releases
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: iso-f${{ env.MAJOR_VERSION }}-latest
-          name: bog ISOs (Fedora ${{ env.MAJOR_VERSION }})
+          tag_name: bog-${{ env.MAJOR_VERSION }}-latest
+          name: bog ${{ env.MAJOR_VERSION }} ISOs
           make_latest: true
           body_path: body.md
           overwrite_files: true
