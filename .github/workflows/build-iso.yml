@@ -135,7 +135,7 @@ jobs:
         shell: bash
         run: |
           {
-            echo "Auto-built installer ISOs, refreshed on each image build/schedule. `bootc switch` from an existing Fedora Atomic install is still the recommended path — these ISOs are for installing from scratch.'
+            echo "Auto-built installer ISOs, refreshed on each image build/schedule. \`bootc switch\` from an existing Fedora Atomic install is still the recommended path — these ISOs are for installing from scratch.'
             echo ""
             echo "| Image | Download | Built | SHA256 |"
             echo "|---|---|---|---|"
