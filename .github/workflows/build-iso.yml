@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - main
-    paths-ignore: # Should be more specific for things to ignore (might just tell it ignore a TODO.md on the root)
+    paths-ignore:
       - "**.md"
   pull_request:
   workflow_dispatch:
@@ -24,13 +24,13 @@ jobs:
   build-iso:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
       id-token: write
     strategy:
       fail-fast: false
       matrix:
-        image_name: [bog]
+        image_name: [bog, bog-nvidia]
         major_version: [44]
         image_tag: [latest]
 
@@ -74,13 +74,28 @@ jobs:
           mkdir ${ISO_UPLOAD_DIR}
           mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }} ${ISO_UPLOAD_DIR}
           mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
-          echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT     
+          echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT
 
       - name: Upload ISO and Checksum to Job Artifacts
         uses: actions/upload-artifact@v7
         with:
+          name: ${{ matrix.image_name }}-iso   # unique name per matrix entry
           path: ${{ steps.upload-directory.outputs.iso-upload-dir }}
           if-no-files-found: error
           retention-days: 90
           compression-level: 0
           overwrite: true
+
+      - name: Publish to GitHub Releases
+        if: github.event_name != 'pull_request'
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: iso-f${{ matrix.major_version }}-latest
+          name: bog ISOs (Fedora ${{ matrix.major_version }})
+          make_latest: true
+          body: |
+            Auto-built installer ISOs, refreshed on each image build/schedule.
+            `bootc switch` from an existing Fedora Atomic install is still the recommended path — these ISOs are for installing from scratch.
+          files: |
+            ${{ steps.upload-directory.outputs.iso-upload-dir }}/*.iso
+            ${{ steps.upload-directory.outputs.iso-upload-dir }}/*-CHECKSUM
