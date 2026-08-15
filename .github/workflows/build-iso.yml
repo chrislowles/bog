@@ -15,6 +15,7 @@ on:
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  MAJOR_VERSION: 44
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
@@ -24,7 +25,7 @@ jobs:
   build-iso:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       packages: write
       id-token: write
     strategy:
@@ -79,23 +80,79 @@ jobs:
       - name: Upload ISO and Checksum to Job Artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ matrix.image_name }}-iso   # unique name per matrix entry
+          name: ${{ matrix.image_name }}-iso
           path: ${{ steps.upload-directory.outputs.iso-upload-dir }}
           if-no-files-found: error
           retention-days: 90
           compression-level: 0
           overwrite: true
 
+      - name: Upload ISO to Cloudflare R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp \
+            "${{ steps.upload-directory.outputs.iso-upload-dir }}/${{ steps.build.outputs.iso_name }}" \
+            "s3://${{ vars.R2_BUCKET }}/${{ steps.build.outputs.iso_name }}" \
+            --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
+            --region auto
+
+      - name: Write release metadata
+        shell: bash
+        run: |
+          mkdir -p meta
+          {
+            echo "image_name=${{ matrix.image_name }}"
+            echo "iso_name=${{ steps.build.outputs.iso_name }}"
+            echo "iso_url=${{ vars.R2_PUBLIC_URL }}/${{ steps.build.outputs.iso_name }}"
+          } > "meta/${{ matrix.image_name }}.env"
+
+      - name: Upload release metadata
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.image_name }}-meta
+          path: |
+            meta/${{ matrix.image_name }}.env
+            ${{ steps.upload-directory.outputs.iso-upload-dir }}/*-CHECKSUM
+          retention-days: 1
+
+  publish-release:
+    needs: build-iso
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download release metadata
+        uses: actions/download-artifact@v6
+        with:
+          pattern: "*-meta"
+          path: meta
+
+      - name: Build release body
+        shell: bash
+        run: |
+          {
+            echo "Auto-built installer ISOs, refreshed on each image build/schedule."
+            echo '`bootc switch` from an existing Fedora Atomic install is still the recommended path — these ISOs are for installing from scratch.'
+            echo ""
+            echo "| Image | Download | SHA256 |"
+            echo "|---|---|---|"
+            for dir in meta/*-meta; do
+              source "$dir"/*.env
+              CHECKSUM_FILE=$(find "$dir" -name '*-CHECKSUM')
+              SUM=$(cut -d' ' -f1 "$CHECKSUM_FILE")
+              echo "| $image_name | [$iso_name]($iso_url) | \`$SUM\` |"
+            done
+          } > body.md
+
       - name: Publish to GitHub Releases
-        if: github.event_name != 'pull_request'
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: iso-f${{ matrix.major_version }}-latest
-          name: bog ISOs (Fedora ${{ matrix.major_version }})
+          tag_name: iso-f${{ env.MAJOR_VERSION }}-latest
+          name: bog ISOs (Fedora ${{ env.MAJOR_VERSION }})
           make_latest: true
-          body: |
-            Auto-built installer ISOs, refreshed on each image build/schedule.
-            `bootc switch` from an existing Fedora Atomic install is still the recommended path — these ISOs are for installing from scratch.
-          files: |
-            ${{ steps.upload-directory.outputs.iso-upload-dir }}/*.iso
-            ${{ steps.upload-directory.outputs.iso-upload-dir }}/*-CHECKSUM
+          body_path: body.md
+          overwrite_files: true
+          files: meta/*-meta/*-CHECKSUM
