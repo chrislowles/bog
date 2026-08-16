@@ -14,11 +14,3 @@ restore-state=true
 cli-toggle=false
 nightlight-control='never'
 screen-blank='never'
-
-[org.gnome.shell.extensions.clipboard-indicator]
-disable-down-arrow=true
-display-mode=2
-history-size=24
-move-item-first=true
-preview-size=100
-topbar-preview-size=50
