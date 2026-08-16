@@ -60,7 +60,7 @@ jobs:
           image_name: ${{ matrix.image_name }}
           image_tag: ${{ matrix.image_tag }}
           variant: 'Sericea'
-          iso_name: ${{ matrix.image_name }}_${{ env.TIMESTAMP }}.iso
+          iso_name: ${{ matrix.image_name }}.iso
           enable_cache_dnf: "false"
           enable_cache_skopeo: "false"
           enable_flatpak_dependencies: "false"
