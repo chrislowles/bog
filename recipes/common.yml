@@ -202,16 +202,15 @@ modules:
   - type: gnome-extensions
     install:
       - 615     # AppIndicator Support
-      #- 1160   # Dash to Panel
-      #- 1319   # GSConnect
+      #- 1160    # Dash to Panel
+      - 517     # Caffeine
+      #- 1319    # GSConnect
+      - 5263    # GTK Desktop Icons NG (DING)
       #- 36     # Lock Keys
       #- 5904   # Volume Scroller
       #- 779    # Clipboard Indicator
-      - 517     # Caffeine
-      #- 9788    # Quick Sound Switcher
+      #- 9788   # Quick Sound Switcher
       #- 8      # Places Menu
-      #- 5263   # GTK Desktop Icons NG (DING)
-      #- 600    # Launch New Instance
       #- 9419   # Video Lockscreen
 
   - type: gschema-overrides
