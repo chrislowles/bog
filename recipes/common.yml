@@ -151,26 +151,19 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - notify: true
+      - notify: false
         scope: system
-        repo:
-          url: https://dl.flathub.org/repo/flathub.flatpakrepo
-          name: flathub
-          title: Flathub
         install:
-
-          # Suggested pre-installed system programs
           - io.github.flattool.Warehouse
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
-
-          # Video Games preferred and pre-installed selection
           - com.vysp3r.ProtonPlus
           - com.github.mtkennerly.ludusavi
-
-          # Pre-installed selection from GNOME Bazaar curation group
+      - notify: false
+        scope: user
+        install:
           - org.gnome.Contacts
           - org.gnome.Calendar
           - org.gnome.clocks
@@ -180,24 +173,12 @@ modules:
           - org.gnome.Characters
           - org.gnome.SimpleScan
           - org.gnome.Papers
-      # - notify: true
-      #   scope: system
-      #   repo:
-      #     url: https://<host>/bog-flatpak/bog-flatpak.flatpakrepo
-      #     name: bog-flatpak
-      #     title: bog-flatpak
-      #   install:
-      #     - io.github.chrislowles.bog-sys-utils
-      #     - io.github.chrislowles.bog-gaming-utils
-      #     - io.github.chrislowles.gtm
-      # - notify: true
-      #   scope: system
-      #   repo:
-      #     url: https://chrisdkn.github.io/Amethyst-Mod-Manager/amethyst.flatpakrepo
-      #     name: amethyst-mod-manager-release
-      #     title: Amethyst Mod Manager Release
-      #   install:
-      #     - io.github.Amethyst.ModManager//stable
+      - notify: false
+        scope: user
+        repo:
+          url: https://international.download.nvidia.com/GFNLinux/flatpak/geforcenow.flatpakrepo
+          name: GeForceNOW
+          title: GeForce NOW Official Source
 
   - type: gnome-extensions
     install:
