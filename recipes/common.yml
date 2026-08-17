@@ -138,14 +138,12 @@ modules:
   - type: systemd
     system:
       enabled:
-        - springclean.service
         - podman-auto-update.timer
         - gdm.service
       disabled:
         - system-flatpak-setup.service
     user:
       enabled:
-        - springclean.service
         - podman-auto-update.timer
 
   - type: default-flatpaks
