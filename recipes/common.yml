@@ -23,12 +23,9 @@ modules:
         #- hhd-dev/hhd
     install:
       exclude:
-
         # Weak dep of GNOME shell, I gotta exclude explicitly. I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in.
         - gnome-tour
-
       packages:
-
         # GNOME Core (Minimal)
         - gnome-shell                       # Desktop Interface
         - gnome-session-wayland-session     # Wayland Session
@@ -144,6 +141,8 @@ modules:
         - springclean.service
         - podman-auto-update.timer
         - gdm.service
+      disabled:
+        - system-flatpak-setup.service
     user:
       enabled:
         - springclean.service
@@ -153,6 +152,10 @@ modules:
     configurations:
       - notify: false
         scope: system
+        repo:
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+          name: flathub
+          title: Flathub
         install:
           - io.github.flattool.Warehouse
           - com.github.tchx84.Flatseal
