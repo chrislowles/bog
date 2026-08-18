@@ -1,0 +1,11 @@
+[Unit]
+Description=Apply bog Flatpak filter to system Flathub remote
+After=system-flatpak-setup.service
+Requires=system-flatpak-setup.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flatpak remote-modify --system --filter=/etc/bog/flatpak-filter.txt flathub
+
+[Install]
+WantedBy=multi-user.target
