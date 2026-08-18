@@ -4,8 +4,9 @@ on:
   schedule:
     - cron: '0 10 * * 3' # Every Wednesday at 10AM UTC
   push:
-    branches: [main]
-    paths-ignore: # Should be more specific for things to ignore (might just tell it ignore a TODO.md on the root)
+    branches: 
+      - main
+    paths-ignore:
       - "**.md"
   pull_request:
   workflow_dispatch:
