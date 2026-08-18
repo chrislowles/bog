@@ -74,7 +74,8 @@ modules:
         #- adjustor
         #- hhd-ui
 
-        # System Management Beyond Flatpaks (idk how to describe this lol)
+        # System Management
+        - flatpak                           # Distro-agnostic app format
         - distrobox                         # Container-based system management
         - host-spawn                        # distrobox-host-exec dep
         - steam                             # Primary gaming platform
@@ -115,10 +116,6 @@ modules:
         #- fuse2 # needed by most AppImages anyway
         - vulkan-loader
         - vulkan-tools
-
-        # Broad system runtime dependencies
-        - flatpak
-        - appstream
     remove:
       packages:
         - firefox
