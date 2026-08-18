@@ -114,6 +114,7 @@ modules:
         # AppImages
         #- fuse # FUSE 3 (likely already present in base)
         #- fuse2 # needed by most AppImages anyway
+
         - vulkan-loader
         - vulkan-tools
     remove:
@@ -132,13 +133,14 @@ modules:
     install:
       - dconf-update-service
 
+  # The system-flatpak-setup.service is no longer commented out for disablement
+  # We instead enable our custom service to run after it.
   - type: systemd
     system:
       enabled:
         - podman-auto-update.timer
         - gdm.service
-      #disabled:
-        #- system-flatpak-setup.service
+        - bog-flatpak-filter.service
     user:
       enabled:
         - podman-auto-update.timer
@@ -211,5 +213,4 @@ modules:
 
   # Plymouth theming stuff
   - type: initramfs
-
   - type: signing
