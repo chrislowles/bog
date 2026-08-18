@@ -148,12 +148,7 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - notify: false
-        scope: system
-        repo:
-          url: https://dl.flathub.org/repo/flathub.flatpakrepo
-          name: flathub
-          title: Flathub
+      - scope: system
         install:
           - io.github.flattool.Warehouse
           - com.github.tchx84.Flatseal
@@ -162,8 +157,7 @@ modules:
           - com.mattjakeman.ExtensionManager
           - com.vysp3r.ProtonPlus
           - com.github.mtkennerly.ludusavi
-      - notify: false
-        scope: user
+      - scope: user
         install:
           - org.gnome.Contacts
           - org.gnome.Calendar
@@ -174,8 +168,7 @@ modules:
           - org.gnome.Characters
           - org.gnome.SimpleScan
           - org.gnome.Papers
-      - notify: false
-        scope: user
+      - scope: user
         repo:
           url: https://international.download.nvidia.com/GFNLinux/flatpak/geforcenow.flatpakrepo
           name: GeForceNOW
