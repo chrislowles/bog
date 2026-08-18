@@ -24,10 +24,8 @@ A set of shell functions are available in any terminal session:
 |---|---|
 | `gtns` | Interactive system upgrade: runs `bootc upgrade` + `flatpak update`, with optional cleanup and reboot |
 | `getmedia` | `yt-dlp` shorthand for downloading video (`-v`) or audio (`-a`) with metadata and thumbnails |
-| `setdns` | Configures DNS for the active NetworkManager connection (NextDNS supported) |
 | `power` | Shorthand for reboot, shutdown, or suspend |
 | `steam_shortcuts` | Lists or flushes Steam game `.desktop` shortcuts |
-| `restore_app_guts` | Restores pre-written Flatpak configs and permission overrides for a given app |
 
 ### Optional: Jackett
 A rootless Podman container definition is included for Jackett (a torrent indexer proxy). Enable it as a user service when needed:
@@ -56,19 +54,20 @@ distrobox create --pull -Y -n arch -i archlinux:latest -ap "base-devel git"
 
 **Step 2 - Enter the container and install yay:**
 ```bash
-distrobox enter arch -- bash -c "git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si"
+distrobox enter arch
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
 ```
 
 | Part | Meaning |
 |---|---|
 | `distrobox enter arch` | Enter the container named `arch` |
-| `--` | Everything after this is run inside the container rather than on the host |
-| `bash -c "..."` | Run the quoted string as a shell command |
-| `git clone ...` | Download the yay build files from the AUR |
+| `git clone ...` | Download the yay build files from the AUR (requires `git`) |
 | `cd yay-bin` | Navigate into the cloned directory |
 | `makepkg -si` | Build and install the package (requires `base-devel`) |
 
-Once `yay` is installed, subsequent AUR packages can be installed with `yay -S <package>` from inside the container.
+Once `yay` is installed, subsequent AUR packages can be installed with `yay -S <package>` from inside the container and exported to the host desktop.
 
 ## Installation
 
@@ -85,6 +84,8 @@ For NVIDIA hardware:
 sudo bootc switch ghcr.io/chrislowles/bog-nvidia:latest
 systemctl reboot
 ```
+
+ISOs are now available for burning to your leftover USB on the [Releases](https://github.com/chrislowles/bog/releases).
 
 ## Verification
 
