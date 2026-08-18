@@ -140,8 +140,8 @@ modules:
       enabled:
         - podman-auto-update.timer
         - gdm.service
-      disabled:
-        - system-flatpak-setup.service
+      #disabled:
+        #- system-flatpak-setup.service
     user:
       enabled:
         - podman-auto-update.timer
