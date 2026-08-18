@@ -140,7 +140,6 @@ modules:
       enabled:
         - podman-auto-update.timer
         - gdm.service
-        - bog-flatpak-filter.service
     user:
       enabled:
         - podman-auto-update.timer
