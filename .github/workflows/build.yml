@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   push-update:
-    name: Build Image
+    timeout-minutes: 25
     runs-on: ubuntu-latest
     permissions:
       contents: read
