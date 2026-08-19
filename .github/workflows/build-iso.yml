@@ -23,6 +23,7 @@ env:
 
 jobs:
   build-iso:
+    timeout-minutes: 25
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -120,6 +121,7 @@ jobs:
           retention-days: 1
 
   publish-release:
+    timeout-minutes: 25
     needs: build-iso
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
