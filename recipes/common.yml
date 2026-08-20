@@ -182,7 +182,7 @@ modules:
       #- 36     # Lock Keys
       #- 5904   # Volume Scroller
       #- 779    # Clipboard Indicator
-      #- 9788   # Quick Sound Switcher
+      - 9788   # Quick Sound Switcher
       #- 8      # Places Menu
       #- 9419   # Video Lockscreen
 
