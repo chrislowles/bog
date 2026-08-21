@@ -1,0 +1,12 @@
+[Unit]
+Description=Ensure Flathub remote exists and apply bog's filter (user scope)
+Before=graphical-session-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+ExecStart=/usr/bin/flatpak remote-modify --user --filter=/etc/bog/flatpak-filter.txt flathub
+
+[Install]
+WantedBy=default.target
