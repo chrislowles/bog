@@ -5,10 +5,15 @@ modules:
   - type: os-release
     properties:
       ID: bog
-      ID_LIKE: fedora
       NAME: bog
       IMAGE_ID: bog
       LOGO: bog-logo
+      DEFAULT_HOSTNAME: bog
+
+  # tweaking PRETTY_NAME to be dynamically edited
+  - type: script
+    scripts:
+      - setup-os-release.sh
 
   - type: files
     files:
@@ -124,10 +129,6 @@ modules:
         - toolbox
         - htop
         - fedora-bookmarks
-
-  - type: script
-    scripts:
-      - setup-os-release.sh
 
   - type: bling
     install:
