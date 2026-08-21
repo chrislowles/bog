@@ -1,11 +1,13 @@
 [Unit]
-Description=Ensure Flathub remote exists and apply bog's filter (user scope)
+Description=Reapply bog's flatpak filter to the user Flathub remote
+Wants=network-online.target
+After=network-online.target
+After=user-flatpak-setup.service
 Before=graphical-session-pre.target
 
 [Service]
 Type=oneshot
-RemainAfterExit=yes
-ExecStart=/usr/bin/flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#ExecStart=/usr/bin/flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ExecStart=/usr/bin/flatpak remote-modify --user --filter=/etc/bog/flatpak-filter.txt flathub
 
 [Install]

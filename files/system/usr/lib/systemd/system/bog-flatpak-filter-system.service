@@ -1,11 +1,12 @@
 [Unit]
-Description=Ensure Flathub remote exists and apply bog's filter (system scope)
-Before=gdm.service
+Description=Reapply bog's flatpak filter to the system Flathub remote
+Wants=network-online.target
+After=network-online.target
+After=system-flatpak-setup.service
 
 [Service]
 Type=oneshot
-RemainAfterExit=yes
-ExecStart=/usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#ExecStart=/usr/bin/flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ExecStart=/usr/bin/flatpak remote-modify --system --filter=/etc/bog/flatpak-filter.txt flathub
 
 [Install]
