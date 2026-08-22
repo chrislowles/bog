@@ -7,7 +7,7 @@ Before=graphical-session-pre.target
 
 [Service]
 Type=oneshot
-#ExecStart=/usr/bin/flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+ExecStart=/usr/bin/flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ExecStart=/usr/bin/flatpak remote-modify --user --filter=/etc/bog/flatpak-filter.txt flathub
 
 [Install]
