@@ -134,18 +134,14 @@ modules:
     install:
       - dconf-update-service
 
-  # The system-flatpak-setup.service is no longer commented out for disablement
-  # We instead enable our custom service to run after it.
   - type: systemd
     system:
       enabled:
         - podman-auto-update.timer
         - gdm.service
-        - bog-flatpak-filter-system.service
     user:
       enabled:
         - podman-auto-update.timer
-        - bog-flatpak-filter-user.service
 
   - type: default-flatpaks
     configurations:
