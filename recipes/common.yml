@@ -193,21 +193,14 @@ modules:
       - zz1-ext-conf.gschema.override
       - zz1-desktop.gschema.override
 
-  # I'd like to somehow pre-install Comic Sans in this, legally ofc lmao
-  - type: fonts
-    fonts:
-      nerd-fonts:
-        - FiraCode
-        - SourceCodePro
-        - JetBrainsMono
-      google-fonts:
-        - Inter
-        - Comic Neue
-  #   url-fonts:
-  #     - name: CustomFont
-  #       url: https://example.com/my-font.otf
-  #     - name: CompanyFonts
-  #       url: https://company.com/fonts.tar.gz
+  # Pre-install my own custom fonts in this and set them with some other block
+  #- type: fonts
+  #  fonts:
+  #    url-fonts:
+  #      - name: CustomFont
+  #        url: https://example.com/my-font.otf
+  #      - name: CompanyFonts
+  #        url: https://company.com/fonts.tar.gz
 
   # Plymouth theming stuff
   - type: initramfs
