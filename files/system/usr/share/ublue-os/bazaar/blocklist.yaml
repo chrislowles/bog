@@ -1,0 +1,18 @@
+blocklists:
+  - block:
+    - io.github.kolunmi.Bazaar
+    - ca.desrt.dconf-editor
+    - org.gnome.baobab
+    - org.gnome.Logs
+    - org.gnome.font-viewer
+    - org.gnome.TextEditor
+    - io.github.zyedidia.micro
+    - com.valvesoftware.Steam
+    - com.github.Matoking.protontricks
+    - org.gnome.gedit
+    - org.gnome.Totem
+    - org.gnome.eog
+    - com.visualstudio.code
+    - org.gnome.Extensions
+    - dev.edfloreshz.CosmicTweaks
+    - io.github.pantheon_tweaks.pantheon-tweaks
