@@ -1,5 +1,5 @@
 # bog flatpak filter
-# if/when the default-flatpaks module updates to support filter files to prevent accidental flatpak installations of programs already installed at the root level
+# Shelved for when the Blue-Build's default-flatpaks module updates to support filter files to prevent accidental flatpak installations of programs already installed at the root level, for now just using Bazaar's blocklist functionality.
 # Denylist mode: anything not listed here is allowed, searchable and installable.
 # See `man flatpak-remote-add`, FILTER FILES section, for pattern syntax.
 
