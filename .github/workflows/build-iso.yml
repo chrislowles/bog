@@ -36,21 +36,17 @@ jobs:
         major_version: [44]
         image_tag: [latest]
     steps:
-
       - name: Set timezone to Sydney
         uses: MathRobin/timezone-action@v1.1
         with:
           timezoneLinux: 'Australia/Sydney'
-
       - name: Fetch current date
         shell: bash
         run: |
           TIMESTAMP="$(date +%d-%m-%Y)"
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
-
       - name: Checkout Repo
         uses: actions/checkout@v7
-
       - name: Build ISO
         uses: jasonn3/build-container-installer@v1.5.0
         id: build
@@ -66,9 +62,8 @@ jobs:
           enable_cache_skopeo: false
           enable_flatpak_dependencies: false
           flatpak_remote_name: flathub-system
-          flatpak_remote_url: "https://flathub.org/repo/flathub.flatpakrepo"
+          flatpak_remote_url: "https://dl.flathub.org/repo/flathub.flatpakrepo"
           #web_ui: true
-
       - name: Move ISO to Upload Directory
         id: upload-directory
         shell: bash
@@ -78,7 +73,6 @@ jobs:
           mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }} ${ISO_UPLOAD_DIR}
           mv ${{ steps.build.outputs.iso_path }}/${{ steps.build.outputs.iso_name }}-CHECKSUM ${ISO_UPLOAD_DIR}
           echo "iso-upload-dir=${ISO_UPLOAD_DIR}" >> $GITHUB_OUTPUT
-
       - name: Upload ISO and Checksum to Job Artifacts
         uses: actions/upload-artifact@v7
         with:
@@ -88,7 +82,6 @@ jobs:
           retention-days: 90
           compression-level: 0
           overwrite: true
-
       - name: Upload ISO to Cloudflare R2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
@@ -99,7 +92,6 @@ jobs:
             "s3://${{ vars.R2_BUCKET }}/${{ matrix.image_name }}.iso" \
             --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
             --region auto
-
       - name: Write release metadata
         shell: bash
         run: |
@@ -111,7 +103,6 @@ jobs:
             echo "iso_url=${{ vars.R2_PUBLIC_URL }}/${{ matrix.image_name }}.iso"
             echo "build_date=${{ env.TIMESTAMP }}"
           } > "meta/${{ matrix.image_name }}.env"
-
       - name: Upload release metadata
         uses: actions/upload-artifact@v7
         with:
@@ -119,7 +110,6 @@ jobs:
           path: meta/
           if-no-files-found: error
           retention-days: 1
-
   publish-release:
     timeout-minutes: 25
     needs: build-iso
@@ -133,7 +123,6 @@ jobs:
         with:
           pattern: "*-meta"
           path: meta
-
       - name: Build release body
         shell: bash
         run: |
@@ -149,7 +138,6 @@ jobs:
               echo "| $image_name | [$image_name.iso]($iso_url) | $build_date | \`$SUM\` |"
             done
           } > body.md
-
       - name: Publish to GitHub Releases
         uses: softprops/action-gh-release@v3
         with:
