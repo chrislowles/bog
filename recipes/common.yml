@@ -148,6 +148,8 @@ modules:
       - notify: false
         scope: system
         install:
+          - org.freedesktop.LinuxAudio.Plugins.LSP
+          - org.freedesktop.LinuxAudio.Plugins.Calf
           - io.github.flattool.Warehouse
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
