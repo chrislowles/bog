@@ -95,7 +95,7 @@ modules:
         - distrobox                         # Container-based system management
         - host-spawn                        # distrobox-host-exec dep
         - steam                             # Primary gaming platform
-        - system-reinstall-bootc            # Effective system reset via bootc
+        - system-reinstall-bootc            # Effective system reset via bootc, I need to look into a wiki page to address fully resetting bog
 
         # Misc
         - micro                             # TUI Text Editor
@@ -107,6 +107,7 @@ modules:
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage management
         - fastfetch                         # System information readout (neofetch-like)
+        - cmark                             # Markdown to HTML compiler (for wiki)
 
         # Networking
         - NetworkManager-wifi               # Primary tooling for WiFi support
@@ -140,6 +141,11 @@ modules:
         - toolbox
         - htop
         - fedora-bookmarks
+
+  # Rebuilding wiki per update for offline use in default browser
+  - type: script
+    scripts:
+      - build-wiki.sh
 
   - type: bling
     install:
