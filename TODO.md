@@ -4,3 +4,4 @@
 * Readdress generic CEC support
 * Readdress opt-in cloud LLM-through-CLI-based crash troubleshooting feature like Omarchy.
 * Dump dconf on test install of Dash to Panel on laptop and set up in gschema-overrides, pre-install in module and pre-enable in gschema key
+* Millenium Steam Client plugin system installation
