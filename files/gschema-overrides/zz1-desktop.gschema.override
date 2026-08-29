@@ -26,6 +26,7 @@ lock-enabled=false
 [org.gnome.desktop.search-providers]
 enabled=['org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop']
 sort-order=['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']
+disabled=['io.github.kolunmi.Bazaar.desktop']
 
 [org.gnome.desktop.session]
 idle-delay=uint32 0
