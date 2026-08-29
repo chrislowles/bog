@@ -20,6 +20,17 @@ modules:
       - source: system
         destination: /
 
+  # seeing if it's worth it to swap out the default kernel for the cachyos one
+  #- type: dnf
+  #  repos:
+  #    - copr: bochecha/cachyos-kernel-bvm
+  #  install:
+  #    allow-erasing: true
+  #    install-weak-deps: false
+  #    packages:
+  #      - kernel-cachyos
+  #      - kernel-cachyos-devel
+
   - type: dnf
     repos:
       cleanup: true
