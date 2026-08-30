@@ -1,2 +1,2 @@
 [Context]
-filesystems=xdg-data/applications:create;xdg-data/icons:create;
+filesystems=xdg-data/applications:create;xdg-data/icons:create;/usr/share/bog/wiki/html:ro;
