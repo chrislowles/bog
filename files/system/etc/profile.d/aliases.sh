@@ -15,33 +15,33 @@ gtns() {
 
     echo "GET THE NEW SHIT"
 
-    local do_uninstall=false
-    local do_reboot=false
-    local auto_update_apps=false
-    
+    local uninstall_unused_flatpak=false
+    local reboot_when_done=false
+    local auto_approve_app_update=false
+
     read -rp "Uninstall unused Flatpak packages after update? [y/N] " ans1
-    [[ "$ans1" =~ ^[Yy]$ ]] && do_uninstall=true
-    
+    [[ "$ans1" =~ ^[Yy]$ ]] && uninstall_unused_flatpak=true
+
     read -rp "Reboot when done? [y/N] " ans3
-    [[ "$ans3" =~ ^[Yy]$ ]] && do_reboot=true
-    
+    [[ "$ans3" =~ ^[Yy]$ ]] && reboot_when_done=true
+
     read -rp "Automatically accept app update prompt? [y/N] " ans4
-    [[ "$ans4" =~ ^[Yy]$ ]] && auto_update_apps=true
-    
+    [[ "$ans4" =~ ^[Yy]$ ]] && auto_approve_app_update=true
+
     echo "Getting the new shit."
     sudo bootc upgrade
-    
-    if $auto_update_apps; then
+
+    if $auto_approve_app_update; then
         flatpak update -y
     else
         flatpak update
     fi
     
-    if $do_uninstall; then
+    if $uninstall_unused_flatpak; then
         flatpak uninstall --unused
     fi
     
-    if $do_reboot; then
+    if $reboot_when_done; then
         power --reboot
     else
         echo "Shit gotten."
