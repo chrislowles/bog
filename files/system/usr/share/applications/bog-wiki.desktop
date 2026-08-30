@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=bog Wiki
-Comment=Offline notes on maintaining and configuring bog.
-Exec=xdg-open /usr/share/bog/wiki/html/index.html
-Icon=/usr/share/icons/wiki-icon.svg
-Terminal=false
-Type=Application
-Categories=System;Documentation;
-Keywords=wiki;help;docs;btrfs;flatpak;maintenance;storage;
