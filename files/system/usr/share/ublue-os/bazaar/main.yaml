@@ -1,4 +1,2 @@
 yaml-blocklist-paths:
   - /usr/share/ublue-os/bazaar/blocklist.yaml
-curated-config-paths:
-  - /usr/share/ublue-os/bazaar/curated.yaml
