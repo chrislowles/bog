@@ -10,7 +10,7 @@ modules:
       LOGO: bog-logo
       DEFAULT_HOSTNAME: bog
 
-  # tweaking PRETTY_NAME to be dynamically edited
+  # tweaking PRETTY_NAME to be dynamically edited to use ostree version of base fedora version
   - type: script
     scripts:
       - setup-os-release.sh
@@ -20,7 +20,7 @@ modules:
       - source: system
         destination: /
 
-  # seeing if it's worth it to swap out the default kernel for the cachyos one
+  # experiment: seeing if it's worth it to swap out the default kernel for the cachyos one
   #- type: dnf
   #  repos:
   #    - copr: bochecha/cachyos-kernel-bvm
@@ -39,7 +39,7 @@ modules:
         #- hhd-dev/hhd
     install:
       exclude:
-        # Weak dep of GNOME shell, I gotta exclude explicitly. I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in.
+        # Weak dep of GNOME shell, I gotta exclude explicitly. I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in or hardcoded into the image.
         - gnome-tour
       packages:
         # GNOME Core (Minimal)
@@ -85,7 +85,7 @@ modules:
         # Niceties
         - gnome-backgrounds
 
-        # handheld daemon (hhd-dev/hhd copr)
+        # handheld daemon (hhd-dev/hhd COPR repo)
         #- hhd
         #- adjustor
         #- hhd-ui
@@ -107,7 +107,6 @@ modules:
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage management
         - fastfetch                         # System information readout (neofetch-like)
-        - cmark                             # Markdown to HTML compiler (for wiki)
 
         # Networking
         - NetworkManager-wifi               # Primary tooling for WiFi support
@@ -142,11 +141,6 @@ modules:
         - htop
         - fedora-bookmarks
 
-  # Rebuilding wiki per update for offline use in default browser
-  - type: script
-    scripts:
-      - build-wiki.sh
-
   - type: bling
     install:
       - dconf-update-service
@@ -165,8 +159,6 @@ modules:
       - notify: false
         scope: system
         install:
-          - org.freedesktop.LinuxAudio.Plugins.LSP
-          - org.freedesktop.LinuxAudio.Plugins.Calf
           - io.github.flattool.Warehouse
           - com.github.tchx84.Flatseal
           - com.ranfdev.DistroShelf
@@ -174,6 +166,8 @@ modules:
           - com.mattjakeman.ExtensionManager
           - com.vysp3r.ProtonPlus
           - com.github.mtkennerly.ludusavi
+          - org.freedesktop.LinuxAudio.Plugins.LSP
+          - org.freedesktop.LinuxAudio.Plugins.Calf
       - notify: false
         scope: user
         install:
@@ -196,14 +190,14 @@ modules:
   - type: gnome-extensions
     install:
       - 615     # AppIndicator Support
-      #- 1160    # Dash to Panel
+      #- 1160   # Dash to Panel
       - 517     # Caffeine
-      #- 1319    # GSConnect
+      #- 1319   # GSConnect
       - 5263    # GTK Desktop Icons NG (DING)
       #- 36     # Lock Keys
       #- 5904   # Volume Scroller
       #- 779    # Clipboard Indicator
-      - 9788   # Quick Sound Switcher
+      - 9788    # Quick Sound Switcher
       #- 8      # Places Menu
       #- 9419   # Video Lockscreen
 
@@ -226,4 +220,6 @@ modules:
 
   # Plymouth theming stuff
   - type: initramfs
+
+  # Base level verification for pushing images to GHCR
   - type: signing
