@@ -25,7 +25,7 @@ lock-enabled=false
 
 [org.gnome.desktop.search-providers]
 enabled=['org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop']
-sort-order=['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']
+sort-order=['org.gnome.Nautilus.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Settings.desktop']
 disabled=['io.github.kolunmi.Bazaar.desktop']
 
 [org.gnome.desktop.session]
@@ -53,7 +53,6 @@ location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
-sidebar-width=167
 sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
