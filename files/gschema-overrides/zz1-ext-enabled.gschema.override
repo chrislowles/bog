@@ -1,2 +1,2 @@
 [org.gnome.shell]
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'gtk4-ding@smedius.gitlab.com', 'quick-sound-switcher@dustin-hawkins', 'dash-to-panel@jderose9.github.com']
