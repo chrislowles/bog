@@ -2,7 +2,7 @@
 
 A personal, *slightly* opinionated [Fedora Atomic](https://fedoraproject.org/atomic-desktops/) image built with [BlueBuild](https://blue-build.org/) and the [Universal Blue](https://universal-blue.org/) toolchain. Immutable base, Flatpak-first, with Steam baked in.
 
-A [wiki](https://github.com/chrislowles/bog/tree/main/files/system/usr/share/bog/wiki/src) is included for certain aspects of the distro both in the repo and the image itself.
+A [wiki](https://github.com/chrislowles/bog/wiki) is available for certain aspects of running the distro.
 
 ## What's included
 - Near-vanilla **GNOME** desktop with GDM
