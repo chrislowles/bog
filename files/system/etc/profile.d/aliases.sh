@@ -64,6 +64,15 @@ steam_shortcuts() {
     esac
 }
 
+# distroboxes <preset-name>
+# Creates a distrobox container based on a preset from the system-managed manifest.
+distroboxes() {
+    local manifest="/usr/share/bog/distrobox/assemble.ini"
+    local preset="${1:-}"
+    shift || true
+    distrobox assemble create --file "$manifest" --name "$preset" "$@"
+}
+
 # getmedia [-v | -a] <url>
 # yt-dlp shorthand command (cookies likely needed)
 getmedia() {
