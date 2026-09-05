@@ -1,0 +1,14 @@
+[Unit]
+Description=bog Media Centre
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=%h/.config/bog/bog.env
+Environment=COMPOSE_PROJECT_NAME=bog-media-centre
+ExecStart=/usr/bin/podman-compose -f /usr/share/bog/media-centre/docker-compose.yml up -d
+ExecStop=/usr/bin/podman-compose -f /usr/share/bog/media-centre/docker-compose.yml down
+
+[Install]
+WantedBy=default.target
