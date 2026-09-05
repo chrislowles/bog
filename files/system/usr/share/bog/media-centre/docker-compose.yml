@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  gluetun:
+    image: docker.io/qmcgaw/gluetun:latest
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - TZ=${TZ}
+    env_file:
+      - ${HOME}/.config/bog/bog.env
+    volumes:
+      - ${HOME}/.config/bog-media-centre/gluetun:/gluetun:Z
+    ports:
+      - "8080:8080" # qBittorrent Web UI
+      - "6881:6881"
+      - "6881:6881/udp"
+      - "9117:9117" # Jackett/Jackett Web UI
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: "service:gluetun"
+    depends_on:
+      - gluetun
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${HOME}/.config/bog-media-centre/qbittorrent:/config:Z
+      - ${HOME}/Downloads:/downloads:Z
+    restart: unless-stopped
+
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    network_mode: "service:gluetun"
+    depends_on:
+      - gluetun
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - AUTO_UPDATE=false
+    volumes:
+      - ${HOME}/.config/bog-media-centre/jackett:/config:Z
+      - ${HOME}/Downloads:/downloads:Z
+    restart: unless-stopped
