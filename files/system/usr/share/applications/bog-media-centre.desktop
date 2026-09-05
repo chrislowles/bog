@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=bog Media Centre
+Comment=Toggle the bog Media Centre stack.
+Exec=kgx -- bash -ilc "toggle_bog_media_centre"
+Icon=/usr/share/icons/bog-media-centre.svg
+Terminal=false
+Type=Application
+Categories=Network;
+Keywords=jackett;qbittorrent;gluetun;vpn;torrent;media;
