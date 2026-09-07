@@ -10,7 +10,7 @@ modules:
       LOGO: bog-logo
       DEFAULT_HOSTNAME: bog
 
-  # tweaking PRETTY_NAME to be dynamically edited to use ostree version of base fedora version
+  # Dynamically passing ostree version of the base image into the PRETTY_NAME
   - type: script
     scripts:
       - setup-os-release.sh
@@ -20,7 +20,7 @@ modules:
       - source: system
         destination: /
 
-  # experiment: seeing if it's worth it to swap out the default kernel for the cachyos one
+  # Experiment: Seeing if it's worth it to swap out the default kernel for the CachyOS one
   #- type: dnf
   #  repos:
   #    - copr: bochecha/cachyos-kernel-bvm
@@ -39,7 +39,8 @@ modules:
         #- hhd-dev/hhd
     install:
       exclude:
-        # Weak dep of GNOME shell, I gotta exclude explicitly. I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in or hardcoded into the image.
+        # Weak dep of GNOME shell, I gotta exclude explicitly. I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in or hardcode it into the image.
+        # OR I write it into the image itself
         - gnome-tour
       packages:
         # GNOME Core (Minimal)
@@ -66,10 +67,10 @@ modules:
         - nautilus                          # File manager
         - gnome-text-editor                 # GUI Text editor
 
-        # App Store (ublue-os/packages, check if actually available, was in pkg list in copr repo)
+        # App Store (ublue-os/packages)
         - bazaar
 
-        # Filesystem Gubbins
+        # Filesystem Bits
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
         - gvfs-client                       # Client modules of backends for the gio framework in GLib
         - gvfs-archive                      # Archiving support for gvfs
@@ -190,16 +191,11 @@ modules:
   - type: gnome-extensions
     install:
       - 615     # AppIndicator Support
-      #- 1160   # Dash to Panel
       - 517     # Caffeine
-      #- 1319   # GSConnect
       - 5263    # GTK Desktop Icons NG (DING)
-      #- 36     # Lock Keys
-      #- 5904   # Volume Scroller
-      #- 779    # Clipboard Indicator
       - 9788    # Quick Sound Switcher
-      #- 8      # Places Menu
-      #- 9419   # Video Lockscreen
+      #- 1160   # Dash to Panel
+      #- 1319   # GSConnect
 
   - type: gschema-overrides
     include:
@@ -209,14 +205,14 @@ modules:
       - zz1-ext-conf.gschema.override
       - zz1-desktop.gschema.override
 
-  # Pre-install my own custom fonts in this and set them with some other block
+  # I'm thinking of making my own custom fonts, pre-installing and setting them.
   #- type: fonts
   #  fonts:
   #    url-fonts:
-  #      - name: CustomFont
+  #      - name: bog Serif
   #        url: https://example.com/my-font.otf
-  #      - name: CompanyFonts
-  #        url: https://company.com/fonts.tar.gz
+  #      - name: bog Sans-Serif
+  #        url: https://example.com/my-font.otf
 
   # Plymouth theming stuff
   - type: initramfs
