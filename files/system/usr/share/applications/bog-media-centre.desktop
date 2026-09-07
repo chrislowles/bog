@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=bog Media Centre
 Comment=Toggle the bog Media Centre stack.
-Exec=kgx -- bash -ilc "toggle_bog_media_centre"
+Exec=kgx -- bash -ilc "systemctl --user status bog-media-centre --no-pager; read -rp 'Start (s), stop (x), or cancel (any key)? ' a; [[ \$a == s ]] && systemctl --user start bog-media-centre; [[ \$a == x ]] && systemctl --user stop bog-media-centre"
 Icon=/usr/share/icons/bog-media-centre.svg
 Terminal=false
 Type=Application
