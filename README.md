@@ -8,10 +8,8 @@ A [wiki](https://github.com/chrislowles/bog/wiki) is available for certain aspec
 - Near-vanilla **GNOME** desktop with GDM
 - **Bazaar** as the primary app store
 - **flatpak** via [**Flathub**](https://flathub.org/): the primary space for applications installed using the distro-agnostic flatpak format
-- [**Distrobox**](https://distrobox.it/) for containerised access to traditional Linux software management
+- [**Distrobox**](https://distrobox.it/) for containerised access to traditional Linux environments
 - [**Steam**](https://store.steampowered.com/) as part of the base/system level for ease-of-use when gaming
-- Optional SystemD services for common application extension platforms and utilities (Jackett for qBittorrent)
-- AppIndicator, Caffeine, and Quick Sound Switcher extensions available and enabled out of the box
 
 ## Installation
 From any existing Fedora Atomic system:
