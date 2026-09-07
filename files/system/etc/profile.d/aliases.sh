@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-toggle_bog_media_centre() {
-    systemctl --user status bog-media-centre --no-pager
-    read -rp 'Start (s), stop (x), or cancel (any key)? ' a
-    [[ \$a == s ]] && systemctl --user start bog-media-centre
-    [[ \$a == x ]] && systemctl --user stop bog-media-centre
-}
-
 # power [--reboot | --shutdown | --suspend]
 power() {
     case "${1:-}" in
