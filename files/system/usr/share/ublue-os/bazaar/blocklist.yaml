@@ -16,3 +16,4 @@ blocklists:
     - org.gnome.Extensions
     - dev.edfloreshz.CosmicTweaks
     - io.github.pantheon_tweaks.pantheon-tweaks
+    - org.gnome.Firmware
