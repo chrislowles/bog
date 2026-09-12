@@ -36,6 +36,7 @@ modules:
       cleanup: true
       copr:
         - ublue-os/packages
+        #- herzen/davinci-helper
         #- hhd-dev/hhd
       files:
         - https://cli.github.com/packages/rpm/gh-cli.repo
@@ -71,6 +72,7 @@ modules:
         # Essential Interface & Tools
         - gnome-disk-utility                # GNOME Disks
         - gnome-logs                        # SystemD log viewer
+        - gnome-firmware                    # Firmware Installer/fwupd GUI
         - baobab                            # Directory tree analyzer
         - gnome-font-viewer                 # Font viewer/installer
         - gnome-console                     # Terminal emulator
@@ -79,6 +81,9 @@ modules:
 
         # App Store (ublue-os/packages)
         - bazaar
+
+        # Davinci Helper (herzen/davinci-helper COPR, simple fedora distrobox preset that installs this in a container)
+        #- davinci-helper
 
         # Filesystem Bits
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
