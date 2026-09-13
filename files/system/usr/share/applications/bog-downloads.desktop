@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=bog Downloads
-Comment=Manage downloads with aria2 (TUI).
-Exec=kgx -- bash -ilc "aria2tui"
-Icon=/usr/share/icons/bog-downloads.svg
-Terminal=false
-Type=Application
-Categories=Network;
-Keywords=aria2;download;http;ftp;metalink;torrent;
