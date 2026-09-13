@@ -13,7 +13,7 @@ modules:
   # Dynamically passing ostree version of the base image into the PRETTY_NAME
   - type: script
     scripts:
-      - setup-os-release.sh
+      - os-release.sh
 
   - type: files
     files:
@@ -158,10 +158,6 @@ modules:
         - toolbox
         - htop
         - fedora-bookmarks
-
-  - type: script
-    scripts:
-      - pipx.sh
 
   - type: bling
     install:
