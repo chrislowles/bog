@@ -11,11 +11,9 @@ modules:
       DEFAULT_HOSTNAME: bog
 
   # Dynamically passing ostree version of the base image into the PRETTY_NAME
-  # AND installing aria2tui
   - type: script
     scripts:
       - setup-os-release.sh
-      - pipx.sh
 
   - type: files
     files:
@@ -160,6 +158,10 @@ modules:
         - toolbox
         - htop
         - fedora-bookmarks
+
+  - type: script
+    scripts:
+      - pipx.sh
 
   - type: bling
     install:
