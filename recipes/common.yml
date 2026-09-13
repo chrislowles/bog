@@ -14,6 +14,9 @@ modules:
   - type: script
     scripts:
       - setup-os-release.sh
+    snippets:
+      # Install aria2tui globally
+      - "pipx install --global aria2tui"
 
   - type: files
     files:
@@ -118,6 +121,8 @@ modules:
         - git                               # Version control system
         - curl                              # CLI for http transfer/download
         - wget                              # The other CLI for http transfer/download
+        - aria2                             # Multi-protocol download utility (HTTP/FTP/Metalink/BitTorrent)
+        - pipx                              # "Install and Run Python Applications in Isolated Environments"
         - yt-dlp                            # CLI media downloader
         - ffmpeg                            # Suite of media processing libraries
         - rsync                             # Common program for network syncing files
