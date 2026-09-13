@@ -1,0 +1,11 @@
+[Unit]
+Description=bog Downloads (aria2c)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/aria2c --conf-path=%h/.config/aria2/aria2.conf --dir=%h/Downloads
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
