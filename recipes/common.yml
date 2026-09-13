@@ -11,12 +11,11 @@ modules:
       DEFAULT_HOSTNAME: bog
 
   # Dynamically passing ostree version of the base image into the PRETTY_NAME
+  # AND installing aria2tui
   - type: script
     scripts:
       - setup-os-release.sh
-    snippets:
-      # Install aria2tui globally
-      - "pipx install --global aria2tui"
+      - pipx.sh
 
   - type: files
     files:
