@@ -1,13 +1,14 @@
 name: Build ISO
 
 on:
-  schedule:
-    - cron: "0 0 1 * *" # First day of every month at 00:00 UTC
-  push:
+  workflow_run:
+    workflows: ["Bluebuild Release"]
+    types:
+      - completed
     branches:
       - main
-    paths-ignore:
-      - "**.md"
+  schedule:
+    - cron: "0 0 1 * *" # Monthly backstop, in case workflow_run doesn't fire
   pull_request:
   workflow_dispatch:
     paths:
@@ -15,7 +16,7 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
@@ -23,6 +24,7 @@ env:
 
 jobs:
   build-iso:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     timeout-minutes: 25
     runs-on: ubuntu-latest
     permissions:
@@ -83,6 +85,7 @@ jobs:
           compression-level: 0
           overwrite: true
       - name: Upload ISO to Cloudflare R2
+        if: github.event_name != 'pull_request'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -93,6 +96,7 @@ jobs:
             --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
             --region auto
       - name: Write release metadata
+        if: github.event_name != 'pull_request'
         shell: bash
         run: |
           mkdir -p meta
@@ -104,6 +108,7 @@ jobs:
             echo "build_date=${{ env.TIMESTAMP }}"
           } > "meta/${{ matrix.image_name }}.env"
       - name: Upload release metadata
+        if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.image_name }}-meta
