@@ -1,0 +1,6 @@
+[org/gnome/desktop/app-folders]
+folder-children=['bog-utilities']
+
+[org/gnome/desktop/app-folders/folders/bog-utilities]
+name='bog Utilities'
+apps=['system-upgrade.desktop', 'bog-reset.desktop']

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Reinstall bog
+Comment=Reinstall the current bog image from scratch (destructive).
+Exec=kgx -- bash -ilc "bogreset"
+Icon=xsi-view-refresh-symbolic
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=reset;reinstall;bootc;factory;wipe;

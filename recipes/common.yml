@@ -111,7 +111,7 @@ modules:
         - distrobox                         # Container-based system management
         - host-spawn                        # distrobox-host-exec dep
         - steam                             # Primary gaming platform
-        - system-reinstall-bootc            # Effective system reset via bootc, I need to look into a wiki page to address fully resetting bog
+        - system-reinstall-bootc            # Effective system reset via bootc
 
         # Misc
         - micro                             # TUI Text Editor
@@ -120,7 +120,8 @@ modules:
         - wget                              # The other CLI for http transfer/download
         - aria2                             # Multi-protocol download utility (HTTP/FTP/Metalink/BitTorrent)
         - pipx                              # "Install and Run Python Applications in Isolated Environments"
-        - yt-dlp                            # CLI media downloader
+        - jq                                # Command-line JSON processor
+        - yt-dlp                            # Command-line media downloader
         - ffmpeg                            # Suite of media processing libraries
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage management
@@ -183,7 +184,8 @@ modules:
           - io.github.flattool.Ignition
           - com.mattjakeman.ExtensionManager
           - com.vysp3r.ProtonPlus
-          - com.github.mtkennerly.ludusavi
+          #- com.github.mtkennerly.ludusavi
+          #- net.retrodeck.retrodeck
           - org.freedesktop.LinuxAudio.Plugins.LSP
           - org.freedesktop.LinuxAudio.Plugins.Calf
       - notify: false

@@ -10,6 +10,27 @@ power() {
     esac
 }
 
+# bogreset
+# Reinstalls bog from scratch using the currently-booted image via system-reinstall-bootc. This is a full OS swap, not an in-place repair: the previous root is preserved read-only under /sysroot after reboot, but nothing else is carried forward automatically — any extra mounts or data outside what's baked into the image need to be accounted for beforehand.
+bogreset() {
+    local image
+    image="$(bootc status --booted --format json | jq -r '.status.booted.image.image.image // empty')"
+
+    if [ -z "$image" ]; then
+        echo "Could not determine the currently booted image. Aborting."
+        return 1
+    fi
+
+    echo "This will DESTRUCTIVELY reinstall this system using: $image"
+    echo
+    echo "Your current root will be moved to /sysroot (read-only) after reboot, but any mounts or data not defined in the image itself will NOT be carried forward automatically. Back up or account for anything important before continuing."
+    echo
+    read -rp "Type YES to continue: " confirm
+    [ "$confirm" = "YES" ] || { echo "Aborted."; return 1; }
+
+    sudo system-reinstall-bootc "$image"
+}
+
 # gtns: Get the new shit.
 gtns() {
 
