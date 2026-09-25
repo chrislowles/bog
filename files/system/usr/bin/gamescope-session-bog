@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Boots straight into Steam Big Picture inside gamescope.
+# Exiting Steam ends gamescope, which ends this script, which ends the session — GDM drops back to the greeter, SteamOS-style.
+
+exec gamescope \
+  --adaptive-sync \
+  --force-grab-cursor \
+  -e \
+  -- steam -tenfoot -pipewire-dmabuf
