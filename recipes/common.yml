@@ -113,6 +113,10 @@ modules:
         - steam                             # Primary gaming platform
         - system-reinstall-bootc            # Effective system reset via bootc
 
+        # Expected Steam utilities
+        - gamescope                         # Compositor for game-mode/session use
+        - mangohud                          # Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load
+
         # Misc
         - micro                             # TUI Text Editor
         - git                               # Version control system
