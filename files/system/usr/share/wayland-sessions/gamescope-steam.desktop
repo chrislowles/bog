@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Big Picture (gamescope)
+Comment=Boots directly into Steam Big Picture inside gamescope.
+Exec=gamescope-session-bog
+Type=Application
+DesktopNames=gamescope
