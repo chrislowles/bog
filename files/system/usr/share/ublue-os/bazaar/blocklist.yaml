@@ -1,5 +1,6 @@
 blocklists:
   - block:
+    # flatpak releases of system-installed programs
     - io.github.kolunmi.Bazaar
     - ca.desrt.dconf-editor
     - org.gnome.baobab
@@ -8,6 +9,8 @@ blocklists:
     - org.gnome.TextEditor
     - io.github.zyedidia.micro
     - com.valvesoftware.Steam
+    - org.freedesktop.Platform.VulkanLayer.gamescope
+    - org.freedesktop.Platform.VulkanLayer.MangoHud
     - com.github.Matoking.protontricks
     - org.gnome.gedit
     - org.gnome.Totem
