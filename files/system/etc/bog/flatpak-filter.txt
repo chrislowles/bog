@@ -19,3 +19,6 @@ deny com.visualstudio.code
 deny org.gnome.Extensions
 deny dev.edfloreshz.CosmicTweaks
 deny io.github.pantheon_tweaks.pantheon-tweaks
+deny org.freedesktop.Platform.VulkanLayer.gamescope
+deny org.freedesktop.Platform.VulkanLayer.MangoHud
+deny org.gnome.Firmware
