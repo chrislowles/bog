@@ -225,7 +225,7 @@ modules:
       - 517     # Caffeine
       - 5263    # GTK Desktop Icons NG (DING)
       - 9788    # Quick Sound Switcher
-      #- 1160   # Dash to Panel
+      - 1160   # Dash to Panel
       #- 1319   # GSConnect
 
   - type: gschema-overrides
