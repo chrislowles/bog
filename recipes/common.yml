@@ -218,6 +218,18 @@ modules:
           url: https://international.download.nvidia.com/GFNLinux/flatpak/geforcenow.flatpakrepo
           name: GeForceNOW
           title: GeForce NOW Official Source
+      - notify: false
+        scope: system
+        repo:
+          url: https://dl.flatpark.org/flatpark.flatpakrepo
+          name: flatpark
+          title: FlatPark
+      - notify: false
+        scope: user
+        repo:
+          url: https://dl.flatpark.org/flatpark.flatpakrepo
+          name: flatpark
+          title: FlatPark
 
   - type: gnome-extensions
     install:
