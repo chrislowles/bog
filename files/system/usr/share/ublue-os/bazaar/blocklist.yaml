@@ -1,6 +1,6 @@
 blocklists:
   - block:
-    # flatpak releases of system-installed programs
+    # I'm unable to patch in a filter list on the remotes without straight up forking the default-flatpaks module so for now I'm just using Bazaar's blocklist functionality to filter out flatpak releases of system-installed programs
     - io.github.kolunmi.Bazaar
     - ca.desrt.dconf-editor
     - org.gnome.baobab
