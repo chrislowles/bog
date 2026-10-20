@@ -40,7 +40,7 @@ modules:
         #- hhd-dev/hhd
       files:
         - https://cli.github.com/packages/rpm/gh-cli.repo
-        #- https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       keys:
         - https://cli.github.com/packages/githubcli-archive-keyring.asc
     install:
@@ -52,10 +52,10 @@ modules:
       packages:
 
         # Fyra Labs Terra Repo
-        #- repo: terra
-        #  packages:
-        #    - terra-release
-        #    - terra-gpg-keys
+        - repo: terra
+          packages:
+            - terra-release
+            - terra-gpg-keys
 
         # Official Github CLI
         - repo: gh-cli
@@ -156,11 +156,10 @@ modules:
         # Plymouth
         - plymouth
         - plymouth-system-theme
-        #- plymouth-plugin-two-step
 
         # AppImages
-        #- fuse # FUSE 3 (likely already present in base)
-        #- fuse2 # needed by most AppImages anyway
+        #- fuse                             # FUSE 3 (likely already present in base)
+        #- fuse2                            # Needed by most AppImages anyway
 
         - vulkan-loader
         - vulkan-tools
