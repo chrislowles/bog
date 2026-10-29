@@ -20,3 +20,19 @@ show-desktop-widgets=false
 
 [org.gnome.shell.extensions.quick-sound-switcher]
 show-profiles=false
+
+[org.gnome.shell.extensions.rss-feed]
+click-action-middle='none'
+click-action-right='none'
+display-mode='notifications-only'
+enable-notifications-locked=true
+group-notifications-by-source=true
+hover-action-1='older'
+hover-action-2='copy'
+hover-action-3='open'
+items-retained=50
+mark-initial-as-new=true
+notification-limit=4
+rss-feeds-list=['https://www.abc.net.au/news/feed/51120/rss.xml', 'https://www.abc.net.au/news/feed/10719986/rss.xml', 'https://www.abc.net.au/news/feed/104217382/rss.xml']
+rss-feeds-settings='{"https://www.abc.net.au/news/feed/51120/rss.xml":{"t":"Just In","n":false},"https://www.abc.net.au/news/feed/10719986/rss.xml":{"t":"Top Stories"},"https://www.abc.net.au/news/feed/104217382/rss.xml":{"t":"World"}}'
+update-interval=5

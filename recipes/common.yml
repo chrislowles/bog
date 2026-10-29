@@ -231,6 +231,7 @@ modules:
       - 9788    # Quick Sound Switcher
       - 1160    # Dash to Panel
       - 8760    # "Add to Steam"
+      - 948     # RSS Feed
       #- 1319   # GSConnect
 
   - type: gschema-overrides
