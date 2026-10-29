@@ -36,7 +36,6 @@ modules:
       cleanup: true
       copr:
         - ublue-os/packages
-        #- herzen/davinci-helper
         #- hhd-dev/hhd
       files:
         - https://cli.github.com/packages/rpm/gh-cli.repo
@@ -211,6 +210,18 @@ modules:
           - org.gnome.Characters
           - org.gnome.SimpleScan
           - org.gnome.Papers
+      - notify: false
+        scope: system
+        repo:
+          url: https://chrislowles.github.io/bog-flatpak/bog.flatpakrepo
+          name: bog-flatpak
+          title: bog-flatpak (system)
+      - notify: false
+        scope: user
+        repo:
+          url: https://chrislowles.github.io/bog-flatpak/bog.flatpakrepo
+          name: bog-flatpak
+          title: bog-flatpak (user)
 
   - type: gnome-extensions
     install:
