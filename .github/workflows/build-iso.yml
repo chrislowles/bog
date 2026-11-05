@@ -20,10 +20,34 @@ concurrency:
 
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
-  MAJOR_VERSION: 44
 
 jobs:
+  get-version:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    outputs:
+      major_version: ${{ steps.v.outputs.major_version }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
+      - name: Read Fedora version from recipes
+        id: v
+        shell: bash
+        run: |
+          main="$(yq '.image-version' recipes/recipe.yml)"
+          nvidia="$(yq '.image-version' recipes/recipe-nvidia.yml)"
+          if [ "$main" != "$nvidia" ]; then
+            echo "::error::Recipe image-versions differ (main=$main, nvidia=$nvidia)"
+            exit 1
+          fi
+          if ! [[ "$main" =~ ^[0-9]+$ ]]; then
+            echo "::error::image-version must be a numeric Fedora release, got '$main'"
+            exit 1
+          fi
+          echo "major_version=$main" >> "$GITHUB_OUTPUT"
+
   build-iso:
+    needs: get-version
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     timeout-minutes: 25
     runs-on: ubuntu-latest
@@ -35,7 +59,6 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [bog, bog-nvidia]
-        major_version: [44]
         image_tag: [latest]
     steps:
       - name: Set timezone to Sydney
@@ -54,7 +77,7 @@ jobs:
         id: build
         with:
           arch: x86_64
-          version: ${{ matrix.major_version }}
+          version: ${{ needs.get-version.outputs.major_version }}
           image_repo: ${{ env.IMAGE_REGISTRY }}
           image_name: ${{ matrix.image_name }}
           image_tag: ${{ matrix.image_tag }}
@@ -117,7 +140,7 @@ jobs:
           retention-days: 1
   publish-release:
     timeout-minutes: 25
-    needs: build-iso
+    needs: [get-version, build-iso]
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
@@ -146,8 +169,8 @@ jobs:
       - name: Publish to GitHub Releases
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: bog-${{ env.MAJOR_VERSION }}-latest
-          name: bog ${{ env.MAJOR_VERSION }} ISOs
+          tag_name: bog-${{ needs.get-version.outputs.major_version }}-latest
+          name: bog ${{ needs.get-version.outputs.major_version }} ISOs
           make_latest: true
           body_path: body.md
           overwrite_files: true
