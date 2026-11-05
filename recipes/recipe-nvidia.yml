@@ -4,6 +4,6 @@
 name: bog-nvidia
 description: My personal uBlue/Fedora image (NVIDIA Edition)
 base-image: ghcr.io/ublue-os/base-nvidia
-image-version: latest
+image-version: 44
 modules:
   - from-file: common.yml
