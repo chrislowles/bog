@@ -71,6 +71,9 @@ modules:
         - xdg-desktop-portal-gnome          # XDG Portal for GNOME
         - gnome-online-accounts             # GOA daemon
         - gnome-keyring                     # Password/Key Management
+        - adwaita-icon-theme
+        - adwaita-sans-fonts
+        - adwaita-mono-fonts
 
         # dconf (desktop/etc configuration in GNOME)
         - dconf                             # Basically GNOMEs version of registry keys
