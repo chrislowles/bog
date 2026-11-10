@@ -71,16 +71,14 @@ gtns() {
 
 # steam_shortcuts [--list/-l | --flush/-f]
 # Lists Steam shortcuts in the GNOME Menu and an option to fully clear them out (one time I installed a bunch of Steam games, accidentally left the shortcut option on and had like 40 shortcuts made lol, Google fixed it and I wanted to make it a function)
+_steam_shortcut_find() {
+    find "$HOME/.local/share/applications" -name '*.desktop' -exec grep -l 'Exec=steam steam://rungameid/' {} \; "$@"
+}
+
 steam_shortcuts() {
     case "${1:-}" in
-        --list|-l)
-            find "$HOME/.local/share/applications" -name '*.desktop' \
-                -exec grep -l 'Exec=steam steam://rungameid/' {} \;
-            ;;
-        --flush|-f)
-            find "$HOME/.local/share/applications" -name '*.desktop' \
-                -exec grep -l 'Exec=steam steam://rungameid/' {} \; -delete
-            ;;
+        --list|-l)  _steam_shortcut_find ;;
+        --flush|-f) _steam_shortcut_find -delete ;;
         *)  echo "Usage: steam_shortcuts [--list/-l | --flush/-f]" ;;
     esac
 }
