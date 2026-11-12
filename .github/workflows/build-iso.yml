@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
-      - name: Read Fedora version from recipes
+      - name: Grab Recipe Image Version
         id: v
         shell: bash
         run: |
