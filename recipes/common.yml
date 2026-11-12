@@ -39,7 +39,7 @@ modules:
         #- hhd-dev/hhd
       files:
         - https://cli.github.com/packages/rpm/gh-cli.repo
-        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+        #- https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       keys:
         - https://cli.github.com/packages/githubcli-archive-keyring.asc
     install:
@@ -51,10 +51,10 @@ modules:
       packages:
 
         # Fyra Labs Terra Repo
-        - repo: terra
-          packages:
-            - terra-release
-            - terra-gpg-keys
+        #- repo: terra
+        #  packages:
+        #    - terra-release
+        #    - terra-gpg-keys
 
         # Official Github CLI
         - repo: gh-cli
