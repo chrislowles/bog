@@ -191,24 +191,30 @@ modules:
       - notify: true
         scope: system
         repo:
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
           name: flathub
+          title: Flathub
         install:
-          - io.github.flattool.Warehouse
-          - com.github.tchx84.Flatseal
-          - com.ranfdev.DistroShelf
-          - io.github.flattool.Ignition
-          - com.mattjakeman.ExtensionManager
-          - com.vysp3r.ProtonPlus
-          - org.freedesktop.LinuxAudio.Plugins.LSP
-          - org.freedesktop.LinuxAudio.Plugins.Calf
+        - io.github.flattool.Warehouse
+        - com.github.tchx84.Flatseal
+        - com.ranfdev.DistroShelf
+        - io.github.flattool.Ignition
+        - com.mattjakeman.ExtensionManager
+        - com.vysp3r.ProtonPlus
       - notify: false
         scope: system
         repo:
           url: https://chrislowles.github.io/bog-flatpak/bog.flatpakrepo
           name: bog-flatpak
           title: bog-flatpak (system)
+      - notify: false
+        scope: user
+        repo:
+          url: https://chrislowles.github.io/bog-flatpak/bog.flatpakrepo
+          name: bog-flatpak
+          title: bog-flatpak (user)
         #install:
-        #  - idk.lmao.sixseven
+        #- idk.lmao.sixseven
 
   - type: gnome-extensions
     install:
