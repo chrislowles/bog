@@ -206,13 +206,13 @@ modules:
         repo:
           url: https://chrislowles.github.io/bog-flatpak/bog.flatpakrepo
           name: bog-flatpak
-          title: bog-flatpak (system)
+          title: bog-flatpak
       - notify: false
         scope: user
         repo:
           url: https://chrislowles.github.io/bog-flatpak/bog.flatpakrepo
           name: bog-flatpak
-          title: bog-flatpak (user)
+          title: bog-flatpak
         #install:
         #- idk.lmao.sixseven
 
