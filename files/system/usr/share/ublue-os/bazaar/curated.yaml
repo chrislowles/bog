@@ -1,4 +1,5 @@
 rows:
+
   #- banner:
   #    height: 250
   #    image:
@@ -11,70 +12,234 @@ rows:
   #    dark-color: "#2b1f3d"
   #    light-color: "linear-gradient(135deg, #2b1f3d 0%, #778cf7 100%)" # Can also be a type of gradient
   #    # light-color: "url('file:///var/home/xander/Downloads/Conservation-Quest-at-Windsor-Great-Park-3.jpg') center / cover no-repeat" # Even an image should be possible
+
   - section:
       title: "Welcome to bog"
       subtitle:
         string: | # Basic markdown is supported here.
-          Discover apps you'll love.
-      overflow-count: 8 # Will automatically create a "Show More" button, if there are more apps than the count (except if enable-bulk-install is true)
-      appids:
-        list:
-          - org.gnome.Calendar
-          - org.gnome.Contacts
-          - org.gnome.Maps
-          - org.gnome.Calculator
-          - org.gnome.Loupe
-          - org.gnome.Boxes
-          - org.gnome.Weather
-          - org.gnome.clocks
-          - org.gnome.Music
-          - org.gnome.Showtime
-          - org.gnome.Characters
-          - org.gnome.Connections
-          - org.gnome.Software
-          - org.gnome.SimpleScan
-  #- articles:
-  #    aspect-ratio: 1.777 # aspect ratio of the thumbnails, per articles section
-  #    uri: https://usebazaar.org/curated/articles.yaml # Can be used as a feed.
+          Apps for a system that makes sense... I *hope*.
+
   - section:
       title: "Web Browsers"
+      subtitle:
+        string: |
+          Get yeh Gecko or Chromium-based browser here!
       list-type: rich # Directly features an install button on the card, use when a section has little apps.
       appids:
         list:
           - org.mozilla.firefox
           - com.google.Chrome
-          - com.brave.Browser
+          - io.gitlab.librewolf-community
+          - io.github.ungoogled_software.ungoogled_chromium
+          - com.microsoft.Edge
+          - io.github.zaedus.spider
+          - app.zen_browser.zen
+          - com.brave.Origin
+          - com.opera.Opera
           - org.chromium.Chromium
+          - one.ablaze.floorp
+          - net.waterfox.waterfox
+
   - section:
-      title: "Creative & Media"
-      appids:
-        list: # Sections of 12 apps look nice at all window widths
-          - org.gnome.Music
-          - org.gnome.Showtime
-          - org.gnome.Loupe
-          - org.gimp.GIMP
-          - org.inkscape.Inkscape
-          - org.blender.Blender
-          - org.kde.krita
-          - org.audacityteam.Audacity
-          - org.kde.kdenlive
-          - com.obsproject.Studio
-          - org.shotcut.Shotcut
-          - com.github.PintaProject.Pinta
-  - section:
-      title: "Developer Tools"
+      title: "Gaming (minus Steam)"
       subtitle:
         string: |
-          Install these to become the *ultimate* developer.
-      list-type: rich
+          Because Steam isn't the whole world when it comes to gaming on the PC.
       appids:
-        list:
-          - me.iepure.devtoolbox
-          - org.gnome.Builder
-          - re.sonny.Workbench
-      enable-bulk-install: true
-  - banner:
-      image:
-        uri: https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-        fit: cover
-        can-shrink: true
+        - com.vysp3r.ProtonPlus
+        - com.github.mtkennerly.ludusavi
+        - io.github.limo_app.limo
+        - io.itch.itch
+        - io.github.astralvixen.geforce-infinity
+        - page.codeberg.JakobDev.jdMinecraftLauncher
+        - io.github.streetpea.Chiaki4deck
+        - io.github.radiolamp.mangojuice
+        - org.vinegarhq.Sober
+
+  - section:
+      title: "Open-Source Games"
+      subtitle:
+        string: |
+          What it says on the tin.
+      overflow-count: 12
+      appids:
+        - org.zdoom.UZDoom
+        - io.github.fabiangreffrath.Doom
+        - org.openttd.OpenTTD
+        - uk.co.powdertoy.tpt
+        - org.supertuxproject.SuperTux
+        - net.supertuxkart.SuperTuxKart
+        - com.github.Anuken.Mindustry
+        - com.thebrokenrail.MCPIReborn
+        - net.runelite.RuneLite
+        - sh.ppy.osu
+        - com.epicgames.ut99
+        - com.epicgames.ut2004
+        - com.gitlab.coringao.cavestory-nx
+        - org.luanti.luanti
+        - net.gpro.gproapp
+        - net.huitsi.PhantomOverload
+        - com.fafarunner.FaFaRunner
+        - org.flightgear.FlightGear
+        - net.redeclipse.RedEclipse
+        - org.neverball.Neverball
+        - io.jor.bugdom
+        - io.jor.bugdom2
+        - io.jor.cromagrally
+        - io.jor.nanosaur
+        - io.jor.nanosaur2
+        - com.frogatto.Frogatto
+        - org.tuxfamily.XMoto
+        - org.quetoo.Quetoo
+        - org.sauerbraten.Sauerbraten
+        - gg.tesseract.Tesseract
+        - org.taisei_project.Taisei
+        - at.vintagestory.VintageStory
+        - com.teeworlds.Teeworlds
+        - com.realm667.Wolfenstein_Blade_of_Agony
+
+  - section:
+      title: "Emulation"
+      subtitle:
+        string: |
+          Emulate most of the things!
+      overflow-count: 8
+      appids:
+        - net.pcsx2.PCSX2
+        - net.rpcs3.RPCS3
+        - net.shadps4.shadPS4
+        - app.xemu.xemu
+        - org.libretro.RetroArch
+        - info.cemu.Cemu
+        - org.DolphinEmu.dolphin-emu
+        - com.github.AmatCoder.mednaffe
+        - net.kuribo64.melonDS
+        - com.snes9x.Snes9x
+        - io.mgba.mGBA
+        - org.ppsspp.PPSSPP
+        - rs.ruffle.Ruffle
+        - org.flycast.Flycast
+        - org.azahar_emu.Azahar
+        - io.github.ryubing.Ryujinx
+        - org.mamedev.MAME
+        - net._86box._86Box
+        - io.github.stella_emu.Stella
+
+  - section:
+      title: "Productivity"
+      subtitle:
+        string: |
+          The bills aren't gonna pay themselves.
+      appids:
+        - org.onlyoffice.desktopeditors
+        - org.kde.krita
+        - com.obsproject.Studio
+        - org.audacityteam.Audacity
+        - com.parsecgaming.parsec
+        - org.blender.Blender
+        - org.inkscape.Inkscape
+        - org.ardour.Ardour
+        - com.sublimehq.SublimeText
+        - io.github.pol_rivero.github-desktop-plus
+        - org.kde.kdenlive
+        - dev.zed.Zed
+        - io.gitlab.ilshat_apps.manuscript
+        - org.freecad.FreeCAD
+        - md.obsidian.Obsidian
+        - com.jeffser.Alpaca
+
+  - section:
+      title: "Messaging & Social"
+      subtitle:
+        string: |
+          I don't know what to put here.
+      appids:
+        - com.discordapp.Discord
+        - com.github.IsmaelMartinez.teams_for_linux
+        - org.signal.Signal
+        - in.cinny.Cinny
+        - org.gajim.Gajim
+        - info.mumble.Mumble
+        - im.riot.Riot
+        - com.teamspeak.TeamSpeak
+        - im.dino.Dino
+        - com.slack.Slack
+        - us.zoom.Zoom
+        - dev.geopjr.Tuba
+        - im.pidgin.Pidgin
+
+  - section:
+      title: "Media"
+      subtitle:
+        string: |
+          Sometimes you don't want to experience your *legally aquired* movie in a web browser.
+      appids:
+        - org.videolan.VLC
+        - com.spotify.Client
+        - io.github.mpc_qt.mpc-qt
+        - app.ytmdesktop.ytmdesktop
+        - io.mpv.Mpv
+        - de.haeckerfelix.Shortwave
+        - dev.dergs.Tonearm
+        - io.m51.Gelly
+        - dev.aunetx.deezer
+        - com.blitzfc.qbz
+        - rocks.shy.VacuumTube
+        - nl.andreasknoben.Laser
+        - de.haeckerfelix.Fragments
+        - org.nicotine_plus.Nicotine
+        - org.qbittorrent.qBittorrent
+        - org.nickvision.tubeconverter
+        - com.nuclearplayer.Nuclear
+        - com.mastermindzh.tidal-hifi
+        - io.freetubeapp.FreeTube
+        - dev.fredol.open-tv
+        - com.dec05eba.gpu_screen_recorder
+        - com.makemkv.MakeMKV
+        - org.musicbrainz.Picard
+        - fr.handbrake.ghb
+        - net.fasterland.converseen
+        - io.gitlab.theevilskeleton.Upscaler
+        - com.github.huluti.Curtail
+        - io.github.wartybix.Constrict
+
+  - section:
+      title: "Miscellaneous"
+      subtitle:
+        string: |
+          I *actually* don't know what to put here.
+      appids:
+        - io.github.flattool.Warehouse
+        - it.mijorus.gearlever
+        - com.github.tchx84.Flatseal
+        - com.ranfdev.DistroShelf
+        - io.github.flattool.Ignition
+        - com.mattjakeman.ExtensionManager
+        - io.github.giantpinkrobots.bootqt
+        - io.github.ilya_zlobintsev.LACT
+        - io.github.pwr_solaar.solaar
+        - io.github.linx_systems.ClamUI
+        - com.github.wwmm.easyeffects
+        - page.tesk.Refine
+        - io.github.dimtpap.coppwr
+        - com.github.marhkb.Pods
+        - dev.mufeed.Wordbook
+        - com.feaneron.Boatswain
+        - dev.deedles.Trayscale
+        - net.mkiol.SpeechNote
+        - io.github.mightycreak.Diffuse
+        - me.kozec.syncthingtk
+        - org.deskflow.deskflow
+        - de.leopoldluley.Clapgrep
+        - com.usebottles.bottles
+        - com.yacreader.YACReader
+        - com.github.qarmin.czkawka
+        - org.bleachbit.BleachBit
+        - com.github.jkotra.eovpn
+        - org.gnome.design.IconLibrary
+
+  #- banner:
+  #    image:
+  #      uri: https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  #      fit: cover
+  #      can-shrink: true
