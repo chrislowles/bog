@@ -22,3 +22,6 @@ deny io.github.pantheon_tweaks.pantheon-tweaks
 deny org.freedesktop.Platform.VulkanLayer.gamescope
 deny org.freedesktop.Platform.VulkanLayer.MangoHud
 deny org.gnome.Firmware
+deny org.gnome.dspy
+deny org.gnome.NetworkDisplays
+deny org.gnome.SimpleScan

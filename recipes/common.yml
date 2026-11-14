@@ -45,8 +45,6 @@ modules:
     install:
       exclude:
         # Weak dependency of GNOME Shell, I gotta exclude explicitly.
-        # I might make my own first boot intro or tour app, maybe using an app distributed on bog-flatpak remote when I add it in or hardcode it into the image.
-        # OR I write it into the image itself
         - gnome-tour
       packages:
 
@@ -71,9 +69,6 @@ modules:
         - xdg-desktop-portal-gnome          # XDG Portal for GNOME
         - gnome-online-accounts             # GOA daemon
         - gnome-keyring                     # Password/Key Management
-        - adwaita-icon-theme
-        - adwaita-sans-fonts
-        - adwaita-mono-fonts
 
         # dconf (desktop/etc configuration in GNOME)
         - dconf                             # Basically GNOMEs version of registry keys
@@ -82,6 +77,7 @@ modules:
         # Essential Interface & Tools
         - gnome-disk-utility                # GNOME Disks
         - gnome-logs                        # SystemD log viewer
+        - d-spy                             # D-Bus connection explorer
         - gnome-firmware                    # Firmware Installer/fwupd GUI
         - baobab                            # Directory tree analyzer
         - gnome-font-viewer                 # Font viewer/installer
@@ -89,11 +85,12 @@ modules:
         - nautilus                          # File manager
         - gnome-text-editor                 # GUI Text editor
 
+        # Expected Feature Support For Base
+        - gnome-network-displays            # Screencasting support
+        - simple-scan                       # Printer support
+
         # App Store (ublue-os/packages)
         - bazaar
-
-        # Davinci Helper (herzen/davinci-helper COPR, simple fedora distrobox preset that installs this in a container)
-        #- davinci-helper
 
         # Filesystem Bits
         - gvfs                              # Virtual Filesystem (Trash/Mounts)
@@ -109,9 +106,12 @@ modules:
         - gvfs-smb                          # SMD support for gvfs
 
         # Niceties
+        - adwaita-icon-theme
+        - adwaita-sans-fonts
+        - adwaita-mono-fonts
         - gnome-backgrounds
 
-        # handheld daemon (hhd-dev/hhd COPR repo)
+        # Handheld Daemon (hhd-dev/hhd COPR repo)
         #- hhd
         #- adjustor
         #- hhd-ui

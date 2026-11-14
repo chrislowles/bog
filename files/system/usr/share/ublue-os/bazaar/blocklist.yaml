@@ -9,8 +9,6 @@ blocklists:
     - org.gnome.TextEditor
     - io.github.zyedidia.micro
     - com.valvesoftware.Steam
-    - org.freedesktop.Platform.VulkanLayer.gamescope
-    - org.freedesktop.Platform.VulkanLayer.MangoHud
     - com.github.Matoking.protontricks
     - org.gnome.gedit
     - org.gnome.Totem
@@ -19,4 +17,9 @@ blocklists:
     - org.gnome.Extensions
     - dev.edfloreshz.CosmicTweaks
     - io.github.pantheon_tweaks.pantheon-tweaks
+    - org.freedesktop.Platform.VulkanLayer.gamescope
+    - org.freedesktop.Platform.VulkanLayer.MangoHud
     - org.gnome.Firmware
+    - org.gnome.dspy
+    - org.gnome.NetworkDisplays
+    - org.gnome.SimpleScan

@@ -4,3 +4,5 @@
 * Add another example for adding folder path to filesystem permissions when installing other game launchers in bog for repo wiki tab
 * I'd like to have ~/AppImages situated alongside the default xdg folders, likely by way of GTK file manager bookmarks
 * Look into having Windows virtualizing project Looking Glass available as an optional systemd service
+* Consider making my own first boot intro or tour app in place of `gnome-tour`, maybe using an app distributed on `bog-flatpak` remote
+* OR I write it into the image itself, makes little sense to write it as though it could be worthwhile for other images lol
