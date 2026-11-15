@@ -1,17 +1,17 @@
 rows:
 
-  #- banner:
-  #    height: 250
-  #    image:
-  #      light-uri: https://www.mibatcontrol.com/wp-content/uploads/2026/04/Raccoon-Removal-Services-1.png # regular "uri" option is also available
-  #      dark-uri: https://cdn.answeroverflow.com/1233140484017487952/image.png # you can also use file://
-  #      fit: contain # contain, fill, cover or scale-down
-  #      alt: "Raccoon"
-  #      can-shrink: true
-  #      halign: center
-  #    dark-color: "#2b1f3d"
-  #    light-color: "linear-gradient(135deg, #2b1f3d 0%, #778cf7 100%)" # Can also be a type of gradient
-  #    # light-color: "url('file:///var/home/xander/Downloads/Conservation-Quest-at-Windsor-Great-Park-3.jpg') center / cover no-repeat" # Even an image should be possible
+#  - banner:
+#    height: 250
+#    image:
+#      light-uri: https://www.mibatcontrol.com/wp-content/uploads/2026/04/Raccoon-Removal-Services-1.png # regular "uri" option is also available
+#      dark-uri: https://cdn.answeroverflow.com/1233140484017487952/image.png # you can also use file://
+#      fit: contain # contain, fill, cover or scale-down
+#      alt: "Raccoon"
+#      can-shrink: true
+#      halign: center
+#    dark-color: "#2b1f3d"
+#    light-color: "linear-gradient(135deg, #2b1f3d 0%, #778cf7 100%)" # Can also be a type of gradient
+#    # light-color: "url('file:///var/home/xander/Downloads/Conservation-Quest-at-Windsor-Great-Park-3.jpg') center / cover no-repeat" # Even an image should be possible
 
   - section:
       title: "Welcome to bog"
@@ -19,26 +19,26 @@ rows:
         string: | # Basic markdown is supported here.
           Apps for a system that makes sense... I *hope*.
 
-  - section:
-      title: "Web Browsers"
-      subtitle:
-        string: |
-          Get yeh Gecko or Chromium-based browser here!
-      list-type: rich # Directly features an install button on the card, use when a section has little apps.
-      appids:
-        list:
-          - org.mozilla.firefox
-          - com.google.Chrome
-          - io.gitlab.librewolf-community
-          - io.github.ungoogled_software.ungoogled_chromium
-          - com.microsoft.Edge
-          - io.github.zaedus.spider
-          - app.zen_browser.zen
-          - com.brave.Origin
-          - com.opera.Opera
-          - org.chromium.Chromium
-          - one.ablaze.floorp
-          - net.waterfox.waterfox
+#  - section:
+#      title: "Web Browsers"
+#      subtitle:
+#        string: |
+#          Get yeh Gecko or Chromium-based browser here!
+#      list-type: rich # Directly features an install button on the card, use when a section has little apps.
+#      appids:
+#        list:
+#          - org.mozilla.firefox
+#          - com.google.Chrome
+#          - io.gitlab.librewolf-community
+#          - io.github.ungoogled_software.ungoogled_chromium
+#          - com.microsoft.Edge
+#          - io.github.zaedus.spider
+#          - app.zen_browser.zen
+#          - com.brave.Origin
+#          - com.opera.Opera
+#          - org.chromium.Chromium
+#          - one.ablaze.floorp
+#          - net.waterfox.waterfox
 
   - section:
       title: "Gaming (minus Steam)"
@@ -238,8 +238,8 @@ rows:
         - com.github.jkotra.eovpn
         - org.gnome.design.IconLibrary
 
-  #- banner:
-  #    image:
-  #      uri: https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  #      fit: cover
-  #      can-shrink: true
+#  - banner:
+#    image:
+#      uri: https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+#      fit: cover
+#      can-shrink: true
