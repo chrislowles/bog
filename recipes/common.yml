@@ -140,6 +140,7 @@ modules:
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage management
         - fastfetch                         # System information readout (neofetch-like)
+        - netcat                            # Read and write data across connections using TCP or UDP
 
         # Networking
         - NetworkManager-wifi               # Primary tooling for WiFi support
