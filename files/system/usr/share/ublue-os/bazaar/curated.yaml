@@ -14,16 +14,18 @@ rows:
 #    # light-color: "url('file:///var/home/xander/Downloads/Conservation-Quest-at-Windsor-Great-Park-3.jpg') center / cover no-repeat" # Even an image should be possible
 
   - section:
-      title: "Welcome to bog"
+      title:
+        en: Welcome to bog!
       subtitle:
-        string: | # Basic markdown is supported here.
-          Apps for a system that makes sense... I *hope*.
+        string:
+          en: Apps for a system that makes sense... I *hope*.
 
 #  - section:
-#      title: "Web Browsers"
+#      title:
+#        en: Web Browsers
 #      subtitle:
-#        string: |
-#          Get yeh Gecko or Chromium-based browser here!
+#        string:
+#          en: Get yeh Gecko or Chromium-based browser here!
 #      list-type: rich # Directly features an install button on the card, use when a section has little apps.
 #      appids:
 #        list:
@@ -41,10 +43,11 @@ rows:
 #          - net.waterfox.waterfox
 
   - section:
-      title: "Gaming (minus Steam)"
+      title:
+        en: Gaming (minus Steam)
       subtitle:
-        string: |
-          Because Steam isn't the whole world when it comes to gaming on the PC.
+        string:
+          en: Because Steam isn't the whole world when it comes to gaming on the PC.
       appids:
         list:
           - com.vysp3r.ProtonPlus
@@ -58,21 +61,20 @@ rows:
           - org.vinegarhq.Sober
 
   - section:
-      title: "Open-Source Games"
+      title:
+        en: Open-Source Games
       subtitle:
-        string: |
-          What it says on the tin.
+        string:
+          en: What it says on the tin.
       overflow-count: 12
       appids:
         list:
           - org.zdoom.UZDoom
-          - io.github.fabiangreffrath.Doom
           - org.openttd.OpenTTD
           - uk.co.powdertoy.tpt
           - org.supertuxproject.SuperTux
           - net.supertuxkart.SuperTuxKart
           - com.github.Anuken.Mindustry
-          - com.thebrokenrail.MCPIReborn
           - net.runelite.RuneLite
           - sh.ppy.osu
           - com.epicgames.ut99
@@ -101,11 +103,12 @@ rows:
           - com.realm667.Wolfenstein_Blade_of_Agony
 
   - section:
-      title: "Emulation"
+      title:
+        en: Emulation
       subtitle:
-        string: |
-          Emulate most of the things!
-      overflow-count: 8
+        string:
+          en: Emulate most of the things!
+      overflow-count: 9
       appids:
         list:
           - net.pcsx2.PCSX2
@@ -115,7 +118,6 @@ rows:
           - org.libretro.RetroArch
           - info.cemu.Cemu
           - org.DolphinEmu.dolphin-emu
-          - com.github.AmatCoder.mednaffe
           - net.kuribo64.melonDS
           - com.snes9x.Snes9x
           - io.mgba.mGBA
@@ -129,10 +131,11 @@ rows:
           - io.github.stella_emu.Stella
 
   - section:
-      title: "Productivity"
+      title:
+        en: Productivity
       subtitle:
-        string: |
-          The bills aren't gonna pay themselves.
+        string:
+          en: The bills aren't gonna pay themselves.
       appids:
         list:
           - org.onlyoffice.desktopeditors
@@ -153,10 +156,11 @@ rows:
           - com.jeffser.Alpaca
 
   - section:
-      title: "Messaging & Social"
+      title:
+        en: Messaging & Social
       subtitle:
-        string: |
-          I don't know what to put here.
+        string:
+          en: I don't know what to put here.
       appids:
         list:
           - com.discordapp.Discord
@@ -174,10 +178,11 @@ rows:
           - im.pidgin.Pidgin
 
   - section:
-      title: "Media"
+      title:
+        en: Media
       subtitle:
-        string: |
-          Sometimes you don't want to experience your *legally aquired* movie in a web browser.
+        string:
+          en: Sometimes you don't want to experience your *legally aquired* movie in a web browser.
       appids:
         list:
           - org.videolan.VLC
@@ -210,10 +215,11 @@ rows:
           - io.github.wartybix.Constrict
 
   - section:
-      title: "Miscellaneous"
+      title:
+        en: Miscellaneous
       subtitle:
-        string: |
-          I *actually* don't know what to put here.
+        string:
+          en: I *actually* don't know what to put here.
       appids:
         list:
           - io.github.flattool.Warehouse
