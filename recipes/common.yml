@@ -36,7 +36,7 @@ modules:
       cleanup: true
       copr:
         - ublue-os/packages
-        - ublue-os/rom-properties
+        #- ublue-os/rom-properties
         #- hhd-dev/hhd
       files:
         - https://cli.github.com/packages/rpm/gh-cli.repo
@@ -56,9 +56,9 @@ modules:
         #    - terra-gpg-keys
 
         # ROM Properties Shell Extensions COPR
-        - repo: rom-properties
-          packages:
-            - rom-properties-gtk3
+        #- repo: rom-properties
+        #  packages:
+        #    - rom-properties-gtk3
 
         # Official Github CLI
         - repo: gh-cli
