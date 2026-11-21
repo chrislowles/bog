@@ -25,7 +25,7 @@ blocklists:
     - org.gnome.NetworkDisplays
     - org.gnome.SimpleScan
 
-    # Some certain KDE apps that wouldn't make sense in GNOME
+    # Some certain KDE apps that wouldn't make sense here
     - org.kde.kwalletmanager5
     - org.kde.kwalletmanager
     - org.kde.krdc
