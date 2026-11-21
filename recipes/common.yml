@@ -10,10 +10,10 @@ modules:
       LOGO: bog-logo
       DEFAULT_HOSTNAME: bog
 
-  # Dynamically passing ostree version of the base image into the PRETTY_NAME
   - type: script
     scripts:
-      - os-release.sh
+      - os-release.sh # Dynamically passing ostree version of the base image into the PRETTY_NAME
+      - millennium.sh # Oneshotting a pre-installation of Millennium for Steam
 
   - type: files
     files:
@@ -36,7 +36,6 @@ modules:
       cleanup: true
       copr:
         - ublue-os/packages
-        #- ublue-os/rom-properties
         #- hhd-dev/hhd
       files:
         - https://cli.github.com/packages/rpm/gh-cli.repo
@@ -54,11 +53,6 @@ modules:
         #  packages:
         #    - terra-release
         #    - terra-gpg-keys
-
-        # ROM Properties Shell Extensions COPR
-        #- repo: rom-properties
-        #  packages:
-        #    - rom-properties-gtk3
 
         # Official Github CLI
         - repo: gh-cli
