@@ -6,3 +6,4 @@
 * Look into having Windows virtualizing project Looking Glass available as an optional systemd service
 * Consider making my own first boot intro or tour app in place of `gnome-tour`, maybe using an app distributed on `bog-flatpak` remote
 * OR I write it into the image itself, makes little sense to write it as though it could be worthwhile for other images lol
+* Address gamescope session not booting.
