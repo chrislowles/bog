@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=bog Millennium notice
+Exec=bash /usr/bin/bog-millennium-notice
+NoDisplay=true
+X-GNOME-Autostart-Delay=5
