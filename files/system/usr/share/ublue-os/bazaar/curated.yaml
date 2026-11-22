@@ -44,6 +44,23 @@ rows:
 
   - section:
       title:
+        en: Preferred & Pre-installed
+      subtitle:
+        string:
+          en: Rigorous use has determined these apps are worth your time, at least at the start.
+      enable-bulk-install: true
+      appids:
+        list:
+          - io.github.flattool.Warehouse
+          - com.github.tchx84.Flatseal
+          - com.ranfdev.DistroShelf
+          - io.github.flattool.Ignition
+          - com.mattjakeman.ExtensionManager
+          - com.vysp3r.ProtonPlus
+          - com.usebottles.bottles
+
+  - section:
+      title:
         en: Gaming (minus Steam)
       subtitle:
         string:
