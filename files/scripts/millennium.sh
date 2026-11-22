@@ -21,7 +21,9 @@ install -d /usr/lib/millennium
 cp -a "$work/usr/lib/millennium/." /usr/lib/millennium/
 
 # Fail the build (not the user's Steam) if upstream renames a library.
-for f in libmillennium_bootstrap_x64.so libmillennium_hhx64.so; do
+for f in \
+  libmillennium_bootstrap_x64.so libmillennium_hhx64.so \
+  libmillennium_x64.so libmillennium_bootstrap_x86.so libmillennium_bootstrap_hhx64.so; do
   [ -e "/usr/lib/millennium/$f" ] || { echo "missing $f"; ls -l /usr/lib/millennium; exit 1; }
 done
 
