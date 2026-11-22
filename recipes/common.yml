@@ -189,9 +189,13 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      # presumed flathub system-scope app installs (btw cli-oriented packages/runtimes don't work in this module)
+      # Presumed Flathub system-scope app installs (btw cli-oriented packages/runtimes don't work in this module)
+      #- notify: false
+      #  scope: system
+      #  install:
+      # Presumed Flathub per user-scope app installs
       - notify: false
-        scope: system
+        scope: user
         install:
         - io.github.flattool.Warehouse
         - com.github.tchx84.Flatseal
@@ -199,12 +203,7 @@ modules:
         - io.github.flattool.Ignition
         - com.mattjakeman.ExtensionManager
         - com.vysp3r.ProtonPlus
-      # presumed flathub per user-scope app installs
-      - notify: false
-        scope: user
-        install:
         - com.usebottles.bottles
-        - io.github.Faugus.faugus-launcher
       - notify: false
         scope: system
         repo:
