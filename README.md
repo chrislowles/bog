@@ -7,7 +7,7 @@ A [wiki](https://github.com/chrislowles/bog/wiki) is available for certain aspec
 ## What's included
 - Near-vanilla **GNOME** desktop with GDM
 - **Bazaar** as the primary app store
-- **flatpak** via [**Flathub**](https://flathub.org/): the primary space for applications installed using the distro-agnostic flatpak format
+- **flatpak** via [**Flathub**](https://flathub.org/): The primary space for applications installed using the distro-agnostic flatpak format
 - [**Distrobox**](https://distrobox.it/) for containerised access to traditional Linux environments
 - [**Steam**](https://store.steampowered.com/) as part of the base/system level for ease-of-use when gaming
 
@@ -22,6 +22,7 @@ systemctl reboot
 sudo bootc switch ghcr.io/chrislowles/bog-nvidia:latest
 systemctl reboot
 ```
+
 ISOs are now also available for burning to a USB on the [releases](https://github.com/chrislowles/bog/releases) tab.
 
 ## Verification
