@@ -135,8 +135,7 @@ modules:
         - aria2                             # Multi-protocol download utility (HTTP/FTP/Metalink/BitTorrent)
         - pipx                              # "Install and Run Python Applications in Isolated Environments"
         - jq                                # Command-line JSON processor
-        - yt-dlp                            # Command-line media downloader
-        - ffmpeg                            # Suite of media processing libraries
+        #- ffmpeg                            # Suite of media processing libraries
         - rsync                             # Common program for network syncing files
         - rclone                            # Cloud storage management
         - fastfetch                         # System information readout (neofetch-like)
@@ -190,12 +189,8 @@ modules:
   - type: default-flatpaks
     configurations:
       # Presumed Flathub system-scope app installs (btw cli-oriented packages/runtimes don't work in this module)
-      #- notify: false
-      #  scope: system
-      #  install:
-      # Presumed Flathub per user-scope app installs
       - notify: false
-        scope: user
+        scope: system
         install:
         - io.github.flattool.Warehouse
         - com.github.tchx84.Flatseal
@@ -203,6 +198,10 @@ modules:
         - io.github.flattool.Ignition
         - com.mattjakeman.ExtensionManager
         - com.vysp3r.ProtonPlus
+      # Presumed Flathub per user-scope app installs
+      - notify: false
+        scope: user
+        install:
         - com.usebottles.bottles
       - notify: false
         scope: system
@@ -216,8 +215,21 @@ modules:
           url: https://chrislowles.github.io/bog-flatpak/bog.flatpakrepo
           name: bog-flatpak
           title: bog-flatpak
-        #install:
-        #- idk.lmao.sixseven
+      - notify: false
+        scope: system
+        repo:
+          url: https://dl.flatpark.org/flatpark.flatpakrepo
+          name: flatpak
+          title: Flatpark
+      - notify: false
+        scope: user
+        repo:
+          url: https://dl.flatpark.org/flatpark.flatpakrepo
+          name: flatpak
+          title: Flatpark
+        install:
+        - io.github.yt_dlp.yt_dlp
+        - 
 
   - type: gnome-extensions
     install:
