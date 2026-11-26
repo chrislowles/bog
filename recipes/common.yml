@@ -215,21 +215,6 @@ modules:
           url: https://chrislowles.github.io/bog-flatpak/bog.flatpakrepo
           name: bog-flatpak
           title: bog-flatpak
-      - notify: false
-        scope: system
-        repo:
-          url: https://dl.flatpark.org/flatpark.flatpakrepo
-          name: flatpak
-          title: Flatpark
-      - notify: false
-        scope: user
-        repo:
-          url: https://dl.flatpark.org/flatpark.flatpakrepo
-          name: flatpak
-          title: Flatpark
-        install:
-        - io.github.yt_dlp.yt_dlp
-        - 
 
   - type: gnome-extensions
     install:
